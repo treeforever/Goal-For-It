@@ -2,3 +2,4 @@
 .gitignore
 .env
 node_modules
+react_barebone/node_modules
