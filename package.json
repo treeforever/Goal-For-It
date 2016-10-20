@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/treeforever/goal_for_it#readme",
   "dependencies": {
-    "db-migrate": "^0.10.0-beta.20",
     "knex": "^0.12.6",
     "pg": "^6.1.0",
     "ejs": "^2.5.2"
