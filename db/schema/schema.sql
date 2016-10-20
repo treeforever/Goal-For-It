@@ -26,7 +26,8 @@ CREATE TABLE users_groups (
 
 CREATE TABLE steps (
   id serial PRIMARY KEY,
-  description varchar(500) NOT NULL,
+  title varchar(15) NOT NULL,
+  description varchar(500),
   checked boolean default false NOT NULL,
   milestone_id bigint REFERENCES milestones (id) ON DELETE CASCADE
 );
@@ -45,7 +46,7 @@ CREATE TABLE goals (
   title varchar(10) NOT NULL,
   description varchar(500) NOT NULL,
   due_date date,
-  difficulties interger,
+  difficulties integer,
     check(difficulties >= 1 and difficulties <= 5),
   checked boolean default false NOT NULL,
   user_id bigint REFERENCES users (id) ON DELETE CASCADE,
