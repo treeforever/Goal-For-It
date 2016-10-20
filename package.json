@@ -5,18 +5,19 @@
   "devDependencies": {
     "react-scripts": "0.6.1"
   },
-  "dependencies": {
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "ejs": "^2.5.2",
-    "express": "^4.14.0",
-    "pg": "^6.1.0",
-    "knex": "^0.12.6"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+   "dependencies": {
+    "dotenv": "^2.0.0",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "knex": "^0.12.6",
+    "pg": "^6.1.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
   }
 }
