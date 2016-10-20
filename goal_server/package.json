@@ -1,0 +1,25 @@
+{
+  "name": "goal_for_it",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/treeforever/goal_for_it.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/treeforever/goal_for_it/issues"
+  },
+  "homepage": "https://github.com/treeforever/goal_for_it#readme",
+  "dependencies": {
+    "knex": "^0.12.6",
+    "pg": "^6.1.0",
+    "ejs": "^2.5.2"
+
+  }
+}

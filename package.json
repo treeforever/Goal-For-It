@@ -1,25 +1,20 @@
 {
-  "name": "goal_for_it",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.6.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/treeforever/goal_for_it.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/treeforever/goal_for_it/issues"
-  },
-  "homepage": "https://github.com/treeforever/goal_for_it#readme",
   "dependencies": {
-    "knex": "^0.12.6",
-    "pg": "^6.1.0",
-    "ejs": "^2.5.2"
-
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
