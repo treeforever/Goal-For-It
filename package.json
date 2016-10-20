@@ -12,16 +12,12 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "classnames": "^2.1.5",
-    "director": "^1.2.0",
     "dotenv": "^2.0.0",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "knex": "^0.12.6",
     "pg": "^6.1.0",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "todomvc-app-css": "^2.0.0",
-    "todomvc-common": "^1.0.1"
+    "react-dom": "^15.3.2"
   }
 }
