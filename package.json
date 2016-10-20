@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/treeforever/goal_for_it/issues"
   },
-  "homepage": "https://github.com/treeforever/goal_for_it#readme"
+  "homepage": "https://github.com/treeforever/goal_for_it#readme",
+  "dependencies": {
+    "ejs": "^2.5.2"
+  }
 }

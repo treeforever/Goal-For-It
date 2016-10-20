@@ -6,12 +6,12 @@ const router = express.Router();
 
 module.exports = () => {
 
-  router.get('/', (req, res) => {
-    res.send('Welcome to register page')
+  app.get('/', (req, res) => {
+    res.render('login');
+  });
 
-  })
-  router.post('/', (req, res) => {
-
-  })
+  router.post('/' (req, res) => {
+    res.send('posted')
+  });
   return router;
 }
