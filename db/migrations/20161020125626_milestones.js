@@ -2,11 +2,11 @@
 exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('milestones', function(table){
-      table.integer('id');
-      table.integer('goal_id');
+      table.increments('id');
       table.string('title');
       table.string('description');
       table.boolean('checked');
+      table.foreign('goal_id').references('goals.id');
     })
   ])
 };
