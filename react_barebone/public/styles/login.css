@@ -1,5 +1,8 @@
 body {
-    padding-top: 90px;
+  padding-top: 90px;
+  background-image: url(http://s1.picswalls.com/wallpapers/2015/11/21/beautiful-motivation-wallpaper_10342177_288.jpg);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
 }
 .panel-login {
   border-color: #ccc;
