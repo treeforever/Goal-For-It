@@ -7,8 +7,8 @@ exports.seed = function (knex, Promise) {
         .insert({
           title: 'Become a developer',
           description: 'become a junior developer in 4 months',
-          due_date: nil,
-          difficulties: nil,
+          due_date: '2017-10-19 10:23:54+02',
+          difficulties: 5,
           checked: false,
           creator_id: 1,
           group_id: 1
@@ -17,8 +17,8 @@ exports.seed = function (knex, Promise) {
         .insert({
           title: 'make rocking cheesecake and other desserts',
           description: 'know how to bake cheesecake, apple pie for holidays',
-          due_date: nil,
-          difficulties: nil,
+          due_date: '2017-10-19 10:23:54+02',
+          difficulties: 3,
           checked: false,
           creator_id: 1,
           group_id: 1
@@ -27,8 +27,8 @@ exports.seed = function (knex, Promise) {
         .insert({
           title: 'attend beauty pageants contest',
           description: 'lose 20 pounds, get muscules, learn cosmetics',
-          due_date: nil,
-          difficulties: nil,
+          due_date: '2017-10-19 10:23:54+02',
+          difficulties: 4,
           checked: false,
           creator_id: 2,
           group_id: 1
@@ -37,8 +37,8 @@ exports.seed = function (knex, Promise) {
         // .insert({
         //   title: 'hold a photography exhibition',
         //   description: 'plan an exhibition in a year with 100 photos',
-        //   due_date: nil,
-        //   difficulties: nil,
+        //   due_date: "2017-10-19 10:23:54+02",
+        //   difficulties: 3,
         //   checked: false,
         //   creator_id: 3,
         //   group_id: 1
@@ -47,8 +47,8 @@ exports.seed = function (knex, Promise) {
         // .insert({
         //   title: 'swim cross Ontario Lake',
         //   description: 'strengthen willpower, exercise',
-        //   due_date: nil,
-        //   difficulties: nil,
+        //   due_date: "2017-10-19 10:23:54+02",
+        //   difficulties: 5,
         //   checked: false,
         //   creator_id: 3,
         //   group_id: 1

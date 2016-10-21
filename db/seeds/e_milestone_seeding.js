@@ -62,7 +62,7 @@ exports.seed = function (knex, Promise) {
         knex('milestones')
         .insert({
           title: 'learn costmetics',
-          description: nil,
+          description: '',
           checked: false,
           goal_id: 3
         })
