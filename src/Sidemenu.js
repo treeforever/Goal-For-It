@@ -6,8 +6,9 @@ class Sidemenu extends Component {
   render() {
     return (
       <Menu isOpen={ false }>
-          <Link to="/">Goal: learn bakery</Link>
-          <Link to="group">Group</Link>
+          <Link to="new-goal" className="menu-item">New Goal</Link>
+          <Link to="/" className="menu-item">Goal: learn bakery</Link>
+          <Link to="group" className="menu-item">Group</Link>
 
 
       </Menu>

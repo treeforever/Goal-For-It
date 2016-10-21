@@ -79,5 +79,10 @@ nav {
 
 /*page 2 css*/
 .group {
-  color: yellow;
+
+}
+
+.menu-item {
+  display: block;
+  margin-bottom: 20%;
 }
