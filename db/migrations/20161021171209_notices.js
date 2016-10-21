@@ -5,11 +5,11 @@ exports.up = function(knex, Promise) {
       table.increments('id');
       table.string('type');
       table.string('content');
-      table.integer('sender_id');
-      table.integer('receiver_id');
-    })
-  ])
-};
+      table.foreign('sender_id').references('usres.id');
+      table.foreign('receiver_id').references('usres.id');
+      })
+    ])
+  };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
