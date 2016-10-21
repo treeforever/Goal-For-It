@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles/App.css';
+<<<<<<< HEAD
 import Sidebar from './Sidebar.js'
+=======
+import Milestone from './Milestone';
+import Sidemenu from './Sidemenu'
+
+
+>>>>>>> 9e4662c01451c8f8d69db6e013765e54f7bb74fe
 
 class App extends Component {
   render() {
@@ -15,7 +22,15 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <ListExampleSimple />
+        <nav>
+          <Sidemenu />
+        </nav>
+        <div>
+          <Milestone />
+          <Milestone />
+          <Milestone />
+          <Milestone />
+        </div>
       </div>
     );
   }

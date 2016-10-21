@@ -7,7 +7,7 @@ const router = express.Router();
 module.exports = () => {
 
   router.get('/', (req, res) => {
-    res.send('Welcome to your goal!');
+    res.render('goal');
   });
 
   router.get('/:id', (req, res) => {

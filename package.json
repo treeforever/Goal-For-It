@@ -11,13 +11,14 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-   "dependencies": {
+  "dependencies": {
     "dotenv": "^2.0.0",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "knex": "^0.12.6",
     "pg": "^6.1.0",
     "react": "^15.3.2",
+    "react-burger-menu": "^1.10.8",
     "react-dom": "^15.3.2"
   }
 }
