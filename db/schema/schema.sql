@@ -52,3 +52,11 @@ CREATE TABLE steps (
   checked boolean default false NOT NULL,
   milestone_id bigint REFERENCES milestones(id) ON DELETE CASCADE
 );
+
+CREATE TABLE notices (
+  id serial PRIMARY KEY,
+  type varchar(50) NOT NULL,
+  content varchar (500) NOT NULL,
+  sender_id bigint REFERENCES users(id) ON DELETE CASCADE,
+  receiver_id bigint REFERENCES users(id) ON DELETE CASCADE
+);

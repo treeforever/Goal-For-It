@@ -9,6 +9,7 @@ import Sidemenu from './Sidemenu'
 
 class App extends Component {
   render() {
+    console.log(this.props);
     return (
       <div className="App">
         <div className="App-header">

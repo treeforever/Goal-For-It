@@ -4,13 +4,12 @@ const Menu = require('react-burger-menu').slide;
 
 class Sidemenu extends Component {
   render() {
+
     return (
       <Menu isOpen={ false }>
           <Link to="new-goal" className="menu-item">New Goal</Link>
           <Link to="/" className="menu-item">Goal: learn bakery</Link>
           <Link to="group" className="menu-item">Group</Link>
-
-
       </Menu>
 
     )
