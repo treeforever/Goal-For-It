@@ -27,7 +27,7 @@ CREATE TABLE users_groups (
 
 CREATE TABLE goals (
   id serial PRIMARY KEY,
-  title varchar(10) NOT NULL,
+  title varchar(50) NOT NULL,
   description varchar(500) NOT NULL,
   due_date date,
   difficulties integer,
@@ -40,7 +40,7 @@ CREATE TABLE goals (
 
 CREATE TABLE milestones (
   id serial PRIMARY KEY,
-  title varchar(10) NOT NULL,
+  title varchar(50) NOT NULL,
   description varchar(500) NOT NULL,
   checked boolean default false NOT NULL,
   goal_id bigint REFERENCES goals(id) ON DELETE CASCADE
@@ -48,11 +48,7 @@ CREATE TABLE milestones (
 
 CREATE TABLE steps (
   id serial PRIMARY KEY,
-  title varchar(15) NOT NULL,
-  description varchar(500),
+  description varchar(500) NOT NULL,
   checked boolean default false NOT NULL,
   milestone_id bigint REFERENCES milestones(id) ON DELETE CASCADE
 );
-
-
-
