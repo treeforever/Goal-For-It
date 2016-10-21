@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles/App.css';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import Sidebar from './Sidebar.js'
-=======
-=======
->>>>>>> 9e4662c01451c8f8d69db6e013765e54f7bb74fe
 import Milestone from './Milestone';
 import Sidemenu from './Sidemenu'
 
-
-<<<<<<< HEAD
->>>>>>> 9e4662c01451c8f8d69db6e013765e54f7bb74fe
-=======
->>>>>>> 9e4662c01451c8f8d69db6e013765e54f7bb74fe
 
 class App extends Component {
   render() {
