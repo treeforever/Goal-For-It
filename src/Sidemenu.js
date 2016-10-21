@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
+import { Link } from "react-router";
 const Menu = require('react-burger-menu').slide;
 
 class Sidemenu extends Component {
   render() {
     return (
       <Menu isOpen={ false }>
-        <a id="goal2" className="menu-item" href="/">Goal: learn bakery</a>
-        <a id="group" className="menu-item" href="/">Group</a>
+          <Link to="/">Goal: learn bakery</Link>
+          <Link to="group">Group</Link>
+
+
       </Menu>
 
     )

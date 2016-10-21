@@ -19,6 +19,8 @@
     "pg": "^6.1.0",
     "react": "^15.3.2",
     "react-burger-menu": "^1.10.8",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "history": "^1.17.0",
+    "react-router": "^2.8.1"
   }
 }

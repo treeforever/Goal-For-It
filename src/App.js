@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles/App.css';
-import Milestone from './Milestone';
 import Sidemenu from './Sidemenu'
+
+
+
 
 
 class App extends Component {
@@ -16,11 +18,8 @@ class App extends Component {
         <nav>
           <Sidemenu />
         </nav>
-        <div>
-          <Milestone />
-          <Milestone />
-          <Milestone />
-          <Milestone />
+        <div className="container">
+          {this.props.children}
         </div>
       </div>
     );
