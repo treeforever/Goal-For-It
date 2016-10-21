@@ -5,7 +5,6 @@ import Milestone from './Milestone';
 import Sidemenu from './Sidemenu'
 
 
-
 class App extends Component {
   render() {
     return (
