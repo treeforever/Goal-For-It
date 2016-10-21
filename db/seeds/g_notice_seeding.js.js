@@ -22,21 +22,21 @@ exports.seed = function (knex, Promise) {
         .insert({
           type: "message",
           content: "I challenge you with 200 bananas to finish your book by the weekend!",
-          sendor_id: 2,
+          sender_id: 2,
           receiver_id: 1
         }),
         knex('notices')
         .insert({
           type: "message",
           content: "Challenge accepted!",
-          sendor_id: 1,
+          sender_id: 1,
           receiver_id: 2
         }),
         knex('notices')
         .insert({
           type: "message",
           content: "Wait for your ass to be kicked!",
-          sendor_id: 1,
+          sender_id: 1,
           receiver_id: 2
         })
       ]);

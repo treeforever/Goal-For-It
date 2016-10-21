@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS notices CASCADE;
 
 
 
+
 CREATE TABLE users (
   id serial PRIMARY KEY,
   username varchar(20) NOT NULL,
@@ -23,9 +24,10 @@ CREATE TABLE groups (
 
 CREATE TABLE users_groups (
   id serial PRIMARY KEY,
-  user_id bigint REFERENCES users(id) ON DELETE CASCADE,
-  group_id bigint REFERENCES groups(id) ON DELETE CASCADE
+  user_id bigint,
+  group_id bigint
 );
+
 
 CREATE TABLE goals (
   id serial PRIMARY KEY,
@@ -35,8 +37,8 @@ CREATE TABLE goals (
   difficulties integer,
     check(difficulties >= 1 and difficulties <= 5),
   checked boolean default false NOT NULL,
-  creator_id bigint REFERENCES users (id) ON DELETE CASCADE,
-  group_id bigint REFERENCES groups (id) ON DELETE CASCADE
+  creator_id bigint,
+  group_id bigint
 );
 
 
@@ -45,20 +47,20 @@ CREATE TABLE milestones (
   title varchar(50) NOT NULL,
   description varchar(500) NOT NULL,
   checked boolean default false NOT NULL,
-  goal_id bigint REFERENCES goals(id) ON DELETE CASCADE
+  goal_id bigint
 );
 
 CREATE TABLE steps (
   id serial PRIMARY KEY,
   description varchar(500) NOT NULL,
   checked boolean default false NOT NULL,
-  milestone_id bigint REFERENCES milestones(id) ON DELETE CASCADE
+  milestone_id bigint
 );
 
 CREATE TABLE notices (
   id serial PRIMARY KEY,
   type varchar(50) NOT NULL,
   content varchar (500) NOT NULL,
-  sender_id bigint REFERENCES users(id) ON DELETE CASCADE,
-  receiver_id bigint REFERENCES users(id) ON DELETE CASCADE
+  sender_id bigint,
+  receiver_id bigint
 );
