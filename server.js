@@ -13,12 +13,16 @@ const userRoutes  = require('./routes/users.js');
 const homeRoutes  = require('./routes/home.js');
 const goalRoutes  = require('./routes/goal.js');
 
+app.get('/', (req, res) => {
+  res.redirect('/login')
+})
+
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/public');
 
-
 app.use('/login', userRoutes());
+// app.use('/')
 app.use('/home', homeRoutes());
 app.use('/goal', goalRoutes());
 
