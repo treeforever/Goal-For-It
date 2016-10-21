@@ -4,15 +4,29 @@ const express = require('express');
 const router = express.Router();
 
 
-module.exports = () => {
+module.exports = (knex) => {
 
   router.get('/', (req, res) => {
-    res.render('goal');
+
+    knex.select('*')
+      .from('goals')
+      .then((results) => {
+      console.log(results)
+      res.json(results);
+    })
+
   });
 
   router.get('/:id', (req, res) => {
     var friend_id = req.params.id;
-    res.send(`Welcome to your friend ${friend_id}'s goal!`);
+
+    knex.select()
+      .from('goals')
+      .where('creator_id', friend_id)
+      .then((results) => {
+        console.log(results)
+        res.json(results)
+      })
   });
 
   router.post('/', (req, res) => {
