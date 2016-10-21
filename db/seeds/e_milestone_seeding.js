@@ -5,64 +5,64 @@ exports.seed = function (knex, Promise) {
       return Promise.all([
         knex('milestones')
         .insert({
-          title: "read 'become a developer' book",
-          description: 'book is 300 page long. so just read chapters that I need most',
+          mile_title: "read 'become a developer' book",
+          mile_description: 'book is 300 page long. so just read chapters that I need most',
           checked: false,
           goal_id: 1
         }),
         knex('milestones')
         .insert({
-          title: 'learn basic about programming',
-          description: 'codeacademy, codeschool, and LHL prep course',
+          mile_title: 'learn basic about programming',
+          mile_description: 'codeacademy, codeschool, and LHL prep course',
           checked: false,
           goal_id: 1
         }),
         knex('milestones')
         .insert({
-          title: 'research',
-          description: 'talk to friends, go to meetup',
+          mile_title: 'research',
+          mile_description: 'talk to friends, go to meetup',
           checked: false,
           goal_id: 1
         }),
         knex('milestones')
         .insert({
-          title: 'join a bootcamp',
-          description: 'compare requirement, tuition price and quality',
+          mile_title: 'join a bootcamp',
+          mile_description: 'compare requirement, tuition price and quality',
           checked: false,
           goal_id: 1
         }),
         knex('milestones')
         .insert({
-          title: 'buy necessary stuff',
-          description: 'make right decisions when it comes to purchase due to limited budget',
+          mile_title: 'buy necessary stuff',
+          mile_description: 'make right decisions when it comes to purchase due to limited budget',
           checked: false,
           goal_id: 2
         }),
         knex('milestones')
         .insert({
-          title: 'go to classes',
-          description: 'Michaels, Groupon class, shop and compare!',
+          mile_title: 'go to classes',
+          mile_description: 'Michaels, Groupon class, shop and compare!',
           checked: false,
           goal_id: 2
         }),
         knex('milestones')
         .insert({
-          title: 'make cakes',
-          description: 'most importantly, get feedback',
+          mile_title: 'make cakes',
+          mile_description: 'most importantly, get feedback',
           checked: false,
           goal_id: 2
         }),
         knex('milestones')
         .insert({
-          title: 'exercise',
-          description: 'pulling weight, running, weightloss bootcamp',
+          mile_title: 'exercise',
+          mile_description: 'pulling weight, running, weightloss bootcamp',
           checked: false,
           goal_id: 3
         }),
         knex('milestones')
         .insert({
-          title: 'learn costmetics',
-          description: '',
+          mile_title: 'learn costmetics',
+          mile_description: '',
           checked: false,
           goal_id: 3
         })

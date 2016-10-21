@@ -31,8 +31,8 @@ CREATE TABLE users_groups (
 
 CREATE TABLE goals (
   goal_id serial PRIMARY KEY,
-  title varchar(50) NOT NULL,
-  description varchar(500) NOT NULL,
+  goal varchar(50) NOT NULL,
+  goal_description varchar(500) NOT NULL,
   due_date date,
   difficulties integer,
     check(difficulties >= 1 and difficulties <= 5),
@@ -44,15 +44,15 @@ CREATE TABLE goals (
 
 CREATE TABLE milestones (
   milestone_id serial PRIMARY KEY,
-  title varchar(50) NOT NULL,
-  description varchar(500) NOT NULL,
+  mile_title varchar(50) NOT NULL,
+  mile_description varchar(500) NOT NULL,
   checked boolean default false NOT NULL,
   goal_id bigint
 );
 
 CREATE TABLE steps (
   step_id serial PRIMARY KEY,
-  description varchar(500) NOT NULL,
+  step varchar(500) NOT NULL,
   checked boolean default false NOT NULL,
   milestone_id bigint
 );
