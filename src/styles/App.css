@@ -23,10 +23,6 @@
   to { transform: rotate(360deg); }
 }
 
-div.sidemenu {
-  float: left;
-
-}
 
 nav {
 
@@ -59,14 +55,14 @@ nav {
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
+  background: #fbf3db;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
 
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
-  fill: #373a47;
+  fill: #fbf3db;
 }
 
 /* Wrapper for item list */

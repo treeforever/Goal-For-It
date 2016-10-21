@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles/App.css';
 import Milestone from './Milestone';
-import './Sidemenu'
+import Sidemenu from './Sidemenu'
 
-const Sidemenu = require('react-burger-menu').slide;
+
 
 class App extends Component {
   render() {
@@ -15,7 +15,7 @@ class App extends Component {
           <h2>GOAL FOR IT!</h2>
         </div>
         <nav>
-          <Sidemenu isOpen={ false }/>
+          <Sidemenu />
         </nav>
         <div>
           <Milestone />
