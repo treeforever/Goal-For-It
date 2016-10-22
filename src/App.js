@@ -4,9 +4,6 @@ import './styles/App.css';
 import Sidemenu from './Sidemenu'
 
 
-
-
-
 class App extends Component {
   render() {
     console.log(this.props);
