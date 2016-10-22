@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { connect } from "react-redux"
+
 import './styles/App.css';
 import Sidemenu from './Sidemenu'
+import { fetchUser } from "./actions/userActions"
+
 
 
 class App extends Component {
+  componentWillMount() {
+    this.props.fetchUser()
+
+  }
+
   render() {
-    console.log(this.props);
+
     return (
       <div className="App">
         <nav>
           <Sidemenu />
         </nav>
         <div className="container">
+          <h1>{this.props.user.name}</h1>
           {this.props.children}
         </div>
       </div>
@@ -20,4 +29,14 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user.user,
+    userFetched: state.user.fetched,
+    goals: state.goals.goal
+  }
+}
+
+export default connect(mapStateToProps, {
+  fetchUser
+})(App)

@@ -1,4 +1,5 @@
 'use strict';
+import _ from "underscore"
 
 const express = require('express');
 const router = express.Router();
@@ -14,6 +15,9 @@ module.exports = (knex) => {
       // .innerJoin('steps', 'milestones.milestone_id', 'steps.milestone_id')
       .select('goals.goal', 'milestones.mile_title', 'milestones.milestone_id')
       .then((results) => {
+        _.groupBy((entry) => {
+          return mile_title;
+        })
         res.json(results);
       })
   });

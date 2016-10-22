@@ -11,13 +11,14 @@ class Goal_page extends Component {
         title: '',
         milestones: []
       },
-      source: "http://localhost:3000/api/goal"
+      source: "http://localhost:8080/api/goal"
     }
   }
 
   componentDidMount() {
     //performs get request to api for goal information
     this.serverRequest = $.get(this.state.source, function(result){
+      console.log(result);
       //sets state of page with goal title
       this.state.goal.title = result[0].goal;
       for(var i = 0; i < result.length; i++){

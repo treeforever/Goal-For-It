@@ -5,7 +5,7 @@ require('dotenv').config();
 const ENV         = process.env.ENV || "development";
 const pg          = require('pg');
 const express     = require('express');
-const PORT        = 3000;
+const PORT        = 8080;
 const app         = express();
 const knexConfig  = require('./knexfile');
 const knex        = require('knex')(knexConfig[ENV]);
@@ -34,6 +34,6 @@ app.use('/api', goalRoutes(knex));
 
 
 
-app.listen(3000, () => {
+app.listen(8080, () => {
   console.log(`Goal app listening on port ${PORT}`)
 })
