@@ -4,10 +4,16 @@ const express = require('express');
 const router = express.Router();
 
 
-module.exports = () => {
+module.exports = (knex) => {
 
-  router.get('/', (req, res) => {
-    res.render('login')
+  router.get('/users', (req, res) => {
+
+    knex.select('*')
+      .from('users')
+      .then((results) => {
+        console.log(results)
+        res.json(results)
+      })
   })
 
   router.post("/", (req, res) => {
