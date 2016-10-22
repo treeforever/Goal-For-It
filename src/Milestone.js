@@ -6,11 +6,19 @@ class Milestone extends Component {
   render() {
 
 
+
     return (
       <div className="milestones">
         <ul className="milestone">
-          {this.props.Data}
-          <Step />
+          {
+            //loops though all milestones and lists them
+            this.props.ListOfMilestones.map((milestone) => (
+              <li key={milestone.milesone_id}>
+                {milestone.mile_title}
+                <Step />
+              </li>
+              ))
+          }
         </ul>
       </div>
     );

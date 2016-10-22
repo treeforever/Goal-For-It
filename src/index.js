@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import './styles/index.css';
 
+
 import App from './App';
 import Goal_page from './Goal_page';
 import Group_page from './Group_page';
@@ -13,7 +14,7 @@ import Group_page from './Group_page';
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Goal_page} ></IndexRoute>
+      <IndexRoute component={Goal_page}></IndexRoute>
       <Route path="group" component={Group_page}></Route>
     </Route>
   </Router>,

@@ -13,6 +13,13 @@ const userRoutes  = require('./routes/users.js');
 const homeRoutes  = require('./routes/home.js');
 const goalRoutes  = require('./routes/goal.js');
 
+//allows react server to perform requests to this server(api)
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.get('/', (req, res) => {
   res.redirect('/login')
 })
@@ -23,7 +30,8 @@ app.set('views', __dirname + '/public');
 
 app.use('/login', userRoutes(knex));
 app.use('/home', homeRoutes(knex));
-app.use('/goal', goalRoutes(knex));
+app.use('/api', goalRoutes(knex));
+
 
 
 app.listen(3000, () => {
