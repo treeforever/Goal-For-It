@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 class Step extends Component {
+
   render() {
     return (
       <div className="steps">

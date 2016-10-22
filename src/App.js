@@ -12,10 +12,6 @@ class App extends Component {
     console.log(this.props);
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>GOAL FOR IT!</h2>
-        </div>
         <nav>
           <Sidemenu />
         </nav>
