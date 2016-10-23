@@ -32,7 +32,7 @@ class Group_page extends Component {
     return (
       <div className="group container">
         <Notifications />
-        <Form action="" method="GET" className="notification-form" attributes={attributes} />
+        <Form action="/" method="GET" className="notification-form" attributes={attributes} />
       </div>
     );
   }
