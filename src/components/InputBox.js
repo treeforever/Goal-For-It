@@ -33,6 +33,7 @@ class InputBox extends Component {
         placeholder={this.props.placeholder}
         autoFocus="true"
         value={this.state.text}
+        onBlur={this.handleBlur}
         onChange={this.handleChange}
         onKeyDown={this.handleSubmit} />
     )

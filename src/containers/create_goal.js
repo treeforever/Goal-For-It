@@ -27,11 +27,24 @@ class NewGoal extends Component {
   render() {
     return (
       <div>
-        <h3>Step</h3>
+        <h1>Goal</h1>
           <InputBox newTodo
             onSave={this.handleSave}
             placeholder="What's your next goal?"
            />
+
+        <h2>Milestones</h2>
+          <InputBox newTodo
+            onSave={this.handleSave}
+            placeholder="Break down your goal to less than 5 milestones"
+           />
+
+        <h3>Steps</h3>
+          <InputBox newTodo
+            onSave={this.handleSave}
+            placeholder="What are the steps to achieve this milestone?"
+           />
+
         <h3>
           Newly created goal: {this.renderGoals(this.props.goals.goals)}
         </h3>
