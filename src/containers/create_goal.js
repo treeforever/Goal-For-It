@@ -49,6 +49,32 @@ class NewGoal extends Component {
           Newly created goal: {this.renderGoals(this.props.goals.goals)}
         </h3>
 
+        <form className="form-horizontal" role="form">
+	<div className="form-group">
+		<label className="col-md-2 control-label">Name</label>
+		<div className="col-md-4">
+			<input type="text" className="form-control" name="name" />
+		</div>
+	</div>
+	<div className="form-group">
+		<label className="col-md-2 control-label">Employees</label>
+		<div className="col-md-4">
+			<input type="text" className="form-control" name="employees"/>
+		</div>
+	</div>
+	<div className="form-group">
+		<label className="col-md-2 control-label">Headoffice</label>
+		<div className="col-md-4">
+			<input type="text" className="form-control" name="headoffice"/>
+		</div>
+	</div>
+	<div className="form-group">
+		<div>
+			<input type="submit" value="Submit" className="btn btn-primary"/>
+		</div>
+	</div>
+</form>
+
       </div>
     )
   }
