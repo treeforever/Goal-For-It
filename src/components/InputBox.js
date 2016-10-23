@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class StepInput extends Component {
+class InputBox extends Component {
   state = {
     text: this.props.text || ''
   }
@@ -9,12 +9,22 @@ class StepInput extends Component {
     const text = e.target.value.trim()
     if (e.which === 13) {
       this.props.onSave(text)
+      if (this.props.newTodo) {
+        this.setState({ text: '' })
+      }
     }
   }
 
   handleChange = e => {
     this.setState({ text: e.target.value })
   }
+
+  handleBlur = e => {
+    if (!this.props.newTodo) {
+      this.props.onSave(e.target.value)
+    }
+  }
+
 
   render() {
     return (
@@ -29,4 +39,4 @@ class StepInput extends Component {
   }
 }
 
-export default StepInput
+export default InputBox

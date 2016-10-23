@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from "react-redux"
 import { bindActionCreators } from 'redux'
-import StepInput from "../components/StepInput"
+import InputBox from "../components/InputBox"
 
 import { addGoal } from "../actions/goalActions"
 
@@ -27,19 +27,15 @@ class NewGoal extends Component {
   render() {
     return (
       <div>
-        <input
-          id="GET-name"
-          type="text"
-          placeholder="Enter a new goal"
-          onKeyUp={this.handleSave}
-          />
+        <h3>Step</h3>
+          <InputBox newTodo
+            onSave={this.handleSave}
+            placeholder="What's your next goal?"
+           />
         <h3>
           Newly created goal: {this.renderGoals(this.props.goals.goals)}
         </h3>
-        <StepInput
-          onSave={this.handleSave}
-          placeholder="What's your next goal?"
-         />
+
       </div>
     )
   }
