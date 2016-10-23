@@ -8,11 +8,11 @@ import { addGoal } from "./actions/goalActions"
 class NewGoal extends Component {
 
 
-  handleChange = (event) => {
-      if (event.keyCode === 13) {
-        console.log(event.target.value)
-        this.props.addGoal(event.target.value)
-      }
+  handleSave = (event) => {
+    if (event.keyCode === 13) {
+      console.log(event.target.value)
+      addGoal(event.target.value)
+    }
   }
 
   // handleEnter = () => {
@@ -31,22 +31,10 @@ class NewGoal extends Component {
             id="GET-name"
             type="text"
             placeholder="Enter a new goal"
-            onKeyUp={this.handleChange}
+            onKeyUp={this.handleSave}
             />
           <input type="submit" value="Save" />
         </form>
-
-        <input
-          id="new-goal"
-          type="text"
-          placeholder="Enter a new goal"
-          onKeyUp={this.handleChange}
-         />
-       <input
-         id="goal-submit"
-         type="submit"
-         value="submit"
-         />
       </div>
 
     )
@@ -54,12 +42,9 @@ class NewGoal extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("state in mapStateToProps is", state)
   return {
-    goals: state.goals.goal
+    goals: state.goals
   }
 }
 
-export default connect(mapStateToProps, {
-  addGoal
-})(NewGoal)
+export default connect(mapStateToProps)(NewGoal)

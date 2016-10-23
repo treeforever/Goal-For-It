@@ -10,7 +10,6 @@ import { fetchUser } from "./actions/userActions"
 class App extends Component {
   componentWillMount() {
     this.props.fetchUser()
-
   }
 
   render() {
@@ -33,7 +32,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.user.user,
     userFetched: state.user.fetched,
-    goals: state.goals.goal
+    goals: state.goals.goals
   }
 }
 

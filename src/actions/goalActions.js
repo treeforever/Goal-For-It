@@ -2,14 +2,19 @@ import axios from "axios"
 
 export function fetchGoal() {
   return function(dispatch) {
-    axios.get("http://rest.learncode.academy/api/test123/tweets")
+      axios.get("http://localhost:8080/api/goal")
       .then((response) => {
-        dispatch({type: "FETCH_GOALS_FULFILLED", payload: response.data})
+        console.log("response type is", [response.data][0][0].goal)
+        dispatch({type: "FETCH_GOALS_FULFILLED", payload: [response.data][0][0].goal})
       })
       .catch((err) => {
         dispatch({type: "FETCH_GOALS_REJECTED", payload: err})
       })
   }
+  // return {
+  //   type: "FETCH_GOALS_FULFILLED",
+  //   payload: "read a book"
+  // }
 }
 
 export function addGoal(goal) {
