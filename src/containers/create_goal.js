@@ -1,30 +1,16 @@
 import React, {Component} from 'react'
 import { connect } from "react-redux"
 import { bindActionCreators } from 'redux'
+import StepInput from "../components/StepInput"
 
 import { addGoal } from "../actions/goalActions"
 
 
 
 class NewGoal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ""}
-  }
-
-  handleChange = (event) => {
-    this.setState({value: event.target.value});
-
-    if (event.keyCode === 13) {
-      this.props.addGoal(event.target.value)
-      this.state.value = "";
-    }
-  }
-
-  handleSubmit = (event) => {
-    if (event.keyCode === 13) {
-      this.props.addGoal(event.target.value)
-      this.state.value = "";
+  handleSave = text => {
+    if (text.length !== 0) {
+      this.props.addGoal(text) //bc in demo, this is a dumb component
     }
   }
 
@@ -45,16 +31,16 @@ class NewGoal extends Component {
           id="GET-name"
           type="text"
           placeholder="Enter a new goal"
-          value={this.state.value}
-          onChange={this.handleChange}
+          onKeyUp={this.handleSave}
           />
         <h3>
           Newly created goal: {this.renderGoals(this.props.goals.goals)}
         </h3>
-
+        <StepInput
+          onSave={this.handleSave}
+          placeholder="What's your next goal?"
+         />
       </div>
-
-
     )
   }
 }

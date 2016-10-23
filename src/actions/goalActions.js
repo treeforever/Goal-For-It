@@ -35,7 +35,7 @@ export function addGoal(goal) {
     type: 'ADD_GOAL',
     payload: {
       goal
-    },
+    }
   }
 }
 
