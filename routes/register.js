@@ -11,7 +11,6 @@ module.exports = () => {
   });
 
   router.post('/' (req, res) => {
-    console.log(req.body)
 
   });
   return router;

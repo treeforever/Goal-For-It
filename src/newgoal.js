@@ -17,9 +17,7 @@ class NewGoal extends Component {
           placeholder="Enter a new goal"
           onKeyUp={this.newGoalEnter}
          />
-
       </div>
-
     )
   }
 }

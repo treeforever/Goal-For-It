@@ -11,20 +11,25 @@ class Goal_page extends Component {
         title: '',
         milestones: []
       },
-      source: "http://localhost:3000/api/goal"
+      source: "http://localhost:8080/api/goal"
     }
   }
 
   componentDidMount() {
     //performs get request to api for goal information
     this.serverRequest = $.get(this.state.source, function(result){
+      var array = $.map(result, function(value, index) {
+        return [value];
+      });
+      console.log(array)
+
       //sets state of page with goal title
-      this.state.goal.title = result[0].goal;
-      for(var i = 0; i < result.length; i++){
+      this.state.goal.title = array[0][0].goal;
+      for(var i = 0; i < array.length; i++){
         //pushes all milestones and milestone_id into state
-        this.state.goal.milestones.push(result[i])
+        this.state.goal.milestones.push(array[0][0]);
       }
-      this.setState(this.state)
+      this.setState(this.state);
     }.bind(this));
   }
 

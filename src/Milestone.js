@@ -13,8 +13,8 @@ class Milestone extends Component {
           {
             //loops though all milestones and lists them
             this.props.ListOfMilestones.map((milestone) => (
-              <li key={milestone.milesone_id}>
-                {milestone.mile_title}
+              <li key={milestone}>
+                {milestone[0]}
                 <Step />
               </li>
               ))

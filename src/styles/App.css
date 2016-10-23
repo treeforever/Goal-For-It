@@ -82,7 +82,13 @@ nav {
 
 }
 
+.form {
+  position:absolute;
+  bottom: 5%;
+  width: 100%;
+}
 .menu-item {
   display: block;
   margin-bottom: 20%;
 }
+
