@@ -1,23 +1,21 @@
 export default function reducer(state={
     goals: [],
-    fetching: false,
-    fetched: false,
     error: null,
   }, action) {
 
+//state argument is not application state, only the state this reducer is
+// responsible for
     switch (action.type) {
       case "FETCH_GOALS": {
-        return {...state, fetching: true}
+        return {...state}
       }
       case "FETCH_GOALS_REJECTED": {
-        return {...state, fetching: false, error: action.payload}
+        return {...state, error: action.payload}
       }
       case "FETCH_GOALS_FULFILLED": {
         return {
           ...state,
-          fetching: false,
-          fetched: true,
-          goals: action.payload,
+          goals: action.payload.data
         }
       }
       case "ADD_GOAL": {

@@ -5,8 +5,6 @@ import './styles/App.css';
 import Sidemenu from './Sidemenu'
 import { fetchUser } from "./actions/userActions"
 
-
-
 class App extends Component {
   componentWillMount() {
     this.props.fetchUser()
@@ -30,9 +28,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.user,
-    userFetched: state.user.fetched,
-    goals: state.goals.goals
+    user: state.user.user
   }
 }
 

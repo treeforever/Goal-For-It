@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
+import { combineReducers, createStore, applyMiddleware } from "redux"
 import { Provider } from "react-redux"
+import ReduxPromise from "redux-promise-middleware"
 import './styles/index.css';
 
 import App from './App';
+import NewGoal from './newgoal';
 import Goal_page from './Goal_page';
 import Group_page from './Group_page';
-import NewGoal from './newgoal';
 import store from "./store"
 
-import { combineReducers, createStore, applyMiddleware } from "redux"
-
+const createStoreWithMiddleware =  applyMiddleware(ReduxPromise)(createStore)
 
 ReactDOM.render(
   <Provider store={store}>
