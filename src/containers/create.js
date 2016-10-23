@@ -2,16 +2,29 @@ import React, {Component} from 'react'
 import { connect } from "react-redux"
 import { bindActionCreators } from 'redux'
 
-import { addGoal } from "./actions/goalActions"
+import { addGoal } from "../actions/goalActions"
 
 
 
 class NewGoal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ""}
+  }
 
+  handleChange = (event) => {
+    this.setState({value: event.target.value});
 
-  handleSave = (event) => {
     if (event.keyCode === 13) {
       this.props.addGoal(event.target.value)
+      this.state.value = "";
+    }
+  }
+
+  handleSubmit = (event) => {
+    if (event.keyCode === 13) {
+      this.props.addGoal(event.target.value)
+      this.state.value = "";
     }
   }
 
@@ -32,8 +45,8 @@ class NewGoal extends Component {
           id="GET-name"
           type="text"
           placeholder="Enter a new goal"
-          
-          onKeyUp={this.handleSave}
+          value={this.state.value}
+          onChange={this.handleChange}
           />
         <h3>
           Newly created goal: {this.renderGoals(this.props.goals.goals)}

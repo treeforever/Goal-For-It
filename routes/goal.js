@@ -8,7 +8,7 @@ const router = express.Router();
 module.exports = (knex) => {
 
   //performs get request to database for goal informations
-  router.get('/goal', (req, res) => {
+  router.get('/', (req, res) => {
     let selectedGoalId = Number(req.params.goal_id)
     knex.from('goals')
       .innerJoin('milestones', 'goals.goal_id', 'milestones.goal_id')
@@ -24,7 +24,7 @@ module.exports = (knex) => {
       })
   });
 
-  router.get('/goal/:goal_id', (req, res) => {
+  router.get('/:goal_id', (req, res) => {
     let selectedGoalId = Number(req.params.goal_id)
     knex.from('goals')
       .where('goals.goal_id', selectedGoalId)
@@ -38,7 +38,8 @@ module.exports = (knex) => {
               'steps.step'
             )
       .then((results) => {
-        res.json(results);
+        var groupedResults = _.groupBy(results, function(entry){ return entry.mile_title})
+        res.json(groupedResults);
       })
   });
 
