@@ -1,5 +1,5 @@
 export default function reducer(state={
-    group: [],
+    group: [{name: ''}],
     notifs: [],
     error: null,
   }, action) {

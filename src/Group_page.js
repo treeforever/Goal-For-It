@@ -15,12 +15,10 @@ const attributes = [
 class Group_page extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      group: [{name: ''}],
-      notifs: [{
-          content: '', notice_id: ''
-        }]
-      }
+    // this.state = {
+    //     group: props.group,
+    //     notifs: props.notifs,
+    //   };
     }
 
   componentWillMount() {
@@ -29,30 +27,31 @@ class Group_page extends Component {
     this.props.fetchNotifs();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.state.group = nextProps.group;
-    this.state.notifs = nextProps.notifs;
-    this.setState(this.state)
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   console.log('nextProps', nextProps)
+  //   this.state.group = nextProps.group;
+  //   this.state.notifs = nextProps.notifs;
+  //   this.setState(this.state)
+  // }
 
   render() {
-    console.log('hellooo', this.props.group)
+    // console.log('hellooo', this.state.group)
 
     return (
       <div className="group">
-        <GroupList grouplist={this.state.group} />
-        <h1>{this.state.group[0].name }</h1>
-        <NotificationList notifs={this.state.notifs}/>
+        <GroupList group={this.props.group} />
+        <h1>{this.props.group[0].name }</h1>
+        <NotificationList notifs={this.props.notifs}/>
       }
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (store) => {
   return {
-    group: state.group.group,
-    notifs: state.group.notifs
+    group: store.group.group,
+    notifs: store.group.notifs
   }
 }
 
@@ -60,3 +59,5 @@ export default connect(mapStateToProps, {
   fetchGroup,
   fetchNotifs
    })(Group_page);
+
+

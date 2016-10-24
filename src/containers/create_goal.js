@@ -32,13 +32,6 @@ class NewGoal extends Component {
   render() {
     return (
       <div>
-        <input
-          id="GET-name"
-          type="text"
-          placeholder="Enter a new goal"
-          onKeyUp={this.handleSave}
-          />
-
         <Form1 onSave={this.handleSave}/>
         <Form2 onSave={this.handleSave}/>
 
