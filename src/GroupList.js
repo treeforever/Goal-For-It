@@ -1,28 +1,6 @@
 import React from 'react';
 import GroupUser from './GroupUser';
 
-// extends Component - class based Component (heavier)
-// class GroupList extends Component {
-
-//   render() {
-//     return (
-//       <ul>
-//         {
-//         this.props.grouplist.map((groupUser) => (
-//           <GroupUser key={groupUser.user_id}
-//             grouplist={groupUser.username}
-//           />
-//           ))
-//         }
-//       </ul>
-//     )
-//   }
-// }
-
-// (ligher)
-
-// props, props.grouplist --> ({grouplist})
-// ES6 destructuring
 const GroupList = ({group}) => (
    <ul>
     {
@@ -36,7 +14,6 @@ const GroupList = ({group}) => (
 )
 
 export default GroupList
-
 
 
 /////
