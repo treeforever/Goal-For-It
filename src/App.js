@@ -6,9 +6,6 @@ import Sidemenu from './Sidemenu'
 import { fetchUser } from "./actions/userActions"
 
 class App extends Component {
-  componentWillMount() {
-    this.props.fetchUser()
-  }
 
   render() {
     return (
@@ -31,6 +28,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {
-  fetchUser
-})(App)
+export default connect(mapStateToProps, )(App)

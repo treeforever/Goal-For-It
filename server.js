@@ -12,7 +12,6 @@ const knex        = require('knex')(knexConfig[ENV]);
 const userRoutes  = require('./routes/users.js');
 const homeRoutes  = require('./routes/home.js');
 const goalRoutes  = require('./routes/goal.js');
-const notifRoutes = require('./routes/notifs.js');
 const groupRoutes = require('./routes/group.js');
 
 //allows react server to perform requests to this server(api)
@@ -33,7 +32,6 @@ app.set('views', __dirname + '/public');
 app.use('/login', userRoutes(knex));
 app.use('/home', homeRoutes(knex));
 app.use('/api/goal', goalRoutes(knex));
-app.use('/api/notifs', notifRoutes(knex))
 app.use('/api/group', groupRoutes(knex))
 
 

@@ -21,5 +21,15 @@ module.exports = (knex) => {
       })
   });
 
+  //performs get request to database for notifications
+  router.get('/notif', (req, res) => {
+    knex.select('*')
+      .from('notices')
+      .then((results) => {
+        res.json(results);
+    })
+
+  });
+
   return router;
 };

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchGroup } from "./actions/userActions"
+import { fetchGroup, fetchNotifs } from "./actions/groupActions"
 
-import Form from 'react-bootstrap-form';
+// import Form from 'react-bootstrap-form';
 import NotificationList from './NotificationList';
+import GroupList from './GroupList';
 import $ from 'jquery';
 
 
@@ -15,53 +16,33 @@ class Group_page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      group: [{name: ''}]
+      group: [{name: ''}],
+      notifs: [{
+          content: '', notice_id: ''
+        }]
       }
     }
-
-  // componentDidMount() {
-  //   //performs get request to api for goal information
-  //   this.serverRequest = $.get(this.state.source1, function(results){
-  //     this.state.Notifications.push(results)
-  //     console.log(results)
-  //     this.setState(this.state)
-  //   }.bind(this));
-  // }
-
-  //  componentWillUnmount() {
-  //   this.serverRequest.abort();
-  // }
-
-
-
-  renderGroupMembers = (group) => {
-   return (
-     <ul>
-
-       {group.map((member, index) => {
-       return <li key={index}>{index + 1}. {member.username} </li>
-     })}
-     </ul>
-   )
-  }
 
   componentWillMount() {
     // this.serverRequest.abort();
     this.props.fetchGroup();
+    this.props.fetchNotifs();
   }
 
   componentWillReceiveProps(nextProps) {
-    this.state.group = nextProps.Group;
+    this.state.group = nextProps.group;
+    this.state.notifs = nextProps.notifs;
     this.setState(this.state)
   }
 
   render() {
+    console.log('hellooo', this.props.group)
+
     return (
       <div className="group">
-        <h2>Group Members: {this.renderGroupMembers(this.props.Group)} </h2>
+        <GroupList grouplist={this.state.group} />
         <h1>{this.state.group[0].name }</h1>
-        <NotificationList />
-        {//<Form action="/" method="POST" className="notification-form" attributes={attributes} />
+        <NotificationList notifs={this.state.notifs}/>
       }
       </div>
     );
@@ -70,8 +51,12 @@ class Group_page extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    Group: state.user.group
+    group: state.group.group,
+    notifs: state.group.notifs
   }
 }
 
-export default connect(mapStateToProps, { fetchGroup })(Group_page);
+export default connect(mapStateToProps, {
+  fetchGroup,
+  fetchNotifs
+   })(Group_page);
