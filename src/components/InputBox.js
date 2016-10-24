@@ -1,4 +1,15 @@
 import React, { Component } from 'react'
+import { FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap'
+
+function FieldGroup({ id, label, help, ...props }) {
+  return (
+    <FormGroup controlId={id}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...props} />
+      {help && <HelpBlock>{help}</HelpBlock>}
+    </FormGroup>
+  );
+}
 
 class InputBox extends Component {
   state = {
@@ -26,16 +37,22 @@ class InputBox extends Component {
   }
 
 
+
+
   render() {
     return (
-      <input
-        type="text"
+      <FieldGroup
+        className="inputBox"
+        type={this.props.type}
+        label={this.props.type}
         placeholder={this.props.placeholder}
         autoFocus="true"
         value={this.state.text}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
-        onKeyDown={this.handleSubmit} />
+        onKeyDown={this.handleSubmit}
+      />
+
     )
   }
 }

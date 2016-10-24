@@ -3,17 +3,16 @@ import { connect } from "react-redux"
 import { bindActionCreators } from 'redux'
 
 
-import InputBox from "../components/InputBox"
-import Form from "../components/new_goal"
+import Form1 from "../components/Form1"
+import Form2 from "../components/Form2"
 import { addGoal } from "../actions/goalActions"
 
 
 
 class NewGoal extends Component {
   handleSave = text => {
-    if (text.length !== 0) {
-      this.props.addGoal(text) //bc in demo, this is a dumb component
-    }
+      this.props.addGoal(text)
+
   }
 
   renderGoals = (goals) => {
@@ -29,30 +28,10 @@ class NewGoal extends Component {
   render() {
     return (
       <div>
-        <h1>Goal</h1>
-          <InputBox newTodo
-            onSave={this.handleSave}
-            placeholder="What's your next goal?"
-           />
-
-        <h2>Milestones</h2>
-          <InputBox newTodo
-            onSave={this.handleSave}
-            placeholder="Break down your goal to less than 5 milestones"
-           />
-
-        <h3>Steps</h3>
-          <InputBox newTodo
-            onSave={this.handleSave}
-            placeholder="What are the steps to achieve this milestone?"
-           />
-
+        <Form1 onSave={this.handleSave}/>
         <h3>
           Newly created goal: {this.renderGoals(this.props.goals.goals)}
         </h3>
-        <p>this is my bootstrap form </p>
-        <Form />
-
       </div>
     )
   }
