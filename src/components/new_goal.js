@@ -1,75 +1,128 @@
 import React, {Component} from 'react'
 import { connect } from "react-redux"
-
 import { addGoal } from "../actions/goalActions"
+// import { Checkbox, FormGroup, ControlLable } from 'react-boostrap'
+import Button from 'react-bootstrap/lib/Button';
+// import 'bootstrap/less/bootstrap.less';
 
-class NewGoal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ""}
-  }
 
-  handleChange = (event) => {
-    this.setState({value: event.target.value});
 
-    if (event.keyCode === 13) {
-      this.props.addGoal(event.target.value)
-      this.state.value = "";
-    }
-  }
+// function FieldGroup({ id, label, help, ...props }) {
+//   return (
+//     <FormGroup controlId={id}>
+//       <ControlLabel>{label}</ControlLabel>
+//       <FormControl {...props} />
+//       {help && <HelpBlock>{help}</HelpBlock>}
+//     </FormGroup>
+//   );
+// }
+//
+// class Form extends Component {
+//
+//   render() {
+//     return (
+//       <form>
+//         <FieldGroup
+//           id="formControlsText"
+//           type="text"
+//           label="Text"
+//           placeholder="Enter text"
+//         />
+//         <FieldGroup
+//           id="formControlsEmail"
+//           type="email"
+//           label="Email address"
+//           placeholder="Enter email"
+//         />
+//         <FieldGroup
+//           id="formControlsPassword"
+//           label="Password"
+//           type="password"
+//         />
+//         <FieldGroup
+//           id="formControlsFile"
+//           type="file"
+//           label="File"
+//           help="Example block-level help text here."
+//         />
+//
+//         <Checkbox checked readOnly>
+//           Checkbox
+//         </Checkbox>
+//         <Radio checked readOnly>
+//           Radio
+//         </Radio>
+//
+//         <FormGroup>
+//           <Checkbox inline>
+//             1
+//           </Checkbox>
+//           {' '}
+//           <Checkbox inline>
+//             2
+//           </Checkbox>
+//           {' '}
+//           <Checkbox inline>
+//             3
+//           </Checkbox>
+//         </FormGroup>
+//         <FormGroup>
+//           <Radio inline>
+//             1
+//           </Radio>
+//           {' '}
+//           <Radio inline>
+//             2
+//           </Radio>
+//           {' '}
+//           <Radio inline>
+//             3
+//           </Radio>
+//         </FormGroup>
+//
+//         <FormGroup controlId="formControlsSelect">
+//           <ControlLabel>Select</ControlLabel>
+//           <FormControl componentClass="select" placeholder="select">
+//             <option value="select">select</option>
+//             <option value="other">...</option>
+//           </FormControl>
+//         </FormGroup>
+//         <FormGroup controlId="formControlsSelectMultiple">
+//           <ControlLabel>Multiple select</ControlLabel>
+//           <FormControl componentClass="select" multiple>
+//             <option value="select">select (multiple)</option>
+//             <option value="other">...</option>
+//           </FormControl>
+//         </FormGroup>
+//
+//         <FormGroup controlId="formControlsTextarea">
+//           <ControlLabel>Textarea</ControlLabel>
+//           <FormControl componentClass="textarea" placeholder="textarea" />
+//         </FormGroup>
+//
+//         <FormGroup>
+//           <ControlLabel>Static text</ControlLabel>
+//           <FormControl.Static>
+//             email@example.com
+//           </FormControl.Static>
+//         </FormGroup>
+//
+//         <Button type="submit">
+//           Submit
+//         </Button>
+//       </form>
+//     )
+//   }
+//
+// }
 
-  handleSubmit = (event) => {
-    if (event.keyCode === 13) {
-      this.props.addGoal(event.target.value)
-      this.state.value = "";
-    }
-  }
-
-  renderGoals = (goals) => {
+class Form extends Component {
+  render(){
     return (
-      <ul>
-        {goals.map((goal, index) => {
-        return <li>{index + 1}. {goal.goal} </li>
-      })}
-      </ul>
+      <Button bsStyle='success' bsSize='large'>Get started today</Button>
     )
   }
-
-  render() {
-    return (
-      <div>
-        <input
-          id="GET-name"
-          type="text"
-          placeholder="Enter a new goal"
-          value={this.state.value}
-          onChange={this.handleChange}
-          />
-        <h3>
-          Newly created goal: {this.renderGoals(this.props.goals.goals)}
-        </h3>
-
-      </div>
-
-
-    )
-  }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    goals: state.goals
-  }
-}
 
-// Anything returned from this function will end up as props
-// on the newGoal container
-const mapDispatchToProps = (dispatch) => {
-  //whenver addGoal is called, the result should be passed
-  //to all of reducers
-  return bindActionCreators({ addGoal: addGoal }, dispatch)
-}
-
-// Promote newGoal from a component to a container - it needs to know
-// about this new dispatch method, addGoal. Make it available as a prop
-export default connect(mapStateToProps, mapDispatchToProps)(NewGoal)
+export default Form;

@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import { connect } from "react-redux"
 import { bindActionCreators } from 'redux'
-import InputBox from "../components/InputBox"
 
+
+import InputBox from "../components/InputBox"
+import Form from "../components/new_goal"
 import { addGoal } from "../actions/goalActions"
 
 
@@ -48,32 +50,8 @@ class NewGoal extends Component {
         <h3>
           Newly created goal: {this.renderGoals(this.props.goals.goals)}
         </h3>
-
-        <form className="form-horizontal" role="form">
-	<div className="form-group">
-		<label className="col-md-2 control-label">Name</label>
-		<div className="col-md-4">
-			<input type="text" className="form-control" name="name" />
-		</div>
-	</div>
-	<div className="form-group">
-		<label className="col-md-2 control-label">Employees</label>
-		<div className="col-md-4">
-			<input type="text" className="form-control" name="employees"/>
-		</div>
-	</div>
-	<div className="form-group">
-		<label className="col-md-2 control-label">Headoffice</label>
-		<div className="col-md-4">
-			<input type="text" className="form-control" name="headoffice"/>
-		</div>
-	</div>
-	<div className="form-group">
-		<div>
-			<input type="submit" value="Submit" className="btn btn-primary"/>
-		</div>
-	</div>
-</form>
+        <p>this is my bootstrap form </p>
+        <Form />
 
       </div>
     )
