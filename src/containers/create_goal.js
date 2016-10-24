@@ -2,17 +2,21 @@ import React, {Component} from 'react'
 import { connect } from "react-redux"
 import { bindActionCreators } from 'redux'
 
-import { addGoal } from "./actions/goalActions"
+
+import Form1 from "../components/Form1"
+import Form2 from "../components/Form2"
+import { addGoal } from "../actions/goalActions"
 
 
 
 class NewGoal extends Component {
+  // constructor(props){
+  //   super(props)
+  //   state:
+  // }
 
-
-  handleSave = (event) => {
-    if (event.keyCode === 13) {
-      this.props.addGoal(event.target.value)
-    }
+  handleSave = text => {
+      this.props.addGoal(text)
   }
 
   renderGoals = (goals) => {
@@ -34,10 +38,13 @@ class NewGoal extends Component {
           placeholder="Enter a new goal"
           onKeyUp={this.handleSave}
           />
+
+        <Form1 onSave={this.handleSave}/>
+        <Form2 onSave={this.handleSave}/>
+
         <h3>
           Newly created goal: {this.renderGoals(this.props.goals.goals)}
         </h3>
-
       </div>
     )
   }

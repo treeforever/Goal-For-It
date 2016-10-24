@@ -19,28 +19,6 @@ class Goal_page extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   //performs get request to api for goal information
-  //   this.serverRequest = $.get(this.state.source, function(result){
-  //     var array = $.map(result, function(value, index) {
-  //       return [value];
-  //     });
-  //     console.log(array)
-
-  //     //sets state of page with goal title
-  //     this.state.goal.title = array[0][0].goal;
-  //     for(var i = 0; i < array.length; i++){
-  //       //pushes all milestones and milestone_id into state
-  //       this.state.goal.milestones.push(array[0][0]);
-  //     }
-  //     this.setState(this.state);
-  //   }.bind(this));
-  // }
-
-  // componentWillUnmount() {
-  //   this.serverRequest.abort();
-  // }
-
   renderGoals = (goals) => {
    return (
      <ul>
@@ -52,17 +30,25 @@ class Goal_page extends Component {
 
   componentWillMount() {
     // this.serverRequest.abort();
-    this.props.fetchGoal();
+    // this.props.fetchGoal();
   }
 
+  renderGoals = (goals) => {
+    return (
+      <ul>
+        {goals.map((goal, index) => {
+        return <li>{index + 1}. {goal.goal} </li>
+      })}
+      </ul>
+    )
+  }
 
   render() {
     return (
-      <div className="goal-page">
-        <h1>{}</h1>
-        <Milestones className="milestones" Milestones={this.props.Goals.goals}/>
-        <h2>Just Goal 1's milestone</h2>
-        <h3>Redux doesn't like it{this.props.goalArray} </h3>
+      <div>
+        <h1></h1>
+        <h2>Milestones</h2>
+        <h3>Showing all my goals: {this.renderGoals(this.props.goals.goals)} </h3>
       </div>
     );
   }
@@ -70,7 +56,7 @@ class Goal_page extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    Goals: state.goals
+    goals: state.goals
   }
 }
 

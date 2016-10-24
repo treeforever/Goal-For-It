@@ -77,11 +77,6 @@ nav {
 }
 
 
-/*group-page css*/
-.group {
-
-}
-
 .form {
   position:absolute;
   bottom: 5%;
@@ -92,8 +87,21 @@ nav {
   margin-bottom: 20%;
 }
 
+
 /*goal-page css*/
 .goal-page .milestones ul {
   list-style-type: none;
+}
+
+input.inputBox {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#formControlsSelect {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 
