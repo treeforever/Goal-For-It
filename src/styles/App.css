@@ -77,7 +77,7 @@ nav {
 }
 
 
-/*page 2 css*/
+/*group-page css*/
 .group {
 
 }
@@ -90,5 +90,10 @@ nav {
 .menu-item {
   display: block;
   margin-bottom: 20%;
+}
+
+/*goal-page css*/
+.goal-page .milestones ul {
+  list-style-type: none;
 }
 
