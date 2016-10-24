@@ -25,7 +25,6 @@
     "pg": "^6.1.0",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.5",
-    "react-bootstrap-form": "^0.1.4-beta6",
     "react-burger-menu": "^1.10.8",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
