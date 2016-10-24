@@ -30,7 +30,7 @@ app.set('views', __dirname + '/public');
 
 app.use('/login', userRoutes(knex));
 app.use('/home', homeRoutes(knex));
-app.use('/api', goalRoutes(knex));
+app.use('/api/goal', goalRoutes(knex));
 
 
 

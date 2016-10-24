@@ -78,11 +78,20 @@ nav {
 
 
 /*page 2 css*/
-.group {
-
-}
 
 .menu-item {
   display: block;
   margin-bottom: 20%;
+}
+
+input.inputBox {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#formControlsSelect {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
 }

@@ -3,11 +3,10 @@ import { connect } from "react-redux"
 
 import './styles/App.css';
 import Sidemenu from './Sidemenu'
-import { fetchUser } from "./actions/userActions"
 
 class App extends Component {
   componentWillMount() {
-    this.props.fetchUser()
+
   }
 
   render() {
@@ -28,10 +27,10 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.user
+    user: state.user.user,
+    goals: state.goals
+
   }
 }
 
-export default connect(mapStateToProps, {
-  fetchUser
-})(App)
+export default connect(mapStateToProps)(App)

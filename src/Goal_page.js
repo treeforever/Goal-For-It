@@ -9,16 +9,25 @@ import Milestone from './Milestone';
 class Goal_page extends Component {
   componentWillMount() {
     // this.serverRequest.abort();
-    this.props.fetchGoal();
+    // this.props.fetchGoal();
   }
 
+  renderGoals = (goals) => {
+    return (
+      <ul>
+        {goals.map((goal, index) => {
+        return <li>{index + 1}. {goal.goal} </li>
+      })}
+      </ul>
+    )
+  }
 
   render() {
     return (
       <div>
-        <h1>Just Goal 1 {this.props.goals.goal}</h1>
-        <h2>Just Goal 1's milestone</h2>
-        <h3>Redux doesn't like it{this.props.goalArray} </h3>
+        <h1></h1>
+        <h2>Milestones</h2>
+        <h3>Showing all my goals: {this.renderGoals(this.props.goals.goals)} </h3>
       </div>
     );
   }
@@ -26,8 +35,7 @@ class Goal_page extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    goals: state.goals.goals,
-    goalArray: state.goals.goalArray
+    goals: state.goals
   }
 }
 
