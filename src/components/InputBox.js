@@ -37,14 +37,11 @@ class InputBox extends Component {
   }
 
 
-
-
   render() {
     return (
       <FieldGroup
         className="inputBox"
         type={this.props.type}
-        label={this.props.type}
         placeholder={this.props.placeholder}
         autoFocus="true"
         value={this.state.text}

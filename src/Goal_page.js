@@ -9,7 +9,7 @@ import Milestone from './Milestone';
 class Goal_page extends Component {
   componentWillMount() {
     // this.serverRequest.abort();
-    this.props.fetchGoal();
+    // this.props.fetchGoal();
   }
 
   renderGoals = (goals) => {

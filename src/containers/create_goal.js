@@ -10,9 +10,13 @@ import { addGoal } from "../actions/goalActions"
 
 
 class NewGoal extends Component {
+  // constructor(props){
+  //   super(props)
+  //   state:
+  // }
+
   handleSave = text => {
       this.props.addGoal(text)
-
   }
 
   renderGoals = (goals) => {
@@ -29,6 +33,7 @@ class NewGoal extends Component {
     return (
       <div>
         <Form1 onSave={this.handleSave}/>
+        <Form2 onSave={this.handleSave}/>
         <h3>
           Newly created goal: {this.renderGoals(this.props.goals.goals)}
         </h3>
