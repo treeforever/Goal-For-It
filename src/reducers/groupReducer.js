@@ -38,6 +38,12 @@ export default function reducer(state={
         }
         break;
       }
+      case "ADD_NOTIF": {
+        return {
+          ...state,
+          notifs: [...state.notifs, action.payload],
+        }
+      }
     }
 
     return state

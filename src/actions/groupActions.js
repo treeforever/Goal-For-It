@@ -20,3 +20,12 @@ export function fetchNotifs() {
     payload: request
   };
 }
+
+export function addNotif(notif) {
+  return {
+    type: 'ADD_NOTIF',
+    payload: {
+      notif
+    }
+  }
+}
