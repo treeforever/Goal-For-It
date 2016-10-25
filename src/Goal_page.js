@@ -15,7 +15,7 @@ class Goal_page extends Component {
         title: '',
         milestones: []
       },
-      source: "http://localhost:8080/api/goal"
+      source: "http://localhost:8080/api/goals"
     }
   }
 

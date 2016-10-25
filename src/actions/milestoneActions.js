@@ -2,7 +2,7 @@ import axios from "axios"
 
 //use Promise middleware
 export function fetchMilestones() {
-  const url = "http://localhost:8080/api/goal/1";
+  const url = "http://localhost:8080/api/goals/1";
   const request = axios.get(url);
   console.log("request", request);
   return {

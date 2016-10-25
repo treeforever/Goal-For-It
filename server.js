@@ -31,9 +31,8 @@ app.set('views', __dirname + '/public');
 
 app.use('/login', userRoutes(knex));
 app.use('/home', homeRoutes(knex));
-app.use('/api/goal', goalRoutes(knex));
+app.use('/api/goals', goalRoutes(knex));
 app.use('/api/group', groupRoutes(knex))
-
 
 
 app.listen(8080, () => {

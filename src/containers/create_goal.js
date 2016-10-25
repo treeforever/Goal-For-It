@@ -53,7 +53,7 @@ class NewGoal extends Component {
     return (
       <div>
         <Form1 onSaveGoal={this.handleSaveGoal} onSaveMilestones={this.handleSaveMilestones}/>
-        <Form2 onSaveSteps={this.handleSaveSteps}/>
+        <Form2 onSaveSteps={this.handleSaveSteps} milestones={this.props.milestones.milestones}/>
 
         <h3>
           Newly created goal: {this.renderList(this.props.goals.goals)}

@@ -3,7 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const _ = require('underscore');
-
+var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
 
 module.exports = (knex) => {
 
@@ -42,6 +43,11 @@ module.exports = (knex) => {
         res.json(groupedResults);
       })
   });
+
+  router.post('/', jsonParser, (req, res) => {
+    console.log(req.body);
+    res.json({blah: 1});
+  })
 
   return router;
 };
