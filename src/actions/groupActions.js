@@ -24,8 +24,6 @@ export function fetchNotifs() {
 export function addNotif(notif) {
   return {
     type: 'ADD_NOTIF',
-    payload: {
-      notif
-    }
+    payload: notif
   }
 }

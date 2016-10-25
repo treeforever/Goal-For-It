@@ -28,8 +28,8 @@ class Group_page extends Component {
         <NotificationList notifs={this.props.notifs}/>
         <InputBox newTodo
               onSave={this.handleSave}
-              label="notif"
-              placeholder="What do you want to say to the group?"
+              label="goal"
+              placeholder="What "
              />
       </div>
     );
