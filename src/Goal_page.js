@@ -5,7 +5,6 @@ import $ from 'jquery';
 import { fetchGoal } from "./actions/goalActions"
 import { fetchUser } from "./actions/userActions"
 
-import Milestones from './Milestones';
 import _ from 'underscore';
 
 

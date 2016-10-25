@@ -22,6 +22,9 @@ export function fetchNotifs() {
 }
 
 export function addNotif(notif) {
+  const url = "http://localhost:8080/api/group/notif"
+  let data = {notif}
+  let request = axios.post(url, data)
   return {
     type: 'ADD_NOTIF',
     payload: notif
