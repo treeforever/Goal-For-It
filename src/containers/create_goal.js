@@ -2,25 +2,31 @@ import React, {Component} from 'react'
 import { connect } from "react-redux"
 import { bindActionCreators } from 'redux'
 
-
 import Form1 from "../components/Form1"
 import Form2 from "../components/Form2"
 import { addGoal } from "../actions/goalActions"
 import { addMilestones } from "../actions/milestoneActions"
 import { addSteps } from "../actions/stepActions"
+import { addNotif } from "../actions/groupActions"
+
 
 class NewGoal extends Component {
 
   handleSaveGoal = text => {
       this.props.addGoal(text)
+      this.props.addNotif({type: "notification", content: `NOTIFICATION: user 1 has added a new goal: ${text}`})
   }
 
   handleSaveMilestones = text => {
       this.props.addMilestones(text)
+      this.props.addNotif({type: "notification", content: `NOTIFICATION: user 1 has added a new milestone: ${text}`})
+
   }
 
   handleSaveSteps= text => {
       this.props.addSteps(text)
+      this.props.addNotif({type: "notification", content: `NOTIFICATION: user 1 has added a new step: ${text}`})
+
   }
 
   renderList = (list) => {
@@ -83,7 +89,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
                               addGoal: addGoal,
                               addMilestones: addMilestones,
-                              addSteps: addSteps
+                              addSteps: addSteps,
+                              addNotif: addNotif
                             }, dispatch)
 }
 

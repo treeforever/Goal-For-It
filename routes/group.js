@@ -33,11 +33,10 @@ module.exports = (knex) => {
   });
 
   router.post('/notif', jsonParser, (req, res) => {
-    console.log(req.body.notif.content)
     knex('notices').insert({
       content: req.body.notif.content,
       sender_id: 1,
-      type: "message"
+      type: req.body.notif.type
     })
     .then(function(resp) {
       console.log('Notification insertion complete.')

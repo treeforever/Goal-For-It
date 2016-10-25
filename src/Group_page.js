@@ -16,7 +16,7 @@ class Group_page extends Component {
   }
 
    handleSave = text => {
-      this.props.addNotif({content: text})
+      this.props.addNotif({type: "message", content: `MESSAGE: ${text}`})
   }
 
   render() {
