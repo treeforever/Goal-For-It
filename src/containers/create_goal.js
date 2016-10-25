@@ -26,9 +26,13 @@ class NewGoal extends Component {
   renderList = (list) => {
     return (
       <ul>
-        {list.map((item, index) => {
-        return <li>{index + 1}. {item.goal} </li>
-      })}
+        {
+          list.map((item, index) => (
+            <li key={index}>
+              {index + 1}. {item.goal}
+            </li>
+          ))
+        }
       </ul>
     )
   }
@@ -36,9 +40,13 @@ class NewGoal extends Component {
   renderMilestones = (list) => {
     return (
       <ul>
-        {list.map((item, index) => {
-        return <li>{index + 1}. {item.milestones} </li>
-      })}
+        {
+          list.map((item, index) => (
+           <li key={index}>
+             {index + 1}. {item.milestones}
+           </li>
+          ))
+        }
       </ul>
     )
   }
