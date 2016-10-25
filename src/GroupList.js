@@ -1,11 +1,12 @@
 import React from 'react';
 import GroupUser from './GroupUser';
 
-const GroupList = ({group}) => (
+const GroupList = ({ group }) => (
    <ul>
     {
       group.map((groupUser, index) => (
-      <GroupUser key={index}
+      <GroupUser
+        key={index}
         grouplist={groupUser.username}
       />
       ))

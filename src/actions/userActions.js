@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export function fetchUser() {
+export function fetchUser(userId) {
   // return function(dispatch) {
     //todo: should changle url to a user api
   //     axios.get("http://localhost:8080/api/goal")
@@ -19,24 +19,15 @@ export function fetchUser() {
   //       dispatch({type: "FETCH_GOALS_REJECTED", payload: err})
   //     })
   // // }
+  const url = `http://localhost:8080/api/users/${userId}`
+  const request = axios.get(url);
   return {
     type: "FETCH_USER",
-    payload: {
-      name: "Will",
-      age: 35,
-    }
+    payload: request
   }
+
 }
 
-// export function fetchGroup() {
-//   const url ='http://localhost:8080/api/group'
-//   const request = axios.get(url);
-//   console.log('request', request)
-//   return {
-//     type: 'FETCH_GROUP',
-//     payload: request
-//   }
-// }
 
 export function setUserName(name) {
   return {

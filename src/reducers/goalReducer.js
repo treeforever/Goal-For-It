@@ -24,6 +24,7 @@ export default function reducer(state={
           goals: [...state.goals, action.payload],
         }
       }
+
       case "UPDATE_GOAL": {
         const { id, text } = action.payload
         const newGoals = [...state.goals]

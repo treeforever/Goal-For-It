@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import $ from 'jquery';
 
 import { fetchGoal } from "./actions/goalActions"
+import { fetchUser } from "./actions/userActions"
+
 import Milestones from './Milestones';
 import _ from 'underscore';
 
@@ -31,6 +33,7 @@ class Goal_page extends Component {
   componentWillMount() {
     // this.serverRequest.abort();
     // this.props.fetchGoal();
+    this.props.fetchUser(1);
   }
 
   renderGoals = (goals) => {
@@ -47,7 +50,7 @@ class Goal_page extends Component {
     return (
       <div>
         <h1></h1>
-        <h2>Milestones</h2>
+        <h2>{this.props.user.user.username}'s Goals</h2>
         <h3>Showing all my goals: {this.renderGoals(this.props.goals.goals)} </h3>
       </div>
     );
@@ -56,8 +59,9 @@ class Goal_page extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    user: state.user,
     goals: state.goals
   }
 }
 
-export default connect(mapStateToProps, { fetchGoal })(Goal_page);
+export default connect(mapStateToProps, { fetchGoal, fetchUser })(Goal_page);

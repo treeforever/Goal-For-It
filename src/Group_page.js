@@ -24,24 +24,24 @@ class Group_page extends Component {
     return (
       <div className="group">
         <h1>{this.props.group[0].name }</h1>
+        <h3>Group Members: </h3>
         <GroupList group={this.props.group} />
-        <NotificationList notifs={this.props.notifs}/>
+        <h3>Notifications:</h3>
+        <NotificationList notifs={this.props.notifs} userActions={this.props.userActions}/>
         <InputBox newTodo
               onSave={this.handleSave}
-              label="goal"
-              placeholder="What "
+              label="notif"
+              placeholder="What would you like to say to the group?"
              />
       </div>
     );
   }
 }
 
-const mapStateToProps = (store) => {
-  return {
-    group: store.group.group,
-    notifs: store.group.notifs
-  }
-}
+const mapStateToProps = (store) => ({
+  group: store.group.group,
+  notifs: store.group.notifs
+  });
 
 const mapDispatchToProps = (dispatch) => {
   //whenver addGoal is called, the result should be passed

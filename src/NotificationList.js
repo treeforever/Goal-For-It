@@ -4,12 +4,12 @@ import Notification from './Notification';
 const NotificationList = ({notifs}) => (
    <ul>
     {
-      notifs.map((notif) => {
-        return (
-            <Notification key={notif.notice_id}
-              notification={notif.content}
-            />
-            )})
+      notifs.map((notif) => (
+        <Notification
+          key={notif.id}
+          notification={notif.content}
+        />
+      ))
     }
   </ul>
 )

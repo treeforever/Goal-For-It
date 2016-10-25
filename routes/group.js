@@ -23,6 +23,7 @@ module.exports = (knex) => {
 
   //performs get request to database for notifications
   router.get('/notif', (req, res) => {
+
     knex.select('*')
       .from('notices')
       .then((results) => {
@@ -30,6 +31,10 @@ module.exports = (knex) => {
     })
 
   });
+
+  // router.post('/notif', (req, res) => {
+  //   knex.insert()
+  // })
 
   return router;
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
-import { combineReducers, createStore, applyMiddleware } from "redux"
+import { createStore, applyMiddleware } from "redux"
 import { Provider } from "react-redux"
 import ReduxPromise from "redux-promise-middleware"
 import './styles/index.css';
