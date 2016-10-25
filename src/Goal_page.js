@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import $ from 'jquery';
 
 import { fetchGoal } from "./actions/goalActions"
-import Milestones from './Milestones';
 import _ from 'underscore';
 
 
