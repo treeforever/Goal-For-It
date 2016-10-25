@@ -9,8 +9,6 @@ import { addGoal } from "../actions/goalActions"
 import { addMilestones } from "../actions/milestoneActions"
 import { addSteps } from "../actions/stepActions"
 
-
-
 class NewGoal extends Component {
   // constructor(props){
   //   super(props)
