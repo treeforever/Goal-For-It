@@ -13,14 +13,14 @@ class Form1 extends Component {
         <form>
           <h1>Goal</h1>
             <InputBox newTodo
-              onSave={this.props.onSave}            
+              onSave={this.props.onSaveGoal}            
               label="goal"
               placeholder="What's your next goal?"
              />
 
           <h2>Milestones</h2>
             <InputBox newTodo
-              onSave={this.props.onSave}
+              onSave={this.props.onSaveMilestones}
               label="milestone"
               placeholder="Break down your goal to less than 5 milestones"
              />

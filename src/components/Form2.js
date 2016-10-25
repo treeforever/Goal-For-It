@@ -28,7 +28,7 @@ class Form2 extends Component {
           </FormGroup>
 
           <InputBox newTodo
-            onSave={this.props.onSave}
+            onSave={this.props.onSaveSteps}
             label="step"
             placeholder="What are the steps to achieve this milestone?"
            />
