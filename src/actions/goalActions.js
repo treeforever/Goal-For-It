@@ -22,7 +22,7 @@ import axios from "axios"
 
 //use Promise middleware
 export function fetchGoal() {
-  const url = "http://localhost:8080/api/goal/1";
+  const url = "http://localhost:8080/api/goals/1";
   const request = axios.get(url);
   console.log("request", request);
   return {
@@ -34,6 +34,9 @@ export function fetchGoal() {
 
 
 export function addGoal(goal) {
+  const url = "http://localhost:8080/api/goals"
+  let data = {goal}
+  let request = axios.post(url, data)
   return {
     type: 'ADD_GOAL',
     payload: {

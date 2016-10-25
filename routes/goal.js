@@ -3,7 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const _ = require('underscore');
-
+var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
 
 module.exports = (knex) => {
 
@@ -42,6 +43,22 @@ module.exports = (knex) => {
         res.json(groupedResults);
       })
   });
+
+  router.post('/', jsonParser, (req, res) => {
+    //req.body={goal: 'blabla'};
+    knex('goals').insert({
+      goal: req.body.goal,
+      goal_description: '',
+      checked: false
+    })
+    .then(function(resp) {
+      console.log('Goal insertion complete.');
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+  })
+
 
   return router;
 };
