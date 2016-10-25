@@ -5,21 +5,11 @@ import $ from 'jquery';
 import { fetchGoal } from "./actions/goalActions"
 import { fetchUser } from "./actions/userActions"
 
-import Milestones from './Milestones';
 import _ from 'underscore';
 
 
 class Goal_page extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      goal: {
-        title: '',
-        milestones: []
-      },
-      source: "http://localhost:8080/api/goals"
-    }
-  }
+
 
   renderGoals = (goals) => {
    return (

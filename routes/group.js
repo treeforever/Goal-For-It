@@ -2,7 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
-
+var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
 
 
 module.exports = (knex) => {

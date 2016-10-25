@@ -22,6 +22,7 @@ export function fetchNotifs() {
 }
 
 export function addNotif(notif) {
+  const url = "http://localhost:8080/api/group/notif";
   return {
     type: 'ADD_NOTIF',
     payload: notif
