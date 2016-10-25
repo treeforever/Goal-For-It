@@ -17,7 +17,6 @@ module.exports = (knex) => {
       .where('groups.group_id', 1)
       .select('groups.name', 'groups.description', 'users.username')
       .then((results) => {
-        console.log(results)
         res.json(results);
       })
   });
@@ -33,9 +32,20 @@ module.exports = (knex) => {
 
   });
 
-  // router.post('/notif', (req, res) => {
-  //   knex.insert()
-  // })
+  router.post('/notif', jsonParser, (req, res) => {
+    console.log(req.body.notif.content)
+    knex('notices').insert({
+      content: req.body.notif.content,
+      sender_id: 1,
+      type: "message"
+    })
+    .then(function(resp) {
+      console.log('Notification insertion complete.')
+    })
+    .catch(function(err){
+      console.error(err)
+    })
+  })
 
   return router;
 };

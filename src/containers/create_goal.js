@@ -10,10 +10,6 @@ import { addMilestones } from "../actions/milestoneActions"
 import { addSteps } from "../actions/stepActions"
 
 class NewGoal extends Component {
-  // constructor(props){
-  //   super(props)
-  //   state:
-  // }
 
   handleSaveGoal = text => {
       this.props.addGoal(text)

@@ -10,7 +10,6 @@ import InputBox from './components/InputBox'
 
 class Group_page extends Component {
 
-
   componentWillMount() {
     this.props.fetchGroup();
     this.props.fetchNotifs();
