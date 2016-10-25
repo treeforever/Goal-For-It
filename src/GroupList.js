@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import GroupUser from './GroupUser';
 
-class GroupList extends Component {
+const GroupList = ({group}) => (
+   <ul>
+    {
+      group.map((groupUser, index) => (
+      <GroupUser key={index}
+        grouplist={groupUser.username}
+      />
+      ))
+    }
+  </ul>
+)
 
-  render() {
-    return (
-      <ul>
-        {
-        this.props.groupList.map((groupUser) => (
-          <GroupUser key={groupUser.user_id}
-            groupList={groupUser.username}
-          />
-          ))
-        }
-      </ul>
-    )
-  }
-}
+export default GroupList
 
-export default GroupList;
+
+/////
+// >= 1 group
+
+//Rock and Role
+//Jazz
+
+// this.props.group.map(group => {
+//   <GroupList grouplist={group} />
+//   <h1>{group.name }</h1>
+// })
+
+// this.props.group[0] //Rock and Roll
+// this.props.group[1]
+// this.props.group[2]

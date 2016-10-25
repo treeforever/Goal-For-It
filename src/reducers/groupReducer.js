@@ -1,5 +1,5 @@
 export default function reducer(state={
-    group: [],
+    group: [{name: ''}],
     notifs: [],
     error: null,
   }, action) {
@@ -37,6 +37,12 @@ export default function reducer(state={
           notifs: action.payload.data,
         }
         break;
+      }
+      case "ADD_NOTIF": {
+        return {
+          ...state,
+          notifs: [...state.notifs, action.payload],
+        }
       }
     }
 

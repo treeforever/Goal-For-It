@@ -1,62 +1,54 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchGroup, fetchNotifs } from "./actions/groupActions"
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchGroup, fetchNotifs, addNotif } from "./actions/groupActions"
 
-// import Form from 'react-bootstrap-form';
-import NotificationList from './NotificationList';
-import GroupList from './GroupList';
-import $ from 'jquery';
+import NotificationList from './NotificationList'
+import GroupList from './GroupList'
+import InputBox from './components/InputBox'
 
-
-const attributes = [
-    { type: "Text", name: "Notification", required: true, label: "notification" }
-];
 
 class Group_page extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      group: [{name: ''}],
-      notifs: [{
-          content: '', notice_id: ''
-        }]
-      }
-    }
+
 
   componentWillMount() {
-    // this.serverRequest.abort();
     this.props.fetchGroup();
     this.props.fetchNotifs();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.state.group = nextProps.group;
-    this.state.notifs = nextProps.notifs;
-    this.setState(this.state)
+   handleSave = text => {
+      this.props.addNotif({content: text})
   }
 
   render() {
-    console.log('hellooo', this.props.group)
-
     return (
       <div className="group">
-        <GroupList grouplist={this.state.group} />
-        <h1>{this.state.group[0].name }</h1>
-        <NotificationList notifs={this.state.notifs}/>
-      }
+        <h1>{this.props.group[0].name }</h1>
+        <GroupList group={this.props.group} />
+        <NotificationList notifs={this.props.notifs}/>
+        <InputBox newTodo
+              onSave={this.handleSave}
+              label="goal"
+              placeholder="What "
+             />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (store) => {
   return {
-    group: state.group.group,
-    notifs: state.group.notifs
+    group: store.group.group,
+    notifs: store.group.notifs
   }
 }
 
-export default connect(mapStateToProps, {
-  fetchGroup,
-  fetchNotifs
-   })(Group_page);
+const mapDispatchToProps = (dispatch) => {
+  //whenver addGoal is called, the result should be passed
+  //to all of reducers
+  return bindActionCreators({ addNotif: addNotif, fetchNotifs: fetchNotifs, fetchGroup: fetchGroup }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Group_page);
+
+
