@@ -45,9 +45,20 @@ module.exports = (knex) => {
   });
 
   router.post('/', jsonParser, (req, res) => {
-    console.log(req.body);
-    res.json({blah: 1});
+    //req.body={goal: 'blabla'};
+    knex('goals').insert({
+      goal: req.body.goal,
+      goal_description: '',
+      checked: false
+    })
+    .then(function(resp) {
+      console.log('Goal insertion complete.');
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
   })
+
 
   return router;
 };
