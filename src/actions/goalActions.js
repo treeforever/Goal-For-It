@@ -23,7 +23,7 @@ const _ = require("underscore")
 
 //use Promise middleware
 export function fetchGoal() {
-  const url = "http://localhost:8080/api/goals/1";
+  const url = "http://localhost:8080/api/goals/2";
   const request = axios.get(url);
   return {
     type: "FETCH_GOALS",

@@ -24,26 +24,13 @@ class Goal_page extends Component {
     this.props.fetchUser(1);
   }
 
-
-  // renderGoals = (goals) => {
-  //   return (
-  //     <ul>
-  //       {goals.map((goal, index) => {
-  //       return <li>{index + 1}. {goal.goal} </li>
-  //     })}
-  //     </ul>
-  //   )
-  // }
-
   render() {
     var g = this.props.goals;
-    console.log('gggg', g);
     return (
       <div>
         <h2>{this.props.user.user.username}s Goals</h2>
         <h1>{g.goal}</h1>
         <Milestone milestones={g.milestones} />
-
       </div>
     );
   }
