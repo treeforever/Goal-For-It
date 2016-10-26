@@ -1,14 +1,11 @@
 export default function reducer(state={
-    goals: [],
+    goals: { milestones: [] },
     error: null,
   }, action) {
 
 //state argument is not application state, only the state this reducer is
 // responsible for
     switch (action.type) {
-      case "FETCH_GOALS": {
-        return {...state}
-      }
       case "FETCH_GOALS_REJECTED": {
         return {...state, error: action.payload}
       }
@@ -21,7 +18,7 @@ export default function reducer(state={
       case "ADD_GOAL": {
         return {
           ...state,
-          goals: [...state.goals, action.payload],
+          goals: {...state.goals, goal: action.payload },
         }
       }
 

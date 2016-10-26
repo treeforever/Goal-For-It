@@ -1,10 +1,11 @@
-'use strict';
 
 const express = require('express');
 const router = express.Router();
 const _ = require('underscore');
-var bodyParser = require('body-parser')
-var jsonParser = bodyParser.json()
+const bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
+
+const { goalPyrimid } = require('./routesFunction');
 
 module.exports = (knex) => {
 
@@ -36,11 +37,13 @@ module.exports = (knex) => {
               'milestones.milestone_id',
               'goals.goal_id',
               'goals.creator_id',
-              'steps.step'
+              'steps.step',
+              'steps.step_id'
             )
       .then((results) => {
-        var groupedResults = _.groupBy(results, function(entry){ return entry.mile_title})
-        res.json(groupedResults)
+        let groupedResults = _.groupBy(results, function(entry){ return entry.mile_title})
+        let structuredGoal = goalPyrimid(groupedResults)
+        res.json(structuredGoal);
       })
   });
 

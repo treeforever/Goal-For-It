@@ -6,9 +6,6 @@ export default function reducer(state={
 //state argument is not application state, only the state this reducer is
 // responsible for
     switch (action.type) {
-      case "FETCH_STEPS": {
-        return {...state}
-      }
       case "FETCH_STEPS_REJECTED": {
         return {...state, error: action.payload}
       }

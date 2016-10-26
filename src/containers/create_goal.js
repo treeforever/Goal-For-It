@@ -4,10 +4,17 @@ import { bindActionCreators } from 'redux'
 
 import Form1 from "../components/Form1"
 import Form2 from "../components/Form2"
+import MuiText from "../components/MuiText"
+
 import { addGoal } from "../actions/goalActions"
 import { addMilestones } from "../actions/milestoneActions"
 import { addSteps } from "../actions/stepActions"
 import { addNotif } from "../actions/groupActions"
+
+
+
+
+
 
 
 class NewGoal extends Component {
@@ -58,13 +65,14 @@ class NewGoal extends Component {
   }
 
   render() {
+    console.log(this.props.goals.goal)
     return (
       <div>
         <Form1 onSaveGoal={this.handleSaveGoal} onSaveMilestones={this.handleSaveMilestones}/>
         <Form2 onSaveSteps={this.handleSaveSteps} milestones={this.props.milestones.milestones}/>
-
+        <MuiText />
         <h3>
-          Newly created goal: {this.renderList(this.props.goals.goals)}
+          Newly created goal: {this.props.goals.goal}
         </h3>
         <h3>
           Newly created milestones: {this.renderMilestones(this.props.milestones.milestones)}
@@ -76,7 +84,7 @@ class NewGoal extends Component {
 
 const mapStateToProps = (store) => {
   return {
-    goals: store.goals,
+    goals: store.goals.goals,
     milestones: store.milestones
   }
 }
