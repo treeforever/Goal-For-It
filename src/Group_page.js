@@ -16,19 +16,26 @@ class Group_page extends Component {
   }
 
    handleSave = text => {
-      this.props.addNotif({type: "message", content: `MESSAGE: ${text}`})
+      this.props.addNotif({type: "message", content: `${text}`})
+  }
+
+  handleTag = text => {
+
   }
 
   render() {
     return (
       <div className="group">
-        <h1>{this.props.group[0].name }</h1>
+        <h1>Group Name: {this.props.group[0].name }</h1>
         <h3>Group Members: </h3>
         <GroupList group={this.props.group} />
-        <h3>Notifications:</h3>
-        <NotificationList notifs={this.props.notifs} userActions={this.props.userActions}/>
+        <div className="notification-box">
+          <h3>Notifications:</h3>
+          <NotificationList notifs={this.props.notifs}/>
+        </div>
         <InputBox newTodo
               onSave={this.handleSave}
+
               label="notif"
               placeholder="What would you like to say to the group?"
              />

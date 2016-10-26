@@ -28,12 +28,23 @@ class InputBox extends Component {
 
   handleChange = e => {
     this.setState({ text: e.target.value })
+    var tagName = /@(\w+)/;
+    var tagValue = tagName.exec(e.target.value)
+    console.log(tagvalue)
+    // if(e.target.value === '@(\w+)'){
+    //   console.log(e.target.value)
+    // }
+
   }
 
   handleBlur = e => {
     if (!this.props.newTodo) {
       this.props.onSave(e.target.value)
     }
+  }
+
+  handleTag = e => {
+
   }
 
 

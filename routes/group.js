@@ -19,7 +19,7 @@ module.exports = (knex) => {
       .then((results) => {
         res.json(results);
       })
-  });
+  })
 
   //performs get request to database for notifications
   router.get('/notif', (req, res) => {
@@ -30,8 +30,18 @@ module.exports = (knex) => {
         res.json(results);
     })
 
-  });
+  })
 
+  router.get('/notif/tag', (req, res) => {
+
+    knex('users')
+      .where('username', 'foo')
+      .then((results) => {
+        res.json(results)
+      })
+  })
+
+  //performs post request to database for all notifications
   router.post('/notif', jsonParser, (req, res) => {
     knex('notices').insert({
       content: req.body.notif.content,
@@ -45,6 +55,8 @@ module.exports = (knex) => {
       console.error(err)
     })
   })
+
+
 
   return router;
 };
