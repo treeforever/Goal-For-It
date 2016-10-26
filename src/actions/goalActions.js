@@ -1,5 +1,5 @@
 import axios from "axios"
-
+const _ = require("underscore")
 
 //usual way for ajex calls
 // export function fetchGoal() {
@@ -20,11 +20,11 @@ import axios from "axios"
 //   }
 // }
 
+
 //use Promise middleware
 export function fetchGoal() {
   const url = "http://localhost:8080/api/goals/1";
   const request = axios.get(url);
-  console.log("request", request);
   return {
     type: "FETCH_GOALS",
     payload: request

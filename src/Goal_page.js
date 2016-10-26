@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import $ from 'jquery';
+import { bindActionCreators } from 'redux'
 
 import { fetchGoal } from "./actions/goalActions"
-import _ from 'underscore';
-
+import { fetchUser } from "./actions/userActions"
 
 class Goal_page extends Component {
   constructor(props) {
@@ -29,25 +28,27 @@ class Goal_page extends Component {
 
   componentWillMount() {
     // this.serverRequest.abort();
-    // this.props.fetchGoal();
+    this.props.fetchGoal();
+    this.props.fetchUser(1);
   }
 
-  renderGoals = (goals) => {
-    return (
-      <ul>
-        {goals.map((goal, index) => {
-        return <li>{index + 1}. {goal.goal} </li>
-      })}
-      </ul>
-    )
-  }
+
+  // renderGoals = (goals) => {
+  //   return (
+  //     <ul>
+  //       {goals.map((goal, index) => {
+  //       return <li>{index + 1}. {goal.goal} </li>
+  //     })}
+  //     </ul>
+  //   )
+  // }
 
   render() {
     return (
       <div>
         <h1></h1>
-        <h2>Milestones</h2>
-        <h3>Showing all my goals: {this.renderGoals(this.props.goals.goals)} </h3>
+        <h2>{this.props.user.user.username}s Goals</h2>
+        <h3>Showing all my goals: {} </h3>
       </div>
     );
   }
@@ -55,8 +56,16 @@ class Goal_page extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    goals: state.goals
+    user: state.user,
+    goals: state.goals.goals
   }
 }
 
-export default connect(mapStateToProps, { fetchGoal })(Goal_page);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+                              fetchGoal,
+                              fetchUser
+                            }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Goal_page);

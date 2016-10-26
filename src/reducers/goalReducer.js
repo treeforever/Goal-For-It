@@ -6,9 +6,6 @@ export default function reducer(state={
 //state argument is not application state, only the state this reducer is
 // responsible for
     switch (action.type) {
-      case "FETCH_GOALS": {
-        return {...state}
-      }
       case "FETCH_GOALS_REJECTED": {
         return {...state, error: action.payload}
       }
@@ -24,6 +21,7 @@ export default function reducer(state={
           goals: [...state.goals, action.payload],
         }
       }
+
       case "UPDATE_GOAL": {
         const { id, text } = action.payload
         const newGoals = [...state.goals]

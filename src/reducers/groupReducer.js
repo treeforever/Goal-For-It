@@ -7,10 +7,6 @@ export default function reducer(state={
 //state argument is not application state, only the state this reducer is
 // responsible for
     switch (action.type) {
-      case "FETCH_GROUP": {
-        return {...state}
-        break;
-      }
       case "FETCH_GROUP_REJECTED": {
         return {...state, error: action.payload}
         break;
@@ -23,10 +19,10 @@ export default function reducer(state={
         break;
       }
 
-      case "FETCH_NOTIFS": {
-        return {...state}
-        break;
-      }
+      // case "FETCH_NOTIFS": {
+      //   return {...state}
+      //   break;
+      // }
       case "FETCH_NOTIFS_REJECTED": {
         return {...state, error: action.payload}
         break;
@@ -43,7 +39,9 @@ export default function reducer(state={
           ...state,
           notifs: [...state.notifs, action.payload],
         }
+
       }
+
     }
 
     return state

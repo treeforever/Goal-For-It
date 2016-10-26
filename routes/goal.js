@@ -6,6 +6,67 @@ const _ = require('underscore');
 var bodyParser = require('body-parser')
 var jsonParser = bodyParser.json()
 
+function constructGoalKeys(data){
+  let keys = _.keys(data)
+  let firstMilestone = data[keys[0]]
+
+  let goalName = firstMilestone[0].goal
+  let goal_id = firstMilestone[0].goal_id
+  let creator_id = firstMilestone[0].creator_id
+
+  let goal = {}
+  goal.goal = goalName
+  goal.goal_id = goal_id
+  goal.creator_id = creator_id
+
+
+  return goal
+}
+
+function constructSteps(mileArr){
+  let steps = []
+  for (var i = 0; i < mileArr.length; i++) {
+    let step = []
+    step[0] = 'step'
+    step[1] = mileArr[i].step_id
+    step[2] = mileArr[i].step
+    steps.push(step)
+  }
+  return steps
+}
+
+
+function constructMilestone(mileArr){
+  let milestone = []
+  let steps = constructSteps(mileArr)
+  milestone[0] = 'milestone'
+  milestone[1] = mileArr[0].milestone_id
+  milestone[2] = mileArr[0].mile_title
+  milestone[3] = steps
+  return milestone
+}
+
+
+function constructMilestones(data){
+  let milestones = []
+  let keys = _.keys(data)
+  keys.forEach(function(someKey){
+    let mileArr = data[someKey]
+    milestones.push(constructMilestone(mileArr))
+  })
+  return milestones
+}
+
+
+function goalPyrimid(data){
+  let goal = constructGoalKeys(data)
+  goal.milestones = constructMilestones(data)
+  return goal
+}
+
+
+
+
 module.exports = (knex) => {
 
   //performs get request to database for goal informations
@@ -36,11 +97,13 @@ module.exports = (knex) => {
               'milestones.milestone_id',
               'goals.goal_id',
               'goals.creator_id',
-              'steps.step'
+              'steps.step',
+              'steps.step_id'
             )
       .then((results) => {
-        var groupedResults = _.groupBy(results, function(entry){ return entry.mile_title})
-        res.json(groupedResults);
+        let groupedResults = _.groupBy(results, function(entry){ return entry.mile_title})
+        let structuredGoal = goalPyrimid(groupedResults)
+        res.json(structuredGoal);
       })
   });
 

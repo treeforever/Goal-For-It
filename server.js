@@ -29,8 +29,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/public');
 
-app.use('/login', userRoutes(knex));
 app.use('/home', homeRoutes(knex));
+app.use('/api/users', userRoutes(knex));
 app.use('/api/goals', goalRoutes(knex));
 app.use('/api/group', groupRoutes(knex))
 
