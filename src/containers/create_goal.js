@@ -3,17 +3,13 @@ import { connect } from "react-redux"
 import { bindActionCreators } from 'redux'
 
 import Form1 from "../components/Form1"
-import Form2 from "../components/Form2"
+import Step from "../components/Form2"
 import MuiText from "../components/MuiText"
 
 import { addGoal } from "../actions/goalActions"
 import { addMilestones } from "../actions/milestoneActions"
 import { addSteps } from "../actions/stepActions"
 import { addNotif } from "../actions/groupActions"
-
-
-
-
 
 
 
@@ -68,9 +64,9 @@ class NewGoal extends Component {
     console.log(this.props.goals.goal)
     return (
       <div>
-        <Form1 onSaveGoal={this.handleSaveGoal} onSaveMilestones={this.handleSaveMilestones}/>
-        <Form2 onSaveSteps={this.handleSaveSteps} milestones={this.props.milestones.milestones}/>
-        <MuiText />
+        <Form1 onSave={this.handleSaveGoal} />
+        
+        <Step onSave={this.handleSaveSteps} milestones={this.props.milestones.milestones}/>
         <h3>
           Newly created goal: {this.props.goals.goal}
         </h3>

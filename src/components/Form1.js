@@ -1,8 +1,5 @@
 import React, {Component} from 'react'
-
-import { Button } from 'react-bootstrap';
-import InputBox from './InputBox'
-
+import MuiText from "./MuiText"
 
 
 class Form1 extends Component {
@@ -10,23 +7,8 @@ class Form1 extends Component {
   render() {
     return (
       <div>
-        <form>
-          <h1>Goal</h1>
-            <InputBox newTodo
-              onSave={this.props.onSaveGoal}            
-              label="goal"
-              placeholder="What's your next goal?"
-             />
-
-          <h2>Milestones</h2>
-            <InputBox newTodo
-              onSave={this.props.onSaveMilestones}
-              label="milestone"
-              placeholder="Break down your goal to less than 5 milestones"
-             />
-           <Button>Next</Button>
-        </form>
-
+        <MuiText onSave={this.handleSaveGoal} hintText="be as specific as you can" floatingLabelText="What is your next ambitious goal?"/>
+        <MuiText onSave={this.handleSaveMilestones} hintText="what are the milestones?" floatingLabelText="What are the milestones"/>
 
 
       </div>

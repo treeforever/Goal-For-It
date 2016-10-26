@@ -1,32 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react'
 import TextField from 'material-ui/TextField'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {green100, green500, green700} from 'material-ui/styles/colors';
+import muiTheme from './MuiTheme'
 
-const muiTheme = getMuiTheme({
-  palette: {
-    primary1Color: green500,
-    primary2Color: green700,
-    primary3Color: green100,
-  },
-}, {
-  avatar: {
-    borderColor: null,
-  },
-  userAgent: 'all'
-});
+class MuiText extends Component {
+  state = {
+    text: this.props.text || ''
+  }
 
-const MuiText= () => (
-  <div>
-  <p>hahhaha</p>
-    <MuiThemeProvider muiTheme={muiTheme}>
-      <TextField
-        hintText="be as specific as you can"
-        floatingLabelText="What is your next ambitious goal?"
-      />
-    </MuiThemeProvider>
-  </div>
-)
+  handleSubmit = e => {
+    const text = e.target.value.trim()
+    if (e.which === 13) {
+      this.props.onSave(text)
+      if (this.props.newTodo) {
+        this.setState({ text: '' })
+      }
+    }
+  }
+
+  handleChange = e => {
+    this.setState({ text: e.target.value })
+  }
+
+  handleBlur = e => {
+    if (!this.props.newTodo) {
+      this.props.onSave(e.target.value)
+    }
+  }
+
+  render(){
+    return (
+      <div>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <TextField
+            hintText={this.props.hintText}
+            floatingLabelText={this.props.floatingLabelText}
+            errorText="This field is required"
+            autoFocus="true"
+            value={this.state.text}
+            onBlur={this.handleBlur}
+            onChange={this.handleChange}
+            onKeyDown={this.handleSubmit}
+          />
+        </MuiThemeProvider>
+      </div>
+    )
+  }
+}
 
 export default MuiText;
