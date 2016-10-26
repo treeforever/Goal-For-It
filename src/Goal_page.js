@@ -5,17 +5,9 @@ import { bindActionCreators } from 'redux'
 import { fetchGoal } from "./actions/goalActions"
 import { fetchUser } from "./actions/userActions"
 
+import Milestone from "./components/Milestone"
 class Goal_page extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      goal: {
-        title: '',
-        milestones: []
-      },
-      source: "http://localhost:8080/api/goals"
-    }
-  }
+
 
   renderGoals = (goals) => {
    return (
@@ -44,17 +36,21 @@ class Goal_page extends Component {
   // }
 
   render() {
+    var g = this.props.goals;
+    console.log('gggg', g);
     return (
       <div>
-        <h1></h1>
         <h2>{this.props.user.user.username}s Goals</h2>
-        <h3>Showing all my goals: {} </h3>
+        <h1>{g.goal}</h1>
+        <Milestone milestones={g.milestones} />
+
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log('ssss', state);
   return {
     user: state.user,
     goals: state.goals.goals

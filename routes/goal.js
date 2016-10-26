@@ -37,12 +37,12 @@ function constructSteps(mileArr){
 
 
 function constructMilestone(mileArr){
-  let milestone = []
+  let milestone = [[]]
   let steps = constructSteps(mileArr)
-  milestone[0] = 'milestone'
-  milestone[1] = mileArr[0].milestone_id
-  milestone[2] = mileArr[0].mile_title
-  milestone[3] = steps
+  milestone[0][0] = 'milestone'
+  milestone[0][1] = mileArr[0].milestone_id
+  milestone[0][2] = mileArr[0].mile_title
+  milestone[1] = steps
   return milestone
 }
 

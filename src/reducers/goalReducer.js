@@ -1,5 +1,5 @@
 export default function reducer(state={
-    goals: [],
+    goals: { milestones: [] },
     error: null,
   }, action) {
 

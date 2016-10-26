@@ -1,77 +1,6 @@
 const _ = require('underscore')
 
 module.exports = {
-  // data =  { 'read \'become a developer\' book':
-  //    [ {
-  //        goal: 'Become a developer',
-  //        mile_title: 'read \'become a developer\' book',
-  //        milestone_id: 1,
-  //        goal_id: 1,
-  //        creator_id: '1',
-  //        step: 'read chapter 7',
-  //        step_id: 1},
-  //       {
-  //        goal: 'Become a developer',
-  //        mile_title: 'read \'become a developer\' book',
-  //        milestone_id: 1,
-  //        goal_id: 1,
-  //        creator_id: '1',
-  //        step: 'read chapter 11' } ],
-  //   'learn basic about programming':
-  //    [  {
-  //        goal: 'Become a developer',
-  //        mile_title: 'learn basic about programming',
-  //        milestone_id: 2,
-  //        goal_id: 1,
-  //        creator_id: '1',
-  //        step: 'codecademy JS' },
-  //       {
-  //        goal: 'Become a developer',
-  //        mile_title: 'learn basic about programming',
-  //        milestone_id: 2,
-  //        goal_id: 1,
-  //        creator_id: '1',
-  //        step: 'codecademy Ruby' } ],
-  //   research:
-  //    [  {
-  //        goal: 'Become a developer',
-  //        mile_title: 'research',
-  //        milestone_id: 3,
-  //        goal_id: 1,
-  //        creator_id: '1',
-  //        step: 'talk to Jose, learn his perspective and get his advice' },
-  //       {
-  //        goal: 'Become a developer',
-  //        mile_title: 'research',
-  //        milestone_id: 3,
-  //        goal_id: 1,
-  //        creator_id: '1',
-  //        step: 'go to at least 3 meetups and decide if I am on the right path' } ],
-  //   'join a bootcamp':
-  //    [  {
-  //        goal: 'Become a developer',
-  //        mile_title: 'join a bootcamp',
-  //        milestone_id: 4,
-  //        goal_id: 1,
-  //        creator_id: '1',
-  //        step: 'talk to LHL' },
-  //       {
-  //        goal: 'Become a developer',
-  //        mile_title: 'join a bootcamp',
-  //        milestone_id: 4,
-  //        goal_id: 1,
-  //        creator_id: '1',
-  //        step: 'talk to Bitmaker' },
-  //       {
-  //        goal: 'Become a developer',
-  //        mile_title: 'join a bootcamp',
-  //        milestone_id: 4,
-  //        goal_id: 1,
-  //        creator_id: '1',
-  //        step: 'choose one and sign up' } ] }
-
-
-
   function constructGoalKeys(data){
     let keys = _.keys(data)
     let firstMilestone = data[keys[0]]
@@ -103,15 +32,14 @@ module.exports = {
 
 
   function constructMilestone(mileArr){
-    let milestone = []
+    let milestone = [[]]
     let steps = constructSteps(mileArr)
-    milestone[0] = 'milestone'
-    milestone[1] = mileArr[0].milestone_id
-    milestone[2] = mileArr[0].mile_title
-    milestone[3] = steps
+    milestone[0][0] = 'milestone'
+    milestone[0][1] = mileArr[0].milestone_id
+    milestone[0][2] = mileArr[0].mile_title
+    milestone[1] = steps
     return milestone
   }
-
 
   function constructMilestones(data){
     let milestones = []
@@ -123,8 +51,7 @@ module.exports = {
     return milestones
   }
 
-
-  export default function goalPyrimid(data){
+function goalPyrimid(data){
     let goal = constructGoalKeys(data)
     goal.milestones = constructMilestones(data)
     return goal
