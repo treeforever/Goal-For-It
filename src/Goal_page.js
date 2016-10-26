@@ -6,6 +6,7 @@ import { fetchGoal } from "./actions/goalActions"
 import { fetchUser } from "./actions/userActions"
 
 import Milestone from "./components/Milestone"
+
 class Goal_page extends Component {
 
 

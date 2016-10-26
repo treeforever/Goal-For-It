@@ -4,9 +4,9 @@ import Notification from './Notification';
 const NotificationList = ({notifs}) => (
    <ul>
     {
-      notifs.map((notif) => (
+      notifs.map((notif, index) => (
         <Notification
-          key={notif.id}
+          key={index}
           notification={notif.content}
         />
       ))

@@ -18,11 +18,6 @@ export default function reducer(state={
         }
         break;
       }
-
-      // case "FETCH_NOTIFS": {
-      //   return {...state}
-      //   break;
-      // }
       case "FETCH_NOTIFS_REJECTED": {
         return {...state, error: action.payload}
         break;

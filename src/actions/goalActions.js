@@ -1,5 +1,4 @@
 import axios from "axios"
-const _ = require("underscore")
 
 //usual way for ajex calls
 // export function fetchGoal() {

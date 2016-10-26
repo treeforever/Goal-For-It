@@ -18,7 +18,7 @@ export default function reducer(state={
       case "ADD_GOAL": {
         return {
           ...state,
-          goals: [...state.goals, action.payload],
+          goals: {...state.goals, goal: action.payload },
         }
       }
 

@@ -2,33 +2,50 @@ import React, {Component} from 'react'
 import { connect } from "react-redux"
 import { bindActionCreators } from 'redux'
 
-
 import Form1 from "../components/Form1"
 import Form2 from "../components/Form2"
+import MuiText from "../components/MuiText"
+
 import { addGoal } from "../actions/goalActions"
 import { addMilestones } from "../actions/milestoneActions"
 import { addSteps } from "../actions/stepActions"
+import { addNotif } from "../actions/groupActions"
+
+
+
+
+
+
 
 class NewGoal extends Component {
 
   handleSaveGoal = text => {
       this.props.addGoal(text)
+      this.props.addNotif({type: "notification", content: `NOTIFICATION: user 1 has added a new goal: ${text}`})
   }
 
   handleSaveMilestones = text => {
       this.props.addMilestones(text)
+      this.props.addNotif({type: "notification", content: `NOTIFICATION: user 1 has added a new milestone: ${text}`})
+
   }
 
   handleSaveSteps= text => {
       this.props.addSteps(text)
+      this.props.addNotif({type: "notification", content: `NOTIFICATION: user 1 has added a new step: ${text}`})
+
   }
 
   renderList = (list) => {
     return (
       <ul>
-        {list.map((item, index) => {
-        return <li>{index + 1}. {item.goal} </li>
-      })}
+        {
+          list.map((item, index) => (
+            <li key={index}>
+              {index + 1}. {item.goal}
+            </li>
+          ))
+        }
       </ul>
     )
   }
@@ -36,9 +53,13 @@ class NewGoal extends Component {
   renderMilestones = (list) => {
     return (
       <ul>
-        {list.map((item, index) => {
-        return <li>{index + 1}. {item.milestones} </li>
-      })}
+        {
+          list.map((item, index) => (
+           <li key={index}>
+             {index + 1}. {item.milestones}
+           </li>
+          ))
+        }
       </ul>
     )
   }
@@ -49,7 +70,7 @@ class NewGoal extends Component {
       <div>
         <Form1 onSaveGoal={this.handleSaveGoal} onSaveMilestones={this.handleSaveMilestones}/>
         <Form2 onSaveSteps={this.handleSaveSteps} milestones={this.props.milestones.milestones}/>
-
+        <MuiText />
         <h3>
           Newly created goal: {this.props.goals.goal}
         </h3>
@@ -76,7 +97,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
                               addGoal: addGoal,
                               addMilestones: addMilestones,
-                              addSteps: addSteps
+                              addSteps: addSteps,
+                              addNotif: addNotif
                             }, dispatch)
 }
 

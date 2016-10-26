@@ -22,7 +22,7 @@ module.exports = (knex) => {
               'goals.creator_id'
             )
       .then((results) => {
-        res.json(results);
+        res.json(results)
       })
   });
 
@@ -55,10 +55,10 @@ module.exports = (knex) => {
       checked: false
     })
     .then(function(resp) {
-      console.log('Goal insertion complete.');
+      console.log('Goal insertion complete.')
     })
     .catch(function(err) {
-      console.error(err);
+      console.error(err)
     });
   })
 

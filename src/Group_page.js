@@ -10,14 +10,13 @@ import InputBox from './components/InputBox'
 
 class Group_page extends Component {
 
-
   componentWillMount() {
     this.props.fetchGroup();
     this.props.fetchNotifs();
   }
 
    handleSave = text => {
-      this.props.addNotif({content: text})
+      this.props.addNotif({type: "message", content: `MESSAGE: ${text}`})
   }
 
   render() {
