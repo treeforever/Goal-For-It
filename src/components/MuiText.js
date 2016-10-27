@@ -5,7 +5,8 @@ import muiTheme from './MuiTheme'
 
 class MuiText extends Component {
   state = {
-    text: this.props.text || ''
+    text: this.props.text || '',
+    limit: 1
   }
 
   handleSubmit = e => {
@@ -19,14 +20,18 @@ class MuiText extends Component {
   }
 
   handleChange = e => {
+    if (this.state.limit){
+      this.props.addRow(e.target.value)
+      this.setState({ limit: 0 })
+    }
     this.setState({ text: e.target.value })
   }
 
-  handleBlur = e => {
-    if (!this.props.newTodo) {
-      this.props.onSave(e.target.value)
-    }
-  }
+  // handleBlur = e => {
+  //   if (!this.props.newTodo) {
+  //     this.props.onSave(e.target.value)
+  //   }
+  // }
 
   render(){
     return (
@@ -36,9 +41,7 @@ class MuiText extends Component {
             hintText={this.props.hintText}
             floatingLabelText={this.props.floatingLabelText}
             errorText="This field is required"
-            autoFocus="true"
             value={this.state.text}
-            onBlur={this.handleBlur}
             onChange={this.handleChange}
             onKeyDown={this.handleSubmit}
           />

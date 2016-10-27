@@ -32,47 +32,16 @@ class NewGoal extends Component {
 
   }
 
-  renderList = (list) => {
-    return (
-      <ul>
-        {
-          list.map((item, index) => (
-            <li key={index}>
-              {index + 1}. {item.goal}
-            </li>
-          ))
-        }
-      </ul>
-    )
-  }
 
-  renderMilestones = (list) => {
-    return (
-      <ul>
-        {
-          list.map((item, index) => (
-           <li key={index}>
-             {index + 1}. {item.milestones}
-           </li>
-          ))
-        }
-      </ul>
-    )
-  }
 
   render() {
     console.log(this.props.goals.goal)
     return (
       <div>
-        <Form1 onSave={this.handleSaveGoal} />
-        
+        <Form1 onSaveGoal={this.handleSaveGoal} onSaveMilestones={this.handleSaveMilestones} />
+
         <Step onSave={this.handleSaveSteps} milestones={this.props.milestones.milestones}/>
-        <h3>
-          Newly created goal: {this.props.goals.goal}
-        </h3>
-        <h3>
-          Newly created milestones: {this.renderMilestones(this.props.milestones.milestones)}
-        </h3>
+
       </div>
     )
   }
