@@ -44,10 +44,9 @@ export default function reducer(state={
       case "COMPLETE_GOAL": {
         return {
           ...state,
-          checked: true
+          checked: action.payload
         }
       }
-
     }
 
     return state

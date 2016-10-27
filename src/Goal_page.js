@@ -19,7 +19,7 @@ class Goal_page extends Component {
   }
 
   handleChange = (event) => {
-    this.props.checkedGoal(1)
+    this.props.checkedGoal(1, this.props.checked)
   }
 
 

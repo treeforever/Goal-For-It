@@ -7,6 +7,7 @@ const jsonParser = bodyParser.json()
 const cors       = require('cors')
 
 
+
 const { goalPyrimid } = require('./routesFunction');
 
 module.exports = (knex) => {
@@ -64,16 +65,20 @@ module.exports = (knex) => {
     });
   })
 
-  router.put('/:goal_id', cors(), (req, res) => {
+  router.options('/:goal_id', cors())
+
+  router.put('/:goal_id', cors(), jsonParser, (req, res) => {
+    console.log(req.body.checked)
     let selectedGoalId = Number(req.params.goal_id)
     knex('goals')
       .where('goal_id', selectedGoalId)
       .update({
-        checked: 't',
+        checked: req.body.checked,
         thisKeyIsSkipped: undefined
       })
       .then(function(resp){
         console.log(`Goal ${selectedGoalId} completed`)
+        res.json(req.params)
       })
   })
 

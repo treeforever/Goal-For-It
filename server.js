@@ -16,7 +16,6 @@ const goalRoutes  = require('./routes/goal.js');
 const groupRoutes = require('./routes/group.js');
 
 
-app.options('*', cors())
 //allows react server to perform requests to this server(api)
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
