@@ -62,6 +62,11 @@ module.exports = (knex) => {
     });
   })
 
+  router.put('/:goal_id'), (req, res) => {
+    let selectedGoalId = Number(req.params.goal_id)
+    console.log(selectedGoalId)
+  }
+
 
   return router;
 };

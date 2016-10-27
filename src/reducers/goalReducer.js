@@ -1,6 +1,7 @@
 export default function reducer(state={
     goals: { milestones: [] },
     error: null,
+    checked: false
   }, action) {
 
 //state argument is not application state, only the state this reducer is
@@ -39,6 +40,17 @@ export default function reducer(state={
           goals: state.goals.filter(goal => goal.id !== action.payload),
         }
       }
+      case "COMPLETE_GOAL_REJECTED": {
+        return {...state, error: action.payload}
+      }
+
+      case "COMPLETE_GOAL_FULFILLED": {
+        return {
+          ...state,
+          checked: true
+        }
+      }
+
     }
 
     return state

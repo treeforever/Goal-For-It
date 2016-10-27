@@ -6,11 +6,15 @@ const Milestone = ({ milestones }) => {
     <div>
       {milestones.map((milestone, index) => {
         return (
-          <div>
-            <h2>{milestone[0][2]}</h2>
-            <Step key={index}
-                  milestone={milestone}
-            />
+          <div key={index}>
+            <h2>{milestone[0][2]}
+               <input
+                className="checkbox"
+                type="checkbox"
+                // onChange={this.props.onChange}
+              />
+            </h2>
+            <Step milestone={milestone} />
           </div>
         )
       })}
@@ -23,7 +27,13 @@ const Step = ({ milestone }) => {
   return (
     <div>
       {milestone[1].map((step, index) => {
-        return <h3 key={index}>{step[2]}</h3>
+        return <h3 key={index}>{step[2]}
+           <input
+            className="checkbox"
+            type="checkbox"
+            // onChange={this.props.onChange}
+          />
+        </h3>
         })
       }
 

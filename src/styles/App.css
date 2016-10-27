@@ -113,3 +113,8 @@ input.inputBox {
   color: black;
 }
 
+/*checkbox*/
+.checkbox {
+  margin-top: 50%;
+  margin-left: 50%;
+}

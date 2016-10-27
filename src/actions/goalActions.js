@@ -21,8 +21,8 @@ import axios from "axios"
 
 
 //use Promise middleware
-export function fetchGoal() {
-  const url = "http://localhost:8080/api/goals/2";
+export function fetchGoal(goal) {
+  const url = `http://localhost:8080/api/goals/${goal}`;
   const request = axios.get(url);
   return {
     type: "FETCH_GOALS",
@@ -50,10 +50,23 @@ export function updateGoal(id, text) {
     payload: {
       id,
       text,
-    },
+    }
   }
 }
 
 export function deleteGoal(id) {
   return { type: 'DELETE_GOAL', payload: id}
 }
+
+
+export function checkedGoal(id) {
+  const url = `http://localhost:8080/api/goals/${id}`
+  let request = axios.put(url)
+  return {
+    type: 'COMPLETE_GOAL',
+    payload: {
+      id
+    }
+  }
+}
+

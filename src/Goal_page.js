@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { fetchGoal } from "./actions/goalActions"
+import { fetchGoal, checkedGoal } from "./actions/goalActions"
 import { fetchUser } from "./actions/userActions"
 
 import Milestone from "./components/Milestone"
@@ -18,10 +18,14 @@ class Goal_page extends Component {
    )
   }
 
+  handleChange = (event) => {
+    this.props.checkedGoal(1)
+  }
 
-  componentWillMount() {
+
+  componentWillMount = () => {
     // this.serverRequest.abort();
-    this.props.fetchGoal();
+    this.props.fetchGoal(1);
     this.props.fetchUser(1);
   }
 
@@ -30,8 +34,15 @@ class Goal_page extends Component {
     return (
       <div>
         <h2>{this.props.user.user.username}s Goals</h2>
-        <h1>{g.goal}</h1>
-        <Milestone milestones={g.milestones} />
+        <h1>{g.goal}
+           <input
+            className="checkbox"
+            type="checkbox"
+            onChange={this.handleChange}
+            value={this.props.checked}
+            />
+        </h1>
+        <Milestone onChange={this.handleChange} milestones={g.milestones} />
       </div>
     );
   }
@@ -41,14 +52,16 @@ const mapStateToProps = (state) => {
   console.log('ssss', state);
   return {
     user: state.user,
-    goals: state.goals.goals
+    goals: state.goals.goals,
+    checked: state.goals.checked
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
                               fetchGoal,
-                              fetchUser
+                              fetchUser,
+                              checkedGoal
                             }, dispatch)
 }
 

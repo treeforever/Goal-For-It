@@ -15,7 +15,15 @@ module.exports = (knex) => {
       })
   })
 
-  router.get('/:name', (req, res) => {
+  router.get('/:id', (req, res) => {
+    knex('users')
+      .where('user_id', req.params.id)
+      .then((results) => {
+        res.json(results[0])
+      })
+  })
+
+  router.get('/tag/:name', (req, res) => {
     knex('users')
       .where('username', req.params.name)
       .first()
@@ -24,13 +32,6 @@ module.exports = (knex) => {
       })
   })
 
-  router.get('/:id', (req, res) => {
-    knex('users')
-      .where('user_id', req.params.id)
-      .then((results) => {
-        res.json(results[0])
-      })
-  })
 
 
   router.post("/", (req, res) => {
