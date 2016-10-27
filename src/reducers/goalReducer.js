@@ -40,11 +40,8 @@ export default function reducer(state={
           goals: state.goals.filter(goal => goal.id !== action.payload),
         }
       }
-      case "COMPLETE_GOAL_REJECTED": {
-        return {...state, error: action.payload}
-      }
 
-      case "COMPLETE_GOAL_FULFILLED": {
+      case "COMPLETE_GOAL": {
         return {
           ...state,
           checked: true

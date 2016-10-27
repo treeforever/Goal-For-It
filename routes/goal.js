@@ -1,9 +1,11 @@
 
-const express = require('express');
-const router = express.Router();
-const _ = require('underscore');
+const express    = require('express');
+const router     = express.Router();
+const _          = require('underscore');
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()
+const cors       = require('cors')
+
 
 const { goalPyrimid } = require('./routesFunction');
 
@@ -62,11 +64,18 @@ module.exports = (knex) => {
     });
   })
 
-  router.put('/:goal_id'), (req, res) => {
+  router.put('/:goal_id', cors(), (req, res) => {
     let selectedGoalId = Number(req.params.goal_id)
-    console.log(selectedGoalId)
-  }
-
+    knex('goals')
+      .where('goal_id', selectedGoalId)
+      .update({
+        checked: 't',
+        thisKeyIsSkipped: undefined
+      })
+      .then(function(resp){
+        console.log(`Goal ${selectedGoalId} completed`)
+      })
+  })
 
   return router;
 };

@@ -64,9 +64,7 @@ export function checkedGoal(id) {
   let request = axios.put(url)
   return {
     type: 'COMPLETE_GOAL',
-    payload: {
-      id
-    }
+    payload: id
   }
 }
 

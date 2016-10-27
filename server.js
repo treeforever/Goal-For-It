@@ -9,11 +9,14 @@ const PORT        = 8080;
 const app         = express();
 const knexConfig  = require('./knexfile');
 const knex        = require('knex')(knexConfig[ENV]);
+const cors        = require('cors')
 const userRoutes  = require('./routes/users.js');
-const loginRoutes  = require('./routes/register.js');
+const loginRoutes = require('./routes/register.js');
 const goalRoutes  = require('./routes/goal.js');
 const groupRoutes = require('./routes/group.js');
 
+
+app.options('*', cors())
 //allows react server to perform requests to this server(api)
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

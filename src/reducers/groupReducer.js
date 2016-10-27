@@ -38,6 +38,24 @@ export default function reducer(state={
         }
         break;
       }
+      case "FETCH_TAGGED_USER_REJECTED": {
+        return {...state, error: action.payload}
+        break;
+      }
+      case "FETCH_TAGGED_USER_FULFILLED": {
+        if(action.payload.data === ""){
+          return {
+            ...state,
+          }
+          break;
+        }else{
+          return {
+            ...state,
+            tag: [...state.tag, action.payload.data]
+          }
+          break;
+        }
+      }
 
     }
 
