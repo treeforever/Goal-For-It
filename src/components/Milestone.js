@@ -4,11 +4,13 @@ import React from 'react'
 const Milestone = ({ milestones }) => {
   return (
     <div>
-      {milestones.map((milestone) => {
+      {milestones.map((milestone, index) => {
         return (
           <div>
             <h2>{milestone[0][2]}</h2>
-            <Step milestone={milestone} />
+            <Step key={index}
+                  milestone={milestone}
+            />
           </div>
         )
       })}
@@ -20,8 +22,8 @@ const Milestone = ({ milestones }) => {
 const Step = ({ milestone }) => {
   return (
     <div>
-      {milestone[1].map( step => {
-        return <h3>{step[2]}</h3>
+      {milestone[1].map((step, index) => {
+        return <h3 key={index}>{step[2]}</h3>
         })
       }
 
