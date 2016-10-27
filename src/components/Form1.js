@@ -1,27 +1,54 @@
 import React, {Component} from 'react'
-import MuiText from "./MuiText"
+import MuiText from './MuiText'
+
+
+import Milestone from './Milestone'
+import Step from './Step'
+
+
+
 
 
 class Form1 extends Component {
   state = {
-    showRow: false,
-    inputs: [{
-      hintText: 'what are the milestones?',
-      floatingLabelText: 'What are the milestones'
+    milestoneInputs: [{
+      hintText: 'What are the milestones?',
+      floatingLabelText: 'What are the milestones',
+      stepInputs: []
     }]
+
   }
 
   addRow = (value) => {
     if (value){
+      let newMilestone = {
+        hintText: 'What are the milestones?',
+        floatingLabelText: 'What are the milestones',
+        stepInputs: []
+      }
       this.setState({
-        inputs: [...this.state.inputs, {
-          hintText: 'what are the milestones?',
-          floatingLabelText: 'What are the milestones'
-        }]
+        milestoneInputs: [...this.state.milestoneInputs, newMilestone]
       })
     } else {
       return
     }
+  }
+
+  addStep = (milestoneIndex) => {
+    const newStep = {
+      hintText: 'what are the steps?',
+      floatingLabelText: 'What are the steps'
+    }
+    this.state.milestoneInputs[milestoneIndex].stepInputs.push(newStep);
+
+    this.setState({
+      milestoneInputs: [
+        ...this.state.milestoneInputs,
+      ]
+      // [i].stepInputs: [...this.state.milestoneInputs[i].stepInputs, newStep]
+    })
+    // console.log(this.state.milestoneInputs[milestoneIndex])
+
   }
 
   render() {
@@ -29,18 +56,14 @@ class Form1 extends Component {
       <div>
         <MuiText onSave={this.props.onSaveGoal} hintText="be as specific as you can" floatingLabelText="What is your next ambitious goal?"/>
         {
-          this.state.inputs.map((elm) => {
+          this.state.milestoneInputs.map((elm, index) => {
             return (
-              <article className="milestone">
-                <img src="../../images/milestone.jpg" alt="milestone" height="50" width="50"/>
-                <MuiText
-                  className="milestone-input"
-                  onSave={this.props.onSaveMilestones}
-                  hintText={elm.hintText}
-                  floatingLabelText={elm.floatingLabelText}
-                  addRow={this.addRow}
-                />
-              </article>
+              <Milestone
+                onSaveMilestones={this.props.onSaveMilestones}
+                addRow={this.addRow}
+                addStep={this.addStep}
+                milestone={elm}
+                milestoneIndex={index}/>
             )
           })
         }

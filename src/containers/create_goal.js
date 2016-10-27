@@ -40,7 +40,7 @@ class NewGoal extends Component {
       <div>
         <Form1 onSaveGoal={this.handleSaveGoal} onSaveMilestones={this.handleSaveMilestones} />
 
-        <Step onSave={this.handleSaveSteps} milestones={this.props.milestones.milestones}/>
+        
 
       </div>
     )

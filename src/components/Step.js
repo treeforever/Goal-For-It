@@ -1,15 +1,18 @@
 import React from 'react'
+import MuiText from "./MuiText"
 
-const Step = ({ milestones }) => {
+
+const Step = () => {
   return (
-    <div>
-      {milestones.map( milestone => {
-        milestone[1].map( step => {
-          return <p>{step[2]}</p>
-        })
-      })}
+    <article className="step">
+        <img src="../../images/footprints.png" alt="steps" height="35" width="40"/>
+          <MuiText
+            className="step-input"
+            hintText={this.props.stepInputs.hintText}
+            floatingLabelText={this.props.stepInputs.floatingLabelText}
+          />
 
-    </div>
+    </article>
   );
 }
 
