@@ -105,3 +105,11 @@ input.inputBox {
   margin-right: 25%;
 }
 
+/*group-page css*/
+.group .notification-box {
+  border: 5px solid black;
+  border-radius: 25px;
+  opacity: 0.5;
+  color: black;
+}
+

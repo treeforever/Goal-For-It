@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchGroup, fetchNotifs, addNotif } from "./actions/groupActions"
+import { fetchGroup, fetchNotifs, addNotif, fetchUser } from "./actions/groupActions"
 
 import NotificationList from './NotificationList'
 import GroupList from './GroupList'
@@ -9,6 +9,12 @@ import InputBox from './components/InputBox'
 
 
 class Group_page extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tag: []
+    }
+  }
 
   componentWillMount() {
     this.props.fetchGroup();
@@ -16,12 +22,14 @@ class Group_page extends Component {
   }
 
    handleSave = text => {
-      this.props.addNotif({type: "message", content: `${text}`})
+    console.log(this.props.tag[0])
+      this.props.addNotif({type: "message", content: text, receiver_id: (this.props.tag[0] ? this.props.tag[0].user_id : null)})
   }
 
   handleTag = text => {
-
+    this.props.fetchUser(text)
   }
+
 
   render() {
     return (
@@ -35,7 +43,8 @@ class Group_page extends Component {
         </div>
         <InputBox newTodo
               onSave={this.handleSave}
-
+              onTag={this.handleTag}
+              taggedUser={this.props.tag}
               label="notif"
               placeholder="What would you like to say to the group?"
              />
@@ -46,13 +55,14 @@ class Group_page extends Component {
 
 const mapStateToProps = (store) => ({
   group: store.group.group,
-  notifs: store.group.notifs
+  notifs: store.group.notifs,
+  tag: store.group.tag
   });
 
 const mapDispatchToProps = (dispatch) => {
   //whenver addGoal is called, the result should be passed
   //to all of reducers
-  return bindActionCreators({ addNotif: addNotif, fetchNotifs: fetchNotifs, fetchGroup: fetchGroup }, dispatch)
+  return bindActionCreators({ addNotif: addNotif, fetchNotifs: fetchNotifs, fetchGroup: fetchGroup, fetchUser: fetchUser }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Group_page);

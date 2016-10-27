@@ -19,9 +19,19 @@ export function fetchNotifs() {
   };
 }
 
+export function fetchUser(tag) {
+  const url = `http://localhost:8080/api/users/${tag}`
+  let request = axios.get(url, tag)
+  return {
+    type: 'FETCH_TAGGED_USER',
+    payload: request
+  }
+}
+
 export function addNotif(notif) {
   const url = "http://localhost:8080/api/group/notif"
   let data = {notif}
+  console.log(data)
   let request = axios.post(url, data)
   return {
     type: 'ADD_NOTIF',
@@ -29,6 +39,3 @@ export function addNotif(notif) {
   }
 }
 
-export function addTag(tag) {
-  const url = "http://localhost:8080/api/group/notif"
-}

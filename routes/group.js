@@ -32,20 +32,27 @@ module.exports = (knex) => {
 
   })
 
-  router.get('/notif/tag', (req, res) => {
-
-    knex('users')
-      .where('username', 'foo')
+  router.get('/notif/:name', (req, res) => {
+    knex.select('*')
+      .from('users')
+      .where('username', req.params.name)
       .then((results) => {
-        res.json(results)
+        if (results = []){
+          console.log('empty')
+        }else {
+          console.log(results)
+          res.json(results)
+        }
       })
   })
 
   //performs post request to database for all notifications
   router.post('/notif', jsonParser, (req, res) => {
+    console.log(req.body.notif)
     knex('notices').insert({
       content: req.body.notif.content,
       sender_id: 1,
+      receiver_id: req.body.notif.receiver_id,
       type: req.body.notif.type
     })
     .then(function(resp) {
