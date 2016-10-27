@@ -39,15 +39,19 @@ class Form1 extends Component {
       hintText: 'what are the steps?',
       floatingLabelText: 'What are the steps'
     }
-    this.state.milestoneInputs[milestoneIndex].stepInputs.push(newStep);
+    const currentSteps = this.state.milestoneInputs[milestoneIndex].stepInputs;
+    const newStepsList = currentSteps.push(newStep);
+    this.state.milestoneInputs[milestoneIndex].stepInputs = newStepsList;
 
     this.setState({
       milestoneInputs: [
-        ...this.state.milestoneInputs,
+        ...this.state.milestoneInputs, {
+        }
       ]
-      // [i].stepInputs: [...this.state.milestoneInputs[i].stepInputs, newStep]
+
     })
-    // console.log(this.state.milestoneInputs[milestoneIndex])
+
+
 
   }
 
