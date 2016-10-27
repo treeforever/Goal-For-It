@@ -40,7 +40,6 @@ class MuiText extends Component {
           <TextField
             hintText={this.props.hintText}
             floatingLabelText={this.props.floatingLabelText}
-            errorText="This field is required"
             value={this.state.text}
             onChange={this.handleChange}
             onKeyDown={this.handleSubmit}

@@ -31,13 +31,17 @@ class Form1 extends Component {
         {
           this.state.inputs.map((elm) => {
             return (
-              <MuiText
-                onSave={this.props.onSaveMilestones}
-                hintText={elm.hintText}
-                floatingLabelText={elm.floatingLabelText}
-                addRow={this.addRow}
-              />
-            );
+              <article className="milestone">
+                <img src="../../images/milestone.jpg" alt="milestone" height="50" width="50"/>
+                <MuiText
+                  className="milestone-input"
+                  onSave={this.props.onSaveMilestones}
+                  hintText={elm.hintText}
+                  floatingLabelText={elm.floatingLabelText}
+                  addRow={this.addRow}
+                />
+              </article>
+            )
           })
         }
       </div>

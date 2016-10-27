@@ -24,9 +24,6 @@
 }
 
 
-nav {
-
-}
 
 /* Position and sizing of burger button */
 .bm-burger-button {
@@ -105,3 +102,11 @@ input.inputBox {
   margin-right: 25%;
 }
 
+article.milestone {
+
+}
+
+article.milestone img {
+  margin-bottom: -9%;
+  margin-left: -29%;
+}
