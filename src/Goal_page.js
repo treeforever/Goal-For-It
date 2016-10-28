@@ -6,7 +6,7 @@ import { fetchGoal, checkedGoal } from "./actions/goalActions"
 import { fetchUser } from "./actions/userActions"
 import { addNotif } from "./actions/groupActions"
 
-import Milestone from "./components/MilestoneRender"
+import Milestone from "./components/MilestoneIndex"
 
 class Goal_page extends Component {
 

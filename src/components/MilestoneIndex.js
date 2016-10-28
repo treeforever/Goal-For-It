@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { checkedMile } from '../actions/goalActions'
 import { addNotif } from '../actions/groupActions'
-import Step from './StepRender'
+import Step from './StepIndex'
 
 const Milestone = ({ milestones, user, dispatch }) => (
   <div>
