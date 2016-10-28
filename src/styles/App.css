@@ -113,5 +113,18 @@ article.milestone img {
 
 span.add-step-button {
   margin-left: -8%;
-  
+
+/*group-page css*/
+.group .notification-box {
+  border: 5px solid black;
+  border-radius: 25px;
+  opacity: 0.5;
+  color: black;
+}
+
+/*checkbox*/
+.checkbox {
+  margin-top: 50%;
+  margin-left: 50%;
+
 }

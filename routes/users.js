@@ -23,6 +23,17 @@ module.exports = (knex) => {
       })
   })
 
+  router.get('/tag/:name', (req, res) => {
+    knex('users')
+      .where('username', req.params.name)
+      .first()
+      .then((results) => {
+        res.json(results)
+      })
+  })
+
+
+
   router.post("/", (req, res) => {
 
   })

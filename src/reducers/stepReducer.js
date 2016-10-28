@@ -1,5 +1,6 @@
 export default function reducer(state={
     steps: [],
+    checked: [],
     error: null,
   }, action) {
 

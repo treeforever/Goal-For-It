@@ -12,22 +12,40 @@ function FieldGroup({ id, label, help, ...props }) {
 }
 
 class InputBox extends Component {
-  state = {
-    text: this.props.text || ''
+  constructor(props) {
+    super(props);
+    this.state = {
+    tagged: [],
+    searchTag: true,
+    text: this.props.text || '',
+    textColor: "black"
   }
-
+}
   handleSubmit = e => {
     const text = e.target.value.trim()
     if (e.which === 13) {
       this.props.onSave(text)
       if (this.props.newTodo) {
-        this.setState({ text: '' })
+        this.setState(this.state.text = '')
+        this.setState(this.state.tagged = [])
       }
     }
   }
 
   handleChange = e => {
-    this.setState({ text: e.target.value })
+    let message = e.target.value
+    let lastword = e.target.value[e.target.value.length - 1]
+    this.setState({ text: message })
+    let matchTag = message.match(/@(\w+) /g)
+    if(lastword === "@") {
+        this.setState({ searchTag: true })
+    }
+    if (matchTag && lastword === " " && this.state.searchTag) {
+      let tag = matchTag[matchTag.length -1]
+      let tagName = tag.slice(1, tag.length)
+      this.props.onTag(tagName)
+      this.setState({searchTag: false})
+    }
   }
 
   handleBlur = e => {
@@ -36,6 +54,20 @@ class InputBox extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    // console.log('nextprops', nextProps)
+    if(nextProps.taggedUser.username !== ""){
+      this.state.tagged = nextProps.taggedUser.username
+      this.state.textColor = 'blue'
+      this.setState(this.state)
+    }
+  }
+
+  checkTaggedUser = () => {
+    if(this.state.tagged.length > 0){
+      this.setState({textColor: 'blue' })
+    }
+  }
 
   render() {
     return (

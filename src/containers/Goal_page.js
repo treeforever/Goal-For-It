@@ -8,7 +8,7 @@ import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepsInput} fr
 
 import { fetchUser } from "../actions/userActions"
 
-import Milestone from "../components/Milestone"
+import Milestone from "../components/MilestoneIndex"
 import Form1 from "./Form1"
 import { RaisedButton, FlatButton, Dialog } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'

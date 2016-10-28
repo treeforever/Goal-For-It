@@ -1,6 +1,7 @@
 export default function reducer(state={
     group: [{name: ''}],
     notifs: [],
+    tag: [],
     error: null,
   }, action) {
 
@@ -33,8 +34,27 @@ export default function reducer(state={
         return {
           ...state,
           notifs: [...state.notifs, action.payload],
+          tag: []
         }
-
+        break;
+      }
+      case "FETCH_TAGGED_USER_REJECTED": {
+        return {...state, error: action.payload}
+        break;
+      }
+      case "FETCH_TAGGED_USER_FULFILLED": {
+        if(action.payload.data === ""){
+          return {
+            ...state,
+          }
+          break;
+        }else{
+          return {
+            ...state,
+            tag: [...state.tag, action.payload.data]
+          }
+          break;
+        }
       }
 
     }

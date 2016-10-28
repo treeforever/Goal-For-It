@@ -11,31 +11,29 @@ import { addMilestones } from "../actions/milestoneActions"
 import { addSteps } from "../actions/stepActions"
 import { addNotif } from "../actions/groupActions"
 
-
-
 class NewGoal extends Component {
 
   handleSaveGoal = text => {
       this.props.addGoal(text)
-      this.props.addNotif({type: "notification", content: `NOTIFICATION: user 1 has added a new goal: ${text}`})
+      this.props.addNotif({type: "notification", content: `user 1 has added a new goal: ${text}`})
   }
 
   handleSaveMilestones = text => {
       this.props.addMilestones(text)
-      this.props.addNotif({type: "notification", content: `NOTIFICATION: user 1 has added a new milestone: ${text}`})
+      this.props.addNotif({type: "notification", content: `user 1 has added a new milestone: ${text}`})
 
   }
 
   handleSaveSteps= text => {
       this.props.addSteps(text)
-      this.props.addNotif({type: "notification", content: `NOTIFICATION: user 1 has added a new step: ${text}`})
+      this.props.addNotif({type: "notification", content: `user 1 has added a new step: ${text}`})
 
   }
 
 
 
   render() {
-    console.log(this.props.goals.goal)
+    console.log(this.props.goal.goal)
     return (
       <div>
 
@@ -49,7 +47,7 @@ class NewGoal extends Component {
 
 const mapStateToProps = (store) => {
   return {
-    goals: store.goals.goals,
+    goal: store.goal.goal,
     milestones: store.milestones
   }
 }
