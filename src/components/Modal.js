@@ -18,8 +18,8 @@ class Modal extends Component {
     nextDisabled: true,
   };
 
-  handleOpen = () => {
-    this.setState({open: true});
+  openNewGoalDialog = () => {
+    
   };
 
   handleClose = () => {
@@ -32,7 +32,6 @@ class Modal extends Component {
 
   handleSubmit = () => {
     this.props.onSave()
-
   }
 
   render() {
@@ -54,7 +53,7 @@ class Modal extends Component {
     return (
       <div>
         <MuiThemeProvider muiTheme={muiTheme}>
-          <RaisedButton label="Modal Dialog" onTouchTap={this.handleOpen} />
+          <RaisedButton label="Modal Dialog" onTouchTap={this.openNewGoalDialog} />
         </MuiThemeProvider>
         <MuiThemeProvider muiTheme={muiTheme}>
           <Dialog
@@ -64,6 +63,7 @@ class Modal extends Component {
             open={this.state.open}
           >
           <MuiText
+            onSave={this.props.onSave}
             hintText={this.props.hintText}
             floatingLabelText={this.props.floatingLabelText}
             activateNext={this.activateNext}

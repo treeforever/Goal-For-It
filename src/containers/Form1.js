@@ -3,6 +3,12 @@ import { connect } from "react-redux"
 import { bindActionCreators } from 'redux'
 import MuiText from '../components/MuiText'
 
+import { addGoal } from "../actions/goalActions"
+import { addMilestones } from "../actions/milestoneActions"
+import { addSteps } from "../actions/stepActions"
+import { addNotif } from "../actions/groupActions"
+
+
 
 // import Milestone from './Milestone'
 import Step from '../components/Step'
@@ -19,8 +25,9 @@ class Form1 extends Component {
   }
 
   handleSaveGoal = text => {
-      this.props.addGoal(text)
-      this.props.addNotif({type: "notification", content: `NOTIFICATION: user 1 has added a new goal: ${text}`})
+    console.log("text here", text)
+    this.props.addGoal(text)
+    this.props.addNotif({type: "notification", content: `NOTIFICATION: user 1 has added a new goal: ${text}`})
   }
 
   handleSaveMilestones = text => {
@@ -48,9 +55,6 @@ class Form1 extends Component {
     }
   }
 
-  handleGoalSubmit = () => {
-    this.props.onSaveGoal()
-  }
 
   // addStep = (milestoneIndex) => {
   //   const newStep = {
@@ -74,17 +78,11 @@ class Form1 extends Component {
     return (
       <div>
         <Modal
-          onSave={this.props.onSaveGoal}
-          handleOpen={this.handleGoalOpen}
-          handleClose={this.handleGoalClose}
-          handleSubmit={this.handleGoalSubmit}
+          onSave={this.handleSaveGoal}
           hintText="be as ambitious as you want"
           floatingLabelText="What is your next ambitious goal?"
           />
-        <Modal
-          hintText="break it down to several meaningful milestones"
-          floatingLabelText="What could be the milestones of your goal?"
-          />
+
       </div>
     )
   }
@@ -103,7 +101,10 @@ const mapDispatchToProps = (dispatch) => {
   //whenver addGoal is called, the result should be passed
   //to all of reducers
   return bindActionCreators({
-
+                              addGoal: addGoal,
+                              addMilestones: addMilestones,
+                              addSteps: addSteps,
+                              addNotif: addNotif
                             }, dispatch)
 }
 

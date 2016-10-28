@@ -39,6 +39,20 @@ export default function reducer(state={
           goals: state.goals.filter(goal => goal.id !== action.payload),
         }
       }
+
+      case "OPEN_ADD_GOAL_DIALOG": {
+        return {
+          ...state,
+          newGoal: {},
+        }
+      }
+
+      case "CLOSE_ADD_GOAL_DIALOG": {
+        return {
+          ...state,
+          newGoal: null,
+        }
+      }
     }
 
     return state

@@ -40,7 +40,6 @@ class MuiText extends Component {
             floatingLabelText={this.props.floatingLabelText}
             value={this.state.text}
             onChange={this.handleChange}
-            onKeyDown={this.handleSubmit}
           />
         </MuiThemeProvider>
       </div>
