@@ -1,7 +1,5 @@
-const _ = require('underscore')
-
 function constructGoalKeys(data) {
-  let keys = _.keys(data)
+  let keys = Object.keys(data)
   let firstMilestone = data[keys[0]]
 
   let goalName = firstMilestone[0].goal
@@ -23,7 +21,7 @@ function constructSteps(mileArr) {
     let step = {}
     step.id = mileArr[i].step_id
     step.step = mileArr[i].step
-    step.checked = mileArr[i].checked
+    step.checked = mileArr[i].step_checked
     step.milestone_id = mileArr[i].milestone_id
     steps.push(step)
   }
@@ -35,14 +33,14 @@ function constructMilestone(mileArr){
   let steps = constructSteps(mileArr)
   milestone.id = mileArr[0].milestone_id
   milestone.title = mileArr[0].mile_title
-  milestone.checked = mileArr[0].checked
+  milestone.checked = mileArr[0].milestone_checked
   milestone.steps = steps
   return milestone
 }
 
 function constructMilestones(data) {
   let milestones = []
-  let keys = _.keys(data)
+  let keys = Object.keys(data)
   keys.forEach(function(someKey){
     let mileArr = data[someKey]
     milestones.push(constructMilestone(mileArr))
@@ -51,10 +49,12 @@ function constructMilestones(data) {
 }
 
 function goalPyrimid (data) {
-  let goal = constructGoalKeys(data)
-  goal.milestones = constructMilestones(data)
-  return goal
+  return Object.assign(constructGoalKeys(data), {
+    milestones: constructMilestones(data),
+    checked: data.goal_checked,
+  });
 }
 
 module.exports = {
-  goalPyrimid };
+  goalPyrimid
+};

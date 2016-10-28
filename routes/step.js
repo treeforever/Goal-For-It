@@ -9,7 +9,6 @@ module.exports = (knex) => {
   router.options('/:step_id', cors())
 
   router.put('/:step_id', cors(), jsonParser, (req, res) => {
-      console.log(req.body, req.params)
       let selectedStepId = Number(req.params.step_id)
       knex('steps')
         .where('step_id', selectedStepId)
@@ -18,7 +17,7 @@ module.exports = (knex) => {
           thisKeyIsSkipped: undefined
         })
         .then(function(resp){
-          console.log(`Step ${selectedStepId} completed`)
+          console.log(`Step ${selectedStepId} is ${req.body.checked}`)
           res.json(req.params)
         })
       })

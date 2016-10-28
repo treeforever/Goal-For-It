@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import { fetchGoal, checkedGoal } from "./actions/goalActions"
 import { fetchUser } from "./actions/userActions"
+import { addNotif } from "./actions/groupActions"
 
 import Milestone from "./components/MilestoneRender"
 
@@ -20,6 +21,12 @@ class Goal_page extends Component {
 
   handleChange = (event) => {
     this.props.checkedGoal(this.props.goal.goal_id, this.props.checked)
+
+    const content = (this.props.goal.goal.checked ? `${this.props.user.user.username} unchecked their goal: ${this.props.goal.goal}` : `${this.props.user.user.username} completed their goal: ${this.props.goal.goal}`)
+
+    this.props.addNotif({
+      type: "notificaiton",
+      content: content })
   }
 
 
@@ -42,7 +49,7 @@ class Goal_page extends Component {
             value={this.props.checked}
           />
         </h1>
-        <Milestone onChange={this.handleChange} milestones={g.milestones} />
+        <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username}/>
       </div>
     );
   }
@@ -61,7 +68,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
                               fetchGoal,
                               fetchUser,
-                              checkedGoal
+                              checkedGoal,
+                              addNotif
                             }, dispatch)
 }
 

@@ -9,7 +9,6 @@ module.exports = (knex) => {
   router.options('/:mile_id', cors())
 
   router.put('/:mile_id', cors(), jsonParser, (req, res) => {
-      console.log(req.body, req.params)
       let selectedMileId = Number(req.params.mile_id)
       knex('milestones')
         .where('milestone_id', selectedMileId)
@@ -18,7 +17,7 @@ module.exports = (knex) => {
           thisKeyIsSkipped: undefined
         })
         .then(function(resp){
-          console.log(`Milestone ${selectedMileId} completed`)
+          console.log(`Milestone ${selectedMileId} is ${req.body.cbecked}`)
           res.json(req.params)
         })
       })

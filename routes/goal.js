@@ -38,12 +38,13 @@ module.exports = (knex) => {
       .select('goals.goal',
               'milestones.mile_title',
               'milestones.milestone_id',
-              'milestones.checked',
+              'milestones.checked as milestone_checked',
               'goals.goal_id',
               'goals.creator_id',
+              'goals.checked as goal_checked',
               'steps.step',
               'steps.step_id',
-              'steps.checked',
+              'steps.checked as step_checked',
               'steps.milestone_id'
             )
       .then((results) => {
@@ -79,7 +80,7 @@ module.exports = (knex) => {
         thisKeyIsSkipped: undefined
       })
       .then(function(resp){
-        console.log(`Goal ${selectedGoalId} completed`)
+        console.log(`Goal ${selectedGoalId} is ${req.body.checked}`)
         res.json(req.params)
       })
     })

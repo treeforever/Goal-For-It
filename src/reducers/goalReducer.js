@@ -3,8 +3,7 @@ const defaultState = {
     // TODO GOAL
     goal: { milestones: [] },
 
-    error: null,
-    goalChecked: false
+    error: null
   };
 
 export default function reducer(state = defaultState, action) {
@@ -70,8 +69,6 @@ export default function reducer(state = defaultState, action) {
           ...state.goal.milestones.slice(index + 1, Infinity),
         ]
 
-        // console.log(milestones)
-
         return {
           ...state,
           goal: {
@@ -83,7 +80,6 @@ export default function reducer(state = defaultState, action) {
 
       case "COMPLETE_STEP":
         const stepIndex = action.payload.index;
-        // let stepChecked = action.payload.step.checked
         const milestoneID = action.payload.step.milestone_id;
 
         let selectedMile;
@@ -93,9 +89,6 @@ export default function reducer(state = defaultState, action) {
           }
         })
         const step = state.goal.milestones[selectedMile].steps[stepIndex];
-        // step.checked = !step.checked;
-        // state.goal.milestones[selectedMile].steps[stepIndex] = step;
-
         return {
           ...state,
           goal: {
