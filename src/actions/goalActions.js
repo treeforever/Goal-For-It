@@ -70,3 +70,16 @@ export function closeAddGoalDialog() {
     type: 'CLOSE_ADD_GOAL_DIALOG',
   };
 }
+
+export function activateNextButton() {
+  return {
+    type: 'ACTIVATE_NEXT_BUTTON',
+  };
+}
+
+export function handleGoalInput(text) {
+  return {
+    type: 'HANDLE_GOAL_INPUT',
+    payload: text
+  };
+}

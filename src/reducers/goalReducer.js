@@ -1,6 +1,8 @@
 export default function reducer(state={
     goals: { milestones: [] },
     error: null,
+    text: '',
+    nextButton: false
   }, action) {
 
 //state argument is not application state, only the state this reducer is
@@ -43,14 +45,21 @@ export default function reducer(state={
       case "OPEN_ADD_GOAL_DIALOG": {
         return {
           ...state,
-          newGoal: {},
+          openGoalDialog: {},
         }
       }
 
       case "CLOSE_ADD_GOAL_DIALOG": {
         return {
           ...state,
-          newGoal: null,
+          openGoalDialog: null,
+        }
+      }
+
+      case "HANDLE_GOAL_INPUT": {
+        return {
+          ...state,
+          text: action.payload
         }
       }
     }

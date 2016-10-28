@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { fetchGoal, openAddGoalDialog, closeAddGoalDialog } from "../actions/goalActions"
+import { fetchGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput, activateNextButton } from "../actions/goalActions"
 import { fetchUser } from "../actions/userActions"
 
 import Milestone from "../components/Milestone"
@@ -10,6 +10,8 @@ import Form1 from "./Form1"
 import { RaisedButton, FlatButton, Dialog } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from '../components/MuiTheme'
+import MuiText from '../components/MuiText'
+
 
 class Goal_page extends Component {
   renderGoals = (goals) => {
@@ -43,7 +45,7 @@ class Goal_page extends Component {
       <FlatButton
         label="Next"
         primary={true}
-        disabled={true}
+        disabled={!this.props.text}
         onTouchTap={this.handleClose}
         onClick={this.handleSubmit}
       />,
@@ -61,9 +63,15 @@ class Goal_page extends Component {
             title="Add New Goal"
             actions={modalActions}
             modal={true}
-            open={!!this.props.newGoal}
+            open={!!this.props.openGoalDialog}
           >
-          Hello!
+          <MuiText
+            onSave={this.props.onSave}
+            hintText="goal"
+            floatingLabelText="goal"
+            text={this.props.text}
+            handleChange={this.props.handleGoalInput}
+            />
           </Dialog>
         </MuiThemeProvider>
       </div>
@@ -75,7 +83,8 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     goals: state.goals.goals,
-    newGoal: state.goals.newGoal,
+    openGoalDialog: state.goals.openGoalDialog,
+    text: state.goals.text
   }
 }
 
@@ -86,6 +95,7 @@ const mapDispatchToProps = (dispatch) => {
       fetchUser,
       openAddGoalDialog,
       closeAddGoalDialog,
+      handleGoalInput,
     }, dispatch);
 }
 

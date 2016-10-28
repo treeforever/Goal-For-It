@@ -5,7 +5,7 @@ import muiTheme from './MuiTheme'
 
 class MuiText extends Component {
   state = {
-    text: this.props.text || '',
+    text: '',
     limit: 1
   }
 
@@ -17,12 +17,10 @@ class MuiText extends Component {
   }
 
   handleChange = e => {
-    this.props.activateNext()
-    if (this.state.limit){
+    // if (this.state.limit){
       // this.props.addRow(e.target.value)
-      this.setState({ limit: 0 })
-    }
-    this.setState({ text: e.target.value })
+      // this.setState({ limit: 0 })
+    this.props.handleChange(e.target.value)
   }
 
   // handleBlur = e => {
@@ -38,7 +36,7 @@ class MuiText extends Component {
           <TextField
             hintText={this.props.hintText}
             floatingLabelText={this.props.floatingLabelText}
-            value={this.state.text}
+            value={this.props.text}
             onChange={this.handleChange}
           />
         </MuiThemeProvider>
