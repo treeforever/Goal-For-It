@@ -24,6 +24,7 @@ export function addGoal(goal) {
   }
 }
 
+
 export function updateGoal(id, text) {
   return {
     type: 'UPDATE_GOAL',
@@ -36,6 +37,26 @@ export function updateGoal(id, text) {
 
 export function deleteGoal(id) {
   return { type: 'DELETE_GOAL', payload: id}
+}
+
+
+export function openAddGoalDialog() {
+  return {
+    type: 'OPEN_ADD_GOAL_DIALOG',
+  };
+}
+
+export function closeAddGoalDialog() {
+  return {
+    type: 'CLOSE_ADD_GOAL_DIALOG',
+  };
+}
+
+export function handleGoalInput(text) {
+  return {
+    type: 'HANDLE_GOAL_INPUT',
+    payload: text
+  };
 }
 
 
@@ -68,4 +89,3 @@ export function checkedStep(step, index) {
     payload: {step, index}
   }
 }
-

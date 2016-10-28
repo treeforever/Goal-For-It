@@ -11,11 +11,11 @@ export function fetchSteps() {
   };
 }
 
-export function addSteps(milestones) {
+export function addSteps(steps) {
   return {
     type: 'ADD_STEPS',
     payload: {
-      milestones
+      steps
     }
   }
 }
@@ -32,4 +32,22 @@ export function updateSteps(id, text) {
 
 export function deleteSteps(id) {
   return { type: 'DELETE_STEPS', payload: id}
+}
+
+export function openAddStepsDialog() {
+  return {
+    type: 'OPEN_ADD_STEPS_DIALOG',
+  };
+}
+
+export function closeAddStepsDialog() {
+  return {
+    type: 'CLOSE_ADD_STEPS_DIALOG',
+  };
+}
+export function handleStepsInput(text) {
+  return {
+    type: 'HANDLE_STEPS_INPUT',
+    payload: text
+  };
 }

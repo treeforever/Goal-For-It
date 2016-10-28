@@ -1,13 +1,9 @@
 const defaultState = {
-
-    // TODO GOAL
     goal: { milestones: [] },
-
     error: null
   };
 
 export default function reducer(state = defaultState, action) {
-
 //state argument is not application state, only the state this reducer is
 // responsible for
     switch (action.type) {
@@ -24,7 +20,8 @@ export default function reducer(state = defaultState, action) {
       case "ADD_GOAL": {
         return {
           ...state,
-          goal: {...state.goals, goal: action.payload },
+          goal: action.payload.goal,
+          goalText: ''
         }
       }
 
@@ -45,6 +42,29 @@ export default function reducer(state = defaultState, action) {
           goals: state.goals.filter(goal => goal.id !== action.payload),
         }
       }
+
+      case "OPEN_ADD_GOAL_DIALOG": {
+        return {
+          ...state,
+          openGoalDialog: {},
+        }
+      }
+
+      case "CLOSE_ADD_GOAL_DIALOG": {
+        return {
+          ...state,
+          openGoalDialog: null,
+        }
+      }
+
+      case "HANDLE_GOAL_INPUT": {
+        return {
+          ...state,
+          goalText: action.payload
+        }
+      }
+    }
+
 
       case "COMPLETE_GOAL": {
         return {

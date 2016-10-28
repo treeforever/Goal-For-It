@@ -20,6 +20,7 @@ export default function reducer(state={
         return {
           ...state,
           steps: [...state.steps, action.payload],
+          stepsText: '',
         }
       }
       case "UPDATE_STEPS": {
@@ -37,6 +38,27 @@ export default function reducer(state={
         return {
           ...state,
           steps: state.steps.filter(step => step.id !== action.payload),
+        }
+      }
+
+      case "OPEN_ADD_STEPS_DIALOG": {
+        return {
+          ...state,
+          openStepsDialog: {},
+        }
+      }
+
+      case "CLOSE_ADD_STEPS_DIALOG": {
+        return {
+          ...state,
+          openStepsDialog: null,
+        }
+      }
+
+      case "HANDLE_STEPS_INPUT": {
+        return {
+          ...state,
+          stepsText: action.payload
         }
       }
     }
