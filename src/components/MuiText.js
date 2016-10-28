@@ -23,12 +23,6 @@ class MuiText extends Component {
     this.props.handleChange(e.target.value)
   }
 
-  // handleBlur = e => {
-  //   if (!this.props.newTodo) {
-  //     this.props.onSave(e.target.value)
-  //   }
-  // }
-
   render(){
     return (
       <div>

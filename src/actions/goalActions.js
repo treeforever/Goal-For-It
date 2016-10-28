@@ -71,12 +71,6 @@ export function closeAddGoalDialog() {
   };
 }
 
-export function activateNextButton() {
-  return {
-    type: 'ACTIVATE_NEXT_BUTTON',
-  };
-}
-
 export function handleGoalInput(text) {
   return {
     type: 'HANDLE_GOAL_INPUT',

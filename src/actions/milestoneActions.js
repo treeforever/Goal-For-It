@@ -33,3 +33,21 @@ export function updateMilestones(id, text) {
 export function deleteMilestones(id) {
   return { type: 'DELETE_MILESTONES', payload: id}
 }
+
+export function openAddMilestonesDialog() {
+  return {
+    type: 'OPEN_ADD_MILESTONES_DIALOG',
+  };
+}
+
+export function closeAddMilestonesDialog() {
+  return {
+    type: 'CLOSE_ADD_MILESTONES_DIALOG',
+  };
+}
+export function handleMilestonesInput(text) {
+  return {
+    type: 'HANDLE_MILESTONES_INPUT',
+    payload: text
+  };
+}

@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { fetchGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput, activateNextButton } from "../actions/goalActions"
+import { addGoal, fetchGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
+import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput} from "../actions/milestoneActions"
+import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepsInput} from "../actions/stepActions"
+
 import { fetchUser } from "../actions/userActions"
 
 import Milestone from "../components/Milestone"
@@ -22,17 +25,28 @@ class Goal_page extends Component {
    )
   }
 
+  nextButtonActionsOnGoal = () => {
+    this.props.addGoal(this.props.goalText)
+    this.props.closeAddGoalDialog()
+    this.props.openAddMilestonesDialog()
+
+  }
+
+  nextButtonActionsOnMilestones = () => {
+    this.props.addMilestones(this.props.milestonesText)
+    this.props.closeAddMilestonesDialog()
+    this.props.openAddStepsDialog()
+  }
+
+  nextButtonActionsOnSteps = () => {
+    this.props.addSteps(this.props.stepsText)
+    this.props.closeAddStepsDialog()
+  }
+
   componentWillMount() {
-    // this.serverRequest.abort();
     this.props.fetchGoal();
     this.props.fetchUser(1);
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if(nextProps.newGoal) {
-  //
-  //   }
-  // }
 
   render() {
     var g = this.props.goals;
@@ -40,16 +54,43 @@ class Goal_page extends Component {
       <FlatButton
         label="Cancel"
         primary={true}
-        onTouchTap={()=> {this.props.closeAddGoalDialog()}}
+        onTouchTap={() => { this.props.closeAddGoalDialog() }}
       />,
       <FlatButton
         label="Next"
         primary={true}
-        disabled={!this.props.text}
-        onTouchTap={this.handleClose}
-        onClick={this.handleSubmit}
+        disabled={!this.props.goalText}
+        onTouchTap={() => { this.nextButtonActionsOnGoal() }}
       />,
     ];
+
+    const milestonesActions = [
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onTouchTap={() => { this.props.closeAddMilestonesDialog() }}
+      />,
+      <FlatButton
+        label="Next"
+        primary={true}
+        disabled={!this.props.milestonesText}
+        onTouchTap={() => { this.nextButtonActionsOnMilestones() }}
+      />,
+  ];
+
+    const stepsActions = [
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onTouchTap={() => { this.props.closeAddStepsDialog() }}
+      />,
+      <FlatButton
+        label="Next"
+        primary={true}
+        disabled={!this.props.stepsText}
+        onTouchTap={() => { this.nextButtonActionsOnSteps() }}
+      />,
+    ]
     return (
       <div>
         <h2>{this.props.user.user.username}{'\''}s Goals</h2>
@@ -58,6 +99,8 @@ class Goal_page extends Component {
           </MuiThemeProvider>
         <h1>{g.goal}</h1>
         <Milestone milestones={g.milestones} />
+
+
         <MuiThemeProvider muiTheme={muiTheme}>
           <Dialog
             title="Add New Goal"
@@ -66,11 +109,42 @@ class Goal_page extends Component {
             open={!!this.props.openGoalDialog}
           >
           <MuiText
-            onSave={this.props.onSave}
             hintText="goal"
             floatingLabelText="goal"
-            text={this.props.text}
+            text={this.props.goalText}
             handleChange={this.props.handleGoalInput}
+            />
+          </Dialog>
+        </MuiThemeProvider>
+
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <Dialog
+            title="Add New milestones"
+            actions={milestonesActions}
+            modal={true}
+            open={!!this.props.openMilestonesDialog}
+          >
+          <MuiText
+            hintText="milestone"
+            floatingLabelText="milestone"
+            text={this.props.milestoneText}
+            handleChange={this.props.handleMilestonesInput}
+            />
+          </Dialog>
+        </MuiThemeProvider>
+
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <Dialog
+            title="Add New steps"
+            actions={stepsActions}
+            modal={true}
+            open={!!this.props.openStepsDialog}
+          >
+          <MuiText
+            hintText="step"
+            floatingLabelText="step"
+            text={this.props.stepsText}
+            handleChange={this.props.handleStepsInput}
             />
           </Dialog>
         </MuiThemeProvider>
@@ -84,7 +158,11 @@ const mapStateToProps = (state) => {
     user: state.user,
     goals: state.goals.goals,
     openGoalDialog: state.goals.openGoalDialog,
-    text: state.goals.text
+    openMilestonesDialog: state.milestones.openMilestonesDialog,
+    openStepsDialog: state.steps.openStepsDialog,
+    goalText: state.goals.goalText,
+    milestonesText: state.milestones.milestonesText,
+    stepsText: state.steps.stepsText,
   }
 }
 
@@ -93,9 +171,19 @@ const mapDispatchToProps = (dispatch) => {
     {
       fetchGoal,
       fetchUser,
+
+      addGoal,
+      addMilestones,
+      addSteps,
       openAddGoalDialog,
+      openAddMilestonesDialog,
+      openAddStepsDialog,
       closeAddGoalDialog,
+      closeAddMilestonesDialog,
+      closeAddStepsDialog,
       handleGoalInput,
+      handleMilestonesInput,
+      handleStepsInput,
     }, dispatch);
 }
 

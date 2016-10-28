@@ -38,6 +38,28 @@ export default function reducer(state={
           milestones: state.milestones.filter(milestone => milestone.id !== action.payload),
         }
       }
+
+
+      case "OPEN_ADD_MILESTONES_DIALOG": {
+        return {
+          ...state,
+          openMilestonesDialog: {},
+        }
+      }
+
+      case "CLOSE_ADD_MILESTONES_DIALOG": {
+        return {
+          ...state,
+          openMilestonesDialog: null,
+        }
+      }
+
+      case "HANDLE_MILESTONES_INPUT": {
+        return {
+          ...state,
+          milestonesText: action.payload
+        }
+      }
     }
 
     return state
