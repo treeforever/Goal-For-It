@@ -29,7 +29,6 @@ class Goal_page extends Component {
     this.props.addGoal(this.props.goalText)
     this.props.closeAddGoalDialog()
     this.props.openAddMilestonesDialog()
-
   }
 
   nextButtonActionsOnMilestones = () => {
