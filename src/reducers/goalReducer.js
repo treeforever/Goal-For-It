@@ -63,8 +63,6 @@ export default function reducer(state = defaultState, action) {
           goalText: action.payload
         }
       }
-    }
-
 
       case "COMPLETE_GOAL": {
         return {
@@ -133,5 +131,8 @@ export default function reducer(state = defaultState, action) {
 
       default:
         return state;
+
     }
+
 }
+
