@@ -14,6 +14,8 @@ const userRoutes  = require('./routes/users.js');
 const loginRoutes = require('./routes/register.js');
 const goalRoutes  = require('./routes/goal.js');
 const groupRoutes = require('./routes/group.js');
+const mileRoutes  = require('./routes/mile.js')
+const stepRoutes  = require('./routes/step.js')
 
 
 //allows react server to perform requests to this server(api)
@@ -34,6 +36,8 @@ app.use(express.static(__dirname + '/public'));
 app.use('/login', loginRoutes(knex));
 app.use('/api/users', userRoutes(knex));
 app.use('/api/goals', goalRoutes(knex));
+app.use('/api/mile', mileRoutes(knex));
+app.use('/api/step', stepRoutes(knex));
 app.use('/api/group', groupRoutes(knex))
 
 

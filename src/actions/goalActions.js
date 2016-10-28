@@ -1,31 +1,11 @@
 import axios from "axios"
 
-//usual way for ajex calls
-// export function fetchGoal() {
-//   return function(dispatch) {
-//       axios.get("http://localhost:8080/api/goal")
-//       .then((response) => {
-//         //todo: refactor
-//         console.log("big chunk from server", [response.data][0])
-//         dispatch({type: "FETCH_GOALS_FULFILLED",
-//                   payload: {
-//                     goal: [response.data][0][0].goal,
-//                   }
-//                 })
-//       })
-//       .catch((err) => {
-//         dispatch({type: "FETCH_GOALS_REJECTED", payload: err})
-//       })
-//   }
-// }
-
-
 //use Promise middleware
 export function fetchGoal(goal) {
   const url = `http://localhost:8080/api/goals/${goal}`;
   const request = axios.get(url);
   return {
-    type: "FETCH_GOALS",
+    type: "FETCH_GOAL",
     payload: request
   };
 }
@@ -35,7 +15,7 @@ export function fetchGoal(goal) {
 export function addGoal(goal) {
   const url = "http://localhost:8080/api/goals"
   let data = {goal}
-  let request = axios.post(url, data)
+  axios.post(url, data)
   return {
     type: 'ADD_GOAL',
     payload: {
@@ -62,10 +42,30 @@ export function deleteGoal(id) {
 export function checkedGoal(id, checked) {
   const url = `http://localhost:8080/api/goals/${id}`
   let isChecked = {checked: !checked}
-  let request = axios.put(url, isChecked)
+  axios.put(url, isChecked)
   return {
     type: 'COMPLETE_GOAL',
     payload: !checked
+  }
+}
+
+export function checkedMile(milestone, index) {
+  const url = `http://localhost:8080/api/mile/${milestone.id}`
+  let isChecked = {checked: !milestone.checked}
+  axios.put(url, isChecked)
+  return {
+    type: 'COMPLETE_MILE',
+    payload: index
+  }
+}
+
+export function checkedStep(step, index) {
+  const url = `http://localhost:8080/api/step/${step.id}`
+  let isChecked = {checked: !step.checked}
+  axios.put(url, isChecked)
+  return {
+    type: 'COMPLETE_STEP',
+    payload: {step, index}
   }
 }
 

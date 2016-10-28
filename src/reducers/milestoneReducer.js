@@ -1,5 +1,6 @@
 export default function reducer(state={
     milestones: [],
+    checked: [],
     error: null,
   }, action) {
 

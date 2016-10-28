@@ -1,25 +1,31 @@
-export default function reducer(state={
-    goals: { milestones: [] },
+const defaultState = {
+
+    // TODO GOAL
+    goal: { milestones: [] },
+
     error: null,
-    checked: false
-  }, action) {
+    goalChecked: false
+  };
+
+export default function reducer(state = defaultState, action) {
 
 //state argument is not application state, only the state this reducer is
 // responsible for
     switch (action.type) {
-      case "FETCH_GOALS_REJECTED": {
+      case "FETCH_GOAL_REJECTED": {
         return {...state, error: action.payload}
       }
-      case "FETCH_GOALS_FULFILLED": {
+      case "FETCH_GOAL_FULFILLED": {
+        // console.log("GOALS action payload", action.payload.data)
         return {
           ...state,
-          goals: action.payload.data
+          goal: action.payload.data
         }
       }
       case "ADD_GOAL": {
         return {
           ...state,
-          goals: {...state.goals, goal: action.payload },
+          goal: {...state.goals, goal: action.payload },
         }
       }
 
@@ -47,7 +53,72 @@ export default function reducer(state={
           checked: action.payload
         }
       }
-    }
 
-    return state
+      case "COMPLETE_MILE": {
+        let index = action.payload
+
+        let completedMilestone = state.goal.milestones[index]
+
+        completedMilestone = {
+          ...completedMilestone,
+          checked: !completedMilestone.checked
+        }
+
+        let milestones = [
+          ...state.goal.milestones.slice(0, index),
+          completedMilestone,
+          ...state.goal.milestones.slice(index + 1, Infinity),
+        ]
+
+        // console.log(milestones)
+
+        return {
+          ...state,
+          goal: {
+            ...state.goal,
+            milestones
+          }
+        }
+      }
+
+      case "COMPLETE_STEP":
+        const stepIndex = action.payload.index;
+        // let stepChecked = action.payload.step.checked
+        const milestoneID = action.payload.step.milestone_id;
+
+        let selectedMile;
+        state.goal.milestones.forEach((milestone, i) => {
+          if(milestone.id === milestoneID){
+            selectedMile = i;
+          }
+        })
+        const step = state.goal.milestones[selectedMile].steps[stepIndex];
+        // step.checked = !step.checked;
+        // state.goal.milestones[selectedMile].steps[stepIndex] = step;
+
+        return {
+          ...state,
+          goal: {
+            ...state.goal,
+            milestones: [
+              ...state.goal.milestones.slice(0, selectedMile),
+              {
+                ...state.goal.milestones[selectedMile],
+                steps: [
+                  ...state.goal.milestones[selectedMile].steps.slice(0, stepIndex),
+                  {
+                    ...step,
+                    checked: !step.checked
+                  },
+                  ...state.goal.milestones[selectedMile].steps.slice(stepIndex + 1)
+                ]
+              },
+              ...state.goal.milestones.slice(selectedMile + 1, Infinity),
+            ]
+          }
+        };
+
+      default:
+        return state;
+    }
 }

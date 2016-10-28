@@ -38,10 +38,13 @@ module.exports = (knex) => {
       .select('goals.goal',
               'milestones.mile_title',
               'milestones.milestone_id',
+              'milestones.checked',
               'goals.goal_id',
               'goals.creator_id',
               'steps.step',
-              'steps.step_id'
+              'steps.step_id',
+              'steps.checked',
+              'steps.milestone_id'
             )
       .then((results) => {
         let groupedResults = _.groupBy(results, function(entry){ return entry.mile_title})
@@ -68,7 +71,6 @@ module.exports = (knex) => {
   router.options('/:goal_id', cors())
 
   router.put('/:goal_id', cors(), jsonParser, (req, res) => {
-    console.log(req.body.checked)
     let selectedGoalId = Number(req.params.goal_id)
     knex('goals')
       .where('goal_id', selectedGoalId)
@@ -80,7 +82,8 @@ module.exports = (knex) => {
         console.log(`Goal ${selectedGoalId} completed`)
         res.json(req.params)
       })
-  })
+    })
+
 
   return router;
 };

@@ -12,11 +12,6 @@ import { addSteps } from "../actions/stepActions"
 import { addNotif } from "../actions/groupActions"
 
 
-
-
-
-
-
 class NewGoal extends Component {
 
   handleSaveGoal = text => {
@@ -65,7 +60,7 @@ class NewGoal extends Component {
   }
 
   render() {
-    console.log(this.props.goals.goal)
+    console.log(this.props.goal.goal)
     return (
       <div>
         <Form1 onSaveGoal={this.handleSaveGoal} onSaveMilestones={this.handleSaveMilestones}/>
@@ -84,7 +79,7 @@ class NewGoal extends Component {
 
 const mapStateToProps = (store) => {
   return {
-    goals: store.goals.goals,
+    goal: store.goal.goal,
     milestones: store.milestones
   }
 }
