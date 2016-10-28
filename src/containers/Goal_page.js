@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { fetchGoal } from "./actions/goalActions"
-import { fetchUser } from "./actions/userActions"
+import { fetchGoal } from "../actions/goalActions"
+import { fetchUser } from "../actions/userActions"
 
-import Milestone from "./components/Milestone"
+import Milestone from "../components/Milestone"
+import Form1 from "./Form1"
 
 class Goal_page extends Component {
 
@@ -29,6 +30,7 @@ class Goal_page extends Component {
     var g = this.props.goals;
     return (
       <div>
+        <Form1 />
         <h2>{this.props.user.user.username}s Goals</h2>
         <h1>{g.goal}</h1>
         <Milestone milestones={g.milestones} />

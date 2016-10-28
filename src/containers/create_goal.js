@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from "react-redux"
 import { bindActionCreators } from 'redux'
 
-import Form1 from "../components/Form1"
+
 import Step from "../components/Form2"
 import MuiText from "../components/MuiText"
 
@@ -38,9 +38,9 @@ class NewGoal extends Component {
     console.log(this.props.goals.goal)
     return (
       <div>
-        <Form1 onSaveGoal={this.handleSaveGoal} onSaveMilestones={this.handleSaveMilestones} />
 
-        
+
+
 
       </div>
     )

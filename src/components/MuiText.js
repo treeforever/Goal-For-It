@@ -11,17 +11,15 @@ class MuiText extends Component {
 
   handleSubmit = e => {
     const text = e.target.value.trim()
-    if (e.which === 13) {
-      this.props.onSave(text)
-      if (this.props.newTodo) {
-        this.setState({ text: '' })
-      }
-    }
+    this.props.onSave(text)
+    this.setState({ text: '' })
+
   }
 
   handleChange = e => {
+    this.props.activateNext()
     if (this.state.limit){
-      this.props.addRow(e.target.value)
+      // this.props.addRow(e.target.value)
       this.setState({ limit: 0 })
     }
     this.setState({ text: e.target.value })

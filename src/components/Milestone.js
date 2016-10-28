@@ -1,56 +1,44 @@
-import React, { Component } from 'react'
+import React from 'react'
 // import Step from './Step'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import muiTheme from './MuiTheme'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
-import MuiText from './MuiText'
 
-const style = {
-  marginRight: 20,
-};
+const Milestone = ({ milestones }) => {
+  return (
+    <div>
+      {milestones.map((milestone, index) => {
+        return (
+          <div key={index}>
+            <h2>{milestone[0][2]}
+               <input
+                className="checkbox"
+                type="checkbox"
+                // onChange={this.props.onChange}
+              />
+            </h2>
+            <Step milestone={milestone} />
+          </div>
+        )
+      })}
 
-class Milestone extends Component {
-
-  handleAddStep = () => {
-    this.props.addStep(this.props.milestoneIndex)
-  }
-
-  render(){
-    return (
-      <article className="milestone">
-        <img src="../../images/milestone.jpg" alt="milestone" height="50" width="50"/>
-        <MuiText
-          className="milestone-input"
-          onSave={this.props.onSaveMilestones}
-          hintText={this.props.milestone.hintText}
-          floatingLabelText={this.props.milestone.floatingLabelText}
-          addRow={this.props.addRow}
-        />
-        <span className="add-step-button">
-          <MuiThemeProvider muiTheme={muiTheme}>
-            <FloatingActionButton
-              mini={true}
-              style={style}
-              muiTheme={muiTheme}
-              onClick={this.handleAddStep}
-              >
-              <ContentAdd muiTheme={muiTheme}/>
-            </FloatingActionButton>
-          </MuiThemeProvider>
-        </span>
-        {
-          this.props.milestone.stepInputs.map((step) => {
-            return (
-              <p>hey</p>
-
-            )
-          })
-        }
-      </article>
-    );
-  }
+    </div>
+  );
 }
 
+const Step = ({ milestone }) => {
+  return (
+    <div>
+      {milestone[1].map((step, index) => {
+        return <h3 key={index}>{step[2]}
+           <input
+            className="checkbox"
+            type="checkbox"
+            // onChange={this.props.onChange}
+          />
+        </h3>
+        })
+      }
+
+    </div>
+  );
+}
 
 export default Milestone

@@ -10,6 +10,7 @@ const Step = () => {
             className="step-input"
             hintText={this.props.stepInputs.hintText}
             floatingLabelText={this.props.stepInputs.floatingLabelText}
+            onSave={this.props.onSave}
           />
 
     </article>
