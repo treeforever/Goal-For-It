@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { addGoal, fetchGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
+import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
+import { fetchUser } from "../actions/userActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepsInput} from "../actions/stepActions"
+import { addNotif } from "../actions/groupActions"
 
-import { fetchUser } from "../actions/userActions"
 
 import Milestone from "../components/MilestoneIndex"
 import Form1 from "./Form1"
@@ -23,6 +24,22 @@ class Goal_page extends Component {
        <li> {goals[0]} </li>
      </ul>
    )
+  }
+
+  handleChange = (event) => {
+    this.props.checkedGoal(this.props.goal.goal_id, this.props.checked)
+
+    const content = (this.props.goal.goal.checked ? `${this.props.user.user.username} unchecked their goal: ${this.props.goal.goal}` : `${this.props.user.user.username} completed their goal: ${this.props.goal.goal}`)
+
+    this.props.addNotif({
+      type: "notificaiton",
+      content: content })
+  }
+
+
+  componentWillMount = () => {
+    this.props.fetchGoal(2);
+    this.props.fetchUser(1);
   }
 
   nextButtonActionsOnGoal = () => {
@@ -42,13 +59,8 @@ class Goal_page extends Component {
     this.props.closeAddStepsDialog()
   }
 
-  componentWillMount() {
-    this.props.fetchGoal();
-    this.props.fetchUser(1);
-  }
-
   render() {
-    var g = this.props.goals;
+    var g = this.props.goal;
     const modalActions = [
       <FlatButton
         label="Cancel"
@@ -90,14 +102,23 @@ class Goal_page extends Component {
         onTouchTap={() => { this.nextButtonActionsOnSteps() }}
       />,
     ]
+
     return (
       <div>
         <h2>{this.props.user.user.username}{'\''}s Goals</h2>
           <MuiThemeProvider muiTheme={muiTheme}>
             <RaisedButton label="+" onClick={ () => this.props.openAddGoalDialog() } />
           </MuiThemeProvider>
-        <h1>{g.goal}</h1>
-        <Milestone milestones={g.milestones} />
+        <h1>{g.goal}
+          <input
+            className="checkbox"
+            type="checkbox"
+            onChange={this.handleChange}
+            value={this.props.checked}
+          />
+        </h1>
+        <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username}/>
+
 
 
         <MuiThemeProvider muiTheme={muiTheme}>
@@ -155,11 +176,11 @@ class Goal_page extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-    goals: state.goals.goals,
-    openGoalDialog: state.goals.openGoalDialog,
+    goal: state.goal.goal,
+    openGoalDialog: state.goal.openGoalDialog,
     openMilestonesDialog: state.milestones.openMilestonesDialog,
     openStepsDialog: state.steps.openStepsDialog,
-    goalText: state.goals.goalText,
+    goalText: state.goal.goalText,
     milestonesText: state.milestones.milestonesText,
     stepsText: state.steps.stepsText,
   }
@@ -170,6 +191,8 @@ const mapDispatchToProps = (dispatch) => {
     {
       fetchGoal,
       fetchUser,
+      checkedGoal,
+      addNotif,
 
       addGoal,
       addMilestones,
