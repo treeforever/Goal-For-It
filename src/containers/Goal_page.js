@@ -59,17 +59,6 @@ class Goal_page extends Component {
     this.props.closeAddStepsDialog()
   }
 
-  // addRow = (milestonesText) => {
-  //   if (){
-  //     let newMilestone = {}
-  //
-  //       milestoneInputs: [...this.state.milestoneInputs, newMilestone]
-  //     })
-  //   } else {
-  //     return
-  //   }
-  // }
-
 
   render() {
     var g = this.props.goal;
@@ -96,7 +85,7 @@ class Goal_page extends Component {
       <FlatButton
         label="Next"
         primary={true}
-        disabled={!this.props.milestonesText}
+        disabled={!this.props.milestoneText}
         onTouchTap={() => { this.nextButtonActionsOnMilestones() }}
       />,
   ];

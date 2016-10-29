@@ -64,6 +64,6 @@ export function addMilestoneRow() {
 
   return {
     type: 'ADD_MILESTONE_ROW',
-    payload: 1
+    payload: 'another row'
   };
 }
