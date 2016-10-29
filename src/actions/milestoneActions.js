@@ -45,9 +45,25 @@ export function closeAddMilestonesDialog() {
     type: 'CLOSE_ADD_MILESTONES_DIALOG',
   };
 }
+
+export function handleMilestoneInput(text) {
+  return {
+    type: 'HANDLE_MILESTONE_INPUT',
+    payload: text
+  };
+}
+
 export function handleMilestonesInput(text) {
   return {
     type: 'HANDLE_MILESTONES_INPUT',
     payload: text
+  };
+}
+
+export function addMilestoneRow() {
+
+  return {
+    type: 'ADD_MILESTONE_ROW',
+    payload: 1
   };
 }

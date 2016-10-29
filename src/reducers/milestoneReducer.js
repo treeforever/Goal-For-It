@@ -1,6 +1,9 @@
 export default function reducer(state={
     milestones: [],
     checked: [],
+    milestoneRows: [1],
+    milestoneText: '',
+    milestonesText: [],
     error: null,
   }, action) {
 
@@ -55,10 +58,24 @@ export default function reducer(state={
         }
       }
 
+      case "HANDLE_MILESTONE_INPUT": {
+        return {
+          ...state,
+          milestoneText: action.payload
+        }
+      }
+
       case "HANDLE_MILESTONES_INPUT": {
         return {
           ...state,
-          milestonesText: action.payload
+          milestonesText: [...state.milestonesText, state.milestoneText]
+        }
+      }
+
+      case "ADD_MILESTONE_ROW": {
+        return {
+          ...state,
+          milestoneRows: [...state.milestoneRows, action.payload]
         }
       }
     }

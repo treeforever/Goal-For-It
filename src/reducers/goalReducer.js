@@ -20,7 +20,7 @@ export default function reducer(state = defaultState, action) {
       case "ADD_GOAL": {
         return {
           ...state,
-          goal: action.payload.goal,
+          newGoal: action.payload.goal,
           goalText: ''
         }
       }
@@ -135,4 +135,3 @@ export default function reducer(state = defaultState, action) {
     }
 
 }
-

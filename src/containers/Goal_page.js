@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { fetchUser } from "../actions/userActions"
-import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput} from "../actions/milestoneActions"
+import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestoneInput, handleMilestonesInput, addMilestoneRow} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepsInput} from "../actions/stepActions"
 import { addNotif } from "../actions/groupActions"
 
@@ -59,6 +59,18 @@ class Goal_page extends Component {
     this.props.closeAddStepsDialog()
   }
 
+  // addRow = (milestonesText) => {
+  //   if (){
+  //     let newMilestone = {}
+  //
+  //       milestoneInputs: [...this.state.milestoneInputs, newMilestone]
+  //     })
+  //   } else {
+  //     return
+  //   }
+  // }
+
+
   render() {
     var g = this.props.goal;
     const modalActions = [
@@ -102,7 +114,7 @@ class Goal_page extends Component {
         onTouchTap={() => { this.nextButtonActionsOnSteps() }}
       />,
     ]
-
+    console.log("this.props.milestonesText", this.props.milestonesText, "milestoneText is ", this.props.milestoneText)
     return (
       <div>
         <h2>{this.props.user.user.username}{'\''}s Goals</h2>
@@ -144,12 +156,20 @@ class Goal_page extends Component {
             modal={true}
             open={!!this.props.openMilestonesDialog}
           >
-          <MuiText
-            hintText="milestone"
-            floatingLabelText="milestone"
-            text={this.props.milestoneText}
-            handleChange={this.props.handleMilestonesInput}
-            />
+          {this.props.milestoneRows.map((num, i)=>{
+            return (<div>
+                    <MuiText
+                      hintText="milestone"
+                      floatingLabelText="milestone"
+                      text={this.props.milestonesText[i]}
+                      handleChange={this.props.handleMilestoneInput}
+                      handleSubmit={this.props.handleMilestonesInput}
+                      addMilestoneRow={this.props.addMilestoneRow}
+                      />
+                      </div>
+                    )
+
+          })}
           </Dialog>
         </MuiThemeProvider>
 
@@ -181,7 +201,9 @@ const mapStateToProps = (state) => {
     openMilestonesDialog: state.milestones.openMilestonesDialog,
     openStepsDialog: state.steps.openStepsDialog,
     goalText: state.goal.goalText,
+    milestoneText: state.milestones.milestoneText,
     milestonesText: state.milestones.milestonesText,
+    milestoneRows: state.milestones.milestoneRows,
     stepsText: state.steps.stepsText,
   }
 }
@@ -204,8 +226,10 @@ const mapDispatchToProps = (dispatch) => {
       closeAddMilestonesDialog,
       closeAddStepsDialog,
       handleGoalInput,
+      handleMilestoneInput,
       handleMilestonesInput,
       handleStepsInput,
+      addMilestoneRow,
     }, dispatch);
 }
 
