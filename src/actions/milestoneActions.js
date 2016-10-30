@@ -11,12 +11,13 @@ export function fetchMilestones() {
   };
 }
 
-export function addMilestones(milestones) {
+export function addMilestones(milestones, goalId) {
+  const url = "http://localhost:8080/api/miles"
+  let data = {newMilestones: milestones, goal_id: goalId}
+  const res = axios.post(url, data)
   return {
     type: 'ADD_MILESTONES',
-    payload: {
-      milestones
-    }
+    payload: res
   }
 }
 

@@ -7,7 +7,17 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
 
+const styles = {
+  customWidth: {
+    width: 150,
+  },
+};
+
 class NewStep extends Component {
+  handleSelectMilestone = (event, index, value) => {
+    console.log('e',event, 'index', index, 'value', value)
+  }
+
   render(){
     const stepsActions = [
       <FlatButton
@@ -37,7 +47,8 @@ class NewStep extends Component {
                         <SelectField
                           floatingLabelText="Milestone"
                           value={0}
-                          onChange={this.props.selectMilestone}
+                          onChange={() => { this.handleSelectMilestone() }}
+                          autoWidth={true}
                         >
                           {this.props.newMilestones.map((m, j) => {
                             return (

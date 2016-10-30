@@ -17,16 +17,15 @@ export default function reducer(state = defaultState, action) {
           goal: action.payload.data
         }
       }
-      case "ADD_GOAL": {
+      case "ADD_GOAL_FULFILLED": {
         return {
           ...state,
-          newGoal: action.payload.goal,
+          newGoal: Object.assign({}, state.newGoal, {id: action.payload.data.id}),
           goalText: ''
         }
       }
-
       case "UPDATE_GOAL": {
-        const { id, text } = action.payload
+        const { id } = action.payload
         const newGoals = [...state.goals]
         const goalToUpdate = newGoals.findIndex(goal => goal.id === id)
         newGoals[goalToUpdate] = action.payload;

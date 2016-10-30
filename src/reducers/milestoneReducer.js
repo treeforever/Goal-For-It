@@ -20,10 +20,10 @@ export default function reducer(state={
           milestones: action.payload.data
         }
       }
-      case "ADD_MILESTONES": {
+      case "ADD_MILESTONES_FULFILLED": {
         return {
           ...state,
-          newMilestones: [...state.milestonesText],
+          newMilestonesIds: action.payload.data.id,
           milestoneText: '',
           milestonesText: [],
         }
@@ -74,7 +74,8 @@ export default function reducer(state={
       case "HANDLE_MILESTONES_INPUT": {
         return {
           ...state,
-          milestonesText: [...state.milestonesText, state.milestoneText]
+          milestonesText: [...state.milestonesText, state.milestoneText],
+          newMilestones: [...state.milestonesText, state.milestoneText]
         }
       }
 

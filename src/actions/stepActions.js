@@ -59,10 +59,10 @@ export function handleStepsInput(text) {
   };
 }
 
-export function selectMilestone(text) {
+export function selectMilestone(index) {
   return {
     type: 'SELECT_MILESTONE',
-    payload: text
+    payload: index
   };
 }
 

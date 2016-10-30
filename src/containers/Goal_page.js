@@ -50,7 +50,7 @@ class Goal_page extends Component {
   }
 
   nextButtonActionsOnMilestones = () => {
-    this.props.addMilestones(this.props.milestonesText)
+    this.props.addMilestones(this.props.milestonesText, this.props.newGoal.id)
     this.props.closeAddMilestonesDialog()
     this.props.openAddStepsDialog()
   }
@@ -106,7 +106,7 @@ class Goal_page extends Component {
             floatingLabelText="goal"
             text={this.props.goalText}
             handleChange={this.props.handleGoalInput}
-            handleSubmit={this.props.hanldeGoalInput}
+            handleSubmit={this.props.handleGoalInput}
             addRow={()=> { }}
             />
           </Dialog>
@@ -151,6 +151,7 @@ const mapStateToProps = (state) => {
     openMilestonesDialog: state.milestones.openMilestonesDialog,
     openStepsDialog: state.steps.openStepsDialog,
     goalText: state.goal.goalText,
+    newGoal: state.goal.newGoal,
     milestoneText: state.milestones.milestoneText,
     milestonesText: state.milestones.milestonesText,
     milestoneRows: state.milestones.milestoneRows,
