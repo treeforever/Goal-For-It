@@ -19,7 +19,6 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Goal_page}></IndexRoute>
-        <Route path="new-goal" component={NewGoal}></Route>
         <Route path="group" component={Group_page}></Route>
       </Route>
     </Router>

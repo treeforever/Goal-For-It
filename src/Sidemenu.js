@@ -7,7 +7,6 @@ class Sidemenu extends Component {
 
     return (
       <Menu isOpen={ false }>
-          <Link to="new-goal" className="menu-item">New Goal</Link>
           <Link to="/" className="menu-item">Goal: Become a developer</Link>
           <Link to="group" className="menu-item">Group</Link>
       </Menu>

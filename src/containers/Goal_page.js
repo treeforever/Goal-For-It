@@ -11,7 +11,6 @@ import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, han
 import { addNotif } from "../actions/groupActions"
 
 import Milestone from "../components/MilestoneIndex"
-import Form1 from "./Form1"
 import NewMilestone from "../components/NewMilestone"
 import NewStep from "../components/NewStep"
 import muiTheme from '../components/MuiTheme'
@@ -19,13 +18,13 @@ import MuiText from '../components/MuiText'
 
 
 class Goal_page extends Component {
-  renderGoals = (goals) => {
-   return (
-     <ul>
-       <li> {goals[0]} </li>
-     </ul>
-   )
-  }
+  // renderGoals = (goals) => {
+  //  return (
+  //    <ul>
+  //      <li> {goals[0]} </li>
+  //    </ul>
+  //  )
+  // }
 
   handleChange = (event) => {
     this.props.checkedGoal(this.props.goal.goal_id, this.props.checked)
@@ -44,6 +43,7 @@ class Goal_page extends Component {
   }
 
   nextButtonActionsOnGoal = () => {
+    console.log('next')
     this.props.addGoal(this.props.goalText)
     this.props.closeAddGoalDialog()
     this.props.openAddMilestonesDialog()
@@ -63,7 +63,7 @@ class Goal_page extends Component {
 
   render() {
     let g = this.props.goal;
-    const modalActions = [
+    const goalActions = [
       <FlatButton
         label="Cancel"
         primary={true}
@@ -73,7 +73,7 @@ class Goal_page extends Component {
         label="Next"
         primary={true}
         disabled={!this.props.goalText}
-        onTouchTap={() => { this.nextButtonActionsOnGoal() }}
+        onTouchTap={() => { console.log('here'); this.nextButtonActionsOnGoal() }}
       />,
     ];
 
@@ -97,7 +97,7 @@ class Goal_page extends Component {
         <MuiThemeProvider muiTheme={muiTheme}>
           <Dialog
             title="Add New Goal"
-            actions={modalActions}
+            actions={goalActions}
             modal={true}
             open={!!this.props.openGoalDialog}
           >
