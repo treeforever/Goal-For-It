@@ -38,9 +38,9 @@ class Goal_page extends Component {
   }
 
   handleChange = (event) => {
-    this.props.checkedGoal(this.props.goal.goal_id, this.props.checked)
+    this.props.checkedGoal(this.props.goal)
 
-    const content = (this.props.goal.goal.checked ? `${this.props.user.user.username} unchecked their goal: ${this.props.goal.goal}` : `${this.props.user.user.username} completed their goal: ${this.props.goal.goal}`)
+    const content = (this.props.goal.goal_checked ? `${this.props.user.user.username} unchecked their goal: ${this.props.goal.goal}` : `${this.props.user.user.username} completed their goal: ${this.props.goal.goal}`)
 
     this.props.addNotif({
       type: "notificaiton",
@@ -100,12 +100,12 @@ class Goal_page extends Component {
         <MuiThemeProvider muiTheme={muiTheme}>
           <RaisedButton label="+" onClick={ () => this.props.openAddGoalDialog() } />
           </MuiThemeProvider>
-        <h1>{this.props.goal.goal}
+        <h1>{g.goal}
           <MuiThemeProvider style={styles.block}>
             <Checkbox
             style={styles.checkbox}
             onCheck={this.handleChange}
-            checked={this.props.goal.checked}
+            checked={g.goal_checked}
             />
           </MuiThemeProvider>
         </h1>

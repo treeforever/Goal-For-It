@@ -60,15 +60,16 @@ export function handleGoalInput(text) {
 
 export function checkedGoal(goal) {
   const url = `http://localhost:8080/api/goals/${goal.goal_id}`
-  let isChecked = {checked: !goal.checked}
+  let isChecked = {checked: !goal.goal_checked}
   axios.put(url, isChecked)
   return {
     type: 'COMPLETE_GOAL',
-    payload: goal
+    payload: !goal.goal_checked
   }
 }
 
 export function checkedMile(milestone, index) {
+  console.log("ACTION", milestone.checked)
   const url = `http://localhost:8080/api/mile/${milestone.id}`
   let isChecked = {checked: !milestone.checked}
   axios.put(url, isChecked)
