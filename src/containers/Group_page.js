@@ -34,14 +34,35 @@ class Group_page extends Component {
   }
 
   handleTouchTap() {
-  alert('You clicked the Chip.');
-  // this.props.fetchGoal(goal)
-}
+    alert('You clicked the Chip.');
+    // this.props.fetchGoal(goal)
+  }
 
 
   render() {
     return (
       <div className="group">
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <RaisedButton label="pot" onClick={ () => this.props.openPotDialog() } />
+        </MuiThemeProvider>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <Dialog
+            title="Add New Goal"
+            actions={goalActions}
+            modal={true}
+            open={!!this.props.openGoalDialog}
+          >
+          <MuiText
+            hintText="goal"
+            floatingLabelText="goal"
+            text={this.props.goalText}
+            handleChange={this.props.handleGoalInput}
+            handleSubmit={this.props.handleGoalInput}
+            addRow={()=> { }}
+            />
+          </Dialog>
+        </MuiThemeProvider>
+
         <MuiThemeProvider>
           <AppBar
             title={this.props.group[0].name }
@@ -84,10 +105,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchNotifs: fetchNotifs,
     fetchGroup: fetchGroup,
     fetchUser: fetchUser,
-    fetchTagUser: fetchTagUser
+    fetchTagUser: fetchTagUser,
+    openPotDialog
   }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Group_page);
-
-
