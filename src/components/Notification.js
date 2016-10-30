@@ -9,7 +9,7 @@ class Notification extends Component {
       return (
         <ListItem
           primaryText={
-            <p style={{color: "white"}}>
+            <p style={{color: "black"}}>
               {this.props.notification.content}
             </p>
           }
@@ -21,7 +21,7 @@ class Notification extends Component {
       return(
         <ListItem
           primaryText={
-            <p style={{color: "white"}}>
+            <p style={{color: "black"}}>
               <span style={{color: 'blue'}}>{this.props.sender.username} says: </span> {this.props.notification.content}
             </p>
           }
