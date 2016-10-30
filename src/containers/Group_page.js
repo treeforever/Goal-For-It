@@ -12,6 +12,8 @@ import AppBar from 'material-ui/AppBar';
 import {List} from 'material-ui/List';
 // import injectTapEventPlugin from 'react-tap-event-plugin';
 // injectTapEventPlugin();
+import { RaisedButton, FlatButton, Dialog } from 'material-ui'
+
 
 
 class Group_page extends Component {
@@ -35,7 +37,7 @@ class Group_page extends Component {
 
   handleTouchTap() {
     alert('You clicked the Chip.');
-    // this.props.fetchGoal(goal)
+
   }
 
 
@@ -48,7 +50,7 @@ class Group_page extends Component {
         <MuiThemeProvider muiTheme={muiTheme}>
           <Dialog
             title="Add New Goal"
-            actions={goalActions}
+
             modal={true}
             open={!!this.props.openGoalDialog}
           >
@@ -106,7 +108,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchGroup: fetchGroup,
     fetchUser: fetchUser,
     fetchTagUser: fetchTagUser,
-    openPotDialog
+    openPotDialog,
   }, dispatch)
 }
 
