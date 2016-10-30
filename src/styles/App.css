@@ -106,11 +106,21 @@ input.inputBox {
 }
 
 /*group-page css*/
-.group .notification-box {
-  border: 5px solid black;
-  border-radius: 25px;
-  opacity: 0.5;
-  color: black;
+
+.group>ul {
+  margin: 30px;
+}
+.group .notification-box ul {
+  padding: 0px;
+  margin-top: 10px;
+}
+
+.page-header {
+  border-radius: 15px;
+  background-color: white;
+  color: #7cb1c1;
+  padding: 10px;
+  margin: 40px 10px 20px;
 }
 
 /*checkbox*/

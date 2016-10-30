@@ -12,6 +12,7 @@ export default function reducer(state={
         break;
       }
       case "FETCH_USER_FULFILLED": {
+        console.log("user", action.payload.data)
         return {
           ...state,
           user: action.payload.data

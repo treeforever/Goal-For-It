@@ -3,26 +3,41 @@ import { connect } from 'react-redux'
 import { checkedMile } from '../actions/goalActions'
 import { addNotif } from '../actions/groupActions'
 import Step from './StepIndex'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
+import Checkbox from 'material-ui/Checkbox';
+
+
+const styles = {
+  block: {
+    maxWidth: 250,
+  },
+  checkbox: {
+    marginBottom: 16,
+  },
+};
+
 
 const Milestone = ({ milestones, user, dispatch }) => (
   <div>
     {milestones.map((milestone, index) => {
+      console.log(user)
       const content = (milestone.checked ? `${user} unchecked their milestone: ${milestone.title}` : `${user} completed their milestone: ${milestone.title}`)
       return (
         <div key={index}>
-          <h2>{milestone.title}
-             <input
-              className="checkbox"
-              type="checkbox"
-              onChange={
+            <h2>{milestone.title}</h2>
+            <MuiThemeProvider style={styles.block}>
+              <Checkbox
+              style={styles.checkbox}
+              onCheck={
                 () => {
                   dispatch(checkedMile(milestone, index))
                   dispatch(addNotif({type: "notificaiton", content: content}))
                   }
-              }
+                }
               checked={milestone.checked}
-            />
-          </h2>
+              />
+            </MuiThemeProvider>
           <Step milestone={milestone} />
         </div>
       )

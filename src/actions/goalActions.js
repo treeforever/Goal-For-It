@@ -39,13 +39,14 @@ export function deleteGoal(id) {
 }
 
 
-export function checkedGoal(id, checked) {
-  const url = `http://localhost:8080/api/goals/${id}`
-  let isChecked = {checked: !checked}
+export function checkedGoal(goal) {
+  console.log("ACTOION", goal.checked)
+  const url = `http://localhost:8080/api/goals/${goal.goal_id}`
+  let isChecked = {checked: !goal.checked}
   axios.put(url, isChecked)
   return {
     type: 'COMPLETE_GOAL',
-    payload: !checked
+    payload: goal
   }
 }
 

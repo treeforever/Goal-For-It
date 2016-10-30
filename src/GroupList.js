@@ -1,13 +1,26 @@
 import React from 'react';
 import GroupUser from './GroupUser';
 
-const GroupList = ({ group }) => (
-   <ul>
+const styles = {
+  chip: {
+    margin: 4,
+  },
+  wrapper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    'justify-content': "center"
+  },
+};
+
+const GroupList = ({ group, click }) => (
+   <ul style={styles.wrapper} >
     {
       group.map((groupUser, index) => (
       <GroupUser
         key={index}
         grouplist={groupUser.username}
+        handleTouchTap={click}
       />
       ))
     }

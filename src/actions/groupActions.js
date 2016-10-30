@@ -19,7 +19,7 @@ export function fetchNotifs() {
   };
 }
 
-export function fetchUser(tag) {
+export function fetchTagUser(tag) {
   const url = `http://localhost:8080/api/users/tag/${tag}`
   let request = axios.get(url, tag)
   return {
