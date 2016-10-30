@@ -1,55 +1,62 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchGroup, fetchNotifs, addNotif, fetchUser } from "./actions/groupActions"
+import { fetchGroup, fetchNotifs, addNotif, fetchTagUser } from "../actions/groupActions"
+import { fetchUser } from "../actions/userActions"
 
-import NotificationList from './NotificationList'
-import GroupList from './GroupList'
-import InputBox from './components/InputBox'
+import NotificationList from '../components/NotificationList'
+import GroupList from '../components/GroupList'
+import InputBox from '../components/InputBox'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import muiTheme from '../components/MuiTheme'
-import MuiText from '../components/MuiText'
 import AppBar from 'material-ui/AppBar';
-
+import {List} from 'material-ui/List';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 
 class Group_page extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tag: []
-    }
-  }
+
 
   componentWillMount() {
     this.props.fetchGroup();
     this.props.fetchNotifs();
+    this.props.fetchUser(1)
   }
 
    handleSave = text => {
-    console.log(this.props.tag[0])
-      this.props.addNotif({type: "message", content: text, receiver_id: (this.props.tag[0] ? this.props.tag[0].user_id : null)})
+
+    const receiver = (this.props.tag[0] ? this.props.tag[0].user_id : null)
+    this.props.addNotif({sender_id: "amna", type: "message", content: text, receiver_id: receiver})
   }
 
   handleTag = text => {
-    this.props.fetchUser(text)
+    this.props.fetchTagUser(text)
   }
+
+  handleTouchTap() {
+  alert('You clicked the Chip.');
+  // this.props.fetchGoal(goal)
+}
 
 
   render() {
     return (
       <div className="group">
-        <AppBar
-          title="Title"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-        />
-        <h1 className="page-header">Group Name: {this.props.group[0].name }</h1>
-        <h3>Group Members: </h3>
-        <GroupList group={this.props.group} />
-        <div className="notification-box">
-          <h3>Notifications:</h3>
-          <NotificationList className="list-group" notifs={this.props.notifs}/>
-        </div>
+        <MuiThemeProvider>
+          <AppBar
+            title={this.props.group[0].name }
+            iconClassNameLeft="muidocs-icon-navigation-expand-more"
+          />
+        </MuiThemeProvider>
+        <MuiThemeProvider>
+            <GroupList group={this.props.group} click={this.handleTouchTap}/>
+        </MuiThemeProvider>
+
+        <MuiThemeProvider>
+          <List style={{color: 'white'}}>
+            <NotificationList className="list-group" notifs={this.props.notifs} sender={this.props.user.user}/>
+          </List>
+        </MuiThemeProvider>
         <InputBox newTodo
               onSave={this.handleSave}
               onTag={this.handleTag}
@@ -63,6 +70,7 @@ class Group_page extends Component {
 }
 
 const mapStateToProps = (store) => ({
+  user: store.user,
   group: store.group.group,
   notifs: store.group.notifs,
   tag: store.group.tag
@@ -71,7 +79,13 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => {
   //whenver addGoal is called, the result should be passed
   //to all of reducers
-  return bindActionCreators({ addNotif: addNotif, fetchNotifs: fetchNotifs, fetchGroup: fetchGroup, fetchUser: fetchUser }, dispatch)
+  return bindActionCreators({
+    addNotif: addNotif,
+    fetchNotifs: fetchNotifs,
+    fetchGroup: fetchGroup,
+    fetchUser: fetchUser,
+    fetchTagUser: fetchTagUser
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Group_page);

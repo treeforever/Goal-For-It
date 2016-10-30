@@ -51,7 +51,6 @@ export default function reducer(state = defaultState, action) {
           ...state,
           goal: {...state, checked: !action.payload.checked}
         }
-        console.log("REDUCER", action.payload.checked)
       }
 
       case "COMPLETE_MILE": {

@@ -10,11 +10,22 @@ import { addNotif } from "../actions/groupActions"
 
 
 import Milestone from "../components/MilestoneIndex"
-import Form1 from "./Form1"
+import Form1 from "../components/Form1"
 import { RaisedButton, FlatButton, Dialog } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import muiTheme from '../components/MuiTheme'
+// import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
+import AppBar from 'material-ui/AppBar';
+import Checkbox from 'material-ui/Checkbox';
+
+const styles = {
+  block: {
+    maxWidth: 250,
+  },
+  checkbox: {
+    marginBottom: 16,
+  },
+};
 
 
 class Goal_page extends Component {
@@ -105,6 +116,13 @@ class Goal_page extends Component {
 
     return (
       <div>
+        <MuiThemeProvider>
+          <AppBar
+            title={`${this.props.user.user.username}{'\''}s Goals`}
+            iconClassNameLeft="muidocs-icon-navigation-expand-more"
+            className="App-Bar"
+          />
+        </MuiThemeProvider>
         <h2>{this.props.user.user.username}{'\''}s Goals</h2>
           <MuiThemeProvider muiTheme={muiTheme}>
             <RaisedButton label="+" onClick={ () => this.props.openAddGoalDialog() } />

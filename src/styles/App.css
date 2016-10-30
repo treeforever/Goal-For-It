@@ -58,6 +58,8 @@ nav {
   background: #fbf3db;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
+  position: absolute;
+  z-index: 5;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -105,6 +107,10 @@ input.inputBox {
   margin-right: 25%;
 }
 
+.App-Bar {
+  position: absolute;
+  z-index: -1;
+}
 /*group-page css*/
 
 .group>ul {

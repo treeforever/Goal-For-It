@@ -6,11 +6,10 @@ import { fetchUser } from "./actions/userActions"
 
 import NotificationList from './NotificationList'
 import GroupList from './GroupList'
-import InputBox from './components/InputBox'
+import InputBox from '../components/InputBox'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar';
 import {List} from 'material-ui/List';
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -25,7 +24,6 @@ class Group_page extends Component {
   }
 
    handleSave = text => {
-    console.log(this.props.tag[0])
 
     const receiver = (this.props.tag[0] ? this.props.tag[0].user_id : null)
     this.props.addNotif({sender_id: "amna", type: "message", content: text, receiver_id: receiver})

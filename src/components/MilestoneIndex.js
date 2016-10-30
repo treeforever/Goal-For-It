@@ -21,7 +21,6 @@ const styles = {
 const Milestone = ({ milestones, user, dispatch }) => (
   <div>
     {milestones.map((milestone, index) => {
-      console.log(user)
       const content = (milestone.checked ? `${user} unchecked their milestone: ${milestone.title}` : `${user} completed their milestone: ${milestone.title}`)
       return (
         <div key={index}>
