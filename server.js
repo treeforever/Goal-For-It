@@ -36,8 +36,8 @@ app.use(express.static(__dirname + '/public'));
 app.use('/login', loginRoutes(knex));
 app.use('/api/users', userRoutes(knex));
 app.use('/api/goals', goalRoutes(knex));
-app.use('/api/mile', mileRoutes(knex));
-app.use('/api/step', stepRoutes(knex));
+app.use('/api/miles', mileRoutes(knex));
+app.use('/api/steps', stepRoutes(knex));
 app.use('/api/group', groupRoutes(knex))
 
 

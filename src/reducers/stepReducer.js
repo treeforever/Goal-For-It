@@ -1,6 +1,10 @@
 export default function reducer(state={
     steps: [],
     checked: [],
+    stepRows: ['one row'],
+    stepText: '',
+    stepsText: [],
+    newSteps: [],
     error: null,
   }, action) {
 
@@ -19,8 +23,9 @@ export default function reducer(state={
       case "ADD_STEPS": {
         return {
           ...state,
-          steps: [...state.steps, action.payload],
-          stepsText: '',
+          newSteps: [...state.stepsText],
+          stepText: '',
+          stepsText:[],
         }
       }
       case "UPDATE_STEPS": {
@@ -52,13 +57,38 @@ export default function reducer(state={
         return {
           ...state,
           openStepsDialog: null,
+          stepRows: ['one row'],
+          stepText: '',
+          stepsText:[],
         }
       }
+
+      case "HANDLE_STEP_INPUT": {
+        return {
+          ...state,
+          stepText: action.payload
+        }
+      }
+
 
       case "HANDLE_STEPS_INPUT": {
         return {
           ...state,
-          stepsText: action.payload
+          stepsText: [...state.stepsText, state.stepText]
+        }
+      }
+
+      case "SELECT_MILESTONE": {
+        return {
+          ...state,
+          selectedMilestone: action.payload
+        }
+      }
+
+      case "ADD_STEP_ROW": {
+        return {
+          ...state,
+          stepRows: [...state.stepRows, action.payload]
         }
       }
     }

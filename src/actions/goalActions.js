@@ -15,12 +15,10 @@ export function fetchGoal(goal) {
 export function addGoal(goal) {
   const url = "http://localhost:8080/api/goals"
   let data = {goal}
-  axios.post(url, data)
+  const req = axios.post(url, data);
   return {
     type: 'ADD_GOAL',
-    payload: {
-      goal
-    }
+    payload: req,
   }
 }
 

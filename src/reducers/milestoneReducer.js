@@ -1,6 +1,10 @@
 export default function reducer(state={
     milestones: [],
     checked: [],
+    milestoneRows: ['one row'],
+    milestoneText: '',
+    milestonesText: [],
+    newMilestones: [],
     error: null,
   }, action) {
 
@@ -16,10 +20,12 @@ export default function reducer(state={
           milestones: action.payload.data
         }
       }
-      case "ADD_MILESTONES": {
+      case "ADD_MILESTONES_FULFILLED": {
         return {
           ...state,
-          milestones: [...state.milestones, action.payload],
+          newMilestonesIds: action.payload.data.id,
+          milestoneText: '',
+          milestonesText: [],
         }
       }
       case "UPDATE_MILESTONES": {
@@ -52,13 +58,31 @@ export default function reducer(state={
         return {
           ...state,
           openMilestonesDialog: null,
+          milestoneRows: ['one row'],
+          milestoneText: '',
+          milestonesText: [],
+        }
+      }
+
+      case "HANDLE_MILESTONE_INPUT": {
+        return {
+          ...state,
+          milestoneText: action.payload
         }
       }
 
       case "HANDLE_MILESTONES_INPUT": {
         return {
           ...state,
-          milestonesText: action.payload
+          milestonesText: [...state.milestonesText, state.milestoneText],
+          newMilestones: [...state.milestonesText, state.milestoneText]
+        }
+      }
+
+      case "ADD_MILESTONE_ROW": {
+        return {
+          ...state,
+          milestoneRows: [...state.milestoneRows, action.payload]
         }
       }
     }

@@ -11,12 +11,13 @@ export function fetchMilestones() {
   };
 }
 
-export function addMilestones(milestones) {
+export function addMilestones(milestones, goalId) {
+  const url = "http://localhost:8080/api/miles"
+  let data = {newMilestones: milestones, goal_id: goalId}
+  const res = axios.post(url, data)
   return {
     type: 'ADD_MILESTONES',
-    payload: {
-      milestones
-    }
+    payload: res
   }
 }
 
@@ -45,9 +46,24 @@ export function closeAddMilestonesDialog() {
     type: 'CLOSE_ADD_MILESTONES_DIALOG',
   };
 }
+
+export function handleMilestoneInput(text) {
+  return {
+    type: 'HANDLE_MILESTONE_INPUT',
+    payload: text
+  };
+}
+
 export function handleMilestonesInput(text) {
   return {
     type: 'HANDLE_MILESTONES_INPUT',
     payload: text
+  };
+}
+
+export function addMilestoneRow() {
+  return {
+    type: 'ADD_MILESTONE_ROW',
+    payload: 'another row'
   };
 }
