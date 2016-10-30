@@ -62,6 +62,13 @@ export default function reducer(state={
           stepsText: action.payload
         }
       }
+
+      case "SELECT_MILESTONE": {
+        return {
+          ...state,
+          selectedMilestone: action.payload
+        }
+      }
     }
 
     return state

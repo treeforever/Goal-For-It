@@ -4,6 +4,7 @@ export default function reducer(state={
     milestoneRows: ['one row'],
     milestoneText: '',
     milestonesText: [],
+    newMilestones: [],
     error: null,
   }, action) {
 

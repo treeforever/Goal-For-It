@@ -11,7 +11,7 @@ class MuiText extends Component {
   handleChange = e => {
     this.props.handleChange(e.target.value)
     if(this.state.limit){
-      this.props.addMilestoneRow()
+      this.props.addRow()
       this.setState({limit: 0})
     }
   }

@@ -45,9 +45,17 @@ export function closeAddStepsDialog() {
     type: 'CLOSE_ADD_STEPS_DIALOG',
   };
 }
+
 export function handleStepsInput(text) {
   return {
     type: 'HANDLE_STEPS_INPUT',
+    payload: text
+  };
+}
+
+export function selectMilestone(text) {
+  return {
+    type: 'SELECT_MILESTONE',
     payload: text
   };
 }
