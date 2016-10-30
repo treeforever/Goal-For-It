@@ -7,7 +7,6 @@ import ReduxPromise from "redux-promise-middleware"
 import './styles/index.css';
 
 import App from './App';
-import NewGoal from './containers/create_goal.js';
 import Goal_page from './containers/Goal_page';
 import Group_page from './containers/Group_page';
 import store from "./store"

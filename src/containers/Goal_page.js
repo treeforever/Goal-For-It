@@ -18,6 +18,7 @@ import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
 import AppBar from 'material-ui/AppBar';
 import Checkbox from 'material-ui/Checkbox';
+injectTapEventPlugin();
 
 const styles = {
   block: {
@@ -27,10 +28,6 @@ const styles = {
     marginBottom: 16,
   },
 };
-
-injectTapEventPlugin();
-
-
 
 class Goal_page extends Component {
   handleChange = (event) => {
