@@ -15,6 +15,17 @@ import NewMilestone from "../components/NewMilestone"
 import NewStep from "../components/NewStep"
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
+import AppBar from 'material-ui/AppBar';
+import Checkbox from 'material-ui/Checkbox';
+
+const styles = {
+  block: {
+    maxWidth: 250,
+  },
+  checkbox: {
+    marginBottom: 16,
+  },
+};
 
 
 class Goal_page extends Component {
@@ -80,17 +91,24 @@ class Goal_page extends Component {
 
     return (
       <div>
-        <h2>{this.props.user.user.username}{'\''}s Goals</h2>
-          <MuiThemeProvider muiTheme={muiTheme}>
-            <RaisedButton label="+" onClick={ () => this.props.openAddGoalDialog() } />
-          </MuiThemeProvider>
-        <h1>{g.goal}
-          <input
-            className="checkbox"
-            type="checkbox"
-            onChange={this.handleChange}
-            value={this.props.checked}
+        <MuiThemeProvider>
+          <AppBar
+            title={`${this.props.user.user.username}${'\''}s Goals`}
+            iconClassNameLeft="muidocs-icon-navigation-expand-more"
+            className="App-Bar"
           />
+        </MuiThemeProvider>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <RaisedButton label="+" onClick={ () => this.props.openAddGoalDialog() } />
+          </MuiThemeProvider>
+        <h1>{this.props.goal.goal}
+          <MuiThemeProvider style={styles.block}>
+            <Checkbox
+            style={styles.checkbox}
+            onCheck={this.handleChange}
+            checked={this.props.goal.checked}
+            />
+          </MuiThemeProvider>
         </h1>
         <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username}/>
 
