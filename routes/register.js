@@ -7,18 +7,38 @@ var bodyParser = require('body-parser')
 var jsonParser = bodyParser.json()
 
 
-module.exports = () => {
+module.exports = (knex) => {
 
   router.get('/', (req, res) => {
     res.render('login');
   });
 
   router.post("/", jsonParser, (req, res) => {
-    res.redirect("http://localhost:3000")
-    console.log(req.body)
-    res.send('ok')
-    // var username = req.body.username;
-    // var email = req.body.email;
+    let username = req.body.username;
+    let password = req.body.password;
+
+    knex
+        .select("*")
+        .from("users")
+        .where("username", username)
+        }).then(function(resp) {
+            if(resp.length < 1) {
+              res.send('fail');
+            } else {
+              bcrypt.compare(password, resp[0].password, function(err, response) {
+                if(response == true) {
+                  req.session.auth = true;
+                  req.session.username = resp[0].username;
+                  req.session.userid = Number(resp[0].user_id);
+                  res.redirect('/main');
+                } else {
+                  res.send('fail');
+                }
+              });
+            }
+          });
+        });
+
     // var password = req.body.password;
     // var confirm = req.body.confirm;
 

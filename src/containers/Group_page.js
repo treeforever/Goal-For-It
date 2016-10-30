@@ -4,8 +4,12 @@ import { bindActionCreators } from 'redux'
 import { fetchGroup, fetchNotifs, addNotif, fetchTagUser } from "../actions/groupActions"
 import { fetchUser } from "../actions/userActions"
 import { fetchGoal } from "../actions/goalActions"
+import { openPotDialog } from "../actions/moneyActions"
+import { RaisedButton, FlatButton, Dialog } from 'material-ui'
 
 
+import MuiText from '../components/MuiText'
+import muiTheme from '../components/MuiTheme'
 import NotificationList from '../components/NotificationList'
 import GroupList from '../components/GroupList'
 import MoneyStatus from '../components/MoneyStatus'
@@ -38,14 +42,32 @@ class Group_page extends Component {
 
   handleTouchTap() {
   alert('You clicked the Chip.');
-  this.props.fetchGoal()
+  // this.props.fetchGoal()
 }
-
 
   render() {
     return (
       <div className="group">
         <MoneyStatus />
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <RaisedButton label="pot" onClick={ () => this.props.openPotDialog() } />
+        </MuiThemeProvider>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <Dialog
+            title="Add New Goal"
+            modal={true}
+            open={!!this.props.openGoalDialog}
+          >
+          <MuiText
+            hintText="goal"
+            floatingLabelText="goal"
+            text={this.props.goalText}
+            handleChange={this.props.handleGoalInput}
+            handleSubmit={this.props.handleGoalInput}
+            addRow={()=> { }}
+            />
+          </Dialog>
+        </MuiThemeProvider>
         <MuiThemeProvider>
           <AppBar
             title={this.props.group[0].name }
@@ -89,10 +111,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchGroup: fetchGroup,
     fetchUser: fetchUser,
     fetchTagUser: fetchTagUser,
-    fetchGoal
+    fetchGoal,
+    openPotDialog
   }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Group_page);
-
-
