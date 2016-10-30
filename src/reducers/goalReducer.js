@@ -11,7 +11,6 @@ export default function reducer(state = defaultState, action) {
         return {...state, error: action.payload}
       }
       case "FETCH_GOAL_FULFILLED": {
-        // console.log("GOALS action payload", action.payload.data)
         return {
           ...state,
           goal: action.payload.data

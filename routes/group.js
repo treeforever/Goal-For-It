@@ -54,6 +54,7 @@ module.exports = (knex) => {
       type: req.body.notif.type
     })
     .then(function(resp) {
+      res.json(resp)
       console.log('Notification insertion complete.')
     })
     .catch(function(err){

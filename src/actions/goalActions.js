@@ -59,7 +59,6 @@ export function handleGoalInput(text) {
 
 
 export function checkedGoal(goal) {
-  console.log("ACTOION", goal.checked)
   const url = `http://localhost:8080/api/goals/${goal.goal_id}`
   let isChecked = {checked: !goal.checked}
   axios.put(url, isChecked)

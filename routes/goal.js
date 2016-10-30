@@ -14,7 +14,6 @@ module.exports = (knex) => {
     let selectedGoalId = Number(req.params.goal_id)
     knex.from('goals')
       .innerJoin('milestones', 'goals.goal_id', 'milestones.goal_id')
-      // .innerJoin('steps', 'milestones.milestone_id', 'steps.milestone_id')
       .select('goals.goal',
               'milestones.mile_title',
               'milestones.milestone_id',
