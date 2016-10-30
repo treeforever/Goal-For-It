@@ -11,7 +11,7 @@ function constructGoalKeys(data) {
   goal.goal = goalName
   goal.goal_id = goal_id
   goal.creator_id = creator_id
-  goal.goal_checked = checked
+  goal.goal_checked = goal_checked
   return goal
 }
 
