@@ -1,7 +1,6 @@
 function constructGoalKeys(data) {
   let keys = Object.keys(data)
   let firstMilestone = data[keys[0]]
-  console.log(firstMilestone[0].goal_checked)
 
   let goalName = firstMilestone[0].goal
   let goal_id = firstMilestone[0].goal_id
@@ -12,7 +11,7 @@ function constructGoalKeys(data) {
   goal.goal = goalName
   goal.goal_id = goal_id
   goal.creator_id = creator_id
-  goal.goal_checked = checked
+  goal.goal_checked = goal_checked
   return goal
 }
 

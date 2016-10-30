@@ -14,8 +14,9 @@ module.exports = () => {
   });
 
   router.post("/", jsonParser, (req, res) => {
-    console.log(req.params)
     res.redirect("http://localhost:3000")
+    console.log(req.body)
+    res.send('ok')
     // var username = req.body.username;
     // var email = req.body.email;
     // var password = req.body.password;
