@@ -67,7 +67,7 @@ export default function reducer(state = defaultState, action) {
       case "COMPLETE_GOAL": {
         return {
           ...state,
-          goal: {...state, checked: !action.payload.checked}
+          goal: {...state.goal, checked: !action.payload.checked}
         }
       }
 
