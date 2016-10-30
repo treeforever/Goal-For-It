@@ -69,18 +69,17 @@ export function checkedGoal(goal) {
 }
 
 export function checkedMile(milestone, index) {
-  console.log("ACTION", milestone.checked)
-  const url = `http://localhost:8080/api/mile/${milestone.id}`
+  const url = `http://localhost:8080/api/miles/${milestone.id}`
   let isChecked = {checked: !milestone.checked}
   axios.put(url, isChecked)
   return {
     type: 'COMPLETE_MILE',
-    payload: index
+    payload: {milestone, index}
   }
 }
 
 export function checkedStep(step, index) {
-  const url = `http://localhost:8080/api/step/${step.id}`
+  const url = `http://localhost:8080/api/steps/${step.id}`
   let isChecked = {checked: !step.checked}
   axios.put(url, isChecked)
   return {

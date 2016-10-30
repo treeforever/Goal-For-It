@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchGroup, fetchNotifs, addNotif, fetchTagUser } from "../actions/groupActions"
 import { fetchUser } from "../actions/userActions"
+import { fetchGoal } from "../actions/goalActions"
+
 
 import NotificationList from '../components/NotificationList'
 import GroupList from '../components/GroupList'
@@ -35,7 +37,7 @@ class Group_page extends Component {
 
   handleTouchTap() {
   alert('You clicked the Chip.');
-  // this.props.fetchGoal(goal)
+  this.props.fetchGoal()
 }
 
 
@@ -49,7 +51,7 @@ class Group_page extends Component {
           />
         </MuiThemeProvider>
         <MuiThemeProvider>
-            <GroupList group={this.props.group} click={this.handleTouchTap}/>
+            <GroupList group={this.props.group} click={this.handleTouchTap} fetchGoal={this.props.fetchGoal}/>
         </MuiThemeProvider>
 
         <MuiThemeProvider>
@@ -84,7 +86,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchNotifs: fetchNotifs,
     fetchGroup: fetchGroup,
     fetchUser: fetchUser,
-    fetchTagUser: fetchTagUser
+    fetchTagUser: fetchTagUser,
+    fetchGoal
   }, dispatch)
 }
 

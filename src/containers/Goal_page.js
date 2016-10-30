@@ -49,7 +49,7 @@ class Goal_page extends Component {
 
 
   componentWillMount = () => {
-    this.props.fetchGoal(2);
+    this.props.fetchGoal(1);
     this.props.fetchUser(1);
   }
 
