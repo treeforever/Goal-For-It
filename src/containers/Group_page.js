@@ -8,6 +8,7 @@ import { fetchGoal } from "../actions/goalActions"
 
 import NotificationList from '../components/NotificationList'
 import GroupList from '../components/GroupList'
+import MoneyStatus from '../components/MoneyStatus'
 import InputBox from '../components/InputBox'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar';
@@ -44,6 +45,7 @@ class Group_page extends Component {
   render() {
     return (
       <div className="group">
+        <MoneyStatus />
         <MuiThemeProvider>
           <AppBar
             title={this.props.group[0].name }
