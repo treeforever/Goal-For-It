@@ -24,36 +24,44 @@ class NewStep extends Component {
     ]
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <Dialog
-          title="Add New steps"
-          actions={stepsActions}
-          modal={true}
-          open={!!this.props.openStepsDialog}
-        >
-
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <SelectField
-          floatingLabelText="Milestone"
-          value={0}
-          onChange={this.props.selectMilestone}
-        >
-        {this.props.newMilestones.map((m, i) => {
+      <Dialog
+      title="Add New steps"
+      actions={stepsActions}
+      modal={true}
+      open={!!this.props.openStepsDialog}
+      >
+        {this.props.stepRows.map((num, i)=>{
           return (
-            <MenuItem value={i} primaryText={m} />
-          )
-        })}
-        </SelectField>
-      </MuiThemeProvider>
+                  <div>
+                      <MuiThemeProvider muiTheme={muiTheme}>
+                        <SelectField
+                          floatingLabelText="Milestone"
+                          value={0}
+                          onChange={this.props.selectMilestone}
+                        >
+                          {this.props.newMilestones.map((m, j) => {
+                            return (
+                              <MenuItem value={j} primaryText={m} />
+                            )
+                          })}
+                        </SelectField>
+                      </MuiThemeProvider>
 
-        <MuiText
-          hintText="step"
-          floatingLabelText="step"
-          text={this.props.stepsText}
-          handleChange={this.props.handleStepsInput}
-          addRow={this.props.addStepRow}
-          />
-        </Dialog>
-      </MuiThemeProvider>
+                      <MuiText
+                        hintText="step"
+                        floatingLabelText="step"
+                        text={this.props.stepsText[i]}
+                        handleChange={this.props.handleStepInput}
+                        handleSubmit={this.props.handleStepsInput}
+                        addRow={this.props.addStepRow}
+                        />
+                      </div>
+                  )
+
+                  })}
+
+                  </Dialog>
+                </MuiThemeProvider>
     )
   }
 }

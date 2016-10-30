@@ -61,7 +61,6 @@ export function handleMilestonesInput(text) {
 }
 
 export function addMilestoneRow() {
-
   return {
     type: 'ADD_MILESTONE_ROW',
     payload: 'another row'

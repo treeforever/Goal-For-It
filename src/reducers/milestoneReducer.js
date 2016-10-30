@@ -24,8 +24,8 @@ export default function reducer(state={
         return {
           ...state,
           newMilestones: [...state.milestonesText],
+          milestoneText: '',
           milestonesText: [],
-          milestoneRows: ['one row']
         }
       }
       case "UPDATE_MILESTONES": {

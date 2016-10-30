@@ -7,7 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { fetchUser } from "../actions/userActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestoneInput, handleMilestonesInput, addMilestoneRow} from "../actions/milestoneActions"
-import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepsInput, selectMilestone} from "../actions/stepActions"
+import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone, addStepRow} from "../actions/stepActions"
 import { addNotif } from "../actions/groupActions"
 
 import Milestone from "../components/MilestoneIndex"
@@ -62,7 +62,7 @@ class Goal_page extends Component {
 
 
   render() {
-    var g = this.props.goal;
+    let g = this.props.goal;
     const modalActions = [
       <FlatButton
         label="Cancel"
@@ -106,6 +106,8 @@ class Goal_page extends Component {
             floatingLabelText="goal"
             text={this.props.goalText}
             handleChange={this.props.handleGoalInput}
+            handleSubmit={this.props.hanldeGoalInput}
+            addRow={()=> { }}
             />
           </Dialog>
         </MuiThemeProvider>
@@ -115,8 +117,8 @@ class Goal_page extends Component {
           closeAddMilestonesDialog={this.props.closeAddMilestonesDialog}
           nextButtonActionsOnMilestones={this.nextButtonActionsOnMilestones}
           milestoneText={this.props.milestoneText}
-          milestoneRows={this.props.milestoneRows}
           milestonesText={this.props.milestonesText}
+          milestoneRows={this.props.milestoneRows}
           handleMilestoneInput={this.props.handleMilestoneInput}
           handleMilestonesInput={this.props.handleMilestonesInput}
           addMilestoneRow={this.props.addMilestoneRow}
@@ -125,13 +127,15 @@ class Goal_page extends Component {
         <NewStep
           openStepsDialog={this.props.openStepsDialog}
           closeAddStepsDialog={this.props.closeAddStepsDialog}
-          nextButtonActionsOnSteps={this.props.nextButtonActionsOnSteps}
+          nextButtonActionsOnSteps={this.nextButtonActionsOnSteps}
           stepsText={this.props.stepsText}
-          selectMilestone={this.props.selectMilestone}
           stepsText={this.props.stepsText}
-          handleStepsInput={this.props.handleStepsInput}
-          addStepRow={this.props.addMilestoneRow}
+          stepRows={this.props.stepRows}
           newMilestones={this.props.newMilestones}
+          selectMilestone={this.props.selectMilestone}
+          handleStepInput={this.props.handleStepInput}
+          handleStepsInput={this.props.handleStepsInput}
+          addStepRow={this.props.addStepRow}
           />
 
       </div>
@@ -151,7 +155,10 @@ const mapStateToProps = (state) => {
     milestonesText: state.milestones.milestonesText,
     milestoneRows: state.milestones.milestoneRows,
     newMilestones: state.milestones.newMilestones,
+    stepText: state.milestones.stepText,
     stepsText: state.steps.stepsText,
+    stepRows: state.steps.stepRows,
+    newSteps: state.steps.newSteps,
   }
 }
 
@@ -175,8 +182,10 @@ const mapDispatchToProps = (dispatch) => {
       handleGoalInput,
       handleMilestoneInput,
       handleMilestonesInput,
+      handleStepInput,
       handleStepsInput,
       addMilestoneRow,
+      addStepRow,
       selectMilestone,
     }, dispatch);
 }

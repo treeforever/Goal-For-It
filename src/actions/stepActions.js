@@ -4,7 +4,6 @@ import axios from "axios"
 export function fetchSteps() {
   const url = "http://localhost:8080/api/goal/1";
   const request = axios.get(url);
-  console.log("request", request);
   return {
     type: "FETCH_GOALS",
     payload: request
@@ -46,6 +45,13 @@ export function closeAddStepsDialog() {
   };
 }
 
+export function handleStepInput(text) {
+  return {
+    type: 'HANDLE_STEP_INPUT',
+    payload: text
+  };
+}
+
 export function handleStepsInput(text) {
   return {
     type: 'HANDLE_STEPS_INPUT',
@@ -57,5 +63,12 @@ export function selectMilestone(text) {
   return {
     type: 'SELECT_MILESTONE',
     payload: text
+  };
+}
+
+export function addStepRow() {
+  return {
+    type: 'ADD_STEP_ROW',
+    payload: 'another row'
   };
 }
