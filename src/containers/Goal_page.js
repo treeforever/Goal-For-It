@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { RaisedButton, FlatButton, Dialog } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { fetchUser } from "../actions/userActions"
@@ -11,22 +12,15 @@ import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, han
 import { addNotif } from "../actions/groupActions"
 
 import Milestone from "../components/MilestoneIndex"
-import Form1 from "./Form1"
 import NewMilestone from "../components/NewMilestone"
 import NewStep from "../components/NewStep"
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
 
+injectTapEventPlugin();
+
 
 class Goal_page extends Component {
-  renderGoals = (goals) => {
-   return (
-     <ul>
-       <li> {goals[0]} </li>
-     </ul>
-   )
-  }
-
   handleChange = (event) => {
     this.props.checkedGoal(this.props.goal.goal_id, this.props.checked)
 
@@ -45,18 +39,22 @@ class Goal_page extends Component {
 
   nextButtonActionsOnGoal = () => {
     this.props.addGoal(this.props.goalText)
+    this.props.addNotif({type: "notification", content: `user 1 has added a new goal: ${this.props.goalText}`})
     this.props.closeAddGoalDialog()
     this.props.openAddMilestonesDialog()
   }
 
   nextButtonActionsOnMilestones = () => {
     this.props.addMilestones(this.props.milestonesText, this.props.newGoal.id)
+    this.props.addNotif({type: "notification", content: `user 1 has added milestones: ${this.props.newMilestones}`})
     this.props.closeAddMilestonesDialog()
     this.props.openAddStepsDialog()
   }
 
   nextButtonActionsOnSteps = () => {
+    //change stepsText
     this.props.addSteps(this.props.stepsText)
+    this.props.addNotif({type: "notification", content: `user 1 has added new steps: ${this.props.stepsText}`})
     this.props.closeAddStepsDialog()
   }
 

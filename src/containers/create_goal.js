@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { bindActionCreators } from 'redux'
 
 
-import Step from "../components/Form2"
+// import Step from "../components/Form2"
 import MuiText from "../components/MuiText"
 
 import { addGoal } from "../actions/goalActions"
