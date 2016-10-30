@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchGroup, fetchNotifs, addNotif, fetchTagUser } from "./actions/groupActions"
-import { fetchUser } from "./actions/userActions"
+import { fetchGroup, fetchNotifs, addNotif, fetchTagUser } from "../actions/groupActions"
+import { fetchUser } from "../actions/userActions"
 
-import NotificationList from './NotificationList'
-import GroupList from './GroupList'
+import NotificationList from '../components/NotificationList'
+import GroupList from '../components/GroupList'
 import InputBox from '../components/InputBox'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar';

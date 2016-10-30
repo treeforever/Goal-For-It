@@ -40,7 +40,6 @@ module.exports = (knex) => {
         if (results = []){
           console.log('empty')
         }else {
-          console.log(results)
           res.json(results)
         }
       })
@@ -48,7 +47,6 @@ module.exports = (knex) => {
 
   //performs post request to database for all notifications
   router.post('/notif', jsonParser, (req, res) => {
-    console.log(req.body.notif)
     knex('notices').insert({
       content: req.body.notif.content,
       sender_id: 1,

@@ -1,11 +1,12 @@
 function constructGoalKeys(data) {
   let keys = Object.keys(data)
   let firstMilestone = data[keys[0]]
+  console.log(firstMilestone[0].goal_checked)
 
   let goalName = firstMilestone[0].goal
   let goal_id = firstMilestone[0].goal_id
   let creator_id = firstMilestone[0].creator_id
-  let checked = firstMilestone[0].checked
+  let goal_checked = firstMilestone[0].goal_checked
 
   let goal = {}
   goal.goal = goalName
@@ -51,7 +52,6 @@ function constructMilestones(data) {
 function goalPyrimid (data) {
   return Object.assign(constructGoalKeys(data), {
     milestones: constructMilestones(data),
-    checked: data.goal_checked,
   });
 }
 

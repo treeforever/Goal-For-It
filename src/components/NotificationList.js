@@ -1,13 +1,14 @@
 import React from 'react';
 import Notification from './Notification';
 
-const NotificationList = ({notifs}) => (
+const NotificationList = ({notifs, sender}) => (
    <ul>
     {
       notifs.map((notif, index) => (
         <Notification
           key={index}
-          notification={notif.content}
+          notification={notif}
+          sender={sender}
         />
       ))
     }
