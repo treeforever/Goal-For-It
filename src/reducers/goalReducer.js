@@ -71,11 +71,8 @@ export default function reducer(state = defaultState, action) {
       }
 
       case "COMPLETE_MILE": {
-        console.log("1 REDUCER", action.payload.milestone.checked)
         let index = action.payload.index
         let completedMilestone = state.goal.milestones[index]
-        console.log("completedMilestone", !completedMilestone.checked)
-
         completedMilestone = {
           ...completedMilestone,
           checked: !completedMilestone.checked
@@ -86,9 +83,6 @@ export default function reducer(state = defaultState, action) {
           completedMilestone,
           ...state.goal.milestones.slice(index + 1, Infinity),
         ]
-
-        console.log("2 REDUCER", action.payload.milestone.checked)
-
 
         return {
           ...state,

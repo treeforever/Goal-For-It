@@ -129,12 +129,22 @@ span.add-step-button {
   margin-top: 10px;
 }
 
+#notificationList {
+  border: 2px solid;
+  border-radius: 15px;
+
+}
+
 .page-header {
   border-radius: 15px;
   background-color: white;
   color: #7cb1c1;
   padding: 10px;
   margin: 40px 10px 20px;
+}
+
+#moneyStatus {
+  float: right;
 }
 
 /*checkbox*/
@@ -169,6 +179,11 @@ a#my-goals:hover{
   text-decoration: none;
 }
 
+
 .App-Bar {
   margin-top: -3%;
+}
+
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { checkedMile } from '../actions/goalActions'
 import { addNotif } from '../actions/groupActions'
-import { moneyMilestone } from '../actions/groupActions'
+import { moneyMilestone } from '../actions/moneyActions'
 import Step from './StepIndex'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
@@ -19,7 +19,7 @@ const styles = {
 };
 
 
-const Milestone = ({ milestones, user, dispatch }) => (
+const Milestone = ({ milestones, user, currentUser, dispatch }) => (
   <div>
     {milestones.map((milestone, index) => {
       const content = (milestone.checked ? `${user} unchecked their milestone: ${milestone.title}` : `${user} completed their milestone: ${milestone.title}`)
@@ -33,13 +33,14 @@ const Milestone = ({ milestones, user, dispatch }) => (
                 () => {
                   dispatch(checkedMile(milestone, index))
                   dispatch(addNotif({type: "notificaiton", content: content}))
-                  dispatch(moneyMilestone())
+                  dispatch(moneyMilestone(milestone.checked))
                   }
                 }
               checked={milestone.checked}
+              disabled={(user === currentUser.username ? false : true)}
               />
             </MuiThemeProvider>
-          <Step milestone={milestone} />
+          <Step milestone={milestone} currentUser={currentUser} user={user}/>
         </div>
       )
     })}

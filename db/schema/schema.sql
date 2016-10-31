@@ -64,3 +64,11 @@ CREATE TABLE notices (
   sender_id bigint,
   receiver_id bigint
 );
+
+CREATE TABLE money (
+  money_id serial PRIMARY KEY,
+  type varchar(50) NOT NULL,
+  content varchar (500) NOT NULL,
+  sender_id bigint,
+  receiver_id bigint
+);

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { RaisedButton, FlatButton, Dialog, IconMenu, MenuItem, IconButton, AppBar, Checkbox } from 'material-ui'
+import { RaisedButton, FlatButton, Dialog, Checkbox} from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import { Link } from "react-router";
 
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { fetchUser } from "../actions/userActions"
@@ -13,15 +12,11 @@ import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, han
 import { addNotif } from "../actions/groupActions"
 import { moneyGoal, moneyMile, moneyStep } from "../actions/moneyActions"
 
-
 import Milestone from "../components/MilestoneIndex"
-// import NewMilestone from "../components/NewMilestone"
-// import NewStep from "../components/NewStep"
+
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Nav from './Nav'
-
 
 
 injectTapEventPlugin();
@@ -50,27 +45,30 @@ class Goal_page extends Component {
 
 
   componentWillMount = () => {
-    this.props.fetchGoal(1);
+    if(this.props.goal.goal){
+      return
+    }else{
+      this.props.fetchGoal(1);
+    }
     this.props.fetchUser(1);
   }
 
   render() {
     let g = this.props.goal;
-
     return (
       <div>
-        <Nav title={`${this.props.user.currentUser.username}${'\''}s Goals`}/>
-
+       <Nav title={`${this.props.user.currentUser.username}${'\''}s Goals`}/>
         <h1>{g.goal}
           <MuiThemeProvider style={styles.block}>
             <Checkbox
             style={styles.checkbox}
             onCheck={this.handleChange}
             checked={g.goal_checked}
+            disabled={(this.props.user.user.username === this.props.user.currentUser.username ? false : true)}
             />
           </MuiThemeProvider>
         </h1>
-        <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username}/>
+        <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username} currentUser={this.props.user.currentUser}/>
 
       </div>
     );
@@ -127,11 +125,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Goal_page);
-
-// <MuiThemeProvider>
-//   <AppBar
-//     title={`${this.props.user.currentUser.username}${'\''}s Goals`}
-//     iconClassNameLeft="muidocs-icon-navigation-expand-more"
-//     className="App-Bar"
-//   />
-// </MuiThemeProvider>
