@@ -81,34 +81,17 @@ class Nav extends Component {
     ];
 
     return (
-
-      <nav >
-        <MuiThemeProvider>
-          <AppBar
-            title={this.props.title}
-            iconClassNameLeft="muidocs-icon-navigation-expand-more"
-            iconElementRight={this.props.challenge ? <span>piggybank</span> : <span>Start a Challenge</span>}
-            className="App-Bar"
-          />
-        </MuiThemeProvider>
-
-        <span id="dropdown-menu-group">
-          <MuiThemeProvider muiTheme={muiTheme}>
-          <IconMenu
-            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-          >
-            <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
-            <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
-            <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
-            <MenuItem primaryText="Start Challenge" onClick={ () => this.props.openPotDialog() }/>
-            <MenuItem
-              onClick={() => this.props.signOut()}
-              primaryText="Sign Out" />
-          </IconMenu>
+      <div>
+        <nav>
+          <MuiThemeProvider>
+            <AppBar
+              title={this.props.title}
+              iconElementLeft={this.props.challenge ? <span>piggybank</span> : <span>Start a Challenge</span>}
+              iconElementRight={<DropdownMenu />}
+              className="App-Bar"
+            />
           </MuiThemeProvider>
-        </span>
+        </nav>
 
         <MuiThemeProvider muiTheme={muiTheme}>
           <Dialog
@@ -193,10 +176,35 @@ class Nav extends Component {
 
             </Dialog>
           </MuiThemeProvider>
-        </nav>
+        </div>
     )
   }
 }
+
+class DropdownMenu extends Component {
+  render(){
+    return (
+      <span id="dropdown-menu-group">
+        <MuiThemeProvider muiTheme={muiTheme}>
+        <IconMenu
+          iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
+        >
+          <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
+          <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
+          <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
+          <MenuItem primaryText="Start Challenge" onClick={ () => this.props.openPotDialog() }/>
+          <MenuItem
+            onClick={() => this.props.signOut()}
+            primaryText="Sign Out" />
+        </IconMenu>
+        </MuiThemeProvider>
+      </span>
+    )
+  }
+}
+
 
 const mapStateToProps = (state) => ({
   user: state.user,
