@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { checkedMile } from '../actions/goalActions'
 import { addNotif } from '../actions/groupActions'
-import { moneyMilestone } from '../actions/groupActions'
+import { moneyMilestone } from '../actions/moneyActions'
 import Step from './StepIndex'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 

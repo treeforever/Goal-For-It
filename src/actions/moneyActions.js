@@ -25,7 +25,7 @@ export function moneyGoal(completed) {
   }
 }
 
-export function moneyMilesone(completed) {
+export function moneyMilestone(completed) {
   return {
     type: "MONEY_MILE"
   }
