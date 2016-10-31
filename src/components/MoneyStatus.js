@@ -7,8 +7,8 @@ class MoneyStatus extends Component {
   render() {
     return (
       <div>
-        <MoneyPot />
-        <MoneyTotal />
+        <MoneyPot moneyPot={this.props.money.groupMoney}/>
+        <MoneyTotal moneyTotal={this.props.money.userMoney}/>
       </div>
     )
   }

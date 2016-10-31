@@ -5,10 +5,11 @@ import { Link } from "react-router"
 import { fetchGroup, fetchNotifs, addNotif, fetchTagUser } from "../actions/groupActions"
 import { fetchUser } from "../actions/userActions"
 import { fetchGoal } from "../actions/goalActions"
-import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney } from "../actions/moneyActions"
+import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchUserMoney, fetchGroupMoney } from "../actions/moneyActions"
 import { RaisedButton, FlatButton, Dialog, AppBar, List, IconMenu, MenuItem, IconButton } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+
 
 import MuiText from '../components/MuiText'
 import muiTheme from '../components/MuiTheme'
@@ -29,6 +30,9 @@ class Group_page extends Component {
     this.props.fetchGroup();
     this.props.fetchNotifs();
     this.props.fetchUser(1)
+    this.props.fetchUserMoney();
+    this.props.fetchGroupMoney();
+
   }
 
    handleSave = text => {
@@ -67,7 +71,7 @@ class Group_page extends Component {
 
     return (
       <div className="group">
-        <MoneyStatus />
+
 
 
         <span id="dropdown-menu-group">
@@ -85,6 +89,8 @@ class Group_page extends Component {
           </IconMenu>
           </MuiThemeProvider>
         </span>
+
+        <MoneyStatus money={this.props.money}/>
 
         <MuiThemeProvider muiTheme={muiTheme}>
           <Dialog
@@ -164,6 +170,7 @@ const mapStateToProps = (store) => ({
   potDialog: store.money.potDialog,
   newMoneyInput: store.money.newMoneyInput,
   groupMoney: store.money.groupMoney,
+  money: store.money
   });
 
 const mapDispatchToProps = (dispatch) => {
@@ -180,6 +187,9 @@ const mapDispatchToProps = (dispatch) => {
     closePotDialog,
     handleMoneyInput,
     addGroupMoney,
+    fetchGroupMoney,
+    fetchUserMoney,
+    openPotDialog
   }, dispatch)
 }
 

@@ -34,7 +34,6 @@ class GroupList extends Component {
   }
 
   render(){
-    console.log('GROUP', this.props.group)
     return(
       <ul style={styles.wrapper} >
         <Chip

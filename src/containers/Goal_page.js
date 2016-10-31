@@ -11,6 +11,8 @@ import { fetchUser } from "../actions/userActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestoneInput, handleMilestonesInput, addMilestoneRow} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone, addStepRow} from "../actions/stepActions"
 import { addNotif } from "../actions/groupActions"
+import { moneyGoal, moneyMile, moneyStep } from "../actions/moneyActions"
+
 
 import Milestone from "../components/MilestoneIndex"
 import NewMilestone from "../components/NewMilestone"
@@ -41,6 +43,8 @@ class Goal_page extends Component {
     this.props.addNotif({
       type: "notificaiton",
       content: content })
+
+    this.props.moneyGoal(this.props.goal.goal_checked);
   }
 
 
@@ -224,6 +228,7 @@ const mapDispatchToProps = (dispatch) => {
       addStepRow,
       selectMilestone,
       signOut,
+      moneyGoal,
     }, dispatch);
 }
 

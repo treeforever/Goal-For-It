@@ -5,6 +5,7 @@ class MoneyStatus extends Component {
   render() {
     return (
       <div>
+        Your Total: {this.props.moneyTotal}
       </div>
     )
   }

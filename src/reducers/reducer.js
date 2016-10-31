@@ -13,5 +13,5 @@ export default combineReducers({
   milestones,
   steps,
   group,
-  money
+  money,
 })
