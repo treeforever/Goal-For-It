@@ -44,31 +44,33 @@ export default function reducer(state = defaultState, action) {
       }
 
       case "MONEY_GOAL": {
-        console.log("MONEY GOAL", state.groupMoney)
-        return {
-          ...state,
+        if(action.payload) {
+          return {
+            ...state,
           groupMoney: state.groupMoney - 3,
           userMoney: state.userMoney + 3
+          }
         }
       }
 
       case "MONEY_MILESTONE": {
-        console.log("MONEY MILESTONE", state.grouMoney)
-        return {
+        if(action.payload){
+          return {
           groupMoney: state.grouMoney - 2,
           userMoney: state.userMoney + 2
-
+          }
         }
       }
 
       case "MONEY_STEP": {
-        console.log("MONEY STEP", state.groupMoney)
-        return {
-          groupMoney: state.groupMoney - 1,
-          userMoney: state.userMoney + 1
+        if(action.payload){
+          return {
+            groupMoney: state.groupMoney - 1,
+            userMoney: state.userMoney + 1
+          }
         }
       }
     }
-
-    return state
+  return state
 }
+

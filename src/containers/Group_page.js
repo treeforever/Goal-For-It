@@ -10,7 +10,6 @@ import { RaisedButton, FlatButton, Dialog, AppBar, List, IconMenu, MenuItem, Ico
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
-
 import MuiText from '../components/MuiText'
 import muiTheme from '../components/MuiTheme'
 import NotificationList from '../components/NotificationList'
@@ -54,12 +53,14 @@ class Group_page extends Component {
     return (
       <div className="group">
 
+
         <Nav title={this.props.group[0].name }/>
 
-        <MoneyStatus money={this.props.money}/>
+
+        <MoneyStatus money={this.props.money} />
 
         <MuiThemeProvider>
-            <GroupList group={this.props.group} click={this.handleTouchTap} fetchGoal={this.props.fetchGoal}/>
+            <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchGoal={this.props.fetchGoal}/>
         </MuiThemeProvider>
 
         <MuiThemeProvider>

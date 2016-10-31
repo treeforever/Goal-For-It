@@ -137,6 +137,10 @@ span.add-step-button {
   margin: 40px 10px 20px;
 }
 
+#moneyStatus {
+  float: right;
+}
+
 /*checkbox*/
 .checkbox {
   margin-top: 50%;
@@ -168,3 +172,8 @@ a#group-huddle:hover {
 a#my-goals:hover{
   text-decoration: none;
 }
+
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+

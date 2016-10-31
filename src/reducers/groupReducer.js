@@ -31,7 +31,6 @@ export default function reducer(state={
         break;
       }
       case "ADD_NOTIF": {
-        console.log('notif', action.payload)
         return {
           ...state,
           notifs: [...state.notifs, action.payload]
