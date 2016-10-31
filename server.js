@@ -53,6 +53,12 @@ app.get('/', (req, res) => {
   }
 });
 
+app.get('/signout', (req, res) => {
+  req.session.destroy(function(err) {
+    res.redirect('/');
+  })
+});
+
 app.set('views', __dirname + '/public/views');
 app.use(express.static(__dirname + '/public'));
 

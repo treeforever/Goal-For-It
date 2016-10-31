@@ -22,3 +22,7 @@ export function populateUserInfo() {
     payload: window.currentUser,
   }
 }
+
+export function signOut() {
+  window.location = '/signout';
+}

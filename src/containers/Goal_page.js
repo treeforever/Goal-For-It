@@ -18,6 +18,9 @@ import NewStep from "../components/NewStep"
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+
+import { signOut } from '../actions/userActions';
+
 injectTapEventPlugin();
 
 const styles = {
@@ -99,7 +102,9 @@ class Goal_page extends Component {
             <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
             <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
             <MenuItem primaryText="Start Challenge" />
-            <MenuItem primaryText="Sign Out" />
+            <MenuItem
+              onClick={() => this.props.signOut()}
+              primaryText="Sign Out" />
           </IconMenu>
           </MuiThemeProvider>
         </span>
@@ -218,6 +223,7 @@ const mapDispatchToProps = (dispatch) => {
       addMilestoneRow,
       addStepRow,
       selectMilestone,
+      signOut,
     }, dispatch);
 }
 
