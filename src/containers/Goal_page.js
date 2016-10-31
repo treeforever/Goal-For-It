@@ -55,40 +55,9 @@ class Goal_page extends Component {
 
   render() {
     let g = this.props.goal;
-
-
     return (
       <div>
-        <Nav title={`${this.props.user.currentUser.username}${'\''}s Goals`}/>
-
-    const goalActions = [
-      <FlatButton
-        label="Cancel"
-        primary={true}
-        onTouchTap={() => { this.props.closeAddGoalDialog() }}
-      />,
-      <FlatButton
-        label="Next"
-        primary={true}
-        disabled={!this.props.goalText}
-        onTouchTap={() => { console.log('here'); this.nextButtonActionsOnGoal() }}
-      />,
-    ];
-
-
-    return (
-      <div>
-        <MuiThemeProvider>
-          <AppBar
-            title={`${this.props.user.user.username}${'\''}s Goals`}
-            iconClassNameLeft="muidocs-icon-navigation-expand-more"
-            className="App-Bar"
-          />
-        </MuiThemeProvider>
-        <MuiThemeProvider muiTheme={muiTheme}>
-          <RaisedButton label="+" onClick={ () => this.props.openAddGoalDialog() } />
-          </MuiThemeProvider>
->>>>>>> d0f0eede99a33dd29f288ee8aa7ccf96fa27f68f
+       <Nav title={`${this.props.user.currentUser.username}${'\''}s Goals`}/>
         <h1>{g.goal}
           <MuiThemeProvider style={styles.block}>
             <Checkbox
@@ -96,7 +65,6 @@ class Goal_page extends Component {
             onCheck={this.handleChange}
             checked={g.goal_checked}
             disabled={(this.props.user.user.username === this.props.user.currentUser.username ? false : true)}
-
             />
           </MuiThemeProvider>
         </h1>
@@ -152,20 +120,8 @@ const mapDispatchToProps = (dispatch) => {
       addMilestoneRow,
       addStepRow,
       selectMilestone,
-<<<<<<< HEAD
       moneyGoal,
-=======
-      moneyGoal
->>>>>>> d0f0eede99a33dd29f288ee8aa7ccf96fa27f68f
     }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Goal_page);
-
-// <MuiThemeProvider>
-//   <AppBar
-//     title={`${this.props.user.currentUser.username}${'\''}s Goals`}
-//     iconClassNameLeft="muidocs-icon-navigation-expand-more"
-//     className="App-Bar"
-//   />
-// </MuiThemeProvider>
