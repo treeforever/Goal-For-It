@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { checkedStep } from '../actions/goalActions'
 import { addNotif } from '../actions/groupActions'
+import { moneyStep } from '../actions/moneyActions'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
@@ -33,6 +34,7 @@ const Step = ({ milestone, user, dispatch }) => {
                 () => {
                   dispatch(checkedStep(step, index))
                   dispatch(addNotif({type: "notificaiton", content: content}))
+                  dispatch(moneyStep())
                   }
                 }
               checked={step.checked}

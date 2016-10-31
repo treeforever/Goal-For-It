@@ -1,6 +1,6 @@
 const defaultState = {
-    group_money: null,
-    user_money: null,
+    group_money: 500,
+    user_money: 100,
     error: null
   };
 
@@ -21,7 +21,39 @@ export default function reducer(state = defaultState, action) {
           stepText: '',
           stepsText:[],
         }
-      }      
+      }
+
+      case "FETCH_GROUP_MONEY_FULFILLED": {
+        return {
+          ...state
+        }
+      }
+
+      case "MONEY_GOAL": {
+        console.log("MONEY GOAL", state.group_money)
+        return {
+          ...state,
+          group_money: state.group_money - 3,
+          user_money: state.user_money + 3
+        }
+      }
+
+      case "MONEY_MILESTONE": {
+        console.log("MONEY MILESTONE", state.group_money)
+        return {
+          group_money: state.group_money - 2,
+          user_money: state.user_money + 2
+
+        }
+      }
+
+      case "MONEY_STEP": {
+        console.log("MONEY STEP", state.group_money)
+        return {
+          group_money: state.group_money - 1,
+          user_money: state.user_money + 1
+        }
+      }
     }
 
     return state

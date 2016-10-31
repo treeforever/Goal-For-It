@@ -14,13 +14,8 @@ const styles = {
 
 
 class GroupUser extends Component {
-  sendUsername = (event) => {
-    // this.props.handleTouchTap()
-    console.log(event.target.value)
-  }
 
   render() {
-    console.log('key', this.props.key)
     return (
       <Chip
         style={styles.chip}

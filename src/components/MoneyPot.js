@@ -5,7 +5,7 @@ class MoneyStatus extends Component {
   render() {
     return (
       <div>
-
+        Money Pot: {this.props.moneyPot}
       </div>
     )
   }
