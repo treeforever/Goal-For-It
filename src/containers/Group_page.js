@@ -9,6 +9,7 @@ import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchUs
 import { RaisedButton, FlatButton, Dialog, AppBar, List, IconMenu, MenuItem, IconButton } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import MobileTearSheet from '../components/MobileTearSheet';
 
 import MuiText from '../components/MuiText'
 import muiTheme from '../components/MuiTheme'
@@ -17,8 +18,6 @@ import GroupList from '../components/GroupList'
 import MoneyStatus from '../components/MoneyStatus'
 import InputBox from '../components/InputBox'
 import Nav from './Nav'
-// import injectTapEventPlugin from 'react-tap-event-plugin';
-// injectTapEventPlugin();
 
 
 
@@ -62,12 +61,6 @@ class Group_page extends Component {
         <MuiThemeProvider>
             <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchGoal={this.props.fetchGoal}/>
         </MuiThemeProvider>
-
-        <MuiThemeProvider>
-          <List style={{color: 'white'}}>
-            <NotificationList className="list-group" notifs={this.props.notifs} sender={this.props.user.currentUser}/>
-          </List>
-        </MuiThemeProvider>
         <InputBox newTodo
               onSave={this.handleSave}
               onTag={this.handleTag}
@@ -75,6 +68,13 @@ class Group_page extends Component {
               label="notif"
               placeholder="What would you like to say to the group?"
              />
+        <div id="notificationList">
+          <MuiThemeProvider>
+            <List style={{color: 'white'}}>
+              <NotificationList className="list-group" notifs={this.props.notifs} sender={this.props.user.currentUser}/>
+            </List>
+          </MuiThemeProvider>
+        </div>
       </div>
     );
   }

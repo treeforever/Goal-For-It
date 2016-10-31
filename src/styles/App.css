@@ -129,6 +129,12 @@ span.add-step-button {
   margin-top: 10px;
 }
 
+#notificationList {
+  border: 2px solid;
+  border-radius: 15px;
+
+}
+
 .page-header {
   border-radius: 15px;
   background-color: white;

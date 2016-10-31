@@ -1,8 +1,10 @@
 import React from 'react';
 import Notification from './Notification';
+import Subheader from 'material-ui/Subheader';
+
 
 const NotificationList = ({notifs, sender}) => (
-   <ul>
+   <Subheader>Notifications
     {
       notifs.map((notif, index) => (
         <Notification
@@ -12,7 +14,8 @@ const NotificationList = ({notifs, sender}) => (
         />
       ))
     }
-  </ul>
+
+  </Subheader>
 )
 
 export default NotificationList;
