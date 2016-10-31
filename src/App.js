@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { populateUserInfo } from './actions/userActions';
 
 import './styles/App.css';
 
-
 class App extends Component {
+
+  componentWillMount() {
+    this.props.populateUserInfo();
+  }
 
   render() {
     return (
@@ -25,9 +30,13 @@ const mapStateToProps = (state) => {
   return {
     user: state.user.user,
     goals: state.goals
-
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    populateUserInfo,
+  }, dispatch);
+}
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

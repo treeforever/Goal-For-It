@@ -107,7 +107,7 @@ class Goal_page extends Component {
 
         <MuiThemeProvider>
           <AppBar
-            title={`${this.props.user.user.username}${'\''}s Goals`}
+            title={`${this.props.user.currentUser.username}${'\''}s Goals`}
             iconClassNameLeft="muidocs-icon-navigation-expand-more"
             className="App-Bar"
           />

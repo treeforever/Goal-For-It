@@ -20,18 +20,16 @@ module.exports = (knex) => {
       .where("username", username)
       .then(function(resp) {
         if(resp.length < 1) {
-          res.send('fail');
+          res.send('fail z');
         } else {
-          bcrypt.compare(password, resp[0].password, function(err, response) {
-            if(response == true) {
-              req.session.auth = true;
-              req.session.username = resp[0].username;
-              req.session.userid = Number(resp[0].user_id);
-              res.redirect("http://localhost:3000");
-            } else {
-              res.send('fail');
-            }
-          });
+          if(password === resp[0].password) {
+            req.session.auth = true;
+            req.session.username = resp[0].username;
+            req.session.userid = Number(resp[0].user_id);
+            res.redirect('/');
+          } else {
+            res.send('login failed');
+          }
       }
     });
   });
