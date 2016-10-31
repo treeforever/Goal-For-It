@@ -8,7 +8,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
-import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput, addMilestoneRow} from "../actions/milestoneActions"
+import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone, addStepRow} from "../actions/stepActions"
 import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchUserMoney, fetchGroupMoney } from "../actions/moneyActions"
 import { addNotif } from "../actions/groupActions"
@@ -79,7 +79,7 @@ class Nav extends Component {
         onTouchTap={() => { this.submitMoney()}}
       />,
     ];
-{console.log("RENDER NAV")}
+
     return (
 
       <nav >
@@ -133,10 +133,7 @@ class Nav extends Component {
           closeAddMilestonesDialog={this.props.closeAddMilestonesDialog}
           nextButtonActionsOnMilestones={this.nextButtonActionsOnMilestones}
           milestonesText={this.props.milestonesText}
-          milestoneRows={this.props.milestoneRows}
-          handleMilestoneInput={this.props.handleMilestoneInput}
           handleMilestonesInput={this.props.handleMilestonesInput}
-          addMilestoneRow={this.props.addMilestoneRow}
           />
 
         <NewStep
@@ -210,7 +207,6 @@ const mapStateToProps = (state) => ({
   goalText: state.goal.goalText,
   newGoal: state.goal.newGoal,
   milestonesText: state.milestones.milestonesText,
-  milestoneRows: state.milestones.milestoneRows,
   newMilestones: state.milestones.newMilestones,
   stepText: state.milestones.stepText,
   stepsText: state.steps.stepsText,
@@ -244,7 +240,6 @@ const mapDispatchToProps = (dispatch) => {
     handleMilestonesInput,
     handleStepInput,
     handleStepsInput,
-    addMilestoneRow,
     addStepRow,
     selectMilestone,
     openAddGoalDialog,

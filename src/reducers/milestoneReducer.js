@@ -22,7 +22,7 @@ export default function reducer(state={
         return {
           ...state,
           newMilestonesIds: action.payload.data.id,
-          milestonesText: [],
+          milestonesText: [''],
         }
       }
       case "UPDATE_MILESTONES": {
@@ -55,8 +55,7 @@ export default function reducer(state={
         return {
           ...state,
           openMilestonesDialog: null,
-          milestoneRows: ['one row'],
-          milestonesText: [],
+          milestonesText: [""],
         }
       }
 

@@ -4,16 +4,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import muiTheme from './MuiTheme'
 
 class MuiText extends Component {
-  state = {
-    limit: 1
-  }
 
   handleChange = e => {
     this.props.handleChange(e.target.value)
-    /*if(this.state.limit){
-      this.props.addRow()
-      this.setState({limit: 0})
-    }*/
   }
 
   handleBlur = e => {
@@ -23,7 +16,6 @@ class MuiText extends Component {
   render(){
     return (
       <div>
-        <div>{this.props.text}</div>
         <MuiThemeProvider muiTheme={muiTheme}>
 
           <TextField
