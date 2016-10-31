@@ -18,7 +18,6 @@ class Notification extends Component {
                 {this.props.notification.content}
               </p>
             }
-            secondaryText="Notification"
             secondaryTextLines={2}
             leftAvatar={<Avatar src="images/bot.png" />}
             />
@@ -34,7 +33,6 @@ class Notification extends Component {
               <span style={{color: 'blue'}}>{this.props.sender.username} says: </span> {this.props.notification.content}
             </p>
           }
-          secondaryText="Message"
           secondaryTextLines={2}
           leftAvatar={<Avatar src="images/potato.png" />}
           />
