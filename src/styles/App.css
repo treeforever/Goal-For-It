@@ -129,9 +129,14 @@ span.add-step-button {
   margin-top: 10px;
 }
 
+#notificationUL {
+  padding: 0px;
+}
+
 #notificationList {
   border: 2px solid;
   border-radius: 15px;
+
 
 }
 

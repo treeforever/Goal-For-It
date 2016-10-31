@@ -26,6 +26,7 @@ module.exports = (knex) => {
 
     knex.select('*')
       .from('notices')
+      .orderBy('notice_id', 'desc')
       .then((results) => {
         res.json(results);
     })

@@ -33,7 +33,7 @@ export default function reducer(state={
       case "ADD_NOTIF": {
         return {
           ...state,
-          notifs: [...state.notifs, action.payload]
+          notifs: [action.payload, ...state.notifs]
         }
         break;
       }
