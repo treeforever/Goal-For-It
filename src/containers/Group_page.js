@@ -15,7 +15,6 @@ import MuiText from '../components/MuiText'
 import muiTheme from '../components/MuiTheme'
 import NotificationList from '../components/NotificationList'
 import GroupList from '../components/GroupList'
-import MoneyStatus from '../components/MoneyStatus'
 import InputBox from '../components/InputBox'
 import Nav from './Nav'
 
@@ -55,9 +54,6 @@ class Group_page extends Component {
 
         <Nav title={this.props.group[0].name }/>
 
-
-        <MoneyStatus money={this.props.money} />
-
         <MuiThemeProvider>
             <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchGoal={this.props.fetchGoal}/>
         </MuiThemeProvider>
@@ -86,7 +82,6 @@ const mapStateToProps = (store) => ({
   notifs: store.group.notifs,
   tag: store.group.tag,
   groupMoney: store.money.groupMoney,
-  money: store.money
   });
 
 const mapDispatchToProps = (dispatch) => {

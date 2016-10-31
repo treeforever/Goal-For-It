@@ -16,6 +16,7 @@ import { signOut } from '../actions/userActions';
 
 import NewMilestone from "../components/NewMilestone"
 import NewStep from "../components/NewStep"
+import MoneyStatus from '../components/MoneyStatus'
 import Piggybank from "../components/Piggybank"
 import StartChallenge from "../components/StartChallenge"
 import muiTheme from '../components/MuiTheme'
@@ -86,7 +87,7 @@ class Nav extends Component {
           <MuiThemeProvider>
             <AppBar
               title={this.props.title}
-              iconElementLeft={this.props.challenge ? <span>piggybank</span> : <span>Start a Challenge</span>}
+              iconElementLeft={this.props.challenge ?   <MoneyStatus money={this.props.money} /> : <span>Start a Challenge</span>}
               iconElementRight={<DropdownMenu
                                   openAddGoalDialog={this.props.openAddGoalDialog}
                                   openPotDialog={this.props.openPotDialog}
