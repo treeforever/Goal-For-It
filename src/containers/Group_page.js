@@ -65,7 +65,7 @@ class Group_page extends Component {
 
         <MuiThemeProvider>
           <List style={{color: 'white'}}>
-            <NotificationList className="list-group" notifs={this.props.notifs} sender={this.props.user.user}/>
+            <NotificationList className="list-group" notifs={this.props.notifs} sender={this.props.user.currentUser}/>
           </List>
         </MuiThemeProvider>
         <InputBox newTodo
