@@ -140,6 +140,10 @@ span.add-step-button {
   margin: 40px 10px 20px;
 }
 
+.group.moneyStatus {
+  float: right;
+}
+
 /*checkbox*/
 .checkbox {
   margin-top: 50%;

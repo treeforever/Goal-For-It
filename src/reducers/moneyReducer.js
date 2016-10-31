@@ -30,28 +30,30 @@ export default function reducer(state = defaultState, action) {
       }
 
       case "MONEY_GOAL": {
-        console.log('MONEY GOAL', action.payload)
-        return {
-          ...state,
-          group_money: state.group_money - 3,
-          user_money: state.user_money + 3
+        if(action.payload) {
+          return {
+            ...state,
+            group_money: state.group_money - 3,
+            user_money: state.user_money + 3
+          }
         }
       }
 
       case "MONEY_MILESTONE": {
-        console.log("MONEY MILESTONE", action.payload)
-        return {
-          group_money: state.group_money - 2,
-          user_money: state.user_money + 2
-
+        if(action.payload){
+          return {
+            group_money: state.group_money - 2,
+            user_money: state.user_money + 2
+          }
         }
       }
 
       case "MONEY_STEP": {
-        console.log("MONEY STEP", action.payload)
-        return {
-          group_money: state.group_money - 1,
-          user_money: state.user_money + 1
+        if(action.payload){
+          return {
+            group_money: state.group_money - 1,
+            user_money: state.user_money + 1
+          }
         }
       }
     }

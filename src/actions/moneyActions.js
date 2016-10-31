@@ -22,14 +22,14 @@ export function fetchUserMoney() {
 export function moneyGoal(completed) {
   return {
     type: "MONEY_GOAL",
-    payload: completed
+    payload: !completed
   }
 }
 
 export function moneyMilestone(completed) {
   return {
-    type: "MONEY_MILE",
-    payload: completed
+    type: "MONEY_MILESTONE",
+    payload: !completed
 
   }
 }
@@ -37,6 +37,6 @@ export function moneyMilestone(completed) {
 export function moneyStep(completed) {
   return {
     type: "MONEY_STEP",
-    payload: completed
+    payload: !completed
   }
 }
