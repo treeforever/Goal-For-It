@@ -46,7 +46,11 @@ class Goal_page extends Component {
 
 
   componentWillMount = () => {
-    this.props.fetchGoal(1);
+    if(this.props.goal.goal){
+      return
+    }else{
+      this.props.fetchGoal(1);
+    }
     this.props.fetchUser(1);
   }
 
@@ -108,10 +112,12 @@ class Goal_page extends Component {
             style={styles.checkbox}
             onCheck={this.handleChange}
             checked={g.goal_checked}
+            disabled={(this.props.user.user.username === this.props.user.currentUser.username ? false : true)}
+
             />
           </MuiThemeProvider>
         </h1>
-        <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username}/>
+        <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username} currentUser={this.props.user.currentUser}/>
 
         <MuiThemeProvider muiTheme={muiTheme}>
           <Dialog

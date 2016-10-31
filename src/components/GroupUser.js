@@ -24,6 +24,20 @@ class GroupUser extends Component {
       >
       <Link to="/">{this.props.grouplist}</Link>
       </Chip>
+      <Chip
+        style={styles.chip}
+        onTouchTap={this.sendUsername}
+        value={this.props.key}
+      >
+      <Link to="/">{this.props.grouplist}</Link>
+      </Chip>
+      <Chip
+        style={styles.chip}
+        onTouchTap={this.sendUsername}
+        value={this.props.key}
+      >
+      <Link to="/">{this.props.grouplist}</Link>
+      </Chip>
     )
   }
 }

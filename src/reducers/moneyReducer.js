@@ -1,6 +1,6 @@
 const defaultState = {
-    group_money: 500,
-    user_money: 100,
+    groupMoney: 0,
+    userMoney: 0,
     error: null
   };
 
@@ -9,17 +9,30 @@ export default function reducer(state = defaultState, action) {
       case "OPEN_POT_DIALOG": {
         return {
           ...state,
-          openPotDialog: {},
+          potDialog: {},
         }
       }
 
       case "CLOSE_POT_DIALOG": {
         return {
           ...state,
-          openStepsDialog: null,
-          stepRows: ['one row'],
-          stepText: '',
-          stepsText:[],
+          potDialog: null,
+          newMoneyInput: '',
+        }
+      }
+
+      case "HANDLE_MONEY_INPUT": {
+        return {
+          ...state,
+          newMoneyInput: action.payload
+        }
+      }
+
+      case "ADD_GROUP_MONEY": {
+        let newMoney = Number(state.newMoneyInput)
+        return {
+          ...state,
+          groupMoney: state.groupMoney + newMoney,
         }
       }
 
@@ -33,8 +46,8 @@ export default function reducer(state = defaultState, action) {
         if(action.payload) {
           return {
             ...state,
-            group_money: state.group_money - 3,
-            user_money: state.user_money + 3
+          groupMoney: state.groupMoney - 3,
+          userMoney: state.userMoney + 3
           }
         }
       }
@@ -42,8 +55,8 @@ export default function reducer(state = defaultState, action) {
       case "MONEY_MILESTONE": {
         if(action.payload){
           return {
-            group_money: state.group_money - 2,
-            user_money: state.user_money + 2
+          groupMoney: state.grouMoney - 2,
+          userMoney: state.userMoney + 2
           }
         }
       }
@@ -51,12 +64,12 @@ export default function reducer(state = defaultState, action) {
       case "MONEY_STEP": {
         if(action.payload){
           return {
-            group_money: state.group_money - 1,
-            user_money: state.user_money + 1
+            groupMoney: state.groupMoney - 1,
+            userMoney: state.userMoney + 1
           }
         }
       }
     }
-
-    return state
+  return state
 }
+

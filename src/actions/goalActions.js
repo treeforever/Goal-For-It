@@ -10,8 +10,6 @@ export function fetchGoal(goal) {
   };
 }
 
-
-
 export function addGoal(goal) {
   const url = "http://localhost:8080/api/goals"
   let data = {goal}

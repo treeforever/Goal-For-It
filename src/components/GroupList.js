@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-
-
-// import GroupUser from './GroupUser';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { fetchGoal } from "../actions/goalActions"
 import { Link } from "react-router";
-
 import Chip from 'material-ui/Chip';
-
 
 const styles = {
   chip: {
@@ -21,32 +19,53 @@ const styles = {
 
 class GroupList extends Component {
 
-  sendUsername1 = (event) => {
-    this.props.fetchGoal(0)
-  }
+  sendUsername = (member) => {
+    if(member.id === 1){
+      this.props.fetchGoal(1)
+      this.props.fetchUser(1)
 
-  sendUsername2 = (event) => {
-    this.props.fetchGoal(1)
-  }
+    }else if(member.id === 2){
+      this.props.fetchGoal(2)
+      this.props.fetchUser(2)
 
-  sendUsername3 = (event) => {
-    this.props.fetchGoal(2)
+    }else if(member.id === 3){
+      this.props.fetchGoal(3)
+      this.props.fetchUser(3)
+
+    }
   }
 
   render(){
+    console.log(this.props.group)
     return(
       <ul style={styles.wrapper} >
-        <Chip
-          style={styles.chip}
-          onTouchTap={this.sendUsername}
-        >
-        <Link to="/">{this.props.group[0].username}</Link>
-        </Chip>
+        {this.props.group.map( (member) => {
+          return (
+              <Chip
+                style={styles.chip}
+                onTouchTap={function() { this.sendUsername(member) }.bind(this) }
+              >
+            <Link to="/">
+                {member.username}
+            </Link>
+              </Chip>)
+
+
+         } )}
+
+
       </ul>
     )
   }
 }
 
+// const mapDispatchToProps = (dispatch) => {
+//   //whenver addGoal is called, the result should be passed
+//   //to all of reducers
+//   return bindActionCreators({
+//     fetchGoal
+//   }, dispatch)
+// }
 
 export default GroupList
 

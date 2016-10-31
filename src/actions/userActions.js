@@ -7,9 +7,7 @@ export function fetchUser(userId) {
     type: "FETCH_USER",
     payload: request
   }
-
 }
-
 
 export function setUserName(name) {
   return {
@@ -18,8 +16,13 @@ export function setUserName(name) {
   }
 }
 
-export function setUserAge(age) {
+export function populateUserInfo() {
   return {
-    type: ''
+    type: 'POPULATE_USER_INFO',
+    payload: window.currentUser,
   }
+}
+
+export function signOut() {
+  window.location = '/signout';
 }

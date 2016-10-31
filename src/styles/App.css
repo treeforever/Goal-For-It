@@ -81,10 +81,7 @@
   bottom: 5%;
   width: 100%;
 }
-.menu-item {
-  display: block;
-  margin-bottom: 20%;
-}
+
 
 
 /*goal-page css*/
@@ -140,7 +137,7 @@ span.add-step-button {
   margin: 40px 10px 20px;
 }
 
-.group.moneyStatus {
+#moneyStatus {
   float: right;
 }
 
@@ -148,5 +145,35 @@ span.add-step-button {
 .checkbox {
   margin-top: 50%;
   margin-left: 50%;
-
 }
+
+#dropdown-menu-group {
+  float: right;
+  margin-right: -10%;
+}
+
+#dropdown-menu-goal {
+  float: right;
+  margin-right: -10%;
+}
+
+#group-huddle {
+  color: black;
+}
+
+a#group-huddle:hover {
+  text-decoration: none;
+}
+
+#my-goals {
+  color: black;
+}
+
+a#my-goals:hover{
+  text-decoration: none;
+}
+
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+

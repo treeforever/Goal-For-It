@@ -7,6 +7,24 @@ export function openPotDialog() {
   };
 }
 
+export function closePotDialog() {
+  return {
+    type: "CLOSE_POT_DIALOG",
+  };
+}
+
+export function handleMoneyInput(text) {
+  return {
+    type: "HANDLE_MONEY_INPUT",
+    payload: text
+  };
+}
+
+export function addGroupMoney() {
+  return {
+    type: "ADD_GROUP_MONEY",
+  };
+}
 export function fetchGroupMoney() {
   return {
     type: "FETCH_GROUP_MONEY"

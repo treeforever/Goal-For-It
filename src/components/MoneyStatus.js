@@ -6,9 +6,10 @@ import MoneyTotal from './MoneyTotal'
 class MoneyStatus extends Component {
   render() {
     return (
-      <div>
-        <MoneyPot moneyPot={this.props.money.group_money}/>
-        <MoneyTotal moneyTotal={this.props.money.user_money}/>
+      <div id="moneyStatus" >
+        <i class="material-icons">attach_money</i>
+        <MoneyPot moneyPot={this.props.money.groupMoney}/>
+        <MoneyTotal moneyTotal={this.props.money.userMoney}/>
       </div>
     )
   }

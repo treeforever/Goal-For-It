@@ -29,7 +29,7 @@ export default function reducer(state={
         }
       }
       case "UPDATE_STEPS": {
-        const { id, text } = action.payload
+        const { id } = action.payload
         const newSteps = [...state.steps]
         const stepToUpdate = newSteps.findIndex(step => step.id === id)
         newSteps[stepToUpdate] = action.payload;

@@ -31,6 +31,7 @@ class NewMilestone extends Component {
         {this.props.milestoneRows.map((num, i)=>{
           return (
                   <MuiText
+                    key={i}
                     hintText="milestone"
                     floatingLabelText="milestone"
                     text={this.props.milestonesText[i]}
