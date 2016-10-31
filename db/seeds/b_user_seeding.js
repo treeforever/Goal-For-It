@@ -7,19 +7,22 @@ exports.seed = function (knex, Promise) {
         .insert({
           username: 'foo',
           email: 'foo@foo.com',
-          password: 'password'
+          password: 'password',
+          user_money: 0
         }),
         knex('users')
         .insert({
           username: 'Jimmy',
           email: 'jim@jimmy.com',
-          password: '1234'
+          password: '1234',
+          user_money: 0
         }),
         knex('users')
         .insert({
           username: 'Frankie',
           email: 'frank@gmail.com',
-          password: 'whatever'
+          password: 'whatever',
+          user_money: 0
         })
       ]);
     });

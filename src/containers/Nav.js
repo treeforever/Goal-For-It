@@ -87,7 +87,10 @@ class Nav extends Component {
             <AppBar
               title={this.props.title}
               iconElementLeft={this.props.challenge ? <span>piggybank</span> : <span>Start a Challenge</span>}
-              iconElementRight={<DropdownMenu />}
+              iconElementRight={<DropdownMenu
+                                  openAddGoalDialog={this.props.openAddGoalDialog}
+                                  openPotDialog={this.props.openPotDialog}
+                                  signOut={this.props.signOut} />}
               className="App-Bar"
             />
           </MuiThemeProvider>
@@ -261,4 +264,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)
