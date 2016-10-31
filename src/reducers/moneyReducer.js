@@ -44,7 +44,7 @@ export default function reducer(state = defaultState, action) {
       }
 
       case "MONEY_GOAL": {
-        if(action.payload) {
+        if(action.payload && state.groupMoney != 0) {
           return {
             ...state,
           groupMoney: state.groupMoney - 3,
@@ -54,7 +54,7 @@ export default function reducer(state = defaultState, action) {
       }
 
       case "MONEY_MILESTONE": {
-        if(action.payload){
+        if(action.payload && state.groupMoney != 0){
           return {
           groupMoney: state.grouMoney - 2,
           userMoney: state.userMoney + 2
@@ -63,7 +63,7 @@ export default function reducer(state = defaultState, action) {
       }
 
       case "MONEY_STEP": {
-        if(action.payload){
+        if(action.payload && state.groupMoney != 0){
           return {
             groupMoney: state.groupMoney - 1,
             userMoney: state.userMoney + 1
