@@ -34,7 +34,7 @@ const Step = ({ milestone, user, dispatch }) => {
                 () => {
                   dispatch(checkedStep(step, index))
                   dispatch(addNotif({type: "notificaiton", content: content}))
-                  dispatch(moneyStep())
+                  dispatch(moneyStep(step.checked))
                   }
                 }
               checked={step.checked}
