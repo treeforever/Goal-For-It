@@ -56,7 +56,7 @@
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
   position: absolute;
-  z-index: 5;
+  /*z-index: 5;*/
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -81,10 +81,7 @@
   bottom: 5%;
   width: 100%;
 }
-.menu-item {
-  display: block;
-  margin-bottom: 20%;
-}
+
 
 
 /*goal-page css*/
@@ -104,7 +101,6 @@ input.inputBox {
   margin-right: 25%;
 }
 
-<<<<<<< HEAD
 article.milestone {
 
 }
@@ -120,7 +116,7 @@ span.add-step-button {
 
 .App-Bar {
   position: absolute;
-  z-index: -1;
+  /*z-index: -1;*/
 }
 
 /*group-page css*/
@@ -145,5 +141,14 @@ span.add-step-button {
 .checkbox {
   margin-top: 50%;
   margin-left: 50%;
+}
 
+#dropdown-menu-group {
+  float: right;
+  margin-right: -10%;
+}
+
+#dropdown-menu-goal {
+  float: right;
+  margin-right: -10%;
 }

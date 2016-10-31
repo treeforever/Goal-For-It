@@ -1,5 +1,11 @@
-import React from 'react';
-import GroupUser from './GroupUser';
+import React, { Component } from 'react';
+
+
+// import GroupUser from './GroupUser';
+import { Link } from "react-router";
+
+import Chip from 'material-ui/Chip';
+
 
 const styles = {
   chip: {
@@ -13,34 +19,36 @@ const styles = {
   },
 };
 
-const GroupList = ({ group, click }) => (
-   <ul style={styles.wrapper} >
-    {
-      group.map((groupUser, index) => (
-      <GroupUser
-        key={index}
-        grouplist={groupUser.username}
-        handleTouchTap={click}
-      />
-      ))
-    }
-  </ul>
-)
+class GroupList extends Component {
+
+  sendUsername1 = (event) => {
+    this.props.fetchGoal(0)
+  }
+
+  sendUsername2 = (event) => {
+    this.props.fetchGoal(1)
+  }
+
+  sendUsername3 = (event) => {
+    this.props.fetchGoal(2)
+  }
+
+  render(){
+    console.log('GROUP', this.props.group)
+    return(
+      <ul style={styles.wrapper} >
+        <Chip
+          style={styles.chip}
+          onTouchTap={this.sendUsername}
+        >
+        <Link to="/">{this.props.group[0].username}</Link>
+        </Chip>
+      </ul>
+    )
+  }
+}
+
 
 export default GroupList
 
 
-/////
-// >= 1 group
-
-//Rock and Role
-//Jazz
-
-// this.props.group.map(group => {
-//   <GroupList grouplist={group} />
-//   <h1>{group.name }</h1>
-// })
-
-// this.props.group[0] //Rock and Roll
-// this.props.group[1]
-// this.props.group[2]

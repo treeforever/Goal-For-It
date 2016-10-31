@@ -16,28 +16,29 @@ module.exports = (knex) => {
   router.post("/", jsonParser, (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
+  })
 
-    knex
-        .select("*")
-        .from("users")
-        .where("username", username)
-        }).then(function(resp) {
-            if(resp.length < 1) {
-              res.send('fail');
-            } else {
-              bcrypt.compare(password, resp[0].password, function(err, response) {
-                if(response == true) {
-                  req.session.auth = true;
-                  req.session.username = resp[0].username;
-                  req.session.userid = Number(resp[0].user_id);
-                  res.redirect('/main');
-                } else {
-                  res.send('fail');
-                }
-              });
-            }
-          });
-        });
+    // knex
+    //     .select("*")
+    //     .from("users")
+    //     .where("username", username)
+    //     }).then(function(resp) {
+    //         if(resp.length < 1) {
+    //           res.send('fail');
+    //         } else {
+    //           bcrypt.compare(password, resp[0].password, function(err, response) {
+    //             if(response == true) {
+    //               req.session.auth = true;
+    //               req.session.username = resp[0].username;
+    //               req.session.userid = Number(resp[0].user_id);
+    //               res.redirect('/main');
+    //             } else {
+    //               res.send('fail');
+    //             }
+    //           });
+    //         }
+    //       });
+    //     });
 
     // var password = req.body.password;
     // var confirm = req.body.confirm;
@@ -71,6 +72,5 @@ module.exports = (knex) => {
     // } else {
     //   res.redirect("/login");
     // }
-  });
   return router;
 }

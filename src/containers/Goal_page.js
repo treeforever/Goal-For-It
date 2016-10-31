@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { RaisedButton, FlatButton, Dialog } from 'material-ui'
+import { RaisedButton, FlatButton, Dialog, IconMenu, MenuItem, IconButton, AppBar, Checkbox } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import { Link } from "react-router";
 
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { fetchUser } from "../actions/userActions"
@@ -16,8 +17,7 @@ import NewMilestone from "../components/NewMilestone"
 import NewStep from "../components/NewStep"
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
-import AppBar from 'material-ui/AppBar';
-import Checkbox from 'material-ui/Checkbox';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 injectTapEventPlugin();
 
 const styles = {
@@ -31,9 +31,9 @@ const styles = {
 
 class Goal_page extends Component {
   handleChange = (event) => {
-    this.props.checkedGoal(this.props.goal.goal_id, this.props.checked)
+    this.props.checkedGoal(this.props.goal)
 
-    const content = (this.props.goal.goal.checked ? `${this.props.user.user.username} unchecked their goal: ${this.props.goal.goal}` : `${this.props.user.user.username} completed their goal: ${this.props.goal.goal}`)
+    const content = (this.props.goal.goal_checked ? `${this.props.user.user.username} unchecked their goal: ${this.props.goal.goal}` : `${this.props.user.user.username} completed their goal: ${this.props.goal.goal}`)
 
     this.props.addNotif({
       type: "notificaiton",
@@ -42,7 +42,7 @@ class Goal_page extends Component {
 
 
   componentWillMount = () => {
-    this.props.fetchGoal(2);
+    this.props.fetchGoal(1);
     this.props.fetchUser(1);
   }
 
@@ -81,13 +81,30 @@ class Goal_page extends Component {
         label="Next"
         primary={true}
         disabled={!this.props.goalText}
-        onTouchTap={() => { console.log('here'); this.nextButtonActionsOnGoal() }}
+        onTouchTap={() => { this.nextButtonActionsOnGoal() }}
       />,
     ];
 
 
     return (
       <div>
+        <span id="dropdown-menu-goal">
+          <MuiThemeProvider muiTheme={muiTheme}>
+          <IconMenu
+            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+            targetOrigin={{horizontal: 'right', vertical: 'top'}}
+          >
+            <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
+            <MenuItem><Link to="/">My Goals</Link></MenuItem>
+            <MenuItem><Link to="group">Group Huddle</Link></MenuItem>
+            <MenuItem primaryText="Start Challenge" />
+            <MenuItem primaryText="Sign Out" />
+          </IconMenu>
+          </MuiThemeProvider>
+        </span>
+
+
         <MuiThemeProvider>
           <AppBar
             title={`${this.props.user.user.username}${'\''}s Goals`}
@@ -95,15 +112,13 @@ class Goal_page extends Component {
             className="App-Bar"
           />
         </MuiThemeProvider>
-        <MuiThemeProvider muiTheme={muiTheme}>
-          <RaisedButton label="+" onClick={ () => this.props.openAddGoalDialog() } />
-          </MuiThemeProvider>
-        <h1>{this.props.goal.goal}
+
+        <h1>{g.goal}
           <MuiThemeProvider style={styles.block}>
             <Checkbox
             style={styles.checkbox}
             onCheck={this.handleChange}
-            checked={this.props.goal.checked}
+            checked={g.goal_checked}
             />
           </MuiThemeProvider>
         </h1>

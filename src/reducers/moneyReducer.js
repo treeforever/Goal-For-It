@@ -1,6 +1,6 @@
 const defaultState = {
-    group_money: null,
-    user_money: null,
+    groupMoney: 0,
+    userMoney: 0,
     error: null
   };
 
@@ -9,19 +9,32 @@ export default function reducer(state = defaultState, action) {
       case "OPEN_POT_DIALOG": {
         return {
           ...state,
-          openPotDialog: {},
+          potDialog: {},
         }
       }
 
       case "CLOSE_POT_DIALOG": {
         return {
           ...state,
-          openStepsDialog: null,
-          stepRows: ['one row'],
-          stepText: '',
-          stepsText:[],
+          potDialog: null,
+          newMoneyInput: '',
         }
-      }      
+      }
+
+      case "HANDLE_MONEY_INPUT": {
+        return {
+          ...state,
+          newMoneyInput: action.payload
+        }
+      }
+
+      case "ADD_GROUP_MONEY": {
+        let newMoney = Number(state.newMoneyInput)
+        return {
+          ...state,
+          groupMoney: state.groupMoney + newMoney,
+        }
+      }
     }
 
     return state

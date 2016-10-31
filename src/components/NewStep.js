@@ -45,6 +45,7 @@ class NewStep extends Component {
                   <div>
                       <MuiThemeProvider muiTheme={muiTheme}>
                         <SelectField
+                          key={i}
                           floatingLabelText="Milestone"
                           value={0}
                           onChange={() => { this.handleSelectMilestone() }}
@@ -52,7 +53,7 @@ class NewStep extends Component {
                         >
                           {this.props.newMilestones.map((m, j) => {
                             return (
-                              <MenuItem value={j} primaryText={m} />
+                              <MenuItem value={j} primaryText={m} key={j} />
                             )
                           })}
                         </SelectField>

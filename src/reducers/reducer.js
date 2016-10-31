@@ -5,12 +5,13 @@ import goal from "./goalReducer"
 import milestones from "./milestoneReducer"
 import steps from "./stepReducer"
 import group from "./groupReducer"
+import money from "./moneyReducer"
 
 export default combineReducers({
   user,
   goal,
   milestones,
   steps,
-  group
-
+  group,
+  money
 })

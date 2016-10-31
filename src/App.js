@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux"
 
 import './styles/App.css';
-import Sidemenu from './Sidemenu'
+
 
 class App extends Component {
 
@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <nav>
-          <Sidemenu />
+
         </nav>
         <div className="container">
           <h1>{this.props.user.name}</h1>
