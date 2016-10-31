@@ -7,13 +7,12 @@ DROP TABLE IF EXISTS goals CASCADE;
 DROP TABLE IF EXISTS notices CASCADE;
 
 
-
-
 CREATE TABLE users (
   user_id serial PRIMARY KEY,
   username varchar(20) NOT NULL,
   password varchar(50) NOT NULL,
-  email varchar(20) NOT NULL
+  email varchar(20) NOT NULL,
+  user_money decimal
 );
 
 CREATE TABLE groups (
@@ -67,8 +66,6 @@ CREATE TABLE notices (
 
 CREATE TABLE money (
   money_id serial PRIMARY KEY,
-  type varchar(50) NOT NULL,
-  content varchar (500) NOT NULL,
-  sender_id bigint,
-  receiver_id bigint
+  amount decimal NOT NULL,
+  group_id bigint
 );
