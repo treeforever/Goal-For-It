@@ -8,7 +8,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
-import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput} from "../actions/milestoneActions"
+import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput, addMilestoneInState} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone, addStepRow} from "../actions/stepActions"
 import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchUserMoney, fetchGroupMoney } from "../actions/moneyActions"
 import { addNotif } from "../actions/groupActions"
@@ -33,6 +33,7 @@ class Nav extends Component {
   }
 
   nextButtonActionsOnMilestones = () => {
+    this.props.addMilestoneInState()
     this.props.addMilestones(this.props.milestonesText, this.props.newGoal.id)
     this.props.addNotif({type: "notification", content: `user 1 has added milestones: ${this.props.newMilestones}`})
     this.props.closeAddMilestonesDialog()
@@ -238,9 +239,9 @@ const mapDispatchToProps = (dispatch) => {
   //to all of reducers
   return bindActionCreators({
     addNotif,
-
     addGoal,
     addMilestones,
+    addMilestoneInState,
     addSteps,
     openAddGoalDialog,
     openAddMilestonesDialog,

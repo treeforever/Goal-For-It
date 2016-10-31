@@ -47,24 +47,18 @@ export function closeAddMilestonesDialog() {
   };
 }
 
-export function handleMilestoneInput(text) {
+
+export function addMilestoneInState() {
   return {
-    type: 'HANDLE_MILESTONE_INPUT',
-    payload: text
+    type: 'ADD_MILESTONES_IN_STATE',
   };
 }
+
 
 export function handleMilestonesInput(text, index) {
   return {
     type: 'HANDLE_MILESTONES_INPUT',
     payload: {text: text,
               index: index}
-  };
-}
-
-export function addMilestoneRow() {
-  return {
-    type: 'ADD_MILESTONE_ROW',
-    payload: 'another row'
   };
 }

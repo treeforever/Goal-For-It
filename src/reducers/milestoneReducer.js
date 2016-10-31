@@ -18,11 +18,19 @@ export default function reducer(state={
           milestones: action.payload.data
         }
       }
+
+      case "ADD_MILESTONES_IN_STATE": {
+        return {
+          ...state,
+          newMilestones: state.milestonesText.slice(0, state.milestonesText.length - 1)
+        }
+      }
+
       case "ADD_MILESTONES_FULFILLED": {
         return {
           ...state,
           newMilestonesIds: action.payload.data.id,
-          milestonesText: [''],
+          milestonesText: [""],
         }
       }
       case "UPDATE_MILESTONES": {
@@ -73,9 +81,6 @@ export default function reducer(state={
          milestonesText: newArray}
       }
 
-      case "ADD_MILESTONE_ROW": {
-        return state
-      }
     }
 
     return state
