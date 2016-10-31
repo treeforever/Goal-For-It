@@ -54,50 +54,12 @@ class Goal_page extends Component {
     this.props.fetchUser(1);
   }
 
-  // nextButtonActionsOnGoal = () => {
-  //   this.props.addGoal(this.props.goalText)
-  //   this.props.addNotif({type: "notification", content: `user 1 has added a new goal: ${this.props.goalText}`})
-  //   this.props.closeAddGoalDialog()
-  //   this.props.openAddMilestonesDialog()
-  // }
-  //
-  // nextButtonActionsOnMilestones = () => {
-  //   this.props.addMilestones(this.props.milestonesText, this.props.newGoal.id)
-  //   this.props.addNotif({type: "notification", content: `user 1 has added milestones: ${this.props.newMilestones}`})
-  //   this.props.closeAddMilestonesDialog()
-  //   this.props.openAddStepsDialog()
-  // }
-  //
-  // nextButtonActionsOnSteps = () => {
-  //   //change stepsText
-  //   this.props.addSteps(this.props.stepsText)
-  //   this.props.addNotif({type: "notification", content: `user 1 has added new steps: ${this.props.stepsText}`})
-  //   this.props.closeAddStepsDialog()
-  // }
-
-
   render() {
     let g = this.props.goal;
-    const goalActions = [
-      <FlatButton
-        label="Cancel"
-        primary={true}
-        onTouchTap={() => { this.props.closeAddGoalDialog() }}
-      />,
-      <FlatButton
-        label="Next"
-        primary={true}
-        disabled={!this.props.goalText}
-        onTouchTap={() => { this.nextButtonActionsOnGoal() }}
-      />,
-    ];
-
 
     return (
       <div>
         <Nav />
-
-
         <MuiThemeProvider>
           <AppBar
             title={`${this.props.user.currentUser.username}${'\''}s Goals`}
@@ -116,8 +78,6 @@ class Goal_page extends Component {
           </MuiThemeProvider>
         </h1>
         <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username}/>
-
-        
 
       </div>
     );

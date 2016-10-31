@@ -49,25 +49,7 @@ class Group_page extends Component {
     alert('You clicked the Chip.');
   }
 
-  submitMoney = () => {
-    this.props.addGroupMoney()
-    this.props.closePotDialog()
-  }
-
   render() {
-    const potActions = [
-      <FlatButton
-        label="Cancel"
-        primary={true}
-        onTouchTap={() => { this.props.closePotDialog() }}
-      />,
-      <FlatButton
-        label="Submit"
-        primary={true}
-        disabled={!this.props.newMoneyInput}
-        onTouchTap={() => { this.submitMoney()}}
-      />,
-    ];
 
     return (
       <div className="group">
@@ -76,49 +58,7 @@ class Group_page extends Component {
 
         <MoneyStatus money={this.props.money}/>
 
-        <MuiThemeProvider muiTheme={muiTheme}>
-          <Dialog
-            title="Place group incentives:"
-            actions={potActions}
-            modal={true}
-            open={!!this.props.potDialog}
-          >
-          <form action="/your-charge-code" method="POST" id="payment-form">
-            <span className="payment-errors"></span>
-              <MuiText
-                hintText=""
-                floatingLabelText="I would like to pitch in $"
-                text={this.props.newMoneyInput}
-                handleChange={this.props.handleMoneyInput}
-                handleSubmit={this.props.handleMoneyInput}
-                addRow={()=> { }}
-                />
-            <div className="form-row">
-              <label>
-                <span>Card Number</span>
-                <input type="text" size="20" data-stripe="number" />
-              </label>
-            </div>
 
-            <div className="form-row">
-              <label>
-                <span>Expiration (MM/YY)</span>
-                <input type="text" size="2" data-stripe="exp_month" />
-              </label>
-              <span> / </span>
-              <input type="text" size="2" data-stripe="exp_year" />
-            </div>
-
-            <div className="form-row">
-              <label>
-                <span>CVC</span>
-                <input type="text" size="4" data-stripe="cvc" />
-              </label>
-            </div>
-          </form>
-
-          </Dialog>
-        </MuiThemeProvider>
         <MuiThemeProvider>
           <AppBar
             title={this.props.group[0].name }
@@ -151,8 +91,6 @@ const mapStateToProps = (store) => ({
   group: store.group.group,
   notifs: store.group.notifs,
   tag: store.group.tag,
-  potDialog: store.money.potDialog,
-  newMoneyInput: store.money.newMoneyInput,
   groupMoney: store.money.groupMoney,
   money: store.money
   });
@@ -161,24 +99,15 @@ const mapDispatchToProps = (dispatch) => {
   //whenver addGoal is called, the result should be passed
   //to all of reducers
   return bindActionCreators({
-    addNotif: addNotif,
-    fetchNotifs: fetchNotifs,
-    fetchGroup: fetchGroup,
-    fetchUser: fetchUser,
-    fetchTagUser: fetchTagUser,
+    addNotif,
+    fetchNotifs,
+    fetchGroup,
+    fetchUser,
+    fetchTagUser,
     fetchGoal,
-    openPotDialog,
-    closePotDialog,
-    handleMoneyInput,
-    addGroupMoney,
     fetchGroupMoney,
     fetchUserMoney,
   }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Group_page);
-//
-// <Nav
-//   openAddGoalDialog={this.props.openAddGoalDialog}
-//   openPotDialog={this.props.openPotDialog}
-//   />

@@ -43,6 +43,11 @@ class Nav extends Component {
     this.props.closeAddStepsDialog()
   }
 
+  submitMoney = () => {
+    this.props.addGroupMoney()
+    this.props.closePotDialog()
+  }
+
 
   render(){
     const goalActions = [
@@ -58,6 +63,21 @@ class Nav extends Component {
         onTouchTap={() => { this.nextButtonActionsOnGoal() }}
         />,
     ];
+
+    const potActions = [
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onTouchTap={() => { this.props.closePotDialog() }}
+      />,
+      <FlatButton
+        label="Submit"
+        primary={true}
+        disabled={!this.props.newMoneyInput}
+        onTouchTap={() => { this.submitMoney()}}
+      />,
+    ];
+
     return (
       <nav >
         <span id="dropdown-menu-group">
@@ -121,6 +141,50 @@ class Nav extends Component {
           handleStepsInput={this.props.handleStepsInput}
           addStepRow={this.props.addStepRow}
           />
+
+          <MuiThemeProvider muiTheme={muiTheme}>
+            <Dialog
+              title="Place group incentives:"
+              actions={potActions}
+              modal={true}
+              open={!!this.props.potDialog}
+            >
+            <form action="/your-charge-code" method="POST" id="payment-form">
+              <span className="payment-errors"></span>
+                <MuiText
+                  hintText=""
+                  floatingLabelText="I would like to pitch in $"
+                  text={this.props.newMoneyInput}
+                  handleChange={this.props.handleMoneyInput}
+                  handleSubmit={this.props.handleMoneyInput}
+                  addRow={()=> { }}
+                  />
+              <div className="form-row">
+                <label>
+                  <span>Card Number</span>
+                  <input type="text" size="20" data-stripe="number" />
+                </label>
+              </div>
+
+              <div className="form-row">
+                <label>
+                  <span>Expiration (MM/YY)</span>
+                  <input type="text" size="2" data-stripe="exp_month" />
+                </label>
+                <span> / </span>
+                <input type="text" size="2" data-stripe="exp_year" />
+              </div>
+
+              <div className="form-row">
+                <label>
+                  <span>CVC</span>
+                  <input type="text" size="4" data-stripe="cvc" />
+                </label>
+              </div>
+            </form>
+
+            </Dialog>
+          </MuiThemeProvider>
         </nav>
     )
   }
@@ -145,6 +209,7 @@ const mapStateToProps = (state) => ({
   group: state.group.group,
   notifs: state.group.notifs,
   potDialog: state.money.potDialog,
+  newMoneyInput: state.money.newMoneyInput,
   groupMoney: state.money.groupMoney,
   money: state.money
   });
