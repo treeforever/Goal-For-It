@@ -10,10 +10,10 @@ class MuiText extends Component {
 
   handleChange = e => {
     this.props.handleChange(e.target.value)
-    if(this.state.limit){
+    /*if(this.state.limit){
       this.props.addRow()
       this.setState({limit: 0})
-    }
+    }*/
   }
 
   handleBlur = e => {
@@ -23,13 +23,15 @@ class MuiText extends Component {
   render(){
     return (
       <div>
+        <div>{this.props.text}</div>
         <MuiThemeProvider muiTheme={muiTheme}>
+
           <TextField
             hintText={this.props.hintText}
             floatingLabelText={this.props.floatingLabelText}
             value={this.props.text}
             onChange={this.handleChange}
-            onBlur={this.handleBlur}
+            onBlur={this.handleSubmit}
           />
         </MuiThemeProvider>
       </div>

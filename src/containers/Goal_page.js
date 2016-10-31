@@ -59,14 +59,7 @@ class Goal_page extends Component {
 
     return (
       <div>
-        <Nav />
-        <MuiThemeProvider>
-          <AppBar
-            title={`${this.props.user.currentUser.username}${'\''}s Goals`}
-            iconClassNameLeft="muidocs-icon-navigation-expand-more"
-            className="App-Bar"
-          />
-        </MuiThemeProvider>
+        <Nav title={`${this.props.user.currentUser.username}${'\''}s Goals`}/>
 
         <h1>{g.goal}
           <MuiThemeProvider style={styles.block}>
@@ -134,3 +127,11 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Goal_page);
+
+// <MuiThemeProvider>
+//   <AppBar
+//     title={`${this.props.user.currentUser.username}${'\''}s Goals`}
+//     iconClassNameLeft="muidocs-icon-navigation-expand-more"
+//     className="App-Bar"
+//   />
+// </MuiThemeProvider>

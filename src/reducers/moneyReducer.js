@@ -1,6 +1,7 @@
 const defaultState = {
     groupMoney: 0,
     userMoney: 0,
+    challenge: true,
     error: null
   };
 

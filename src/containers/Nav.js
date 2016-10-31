@@ -8,7 +8,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
-import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestoneInput, handleMilestonesInput, addMilestoneRow} from "../actions/milestoneActions"
+import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput, addMilestoneRow} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone, addStepRow} from "../actions/stepActions"
 import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchUserMoney, fetchGroupMoney } from "../actions/moneyActions"
 import { addNotif } from "../actions/groupActions"
@@ -16,6 +16,8 @@ import { signOut } from '../actions/userActions';
 
 import NewMilestone from "../components/NewMilestone"
 import NewStep from "../components/NewStep"
+import Piggybank from "../components/Piggybank"
+import StartChallenge from "../components/StartChallenge"
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
 
@@ -77,9 +79,19 @@ class Nav extends Component {
         onTouchTap={() => { this.submitMoney()}}
       />,
     ];
-
+{console.log("RENDER NAV")}
     return (
+
       <nav >
+        <MuiThemeProvider>
+          <AppBar
+            title={this.props.title}
+            iconClassNameLeft="muidocs-icon-navigation-expand-more"
+            iconElementRight={this.props.challenge ? <span>piggybank</span> : <span>Start a Challenge</span>}
+            className="App-Bar"
+          />
+        </MuiThemeProvider>
+
         <span id="dropdown-menu-group">
           <MuiThemeProvider muiTheme={muiTheme}>
           <IconMenu
@@ -120,7 +132,6 @@ class Nav extends Component {
           openMilestonesDialog={this.props.openMilestonesDialog}
           closeAddMilestonesDialog={this.props.closeAddMilestonesDialog}
           nextButtonActionsOnMilestones={this.nextButtonActionsOnMilestones}
-          milestoneText={this.props.milestoneText}
           milestonesText={this.props.milestonesText}
           milestoneRows={this.props.milestoneRows}
           handleMilestoneInput={this.props.handleMilestoneInput}
@@ -198,7 +209,6 @@ const mapStateToProps = (state) => ({
   openStepsDialog: state.steps.openStepsDialog,
   goalText: state.goal.goalText,
   newGoal: state.goal.newGoal,
-  milestoneText: state.milestones.milestoneText,
   milestonesText: state.milestones.milestonesText,
   milestoneRows: state.milestones.milestoneRows,
   newMilestones: state.milestones.newMilestones,
@@ -211,7 +221,8 @@ const mapStateToProps = (state) => ({
   potDialog: state.money.potDialog,
   newMoneyInput: state.money.newMoneyInput,
   groupMoney: state.money.groupMoney,
-  money: state.money
+  money: state.money,
+  challenge: state.money.challenge,
   });
 
 const mapDispatchToProps = (dispatch) => {
@@ -230,7 +241,6 @@ const mapDispatchToProps = (dispatch) => {
     closeAddMilestonesDialog,
     closeAddStepsDialog,
     handleGoalInput,
-    handleMilestoneInput,
     handleMilestonesInput,
     handleStepInput,
     handleStepsInput,

@@ -54,17 +54,10 @@ class Group_page extends Component {
     return (
       <div className="group">
 
-        <Nav />
+        <Nav title={this.props.group[0].name }/>
 
         <MoneyStatus money={this.props.money}/>
 
-
-        <MuiThemeProvider>
-          <AppBar
-            title={this.props.group[0].name }
-            iconClassNameLeft="muidocs-icon-navigation-expand-more"
-          />
-        </MuiThemeProvider>
         <MuiThemeProvider>
             <GroupList group={this.props.group} click={this.handleTouchTap} fetchGoal={this.props.fetchGoal}/>
         </MuiThemeProvider>

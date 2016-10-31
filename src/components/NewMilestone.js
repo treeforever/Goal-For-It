@@ -16,7 +16,7 @@ class NewMilestone extends Component {
       <FlatButton
         label="Next"
         primary={true}
-        disabled={!this.props.milestoneText}
+        disabled={false}
         onTouchTap={() => { this.props.nextButtonActionsOnMilestones() }}
         />,
     ]
@@ -28,15 +28,15 @@ class NewMilestone extends Component {
           modal={true}
           open={!!this.props.openMilestonesDialog}
         >
-        {this.props.milestoneRows.map((num, i)=>{
+        {this.props.milestonesText.map((num, i)=>{
           return (
                   <MuiText
-                    key={i}
+
                     hintText="milestone"
                     floatingLabelText="milestone"
                     text={this.props.milestonesText[i]}
-                    handleChange={this.props.handleMilestoneInput}
-                    handleSubmit={this.props.handleMilestonesInput}
+                    handleSubmit={function() {}}
+                    handleChange={function(text) { this.props.handleMilestonesInput(text, i) }.bind(this)}
                     addRow={this.props.addMilestoneRow}
                     />
 

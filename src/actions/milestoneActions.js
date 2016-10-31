@@ -54,10 +54,11 @@ export function handleMilestoneInput(text) {
   };
 }
 
-export function handleMilestonesInput(text) {
+export function handleMilestonesInput(text, index) {
   return {
     type: 'HANDLE_MILESTONES_INPUT',
-    payload: text
+    payload: {text: text,
+              index: index}
   };
 }
 

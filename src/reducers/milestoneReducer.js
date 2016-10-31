@@ -1,9 +1,7 @@
 export default function reducer(state={
     milestones: [],
     checked: [],
-    milestoneRows: ['one row'],
-    milestoneText: '',
-    milestonesText: [],
+    milestonesText: [""],
     newMilestones: [],
     error: null,
   }, action) {
@@ -24,7 +22,6 @@ export default function reducer(state={
         return {
           ...state,
           newMilestonesIds: action.payload.data.id,
-          milestoneText: '',
           milestonesText: [],
         }
       }
@@ -59,31 +56,26 @@ export default function reducer(state={
           ...state,
           openMilestonesDialog: null,
           milestoneRows: ['one row'],
-          milestoneText: '',
           milestonesText: [],
         }
       }
 
-      case "HANDLE_MILESTONE_INPUT": {
-        return {
-          ...state,
-          milestoneText: action.payload
-        }
-      }
-
       case "HANDLE_MILESTONES_INPUT": {
-        return {
-          ...state,
-          milestonesText: [...state.milestonesText, state.milestoneText],
-          newMilestones: [...state.milestonesText, state.milestoneText]
+        let newArray = state.milestonesText.slice(0);
+        newArray[action.payload.index] = action.payload.text;
+        newArray = newArray.filter(function(v) {
+          return v !== "";
+        });
+
+        if(newArray[newArray.length - 1] !== "") {
+          newArray.push("");
         }
+        return {...state,
+         milestonesText: newArray}
       }
 
       case "ADD_MILESTONE_ROW": {
-        return {
-          ...state,
-          milestoneRows: [...state.milestoneRows, action.payload]
-        }
+        return state
       }
     }
 
