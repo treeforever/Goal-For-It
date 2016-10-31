@@ -5,6 +5,7 @@ require('dotenv').config();
 const ENV         = process.env.ENV || "development";
 const pg          = require('pg');
 const express     = require('express');
+const bodyParser  = require("body-parser");
 const PORT        = 8080;
 const app         = express();
 const knexConfig  = require('./knexfile');
@@ -30,6 +31,10 @@ app.get('/', (req, res) => {
 })
 
 app.set('view engine', 'ejs');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.set('views', __dirname + '/public/views');
 app.use(express.static(__dirname + '/public'));
 

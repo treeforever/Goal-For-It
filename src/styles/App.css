@@ -152,3 +152,19 @@ span.add-step-button {
   float: right;
   margin-right: -10%;
 }
+
+#group-huddle {
+  color: black;
+}
+
+a#group-huddle:hover {
+  text-decoration: none;
+}
+
+#my-goals {
+  color: black;
+}
+
+a#my-goals:hover{
+  text-decoration: none;
+}

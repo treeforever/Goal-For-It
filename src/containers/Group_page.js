@@ -8,11 +8,7 @@ import { fetchGoal } from "../actions/goalActions"
 import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney } from "../actions/moneyActions"
 import { RaisedButton, FlatButton, Dialog, AppBar, List, IconMenu, MenuItem, IconButton } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-// import AppBar from 'material-ui/AppBar';
-// import {List} from 'material-ui/List';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-
-
 
 import MuiText from '../components/MuiText'
 import muiTheme from '../components/MuiTheme'
@@ -20,6 +16,7 @@ import NotificationList from '../components/NotificationList'
 import GroupList from '../components/GroupList'
 import MoneyStatus from '../components/MoneyStatus'
 import InputBox from '../components/InputBox'
+import Nav from '../components/Nav'
 // import injectTapEventPlugin from 'react-tap-event-plugin';
 // injectTapEventPlugin();
 
@@ -72,6 +69,7 @@ class Group_page extends Component {
       <div className="group">
         <MoneyStatus />
 
+
         <span id="dropdown-menu-group">
           <MuiThemeProvider muiTheme={muiTheme}>
           <IconMenu
@@ -80,18 +78,14 @@ class Group_page extends Component {
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
           >
             <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
-            <MenuItem><Link to="/">My Goals</Link></MenuItem>
-            <MenuItem><Link to="group">Group Huddle</Link></MenuItem>
+            <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
+            <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
             <MenuItem primaryText="Start Challenge" onClick={ () => this.props.openPotDialog() }/>
             <MenuItem primaryText="Sign Out" />
           </IconMenu>
           </MuiThemeProvider>
         </span>
 
-
-        <MuiThemeProvider muiTheme={muiTheme}>
-          <RaisedButton label="pot" onClick={ () => this.props.openPotDialog() } />
-        </MuiThemeProvider>
         <MuiThemeProvider muiTheme={muiTheme}>
           <Dialog
             title="Place group incentives:"
@@ -190,3 +184,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Group_page);
+//
+// <Nav
+//   openAddGoalDialog={this.props.openAddGoalDialog}
+//   openPotDialog={this.props.openPotDialog}
+//   />

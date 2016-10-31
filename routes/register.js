@@ -1,22 +1,40 @@
 "use strict";
 
-const express = require('express');
-const router = express.Router();
-var bodyParser = require('body-parser')
-
-var jsonParser = bodyParser.json()
+const express    = require('express');
+const router     = express.Router();
+const bcrypt     = require('bcrypt-nodejs');
+const bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
 
 
 module.exports = (knex) => {
-
   router.get('/', (req, res) => {
     res.render('login');
   });
 
-  router.post("/", jsonParser, (req, res) => {
-    let username = req.body.username;
-    let password = req.body.password;
-  })
+  router.post("/", (req, res) => {
+    let { username, password } = req.body;
+    console.log(req.body)
+    knex.select('username','password','user_id')
+      .from('users')
+      .where("username", username)
+      .then(function(resp) {
+        if(resp.length < 1) {
+          res.send('fail');
+        } else {
+          bcrypt.compare(password, resp[0].password, function(err, response) {
+            if(response == true) {
+              req.session.auth = true;
+              req.session.username = resp[0].username;
+              req.session.userid = Number(resp[0].user_id);
+              res.redirect("http://localhost:3000");
+            } else {
+              res.send('fail');
+            }
+          });
+      }
+    });
+  });
 
     // knex
     //     .select("*")

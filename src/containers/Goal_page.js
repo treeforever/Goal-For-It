@@ -96,8 +96,8 @@ class Goal_page extends Component {
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
           >
             <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
-            <MenuItem><Link to="/">My Goals</Link></MenuItem>
-            <MenuItem><Link to="group">Group Huddle</Link></MenuItem>
+            <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
+            <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
             <MenuItem primaryText="Start Challenge" />
             <MenuItem primaryText="Sign Out" />
           </IconMenu>
