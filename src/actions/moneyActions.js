@@ -21,18 +21,22 @@ export function fetchUserMoney() {
 
 export function moneyGoal(completed) {
   return {
-    type: "MONEY_GOAL"
+    type: "MONEY_GOAL",
+    payload: completed
   }
 }
 
 export function moneyMilestone(completed) {
   return {
-    type: "MONEY_MILE"
+    type: "MONEY_MILE",
+    payload: completed
+
   }
 }
 
 export function moneyStep(completed) {
   return {
-    type: "MONEY_STEP"
+    type: "MONEY_STEP",
+    payload: completed
   }
 }
