@@ -29,6 +29,7 @@ export default function reducer(state = defaultState, action) {
         }
       }
 
+
       case "ADD_GROUP_MONEY": {
         let newMoney = Number(state.newMoneyInput)
         return {
@@ -73,4 +74,3 @@ export default function reducer(state = defaultState, action) {
     }
   return state
 }
-

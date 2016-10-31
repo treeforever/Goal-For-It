@@ -46,8 +46,8 @@ class Nav extends Component {
     this.props.closeAddStepsDialog()
   }
 
-  submitMoney = () => {
-    this.props.addGroupMoney()
+  submitMoney = (moneyInput, groupMoney) => {
+    this.props.addGroupMoney(moneyInput, groupMoney)
     this.props.closePotDialog()
   }
 
@@ -77,7 +77,7 @@ class Nav extends Component {
         label="Submit"
         primary={true}
         disabled={!this.props.newMoneyInput}
-        onTouchTap={() => { this.submitMoney()}}
+        onTouchTap={() => { this.submitMoney(this.props.newMoneyInput, this.props.groupMoney)}}
       />,
     ];
 
