@@ -17,7 +17,7 @@ import NotificationList from '../components/NotificationList'
 import GroupList from '../components/GroupList'
 import MoneyStatus from '../components/MoneyStatus'
 import InputBox from '../components/InputBox'
-import Nav from '../components/Nav'
+import Nav from './Nav'
 // import injectTapEventPlugin from 'react-tap-event-plugin';
 // injectTapEventPlugin();
 
@@ -72,23 +72,7 @@ class Group_page extends Component {
     return (
       <div className="group">
 
-
-
-        <span id="dropdown-menu-group">
-          <MuiThemeProvider muiTheme={muiTheme}>
-          <IconMenu
-            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-          >
-            <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
-            <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
-            <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
-            <MenuItem primaryText="Start Challenge" onClick={ () => this.props.openPotDialog() }/>
-            <MenuItem primaryText="Sign Out" />
-          </IconMenu>
-          </MuiThemeProvider>
-        </span>
+        <Nav />
 
         <MoneyStatus money={this.props.money}/>
 
@@ -189,7 +173,6 @@ const mapDispatchToProps = (dispatch) => {
     addGroupMoney,
     fetchGroupMoney,
     fetchUserMoney,
-    openPotDialog
   }, dispatch)
 }
 

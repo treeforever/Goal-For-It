@@ -15,13 +15,14 @@ import { moneyGoal, moneyMile, moneyStep } from "../actions/moneyActions"
 
 
 import Milestone from "../components/MilestoneIndex"
-import NewMilestone from "../components/NewMilestone"
-import NewStep from "../components/NewStep"
+// import NewMilestone from "../components/NewMilestone"
+// import NewStep from "../components/NewStep"
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import Nav from './Nav'
 
-import { signOut } from '../actions/userActions';
+
 
 injectTapEventPlugin();
 
@@ -53,27 +54,26 @@ class Goal_page extends Component {
     this.props.fetchUser(1);
   }
 
-  nextButtonActionsOnGoal = () => {
-    console.log('next')
-    this.props.addGoal(this.props.goalText)
-    this.props.addNotif({type: "notification", content: `user 1 has added a new goal: ${this.props.goalText}`})
-    this.props.closeAddGoalDialog()
-    this.props.openAddMilestonesDialog()
-  }
-
-  nextButtonActionsOnMilestones = () => {
-    this.props.addMilestones(this.props.milestonesText, this.props.newGoal.id)
-    this.props.addNotif({type: "notification", content: `user 1 has added milestones: ${this.props.newMilestones}`})
-    this.props.closeAddMilestonesDialog()
-    this.props.openAddStepsDialog()
-  }
-
-  nextButtonActionsOnSteps = () => {
-    //change stepsText
-    this.props.addSteps(this.props.stepsText)
-    this.props.addNotif({type: "notification", content: `user 1 has added new steps: ${this.props.stepsText}`})
-    this.props.closeAddStepsDialog()
-  }
+  // nextButtonActionsOnGoal = () => {
+  //   this.props.addGoal(this.props.goalText)
+  //   this.props.addNotif({type: "notification", content: `user 1 has added a new goal: ${this.props.goalText}`})
+  //   this.props.closeAddGoalDialog()
+  //   this.props.openAddMilestonesDialog()
+  // }
+  //
+  // nextButtonActionsOnMilestones = () => {
+  //   this.props.addMilestones(this.props.milestonesText, this.props.newGoal.id)
+  //   this.props.addNotif({type: "notification", content: `user 1 has added milestones: ${this.props.newMilestones}`})
+  //   this.props.closeAddMilestonesDialog()
+  //   this.props.openAddStepsDialog()
+  // }
+  //
+  // nextButtonActionsOnSteps = () => {
+  //   //change stepsText
+  //   this.props.addSteps(this.props.stepsText)
+  //   this.props.addNotif({type: "notification", content: `user 1 has added new steps: ${this.props.stepsText}`})
+  //   this.props.closeAddStepsDialog()
+  // }
 
 
   render() {
@@ -95,23 +95,7 @@ class Goal_page extends Component {
 
     return (
       <div>
-        <span id="dropdown-menu-goal">
-          <MuiThemeProvider muiTheme={muiTheme}>
-          <IconMenu
-            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-          >
-            <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
-            <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
-            <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
-            <MenuItem primaryText="Start Challenge" />
-            <MenuItem
-              onClick={() => this.props.signOut()}
-              primaryText="Sign Out" />
-          </IconMenu>
-          </MuiThemeProvider>
-        </span>
+        <Nav />
 
 
         <MuiThemeProvider>
@@ -133,49 +117,7 @@ class Goal_page extends Component {
         </h1>
         <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username}/>
 
-        <MuiThemeProvider muiTheme={muiTheme}>
-          <Dialog
-            title="Add New Goal"
-            actions={goalActions}
-            modal={true}
-            open={!!this.props.openGoalDialog}
-          >
-          <MuiText
-            hintText="goal"
-            floatingLabelText="goal"
-            text={this.props.goalText}
-            handleChange={this.props.handleGoalInput}
-            handleSubmit={this.props.handleGoalInput}
-            addRow={()=> { }}
-            />
-          </Dialog>
-        </MuiThemeProvider>
-
-        <NewMilestone
-          openMilestonesDialog={this.props.openMilestonesDialog}
-          closeAddMilestonesDialog={this.props.closeAddMilestonesDialog}
-          nextButtonActionsOnMilestones={this.nextButtonActionsOnMilestones}
-          milestoneText={this.props.milestoneText}
-          milestonesText={this.props.milestonesText}
-          milestoneRows={this.props.milestoneRows}
-          handleMilestoneInput={this.props.handleMilestoneInput}
-          handleMilestonesInput={this.props.handleMilestonesInput}
-          addMilestoneRow={this.props.addMilestoneRow}
-          />
-
-        <NewStep
-          openStepsDialog={this.props.openStepsDialog}
-          closeAddStepsDialog={this.props.closeAddStepsDialog}
-          nextButtonActionsOnSteps={this.nextButtonActionsOnSteps}
-          stepsText={this.props.stepsText}
-          stepsText={this.props.stepsText}
-          stepRows={this.props.stepRows}
-          newMilestones={this.props.newMilestones}
-          selectMilestone={this.props.selectMilestone}
-          handleStepInput={this.props.handleStepInput}
-          handleStepsInput={this.props.handleStepsInput}
-          addStepRow={this.props.addStepRow}
-          />
+        
 
       </div>
     );
@@ -227,7 +169,6 @@ const mapDispatchToProps = (dispatch) => {
       addMilestoneRow,
       addStepRow,
       selectMilestone,
-      signOut,
       moneyGoal,
     }, dispatch);
 }

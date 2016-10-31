@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { FlatButton, Dialog, SelectField, MenuItem } from 'material-ui'
 
-import injectTapEventPlugin from 'react-tap-event-plugin'
-
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
 
@@ -42,7 +40,7 @@ class NewStep extends Component {
       >
         {this.props.stepRows.map((num, i)=>{
           return (
-                  <div>
+                  <div key={i}>
                       <MuiThemeProvider muiTheme={muiTheme}>
                         <SelectField
                           key={i}
