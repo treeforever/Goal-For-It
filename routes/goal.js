@@ -33,6 +33,7 @@ module.exports = (knex) => {
       .where('goals.goal_id', selectedGoalId)
       .innerJoin('milestones', 'goals.goal_id', 'milestones.goal_id')
       .innerJoin('steps', 'milestones.milestone_id', 'steps.milestone_id')
+      .innerJoin('users', 'users.user_id', 'goals.creator_id')
       .select('goals.goal',
               'milestones.mile_title',
               'milestones.milestone_id',
@@ -43,7 +44,8 @@ module.exports = (knex) => {
               'steps.step',
               'steps.step_id',
               'steps.checked as step_checked',
-              'steps.milestone_id'
+              'steps.milestone_id',
+              'users.username'
             )
       .then((results) => {
         let groupedResults = _.groupBy(results, function(entry){ return entry.mile_title})
@@ -60,6 +62,7 @@ module.exports = (knex) => {
       .where('goals.creator_id', selectedUserId)
       .innerJoin('milestones', 'goals.goal_id', 'milestones.goal_id')
       .innerJoin('steps', 'milestones.milestone_id', 'steps.milestone_id')
+      .innerJoin('users', 'users.user_id', 'goals.creator_id')
       .select('goals.goal',
               'milestones.mile_title',
               'milestones.milestone_id',
@@ -70,7 +73,8 @@ module.exports = (knex) => {
               'steps.step',
               'steps.step_id',
               'steps.checked as step_checked',
-              'steps.milestone_id'
+              'steps.milestone_id',
+              'users.username'
             )
       .then((results) => {
         let groupedGoals = _.groupBy(results, function(entry){ return entry.goal})

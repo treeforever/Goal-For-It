@@ -6,12 +6,14 @@ function constructGoalKeys(data) {
   let goal_id = firstMilestone[0].goal_id
   let creator_id = firstMilestone[0].creator_id
   let goal_checked = firstMilestone[0].goal_checked
+  let username = firstMilestone[0].username
 
   let goal = {}
   goal.goal = goalName
   goal.goal_id = goal_id
   goal.creator_id = creator_id
   goal.goal_checked = goal_checked
+  goal.username = username
   return goal
 }
 
