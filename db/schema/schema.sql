@@ -12,7 +12,9 @@ CREATE TABLE users (
   username varchar(20) NOT NULL,
   password varchar(50) NOT NULL,
   email varchar(20) NOT NULL,
-  user_money decimal
+  user_money decimal,
+  group_money decimal,
+  group_id bigint
 );
 
 CREATE TABLE groups (
