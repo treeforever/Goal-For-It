@@ -9,11 +9,13 @@ const styles = {
   customWidth: {
     width: 150,
   },
+  value: 0
 };
 
 class NewStep extends Component {
   handleSelectMilestone = (event, index, value) => {
     console.log('e',event, 'index', index, 'value', value)
+    this.setState({value})
   }
 
   render(){
@@ -45,7 +47,7 @@ class NewStep extends Component {
                         <SelectField
                           key={i}
                           floatingLabelText="Milestone"
-                          value={0}
+                          value={this.state.value}
                           onChange={() => { this.handleSelectMilestone() }}
                           autoWidth={true}
                         >
