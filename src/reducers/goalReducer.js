@@ -10,10 +10,18 @@ export default function reducer(state = defaultState, action) {
       case "FETCH_GOAL_REJECTED": {
         return {...state, error: action.payload}
       }
+
       case "FETCH_GOAL_FULFILLED": {
         return {
           ...state,
           goal: action.payload.data
+        }
+      }
+
+      case "FETCH_GOALS_FULFILLED": {
+        return {
+          ...state,
+          goal: action.payload.data[0]
         }
       }
       case "ADD_GOAL_FULFILLED": {

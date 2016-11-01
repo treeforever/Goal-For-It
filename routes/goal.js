@@ -48,7 +48,7 @@ module.exports = (knex) => {
       .then((results) => {
         let groupedResults = _.groupBy(results, function(entry){ return entry.mile_title})
         let structuredGoal = goalPyrimid(groupedResults)
-        res.json(groupedResults);
+        res.json(structuredGoal);
       }).catch(function (err) {
         res.status(500).send('database error: ' + JSON.stringify(err));
       });
@@ -73,7 +73,6 @@ module.exports = (knex) => {
               'steps.milestone_id'
             )
       .then((results) => {
-        // let groupedResults = _.groupBy(results, function(entry){ return entry.mile_title})
         let groupedGoals = _.groupBy(results, function(entry){ return entry.goal})
         let keys = Object.keys(groupedGoals)
         let goals = []

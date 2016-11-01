@@ -5,7 +5,7 @@ import { Checkbox} from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
+import { addGoal, fetchGoal, fetchGoals, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { fetchUser } from "../actions/userActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestoneInput, handleMilestonesInput, addMilestoneRow} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone } from "../actions/stepActions"
@@ -46,7 +46,7 @@ class Goal_page extends Component {
     if(this.props.goal.goal){
       return
     }else{
-      this.props.fetchGoal(1);
+      this.props.fetchGoals(2);
     }
     this.props.fetchUser(this.props.user.currentUser.userId);
 
@@ -99,6 +99,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
       fetchGoal,
+      fetchGoals,
       fetchUser,
       checkedGoal,
       addNotif,
