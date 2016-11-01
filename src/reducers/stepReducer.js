@@ -32,6 +32,8 @@ export default function reducer(state={
           ...state,
           newMilestonesIds: action.payload.data.id,
           milestonesText: [""],
+          selectedMilestones: [],
+          selectedMilestone: null,
         }
       }
       case "UPDATE_STEPS": {
