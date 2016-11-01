@@ -19,9 +19,9 @@ export function fetchGoals(userId) {
   };
 }
 
-export function addGoal(goal) {
+export function addGoal(goal, creator_id) {
   const url = "http://localhost:8080/api/goals"
-  let data = {goal}
+  let data = {goal, creator_id}
   const req = axios.post(url, data);
   return {
     type: 'ADD_GOAL',

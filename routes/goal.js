@@ -98,7 +98,9 @@ module.exports = (knex) => {
     knex('goals').insert({
       goal: req.body.goal,
       goal_description: '',
-      checked: false
+      checked: false,
+      creator_id: req.body.creator_id,
+      group_id: 1
     })
     .returning('goal_id')
     .then(function(result) {

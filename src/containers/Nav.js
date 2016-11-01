@@ -30,8 +30,8 @@ class Nav extends Component {
   }
 
   nextButtonActionsOnGoal = () => {
-    this.props.addGoal(this.props.goalText)
-    this.props.addNotif({type: "notification", content: `user 1 has added a new goal: ${this.props.goalText}`})
+    this.props.addGoal(this.props.goalText, this.props.user.currentUser.userId)
+    this.props.addNotif({type: "notification", content: `${this.props.user.currentUser.username} has added a new goal: ${this.props.goalText}`})
     this.props.closeAddGoalDialog()
     this.props.openAddMilestonesDialog()
   }
@@ -39,7 +39,7 @@ class Nav extends Component {
   nextButtonActionsOnMilestones = () => {
     this.props.addMilestoneInState()
     this.props.addMilestones(this.props.milestonesText, this.props.newGoal.id)
-    this.props.addNotif({type: "notification", content: `user 1 has added milestones: ${this.props.newMilestones}`})
+    this.props.addNotif({type: "notification", content: `${this.props.user.currentUser.username} has added milestones: ${this.props.newMilestones}`})
     this.props.closeAddMilestonesDialog()
     this.props.openAddStepsDialog()
   }
@@ -47,7 +47,7 @@ class Nav extends Component {
   nextButtonActionsOnSteps = () => {
     //change stepsText
     this.props.addSteps(this.props.stepsText, this.props.steps.selectedMilestones, this.props.newMilestones, this.props.newMilestonesIds)
-    this.props.addNotif({type: "notification", content: `user 1 has added new steps: ${this.props.stepsText}`})
+    this.props.addNotif({type: "notification", content: `${this.props.user.currentUser.username} has added new steps: ${this.props.stepsText}`})
     this.props.closeAddStepsDialog()
   }
 

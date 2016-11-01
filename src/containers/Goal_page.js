@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Checkbox} from 'material-ui'
+import { Checkbox } from 'material-ui'
+// import NavigationArrowBack from 'material-ui/svg-icons/navigation'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import { addGoal, fetchGoal, fetchGoals, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
+import { fetchGoal, fetchGoals, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { fetchUser } from "../actions/userActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestoneInput, handleMilestonesInput, addMilestoneRow} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone } from "../actions/stepActions"
@@ -56,8 +57,10 @@ class Goal_page extends Component {
     let g = this.props.goal;
     return (
       <div>
-       <Nav title={`${this.props.goal.username}${'\''}s Goals`}/>
+       <Nav title={'GOAL FOR IT'}/>
        <main className="container">
+         <span className="creator-info">{`${this.props.goal.username}${'\''}s Goals`}</span>
+
          <h1>{g.goal}
             <MuiThemeProvider style={styles.block}>
               <Checkbox
@@ -103,8 +106,6 @@ const mapDispatchToProps = (dispatch) => {
       fetchUser,
       checkedGoal,
       addNotif,
-
-      addGoal,
       addMilestones,
       addSteps,
       openAddGoalDialog,
