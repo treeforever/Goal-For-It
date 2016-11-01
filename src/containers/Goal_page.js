@@ -64,7 +64,7 @@ class Goal_page extends Component {
          <span className="creator-info">{`${this.props.goal.username}${'\''}s Goals`}</span>
          <br></br>
            <MuiThemeProvider muiTheme={muiTheme}>
-             <HardwareKeyboardArrowLeft onClick={}/>
+             <HardwareKeyboardArrowLeft />
            </MuiThemeProvider>
 
              <h1>{g.goal}

@@ -92,11 +92,9 @@ class Nav extends Component {
           <MuiThemeProvider>
             <AppBar
               title={this.props.title}
-<<<<<<< HEAD
+
               iconElementLeft={true ? <MoneyStatus currentUser={this.props.user.currentUser.username} money={this.props.money} /> : <span>Start a Challenge</span>}
-=======
-              iconElementLeft={true ?   <MoneyStatus currentUser={this.props.user.currentUser.username} money={this.props.money} /> : <span>Start a Challenge</span>}
->>>>>>> 6ca5496ddc2b7feefd4254cf5fa82bbd48c8a5f3
+
               iconElementRight={<DropdownMenu
                                   currentUser={this.props.user.currentUser.username}
                                   openAddGoalDialog={this.props.openAddGoalDialog}
