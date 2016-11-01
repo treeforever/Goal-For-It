@@ -8,7 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from '../components/MuiTheme'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import { fetchGoal, fetchGoals, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
+import { fetchGoal, fetchGoals, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput, showPreviousGoal } from "../actions/goalActions"
 import { fetchUser } from "../actions/userActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestoneInput, handleMilestonesInput, addMilestoneRow} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone } from "../actions/stepActions"
@@ -44,16 +44,25 @@ class Goal_page extends Component {
     this.props.moneyGoal(this.props.user.currentUser.userId, this.props.goal.goal_checked, this.props.money.groupMoney, this.props.money.userMoney);
   }
 
+  arrowLeftOnClick = () => {
+    this.props.showPreviousGoal()
+    this.props.fetchGoals(1)
+  }
+
+  arrowRightOnClick = () => {
+    this.props.showPreviousGoal()
+    this.props.fetchGoals(1)
+  }
 
   componentWillMount = () => {
+    this.props.fetchUser(this.props.user.currentUser.userId);
     if(this.props.goal.goal){
       return
     }else{
-      this.props.fetchGoal(1);
+      this.props.fetchGoals(1);
     }
-    this.props.fetchUser(this.props.user.currentUser.userId);
-
   }
+
 
   render() {
     let g = this.props.goal;
@@ -64,13 +73,13 @@ class Goal_page extends Component {
          <span className="creator-info">{`${this.props.goal.username}${'\''}s Goals`}</span>
          <br></br>
            <MuiThemeProvider muiTheme={muiTheme}>
-             <HardwareKeyboardArrowLeft />
+             <HardwareKeyboardArrowLeft onClick={this.arrowLeftOnClick} />
            </MuiThemeProvider>
 
              <h1>{g.goal}
 
            <MuiThemeProvider muiTheme={muiTheme}>
-             <HardwareKeyboardArrowRight />
+             <HardwareKeyboardArrowRight onClick={this.arrowRightOnClick}/>
            </MuiThemeProvider>
 
             <MuiThemeProvider style={styles.block}>
@@ -93,6 +102,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     goal: state.goal.goal,
+    goalIndex: state.goal.goalIndex,
     money: state.money,
     openGoalDialog: state.goal.openGoalDialog,
     openMilestonesDialog: state.milestones.openMilestonesDialog,
@@ -134,6 +144,7 @@ const mapDispatchToProps = (dispatch) => {
       addMilestoneRow,
       selectMilestone,
       moneyGoal,
+      showPreviousGoal,
     }, dispatch);
 }
 

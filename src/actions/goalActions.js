@@ -94,3 +94,15 @@ export function checkedStep(step, index) {
     payload: {step, index}
   }
 }
+
+export function showPreviousGoal() {
+  return {
+    type: "SHOW_PREVIOUS_GOAL",
+  };
+}
+
+export function showNextGoal() {
+  return {
+    type: "SHOW_NEXT_GOAL",
+  };
+}
