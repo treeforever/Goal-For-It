@@ -26,7 +26,7 @@ import MuiText from '../components/MuiText'
 class Nav extends Component {
 
   componentWillMount = () => {
-    this.props.fetchMoney();
+    this.props.fetchMoney(this.props.user.currentUser.userId);
   }
 
   nextButtonActionsOnGoal = () => {
@@ -92,7 +92,7 @@ class Nav extends Component {
           <MuiThemeProvider>
             <AppBar
               title={this.props.title}
-              iconElementLeft={this.props.challenge ? <MoneyStatus currentUser={this.props.user.currentUser.username} money={this.props.money} /> : <span>Start a Challenge</span>}
+              iconElementLeft={true ? <MoneyStatus currentUser={this.props.user.currentUser.username} money={this.props.money} /> : <span>Start a Challenge</span>}
               iconElementRight={<DropdownMenu
                                   currentUser={this.props.user.currentUser.username}
                                   openAddGoalDialog={this.props.openAddGoalDialog}

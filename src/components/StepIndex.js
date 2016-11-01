@@ -20,7 +20,7 @@ const styles = {
 
 
 
-const Step = ({ milestone, user, currentUser, dispatch }) => {
+const Step = ({ milestone, user, currentUser, dispatch, money }) => {
   return (
     <div>
       {milestone.steps.map((step, index) => {
@@ -34,7 +34,7 @@ const Step = ({ milestone, user, currentUser, dispatch }) => {
                 () => {
                   dispatch(checkedStep(step, index))
                   dispatch(addNotif({type: "notificaiton", content: content}))
-                  dispatch(moneyStep(step.checked))
+                  dispatch(moneyStep(currentUser.userId, step.checked, money.groupMoney, money.userMoney))
                   }
                 }
               checked={step.checked}

@@ -19,7 +19,7 @@ const styles = {
 };
 
 
-const Milestone = ({ milestones, user, currentUser, dispatch }) => (
+const Milestone = ({ milestones, user, currentUser, dispatch, money }) => (
   <div>
     {milestones.map((milestone, index) => {
       const content = (milestone.checked ? `${user} unchecked their milestone: ${milestone.title}` : `${user} completed their milestone: ${milestone.title}`)
@@ -33,14 +33,14 @@ const Milestone = ({ milestones, user, currentUser, dispatch }) => (
                 () => {
                   dispatch(checkedMile(milestone, index))
                   dispatch(addNotif({type: "notificaiton", content: content}))
-                  dispatch(moneyMilestone(milestone.checked))
+                  dispatch(moneyMilestone(currentUser.userId, milestone.checked, money.groupMoney, money.userMoney))
                   }
                 }
               checked={milestone.checked}
               disabled={(user === currentUser.username ? false : true)}
               />
             </MuiThemeProvider>
-          <Step milestone={milestone} currentUser={currentUser} user={user}/>
+          <Step milestone={milestone} currentUser={currentUser} user={user} money={money}/>
         </div>
       )
     })}
