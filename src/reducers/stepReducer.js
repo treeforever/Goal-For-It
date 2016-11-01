@@ -3,7 +3,7 @@ export default function reducer(state={
     checked: [],
     stepsText: [""],
     newSteps: [],
-    selectedMilestoneIndex: 0,
+    selectedMilestones: [],
     error: null,
   }, action) {
 
@@ -19,10 +19,18 @@ export default function reducer(state={
           steps: action.payload.data
         }
       }
-      case "ADD_STEP": {
+      case "ADD_STEPS": {
         return {
           ...state,
-          newStep: action.payload
+          newSteps: state.stepsText
+        }
+      }
+
+      case "ADD_STEPS_FULFILLED": {
+        return {
+          ...state,
+          newMilestonesIds: action.payload.data.id,
+          milestonesText: [""],
         }
       }
       case "UPDATE_STEPS": {
@@ -70,21 +78,15 @@ export default function reducer(state={
         }
         return {
           ...state,
-         stepsText: newArray
+         stepsText: newArray,
         }
       }
 
       case "SELECT_MILESTONE": {
         return {
           ...state,
-          selectedMilestoneIndex: action.payload
-        }
-      }
-
-      case "ADD_STEP_ROW": {
-        return {
-          ...state,
-          stepRows: [...state.stepRows, action.payload]
+          // selectedMilestoneIndex: action.payload,
+          selectedMilestones: [...state.selectedMilestones, action.payload],
         }
       }
     }

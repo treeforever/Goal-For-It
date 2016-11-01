@@ -13,7 +13,8 @@ export function fetchMilestones() {
 
 export function addMilestones(milestones, goalId) {
   const url = "http://localhost:8080/api/miles"
-  let data = {newMilestones: milestones, goal_id: goalId}
+  let truncatedMilestones = milestones.filter(function(m){return m.length !== 0})
+  let data = {newMilestones: truncatedMilestones, goal_id: goalId}
   const res = axios.post(url, data)
   return {
     type: 'ADD_MILESTONES',

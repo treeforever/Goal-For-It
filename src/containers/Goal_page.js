@@ -8,7 +8,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { fetchUser } from "../actions/userActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestoneInput, handleMilestonesInput, addMilestoneRow} from "../actions/milestoneActions"
-import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone, addStepRow} from "../actions/stepActions"
+import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone } from "../actions/stepActions"
 import { addNotif } from "../actions/groupActions"
 import { moneyGoal, moneyMile, moneyStep } from "../actions/moneyActions"
 
@@ -118,7 +118,6 @@ const mapDispatchToProps = (dispatch) => {
       handleStepInput,
       handleStepsInput,
       addMilestoneRow,
-      addStepRow,
       selectMilestone,
       moneyGoal,
     }, dispatch);

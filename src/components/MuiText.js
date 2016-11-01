@@ -10,7 +10,7 @@ class MuiText extends Component {
   }
 
   handleBlur = e => {
-    this.props.handleSubmit(e.target.value)
+    // this.props.handleSubmit(e.target.value)
   }
 
   render(){

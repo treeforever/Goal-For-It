@@ -46,7 +46,7 @@ class NewStep extends Component {
                         <SelectField
                           key={i}
                           floatingLabelText="Milestone"
-                          value={this.props.selectedMilestoneIndex}
+                          value={this.props.selectedMilestones[i]}
                           onChange={this.handleSelectMilestone}
                           autoWidth={true}
                         >
@@ -63,8 +63,8 @@ class NewStep extends Component {
                         floatingLabelText="step"
                         key={i}
                         text={this.props.stepsText[i]}
-                        handleSubmit={this.props.addStep}
-                        handleChange={function(text) { this.props.handleStepsInput(text, i, this.props.selectedMilestoneIndex) }.bind(this)}
+                        handleSubmit={this.props.addSteps}
+                        handleChange={function(text) { this.props.handleStepsInput(text, i) }.bind(this)}
                         />
                       </div>
                   )

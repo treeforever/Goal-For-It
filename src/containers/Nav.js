@@ -10,7 +10,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput, addMilestoneInState} from "../actions/milestoneActions"
-import { addStep, openAddStepsDialog, closeAddStepsDialog, handleStepsInput, selectMilestone } from "../actions/stepActions"
+import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepsInput, selectMilestone } from "../actions/stepActions"
 import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchMoney } from "../actions/moneyActions"
 import { addNotif } from "../actions/groupActions"
 import { signOut } from '../actions/userActions';
@@ -46,6 +46,7 @@ class Nav extends Component {
 
   nextButtonActionsOnSteps = () => {
     //change stepsText
+    this.props.addSteps(this.props.stepsText, this.props.steps.selectedMilestones, this.props.newMilestones)
     this.props.addNotif({type: "notification", content: `user 1 has added new steps: ${this.props.stepsText}`})
     this.props.closeAddStepsDialog()
   }
@@ -136,9 +137,9 @@ class Nav extends Component {
           stepsText={this.props.stepsText}
           newMilestones={this.props.newMilestones}
           selectMilestone={this.props.selectMilestone}
-          selectedMilestoneIndex={this.props.steps.selectedMilestoneIndex}
+          selectedMilestones={this.props.steps.selectedMilestones}
           handleStepsInput={this.props.handleStepsInput}
-          addStep={this.props.addStep}
+          addSteps={this.props.addSteps}
           />
 
           <MuiThemeProvider muiTheme={muiTheme}>
@@ -241,9 +242,7 @@ const mapStateToProps = (state) => ({
   newGoal: state.goal.newGoal,
   milestonesText: state.milestones.milestonesText,
   newMilestones: state.milestones.newMilestones,
-  stepText: state.milestones.stepText,
   stepsText: state.steps.stepsText,
-  stepRows: state.steps.stepRows,
   newSteps: state.steps.newSteps,
   steps: state.steps,
   group: state.group.group,
@@ -263,7 +262,7 @@ const mapDispatchToProps = (dispatch) => {
     addGoal,
     addMilestones,
     addMilestoneInState,
-    addStep,
+    addSteps,
     openAddGoalDialog,
     openAddMilestonesDialog,
     openAddStepsDialog,

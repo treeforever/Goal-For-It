@@ -10,11 +10,15 @@ export function fetchSteps() {
   };
 }
 
-export function addStep(step) {
-  return {
-    type: 'ADD_STEP',
-    payload: step  
-  }
+export function addSteps(steps, milestoneIndex, milestoneIds) {
+  const url = "http://localhost:8080/api/steps"
+  console.log('step action', steps, milestoneIndex, milestoneIds)
+
+  // const res = axios.post(url, data)
+  // return {
+  //   type: 'ADD_STEPS',
+  //   payload: steps
+  // }
 }
 
 export function updateSteps(id, text) {
@@ -43,13 +47,12 @@ export function closeAddStepsDialog() {
   };
 }
 
-export function handleStepsInput(text, index, selectedMilestoneIndex) {
+export function handleStepsInput(text, index) {
   return {
     type: 'HANDLE_STEPS_INPUT',
     payload: {
       text,
       index,
-      selectedMilestoneIndex
     }
   }
 }
