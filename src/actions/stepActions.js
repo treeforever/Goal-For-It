@@ -12,7 +12,6 @@ export function fetchSteps() {
 
 export function addSteps(steps, milestoneIndex, newMilestones, milestoneIds) {
   const url = "http://localhost:8080/api/steps"
-  console.log('step action', steps, milestoneIndex, newMilestones, milestoneIds)
   let truncatedSteps = steps.filter((s) => {return s !== ''})
   let newSteps = []
   truncatedSteps.map((step, i) => {
@@ -21,16 +20,11 @@ export function addSteps(steps, milestoneIndex, newMilestones, milestoneIds) {
     newSteps[i].milestone_id = milestoneIds[milestoneIndex[i]]
   })
   console.log('newSteps are', newSteps)
-
-  // steps[{
-  //   step: steps[0],
-  //   milestone_id: milestoneIds[milestoneIndex]
-  // }]
-  // const res = axios.post(url, data)
-  // return {
-  //   type: 'ADD_STEPS',
-  //   payload: steps
-  // }
+  const res = axios.post(url, newSteps)
+  return {
+    type: 'ADD_STEPS',
+    payload: res
+  }
 }
 
 export function updateSteps(id, text) {
