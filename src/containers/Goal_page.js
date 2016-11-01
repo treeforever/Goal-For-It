@@ -46,12 +46,12 @@ class Goal_page extends Component {
 
   arrowLeftOnClick = () => {
     this.props.showPreviousGoal()
-    this.props.fetchGoals(1)
+    this.props.fetchGoals(this.props.user.currentUser.userId)
   }
 
   arrowRightOnClick = () => {
     this.props.showPreviousGoal()
-    this.props.fetchGoals(1)
+    this.props.fetchGoals(this.props.user.currentUser.userId)
   }
 
   componentWillMount = () => {
@@ -59,7 +59,7 @@ class Goal_page extends Component {
     if(this.props.goal.goal){
       return
     }else{
-      this.props.fetchGoals(1);
+      this.props.fetchGoals(this.props.user.currentUser.userId);
     }
   }
 
@@ -102,7 +102,6 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     goal: state.goal.goal,
-    goalIndex: state.goal.goalIndex,
     money: state.money,
     openGoalDialog: state.goal.openGoalDialog,
     openMilestonesDialog: state.milestones.openMilestonesDialog,
