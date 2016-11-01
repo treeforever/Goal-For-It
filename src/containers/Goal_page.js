@@ -57,18 +57,19 @@ class Goal_page extends Component {
     return (
       <div>
        <Nav title={`${this.props.user.currentUser.username}${'\''}s Goals`}/>
-        <h1>{g.goal}
-          <MuiThemeProvider style={styles.block}>
-            <Checkbox
-            style={styles.checkbox}
-            onCheck={this.handleChange}
-            checked={g.goal_checked}
-            disabled={(this.props.user.user.username === this.props.user.currentUser.username ? false : true)}
-            />
-          </MuiThemeProvider>
-        </h1>
-        <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username} currentUser={this.props.user.currentUser}/>
-
+       <main className="container">
+         <h1>{g.goal}
+            <MuiThemeProvider style={styles.block}>
+              <Checkbox
+              style={styles.checkbox}
+              onCheck={this.handleChange}
+              checked={g.goal_checked}
+              disabled={(this.props.user.user.username === this.props.user.currentUser.username ? false : true)}
+              />
+            </MuiThemeProvider>
+          </h1>
+          <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username} currentUser={this.props.user.currentUser}/>
+        </main>
       </div>
     );
   }

@@ -46,27 +46,27 @@ class Group_page extends Component {
 
     return (
       <div className="group">
-
-
         <Nav title={this.props.group[0].name }/>
 
-        <MuiThemeProvider>
-            <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchGoal={this.props.fetchGoal}/>
-        </MuiThemeProvider>
-        <InputBox newTodo
-              onSave={this.handleSave}
-              onTag={this.handleTag}
-              taggedUser={this.props.tag}
-              label="notif"
-              placeholder="What would you like to say to the group?"
-             />
-        <div id="notificationList">
+        <main className="container">
           <MuiThemeProvider>
-            <List style={{color: 'white'}}>
-              <NotificationList className="list-group" notifs={this.props.notifs} sender={this.props.user.currentUser}/>
-            </List>
+              <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchGoal={this.props.fetchGoal}/>
           </MuiThemeProvider>
-        </div>
+          <InputBox newTodo
+                onSave={this.handleSave}
+                onTag={this.handleTag}
+                taggedUser={this.props.tag}
+                label="notif"
+                placeholder="What would you like to say to the group?"
+               />
+          <div id="notificationList">
+            <MuiThemeProvider>
+              <List style={{color: 'white'}}>
+                <NotificationList className="list-group" notifs={this.props.notifs} sender={this.props.user.currentUser}/>
+              </List>
+            </MuiThemeProvider>
+          </div>
+        </main>
       </div>
     );
   }

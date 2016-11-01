@@ -93,6 +93,7 @@ class Nav extends Component {
               title={this.props.title}
               iconElementLeft={this.props.challenge ?   <MoneyStatus currentUser={this.props.user.currentUser.username} money={this.props.money} /> : <span>Start a Challenge</span>}
               iconElementRight={<DropdownMenu
+                                  currentUser={this.props.user.currentUser.username}
                                   openAddGoalDialog={this.props.openAddGoalDialog}
                                   openPotDialog={this.props.openPotDialog}
                                   signOut={this.props.signOut} />}
@@ -192,6 +193,7 @@ class DropdownMenu extends Component {
   render(){
     return (
       <div className="nav-right">
+        <span className="username">{this.props.currentUser}</span>
         <div id="notification-bell">
           <MuiThemeProvider>
             <Badge

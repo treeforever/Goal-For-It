@@ -211,3 +211,11 @@ a#my-goals:hover{
 .material-icons.md-dark {
   color: rgba(0, 0, 0, 0.54);
 }
+
+main.container {
+  margin-top: 15%;
+}
+
+span.username {
+  
+}
