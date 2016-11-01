@@ -47,7 +47,7 @@ class NewStep extends Component {
                         <SelectField
                           key={i}
                           floatingLabelText="Milestone"
-                          value={this.state.value}
+                          value={0}
                           onChange={() => { this.handleSelectMilestone() }}
                           autoWidth={true}
                         >

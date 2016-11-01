@@ -159,8 +159,15 @@ span.add-step-button {
 }
 
 #dropdown-menu-group {
-  float: right;
-  margin-right: -10%;
+  display: inline-block;
+}
+
+#notification-bell {
+  display:inline-block;
+}
+
+.nav-right {
+
 }
 
 #dropdown-menu-goal {

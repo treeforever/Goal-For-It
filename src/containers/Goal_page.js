@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { RaisedButton, FlatButton, Dialog, Checkbox} from 'material-ui'
+import { Checkbox} from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -14,8 +14,6 @@ import { moneyGoal, moneyMile, moneyStep } from "../actions/moneyActions"
 
 import Milestone from "../components/MilestoneIndex"
 
-import muiTheme from '../components/MuiTheme'
-import MuiText from '../components/MuiText'
 import Nav from './Nav'
 
 

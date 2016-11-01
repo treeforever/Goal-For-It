@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from "react-router"
-import { RaisedButton, FlatButton, Dialog, AppBar, List, IconMenu, MenuItem, IconButton } from 'material-ui'
+import { Badge, FlatButton, Dialog, AppBar, IconMenu, MenuItem, IconButton } from 'material-ui'
+import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -17,8 +18,6 @@ import { signOut } from '../actions/userActions';
 import NewMilestone from "../components/NewMilestone"
 import NewStep from "../components/NewStep"
 import MoneyStatus from '../components/MoneyStatus'
-import Piggybank from "../components/Piggybank"
-import StartChallenge from "../components/StartChallenge"
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
 
@@ -38,7 +37,6 @@ class Nav extends Component {
   }
 
   nextButtonActionsOnMilestones = () => {
-    this.props.addMilestoneInState()
     this.props.addMilestones(this.props.milestonesText, this.props.newGoal.id)
     this.props.addNotif({type: "notification", content: `user 1 has added milestones: ${this.props.newMilestones}`})
     this.props.closeAddMilestonesDialog()
@@ -83,7 +81,7 @@ class Nav extends Component {
         label="Submit"
         primary={true}
         disabled={!this.props.newMoneyInput}
-        onTouchTap={() => { this.submitMoney(this.props.newMoneyInput, this.props.groupMoney)}}
+        onTouchTap={() => { this.submitMoney()}}
       />,
     ];
 
@@ -101,6 +99,7 @@ class Nav extends Component {
               className="App-Bar"
             />
           </MuiThemeProvider>
+
         </nav>
 
         <MuiThemeProvider muiTheme={muiTheme}>
@@ -194,23 +193,39 @@ class Nav extends Component {
 class DropdownMenu extends Component {
   render(){
     return (
-      <span id="dropdown-menu-group">
-        <MuiThemeProvider muiTheme={muiTheme}>
-        <IconMenu
-          iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-          targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        >
-          <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
-          <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
-          <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
-          <MenuItem primaryText="Start Challenge" onClick={ () => this.props.openPotDialog() }/>
-          <MenuItem
-            onClick={() => this.props.signOut()}
-            primaryText="Sign Out" />
-        </IconMenu>
-        </MuiThemeProvider>
-      </span>
+      <div className="nav-right">
+        <div id="notification-bell">
+          <MuiThemeProvider>
+            <Badge
+              badgeContent={1}
+              secondary={true}
+              badgeStyle={{top: 12, right: 12}}
+            >
+              <Link to="group"><IconButton tooltip="Notifications">
+                <NotificationsIcon />
+              </IconButton></Link>
+            </Badge>
+          </MuiThemeProvider>
+        </div>
+        <span id="dropdown-menu-group">
+          <MuiThemeProvider muiTheme={muiTheme}>
+            <IconMenu
+              iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+              anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+              targetOrigin={{horizontal: 'right', vertical: 'top'}}
+              >
+              <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
+              <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
+              <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
+              <MenuItem primaryText="Start Challenge" onClick={ () => this.props.openPotDialog() }/>
+              <MenuItem
+                onClick={() => this.props.signOut()}
+                primaryText="Sign Out" />
+            </IconMenu>
+          </MuiThemeProvider>
+        </span>
+      </div>
+
     )
   }
 }
@@ -260,7 +275,6 @@ const mapDispatchToProps = (dispatch) => {
     handleStepsInput,
     addStepRow,
     selectMilestone,
-    openAddGoalDialog,
     openPotDialog,
     closePotDialog,
     handleMoneyInput,

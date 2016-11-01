@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link } from "react-router"
 import { fetchGroup, fetchNotifs, addNotif, fetchTagUser } from "../actions/groupActions"
 import { fetchUser } from "../actions/userActions"
 import { fetchGoal } from "../actions/goalActions"
+import { fetchMoney} from "../actions/moneyActions"
 
-import { RaisedButton, FlatButton, Dialog, AppBar, List, IconMenu, MenuItem, IconButton } from 'material-ui'
+import { List } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import MobileTearSheet from '../components/MobileTearSheet';
+// import MobileTearSheet from '../components/MobileTearSheet';
 
-import MuiText from '../components/MuiText'
-import muiTheme from '../components/MuiTheme'
 import NotificationList from '../components/NotificationList'
 import GroupList from '../components/GroupList'
 import InputBox from '../components/InputBox'
