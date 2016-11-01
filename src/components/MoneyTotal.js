@@ -6,11 +6,6 @@ class MoneyTotal extends Component {
     let correctUser = this.props.moneyTotal.find(user =>
       user.username === this.props.currentUser
     )
-
-    if (correctUser)
-      console.log(correctUser.user_money)
-
-
     return (
       <div>
         {
