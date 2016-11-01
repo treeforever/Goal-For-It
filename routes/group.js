@@ -1,9 +1,11 @@
 'use strict';
 
-const express = require('express');
-const router = express.Router();
-var bodyParser = require('body-parser')
-var jsonParser = bodyParser.json()
+const express    = require('express');
+const router     = express.Router();
+const bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
+const cors       = require('cors')
+
 
 
 module.exports = (knex) => {
@@ -20,6 +22,24 @@ module.exports = (knex) => {
       .then((results) => {
         res.json(results);
       })
+      .catch(function (err) {
+        res.status(500).send('database error: ' + JSON.stringify(err));
+      });
+  })
+  router.options('/', cors())
+
+  router.put('/', cors(), jsonParser, (req, res) => {
+    knex('money')
+      .where('group_id', 1)
+      .update({
+        amount: req.body.data
+      })
+      .then((results) => {
+        res.json(results);
+      })
+      .catch(function (err) {
+        res.status(500).send('database error: ' + JSON.stringify(err));
+      });
   })
 
   //performs get request to database for notifications
@@ -30,7 +50,10 @@ module.exports = (knex) => {
       .orderBy('notice_id', 'desc')
       .then((results) => {
         res.json(results);
-    })
+      })
+      .catch(function (err) {
+        res.status(500).send('database error: ' + JSON.stringify(err));
+      });
 
   })
 
@@ -41,10 +64,14 @@ module.exports = (knex) => {
       .then((results) => {
         if (results = []){
           console.log('empty')
+          res.json(JSON.stringify('empty'))
         }else {
           res.json(results)
         }
       })
+      .catch(function (err) {
+        res.status(500).send('database error: ' + JSON.stringify(err));
+      });
   })
 
   //performs post request to database for all notifications
@@ -59,9 +86,9 @@ module.exports = (knex) => {
       res.json(resp)
       console.log('Notification insertion complete.')
     })
-    .catch(function(err){
-      console.error(err)
-    })
+    .catch(function (err) {
+      res.status(500).send('database error: ' + JSON.stringify(err));
+    });
   })
 
 

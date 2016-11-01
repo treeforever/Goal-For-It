@@ -81,7 +81,7 @@ class Nav extends Component {
         label="Submit"
         primary={true}
         disabled={!this.props.newMoneyInput}
-        onTouchTap={() => { this.submitMoney()}}
+        onTouchTap={() => { this.submitMoney(this.props.newMoneyInput, this.props.groupMoney)}}
       />,
     ];
 

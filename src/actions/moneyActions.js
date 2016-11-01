@@ -22,8 +22,8 @@ export function handleMoneyInput(text) {
 
 export function addGroupMoney(newMoneyInput, groupMoney) {
   const url = 'http://localhost:8080/api/group'
-  let data = Number(newMoneyInput) + groupMoney
-  const req = axios.post(url, {data});
+  let data = Number(newMoneyInput) + Number(groupMoney)
+  const req = axios.put(url, {data});
   return {
     type: "ADD_GROUP_MONEY",
     payload: req
