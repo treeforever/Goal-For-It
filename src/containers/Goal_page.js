@@ -41,7 +41,7 @@ class Goal_page extends Component {
       type: "notificaiton",
       content: content })
 
-    this.props.moneyGoal(this.props.goal.goal_checked);
+    this.props.moneyGoal(this.props.user.currentUser.userId, this.props.goal.goal_checked, this.props.money.groupMoney, this.props.money.userMoney);
   }
 
 
@@ -82,7 +82,7 @@ class Goal_page extends Component {
               />
             </MuiThemeProvider>
           </h1>
-          <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username} currentUser={this.props.user.currentUser}/>
+          <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username} currentUser={this.props.user.currentUser} money={this.props.money}/>
         </main>
       </div>
     );
@@ -93,6 +93,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     goal: state.goal.goal,
+    money: state.money,
     openGoalDialog: state.goal.openGoalDialog,
     openMilestonesDialog: state.milestones.openMilestonesDialog,
     openStepsDialog: state.steps.openStepsDialog,

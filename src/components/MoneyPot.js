@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class MoneyStatus extends Component {
+class MoneyPot extends Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ class MoneyStatus extends Component {
   }
 }
 
-export default MoneyStatus;
+export default MoneyPot;
