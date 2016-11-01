@@ -30,21 +30,20 @@ export function addGroupMoney(newMoneyInput, groupMoney) {
   };
 }
 
+
 // export function updateGroupMoneyInDB(money) {
 //   return {
 //     type: "UPDATE_GROUP_MONEY_IN_DB",
 //   }
 // }
 
-export function fetchGroupMoney() {
-  return {
-    type: "FETCH_GROUP_MONEY"
-  }
-}
 
-export function fetchUserMoney() {
+export function fetchMoney() {
+  const url = "http://localhost:8080/api/group"
+  const req = axios.get(url)
   return {
-    type: "FETCH_USER_MONEY"
+    type: "FETCH_MONEY",
+    payload: req
   }
 }
 

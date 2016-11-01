@@ -187,6 +187,7 @@ a#my-goals:hover{
 
 .App-Bar {
   margin-top: -3%;
+  padding-top: 10px;
 }
 
 .material-icons.md-dark {

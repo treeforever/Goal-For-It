@@ -17,9 +17,10 @@ export default function reducer(state={
         return {...state, fetching: false, error: action.payload}
       }
       case "FETCH_USER_FULFILLED": {
+        console.log(action.payload.data)
         return {
           ...state,
-          user: action.payload.data
+          user: action.payload.data,
         }
       }
       case "SET_USER_NAME": {

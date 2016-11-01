@@ -10,7 +10,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput, addMilestoneInState} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone, addStepRow} from "../actions/stepActions"
-import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchUserMoney, fetchGroupMoney } from "../actions/moneyActions"
+import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchMoney } from "../actions/moneyActions"
 import { addNotif } from "../actions/groupActions"
 import { signOut } from '../actions/userActions';
 
@@ -25,6 +25,11 @@ import MuiText from '../components/MuiText'
 // injectTapEventPlugin();
 
 class Nav extends Component {
+
+  componentWillMount = () => {
+    this.props.fetchMoney();
+  }
+
   nextButtonActionsOnGoal = () => {
     this.props.addGoal(this.props.goalText)
     this.props.addNotif({type: "notification", content: `user 1 has added a new goal: ${this.props.goalText}`})
@@ -88,7 +93,7 @@ class Nav extends Component {
           <MuiThemeProvider>
             <AppBar
               title={this.props.title}
-              iconElementLeft={this.props.challenge ?   <MoneyStatus money={this.props.money} /> : <span>Start a Challenge</span>}
+              iconElementLeft={this.props.challenge ?   <MoneyStatus currentUser={this.props.user.currentUser.username} money={this.props.money} /> : <span>Start a Challenge</span>}
               iconElementRight={<DropdownMenu
                                   openAddGoalDialog={this.props.openAddGoalDialog}
                                   openPotDialog={this.props.openPotDialog}
@@ -260,8 +265,7 @@ const mapDispatchToProps = (dispatch) => {
     closePotDialog,
     handleMoneyInput,
     addGroupMoney,
-    fetchGroupMoney,
-    fetchUserMoney,
+    fetchMoney,
     signOut,
   }, dispatch)
 }
