@@ -13,7 +13,8 @@ export function fetchMilestones() {
 
 export function addMilestones(milestones, goalId) {
   const url = "http://localhost:8080/api/miles"
-  let data = {newMilestones: milestones, goal_id: goalId}
+  let truncatedMilestones = milestones.filter(function(m){return m.length !== 0})
+  let data = {newMilestones: truncatedMilestones, goal_id: goalId}
   const res = axios.post(url, data)
   return {
     type: 'ADD_MILESTONES',
@@ -47,24 +48,20 @@ export function closeAddMilestonesDialog() {
   };
 }
 
-export function handleMilestoneInput(text) {
+
+export function addMilestoneInState() {
   return {
-    type: 'HANDLE_MILESTONE_INPUT',
-    payload: text
+    type: 'ADD_MILESTONES_IN_STATE',
   };
 }
+
 
 export function handleMilestonesInput(text, index) {
   return {
     type: 'HANDLE_MILESTONES_INPUT',
-    payload: {text: text,
-              index: index}
-  };
-}
-
-export function addMilestoneRow() {
-  return {
-    type: 'ADD_MILESTONE_ROW',
-    payload: 'another row'
+    payload: {
+      text,
+      index,
+    }
   };
 }

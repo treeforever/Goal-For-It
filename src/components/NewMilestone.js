@@ -37,7 +37,6 @@ class NewMilestone extends Component {
                     text={this.props.milestonesText[i]}
                     handleSubmit={function() {}}
                     handleChange={function(text) { this.props.handleMilestonesInput(text, i) }.bind(this)}
-                    addRow={function() {}}
                     />
 
                   )

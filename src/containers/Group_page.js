@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link } from "react-router"
 import { fetchGroup, fetchNotifs, addNotif, fetchTagUser } from "../actions/groupActions"
 import { fetchUser } from "../actions/userActions"
 import { fetchGoal } from "../actions/goalActions"
-import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchMoney } from "../actions/moneyActions"
-import { RaisedButton, FlatButton, Dialog, AppBar, List, IconMenu, MenuItem, IconButton } from 'material-ui'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import MobileTearSheet from '../components/MobileTearSheet';
+import { fetchMoney} from "../actions/moneyActions"
 
-import MuiText from '../components/MuiText'
-import muiTheme from '../components/MuiTheme'
+import { List } from 'material-ui'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+// import MobileTearSheet from '../components/MobileTearSheet';
+
 import NotificationList from '../components/NotificationList'
 import GroupList from '../components/GroupList'
 import InputBox from '../components/InputBox'
@@ -49,27 +46,27 @@ class Group_page extends Component {
 
     return (
       <div className="group">
-
-
         <Nav title={this.props.group[0].name }/>
 
-        <MuiThemeProvider>
-            <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchGoal={this.props.fetchGoal}/>
-        </MuiThemeProvider>
-        <InputBox newTodo
-              onSave={this.handleSave}
-              onTag={this.handleTag}
-              taggedUser={this.props.tag}
-              label="notif"
-              placeholder="What would you like to say to the group?"
-             />
-        <div id="notificationList">
+        <main className="container">
           <MuiThemeProvider>
-            <List style={{color: 'white'}}>
-              <NotificationList className="list-group" notifs={this.props.notifs} sender={this.props.user.currentUser}/>
-            </List>
+              <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchGoal={this.props.fetchGoal}/>
           </MuiThemeProvider>
-        </div>
+          <InputBox newTodo
+                onSave={this.handleSave}
+                onTag={this.handleTag}
+                taggedUser={this.props.tag}
+                label="notif"
+                placeholder="What would you like to say to the group?"
+               />
+          <div id="notificationList">
+            <MuiThemeProvider>
+              <List style={{color: 'white'}}>
+                <NotificationList className="list-group" notifs={this.props.notifs} sender={this.props.user.currentUser}/>
+              </List>
+            </MuiThemeProvider>
+          </div>
+        </main>
       </div>
     );
   }

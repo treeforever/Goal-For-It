@@ -1,10 +1,10 @@
 export default function reducer(state={
     steps: [],
     checked: [],
-    stepRows: ['one row'],
-    stepText: '',
-    stepsText: [],
+    stepsText: [""],
     newSteps: [],
+    selectedMilestone: null,
+    selectedMilestones: [],
     error: null,
   }, action) {
 
@@ -23,9 +23,15 @@ export default function reducer(state={
       case "ADD_STEPS": {
         return {
           ...state,
-          newSteps: [...state.stepsText],
-          stepText: '',
-          stepsText:[],
+          newSteps: state.stepsText
+        }
+      }
+
+      case "ADD_STEPS_FULFILLED": {
+        return {
+          ...state,
+          newMilestonesIds: action.payload.data.id,
+          milestonesText: [""],
         }
       }
       case "UPDATE_STEPS": {
@@ -57,38 +63,31 @@ export default function reducer(state={
         return {
           ...state,
           openStepsDialog: null,
-          stepRows: ['one row'],
-          stepText: '',
-          stepsText:[],
+          stepsText:[""],
         }
       }
-
-      case "HANDLE_STEP_INPUT": {
-        return {
-          ...state,
-          stepText: action.payload
-        }
-      }
-
 
       case "HANDLE_STEPS_INPUT": {
+        let newArray = state.stepsText.slice(0);
+        newArray[action.payload.index] = action.payload.text;
+        newArray = newArray.filter(function(v) {
+          return v !== "";
+        });
+
+        if(newArray[newArray.length - 1] !== "") {
+          newArray.push("");
+        }
         return {
           ...state,
-          stepsText: [...state.stepsText, state.stepText]
+         stepsText: newArray,
         }
       }
 
       case "SELECT_MILESTONE": {
         return {
           ...state,
-          selectedMilestone: action.payload
-        }
-      }
-
-      case "ADD_STEP_ROW": {
-        return {
-          ...state,
-          stepRows: [...state.stepRows, action.payload]
+          selectedMilestone: action.payload,
+          selectedMilestones: [...state.selectedMilestones, action.payload],
         }
       }
     }

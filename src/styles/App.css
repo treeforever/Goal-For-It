@@ -119,6 +119,7 @@ span.add-step-button {
   /*z-index: -1;*/
 }
 
+
 /*group-page css*/
 
 .group>ul {
@@ -150,6 +151,8 @@ span.add-step-button {
 
 #moneyStatus {
   float: right;
+  padding-top: 21%;
+  padding-left: 12%;
 }
 
 /*checkbox*/
@@ -159,8 +162,23 @@ span.add-step-button {
 }
 
 #dropdown-menu-group {
-  float: right;
-  margin-right: -10%;
+  display: inline-block;
+}
+
+#notification-bell {
+  display:inline-block;
+}
+
+header {
+  left: 0;
+  top: 0;
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+}
+
+.nav-right {
+
 }
 
 #dropdown-menu-goal {
@@ -192,4 +210,12 @@ a#my-goals:hover{
 
 .material-icons.md-dark {
   color: rgba(0, 0, 0, 0.54);
+}
+
+main.container {
+  margin-top: 15%;
+}
+
+span.username {
+  
 }

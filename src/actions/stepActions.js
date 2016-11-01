@@ -10,13 +10,27 @@ export function fetchSteps() {
   };
 }
 
-export function addSteps(steps) {
-  return {
-    type: 'ADD_STEPS',
-    payload: {
-      steps
-    }
-  }
+export function addSteps(steps, milestoneIndex, newMilestones, milestoneIds) {
+  const url = "http://localhost:8080/api/steps"
+  console.log('step action', steps, milestoneIndex, newMilestones, milestoneIds)
+  let truncatedSteps = steps.filter((s) => {return s !== ''})
+  let newSteps = []
+  truncatedSteps.map((step, i) => {
+    newSteps[i] = {}
+    newSteps[i].step = steps[i]
+    newSteps[i].milestone_id = milestoneIds[milestoneIndex[i]]
+  })
+  console.log('newSteps are', newSteps)
+
+  // steps[{
+  //   step: steps[0],
+  //   milestone_id: milestoneIds[milestoneIndex]
+  // }]
+  // const res = axios.post(url, data)
+  // return {
+  //   type: 'ADD_STEPS',
+  //   payload: steps
+  // }
 }
 
 export function updateSteps(id, text) {
@@ -45,30 +59,19 @@ export function closeAddStepsDialog() {
   };
 }
 
-export function handleStepInput(text) {
-  return {
-    type: 'HANDLE_STEP_INPUT',
-    payload: text
-  };
-}
-
-export function handleStepsInput(text) {
+export function handleStepsInput(text, index) {
   return {
     type: 'HANDLE_STEPS_INPUT',
-    payload: text
-  };
+    payload: {
+      text,
+      index,
+    }
+  }
 }
 
 export function selectMilestone(index) {
   return {
     type: 'SELECT_MILESTONE',
     payload: index
-  };
-}
-
-export function addStepRow() {
-  return {
-    type: 'ADD_STEP_ROW',
-    payload: 'another row'
   };
 }

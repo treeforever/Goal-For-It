@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from "react-router"
-import { RaisedButton, FlatButton, Dialog, AppBar, List, IconMenu, MenuItem, IconButton } from 'material-ui'
+import { Badge, FlatButton, Dialog, AppBar, IconMenu, MenuItem, IconButton } from 'material-ui'
+import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
-import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput} from "../actions/milestoneActions"
-import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone, addStepRow} from "../actions/stepActions"
+import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput, addMilestoneInState} from "../actions/milestoneActions"
+import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepsInput, selectMilestone } from "../actions/stepActions"
 import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchMoney } from "../actions/moneyActions"
 import { addNotif } from "../actions/groupActions"
 import { signOut } from '../actions/userActions';
@@ -17,8 +18,6 @@ import { signOut } from '../actions/userActions';
 import NewMilestone from "../components/NewMilestone"
 import NewStep from "../components/NewStep"
 import MoneyStatus from '../components/MoneyStatus'
-import Piggybank from "../components/Piggybank"
-import StartChallenge from "../components/StartChallenge"
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
 
@@ -38,6 +37,7 @@ class Nav extends Component {
   }
 
   nextButtonActionsOnMilestones = () => {
+    this.props.addMilestoneInState()
     this.props.addMilestones(this.props.milestonesText, this.props.newGoal.id)
     this.props.addNotif({type: "notification", content: `user 1 has added milestones: ${this.props.newMilestones}`})
     this.props.closeAddMilestonesDialog()
@@ -46,13 +46,13 @@ class Nav extends Component {
 
   nextButtonActionsOnSteps = () => {
     //change stepsText
-    this.props.addSteps(this.props.stepsText)
+    this.props.addSteps(this.props.stepsText, this.props.steps.selectedMilestones, this.props.newMilestones, this.props.newMilestonesIds)
     this.props.addNotif({type: "notification", content: `user 1 has added new steps: ${this.props.stepsText}`})
     this.props.closeAddStepsDialog()
   }
 
-  submitMoney = () => {
-    this.props.addGroupMoney()
+  submitMoney = (moneyInput, groupMoney) => {
+    this.props.addGroupMoney(moneyInput, groupMoney)
     this.props.closePotDialog()
   }
 
@@ -82,25 +82,26 @@ class Nav extends Component {
         label="Submit"
         primary={true}
         disabled={!this.props.newMoneyInput}
-        onTouchTap={() => { this.submitMoney()}}
+        onTouchTap={() => { this.submitMoney(this.props.newMoneyInput, this.props.groupMoney)}}
       />,
     ];
 
     return (
       <div>
-        <nav>
+        <header>
           <MuiThemeProvider>
             <AppBar
               title={this.props.title}
               iconElementLeft={this.props.challenge ? <MoneyStatus currentUser={this.props.user.currentUser.username} money={this.props.money} /> : <span>Start a Challenge</span>}
               iconElementRight={<DropdownMenu
+                                  currentUser={this.props.user.currentUser.username}
                                   openAddGoalDialog={this.props.openAddGoalDialog}
                                   openPotDialog={this.props.openPotDialog}
                                   signOut={this.props.signOut} />}
               className="App-Bar"
             />
           </MuiThemeProvider>
-        </nav>
+        </header>
 
         <MuiThemeProvider muiTheme={muiTheme}>
           <Dialog
@@ -134,12 +135,12 @@ class Nav extends Component {
           nextButtonActionsOnSteps={this.nextButtonActionsOnSteps}
           stepsText={this.props.stepsText}
           stepsText={this.props.stepsText}
-          stepRows={this.props.stepRows}
           newMilestones={this.props.newMilestones}
           selectMilestone={this.props.selectMilestone}
-          handleStepInput={this.props.handleStepInput}
+          selectedMilestone={this.props.steps.selectedMilestone}
+          selectedMilestones={this.props.steps.selectedMilestones}
           handleStepsInput={this.props.handleStepsInput}
-          addStepRow={this.props.addStepRow}
+          addSteps={this.props.addSteps}
           />
 
           <MuiThemeProvider muiTheme={muiTheme}>
@@ -193,23 +194,40 @@ class Nav extends Component {
 class DropdownMenu extends Component {
   render(){
     return (
-      <span id="dropdown-menu-group">
-        <MuiThemeProvider muiTheme={muiTheme}>
-        <IconMenu
-          iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-          targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        >
-          <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
-          <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
-          <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
-          <MenuItem primaryText="Start Challenge" onClick={ () => this.props.openPotDialog() }/>
-          <MenuItem
-            onClick={() => this.props.signOut()}
-            primaryText="Sign Out" />
-        </IconMenu>
-        </MuiThemeProvider>
-      </span>
+      <div className="nav-right">
+        <span className="username">{this.props.currentUser}</span>
+        <div id="notification-bell">
+          <MuiThemeProvider>
+            <Badge
+              badgeContent={1}
+              secondary={true}
+              badgeStyle={{top: 12, right: 12}}
+            >
+              <Link to="group"><IconButton tooltip="Notifications">
+                <NotificationsIcon />
+              </IconButton></Link>
+            </Badge>
+          </MuiThemeProvider>
+        </div>
+        <span id="dropdown-menu-group">
+          <MuiThemeProvider muiTheme={muiTheme}>
+            <IconMenu
+              iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+              anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+              targetOrigin={{horizontal: 'right', vertical: 'top'}}
+              >
+              <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
+              <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
+              <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
+              <MenuItem primaryText="Start Challenge" onClick={ () => this.props.openPotDialog() }/>
+              <MenuItem
+                onClick={() => this.props.signOut()}
+                primaryText="Sign Out" />
+            </IconMenu>
+          </MuiThemeProvider>
+        </span>
+      </div>
+
     )
   }
 }
@@ -225,10 +243,10 @@ const mapStateToProps = (state) => ({
   newGoal: state.goal.newGoal,
   milestonesText: state.milestones.milestonesText,
   newMilestones: state.milestones.newMilestones,
-  stepText: state.milestones.stepText,
+  newMilestonesIds: state.milestones.newMilestonesIds,
   stepsText: state.steps.stepsText,
-  stepRows: state.steps.stepRows,
   newSteps: state.steps.newSteps,
+  steps: state.steps,
   group: state.group.group,
   notifs: state.group.notifs,
   potDialog: state.money.potDialog,
@@ -243,9 +261,9 @@ const mapDispatchToProps = (dispatch) => {
   //to all of reducers
   return bindActionCreators({
     addNotif,
-
     addGoal,
     addMilestones,
+    addMilestoneInState,
     addSteps,
     openAddGoalDialog,
     openAddMilestonesDialog,
@@ -255,11 +273,8 @@ const mapDispatchToProps = (dispatch) => {
     closeAddStepsDialog,
     handleGoalInput,
     handleMilestonesInput,
-    handleStepInput,
     handleStepsInput,
-    addStepRow,
     selectMilestone,
-    openAddGoalDialog,
     openPotDialog,
     closePotDialog,
     handleMoneyInput,
