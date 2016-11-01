@@ -10,10 +10,22 @@ export function fetchSteps() {
   };
 }
 
-export function addSteps(steps, milestoneIndex, milestoneIds) {
+export function addSteps(steps, milestoneIndex, newMilestones, milestoneIds) {
   const url = "http://localhost:8080/api/steps"
-  console.log('step action', steps, milestoneIndex, milestoneIds)
+  console.log('step action', steps, milestoneIndex, newMilestones, milestoneIds)
+  let truncatedSteps = steps.filter((s) => {return s !== ''})
+  let newSteps = []
+  truncatedSteps.map((step, i) => {
+    newSteps[i] = {}
+    newSteps[i].step = steps[i]
+    newSteps[i].milestone_id = milestoneIds[milestoneIndex[i]]
+  })
+  console.log('newSteps are', newSteps)
 
+  // steps[{
+  //   step: steps[0],
+  //   milestone_id: milestoneIds[milestoneIndex]
+  // }]
   // const res = axios.post(url, data)
   // return {
   //   type: 'ADD_STEPS',

@@ -46,7 +46,7 @@ class Nav extends Component {
 
   nextButtonActionsOnSteps = () => {
     //change stepsText
-    this.props.addSteps(this.props.stepsText, this.props.steps.selectedMilestones, this.props.newMilestones)
+    this.props.addSteps(this.props.stepsText, this.props.steps.selectedMilestones, this.props.newMilestones, this.props.newMilestonesIds)
     this.props.addNotif({type: "notification", content: `user 1 has added new steps: ${this.props.stepsText}`})
     this.props.closeAddStepsDialog()
   }
@@ -137,6 +137,7 @@ class Nav extends Component {
           stepsText={this.props.stepsText}
           newMilestones={this.props.newMilestones}
           selectMilestone={this.props.selectMilestone}
+          selectedMilestone={this.props.steps.selectedMilestone}
           selectedMilestones={this.props.steps.selectedMilestones}
           handleStepsInput={this.props.handleStepsInput}
           addSteps={this.props.addSteps}
@@ -242,6 +243,7 @@ const mapStateToProps = (state) => ({
   newGoal: state.goal.newGoal,
   milestonesText: state.milestones.milestonesText,
   newMilestones: state.milestones.newMilestones,
+  newMilestonesIds: state.milestones.newMilestonesIds,
   stepsText: state.steps.stepsText,
   newSteps: state.steps.newSteps,
   steps: state.steps,

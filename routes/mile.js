@@ -19,8 +19,8 @@ module.exports = (knex) => {
       .returning('milestone_id')
       .then(function(result) {
         newMilestonesId.push(result[0])
-        console.log('Milestones insertion complete.', newMilestonesId)
         if(i === newMilestones.length - 1) {
+          console.log('Milestones insertion complete.', newMilestonesId)
           res.json({id: newMilestonesId})
         }
       })

@@ -3,6 +3,7 @@ export default function reducer(state={
     checked: [],
     stepsText: [""],
     newSteps: [],
+    selectedMilestone: null,
     selectedMilestones: [],
     error: null,
   }, action) {
@@ -85,7 +86,7 @@ export default function reducer(state={
       case "SELECT_MILESTONE": {
         return {
           ...state,
-          // selectedMilestoneIndex: action.payload,
+          selectedMilestone: action.payload,
           selectedMilestones: [...state.selectedMilestones, action.payload],
         }
       }
