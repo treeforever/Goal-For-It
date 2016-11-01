@@ -56,7 +56,7 @@ class Goal_page extends Component {
     let g = this.props.goal;
     return (
       <div>
-       <Nav title={`${this.props.user.currentUser.username}${'\''}s Goals`}/>
+       <Nav title={`${this.props.goal.username}${'\''}s Goals`}/>
        <main className="container">
          <h1>{g.goal}
             <MuiThemeProvider style={styles.block}>
