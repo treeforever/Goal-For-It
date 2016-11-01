@@ -18,7 +18,6 @@ export default function reducer(state = defaultState, action) {
         return {
           ...state,
           potDialog: null,
-          newMoneyInput: '',
         }
       }
 
@@ -30,11 +29,12 @@ export default function reducer(state = defaultState, action) {
       }
 
 
-      case "ADD_GROUP_MONEY": {
+      case "ADD_GROUP_MONEY_FULFILLED": {
         let newMoney = Number(state.newMoneyInput)
         return {
           ...state,
-          groupMoney: state.groupMoney + newMoney,
+          groupMoney: Number(state.groupMoney) + newMoney,
+          newMoneyInput: '',
         }
       }
 
