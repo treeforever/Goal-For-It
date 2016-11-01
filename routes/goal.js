@@ -48,7 +48,44 @@ module.exports = (knex) => {
       .then((results) => {
         let groupedResults = _.groupBy(results, function(entry){ return entry.mile_title})
         let structuredGoal = goalPyrimid(groupedResults)
-        res.json(structuredGoal);
+        res.json(groupedResults);
+      }).catch(function (err) {
+        res.status(500).send('database error: ' + JSON.stringify(err));
+      });
+  });
+
+  router.get('/users/:user_id', (req, res) => {
+    let selectedUserId = Number(req.params.user_id)
+    knex.from('goals')
+      .where('goals.creator_id', selectedUserId)
+      .innerJoin('milestones', 'goals.goal_id', 'milestones.goal_id')
+      .innerJoin('steps', 'milestones.milestone_id', 'steps.milestone_id')
+      .select('goals.goal',
+              'milestones.mile_title',
+              'milestones.milestone_id',
+              'milestones.checked as milestone_checked',
+              'goals.goal_id',
+              'goals.creator_id',
+              'goals.checked as goal_checked',
+              'steps.step',
+              'steps.step_id',
+              'steps.checked as step_checked',
+              'steps.milestone_id'
+            )
+      .then((results) => {
+        // let groupedResults = _.groupBy(results, function(entry){ return entry.mile_title})
+        let groupedGoals = _.groupBy(results, function(entry){ return entry.goal})
+        let keys = Object.keys(groupedGoals)
+        let goals = []
+        keys.map(function(key){
+          let groupedMiles = _.groupBy(groupedGoals[key], function(entry){ return entry.mile_title})
+          goals.push(groupedMiles)
+        })
+        let structuredGoals = []
+        goals.map(function(goal){
+          structuredGoals.push(goalPyrimid(goal))
+        })
+        res.json(structuredGoals)
       }).catch(function (err) {
         res.status(500).send('database error: ' + JSON.stringify(err));
       });
