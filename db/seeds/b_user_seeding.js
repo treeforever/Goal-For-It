@@ -9,7 +9,7 @@ exports.seed = function (knex, Promise) {
           email: 'foo@foo.com',
           password: 'password',
           user_money: 0,
-          group_money: 327,
+          group_money: null,
           group_id: 1
         }),
         knex('users')
@@ -18,7 +18,7 @@ exports.seed = function (knex, Promise) {
           email: 'jim@jimmy.com',
           password: '1234',
           user_money: 0,
-          group_money: 327,
+          group_money: null,
           group_id: 1
         }),
         knex('users')
@@ -27,7 +27,7 @@ exports.seed = function (knex, Promise) {
           email: 'frank@gmail.com',
           password: 'whatever',
           user_money: 0,
-          group_money: 327,
+          group_money: null,
           group_id: 1
         })
       ]);

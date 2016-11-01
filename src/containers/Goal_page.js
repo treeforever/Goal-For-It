@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Checkbox } from 'material-ui'
-// import NavigationArrowBack from 'material-ui/svg-icons/navigation'
+import HardwareKeyboardArrowLeft from 'material-ui/svg-icons/hardware/keyboard-arrow-left'
+import HardwareKeyboardArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import muiTheme from '../components/MuiTheme'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import { fetchGoal, fetchGoals, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
@@ -60,8 +62,17 @@ class Goal_page extends Component {
        <Nav title={'GOAL FOR IT'}/>
        <main className="container">
          <span className="creator-info">{`${this.props.goal.username}${'\''}s Goals`}</span>
+         <br></br>
+           <MuiThemeProvider muiTheme={muiTheme}>
+             <HardwareKeyboardArrowLeft onClick={}/>
+           </MuiThemeProvider>
 
-         <h1>{g.goal}
+             <h1>{g.goal}
+
+           <MuiThemeProvider muiTheme={muiTheme}>
+             <HardwareKeyboardArrowRight />
+           </MuiThemeProvider>
+
             <MuiThemeProvider style={styles.block}>
               <Checkbox
               style={styles.checkbox}
