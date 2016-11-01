@@ -14,8 +14,9 @@ module.exports = (knex) => {
       .from('users')
       .innerJoin('users_groups', 'users_groups.user_id', 'users.user_id')
       .innerJoin('groups', 'groups.group_id', 'users_groups.group_id')
+      .innerJoin('money', 'money.group_id', 'groups.group_id')
       .where('groups.group_id', 1)
-      .select('groups.name', 'groups.description', 'users.username')
+      .select('groups.name', 'groups.description', 'users.username', 'money.amount')
       .then((results) => {
         res.json(results);
       })

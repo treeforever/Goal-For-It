@@ -51,6 +51,7 @@ class Goal_page extends Component {
       this.props.fetchGoal(1);
     }
     this.props.fetchUser(1);
+
   }
 
   render() {

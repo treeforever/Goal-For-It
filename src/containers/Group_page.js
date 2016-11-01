@@ -5,7 +5,7 @@ import { Link } from "react-router"
 import { fetchGroup, fetchNotifs, addNotif, fetchTagUser } from "../actions/groupActions"
 import { fetchUser } from "../actions/userActions"
 import { fetchGoal } from "../actions/goalActions"
-import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchUserMoney, fetchGroupMoney } from "../actions/moneyActions"
+import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchMoney } from "../actions/moneyActions"
 import { RaisedButton, FlatButton, Dialog, AppBar, List, IconMenu, MenuItem, IconButton } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
@@ -27,8 +27,7 @@ class Group_page extends Component {
     this.props.fetchGroup();
     this.props.fetchNotifs();
     this.props.fetchUser(1)
-    this.props.fetchUserMoney();
-    this.props.fetchGroupMoney();
+    this.props.fetchMoney();
 
   }
 
@@ -81,7 +80,6 @@ const mapStateToProps = (store) => ({
   group: store.group.group,
   notifs: store.group.notifs,
   tag: store.group.tag,
-  groupMoney: store.money.groupMoney,
   });
 
 const mapDispatchToProps = (dispatch) => {
@@ -94,8 +92,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchUser,
     fetchTagUser,
     fetchGoal,
-    fetchGroupMoney,
-    fetchUserMoney,
+    fetchMoney,
   }, dispatch)
 }
 

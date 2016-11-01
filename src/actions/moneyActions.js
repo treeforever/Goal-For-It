@@ -25,15 +25,12 @@ export function addGroupMoney() {
     type: "ADD_GROUP_MONEY",
   };
 }
-export function fetchGroupMoney() {
+export function fetchMoney() {
+  const url = "http://localhost:8080/api/group"
+  const req = axios.get(url)
   return {
-    type: "FETCH_GROUP_MONEY"
-  }
-}
-
-export function fetchUserMoney() {
-  return {
-    type: "FETCH_USER_MONEY"
+    type: "FETCH_MONEY",
+    payload: req
   }
 }
 

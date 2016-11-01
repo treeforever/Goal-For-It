@@ -1,6 +1,6 @@
 const defaultState = {
     groupMoney: 0,
-    userMoney: 0,
+    userMoney: [],
     challenge: true,
     error: null
   };
@@ -37,9 +37,11 @@ export default function reducer(state = defaultState, action) {
         }
       }
 
-      case "FETCH_GROUP_MONEY_FULFILLED": {
+      case "FETCH_MONEY_FULFILLED": {
         return {
-          ...state
+          ...state,
+          groupMoney: action.payload.data[0].amount,
+          userMoney: action.payload.data,
         }
       }
 
@@ -47,8 +49,8 @@ export default function reducer(state = defaultState, action) {
         if(action.payload && state.groupMoney != 0) {
           return {
             ...state,
-          groupMoney: state.groupMoney - 3,
-          userMoney: state.userMoney + 3
+          groupMoney: state.groupMoney - 10,
+          userMoney: state.userMoney + 10
           }
         }
       }
@@ -56,8 +58,9 @@ export default function reducer(state = defaultState, action) {
       case "MONEY_MILESTONE": {
         if(action.payload && state.groupMoney != 0){
           return {
-          groupMoney: state.grouMoney - 2,
-          userMoney: state.userMoney + 2
+          groupMoney: state.grouMoney - 5,
+          userMoney: state.userMoney + 5
+
           }
         }
       }
