@@ -1,10 +1,9 @@
 export default function reducer(state={
     steps: [],
     checked: [],
-    stepRows: ['one row'],
-    stepText: '',
-    stepsText: [],
+    stepsText: [""],
     newSteps: [],
+    selectedMilestoneIndex: 0,
     error: null,
   }, action) {
 
@@ -20,12 +19,10 @@ export default function reducer(state={
           steps: action.payload.data
         }
       }
-      case "ADD_STEPS": {
+      case "ADD_STEP": {
         return {
           ...state,
-          newSteps: [...state.stepsText],
-          stepText: '',
-          stepsText:[],
+          newStep: action.payload
         }
       }
       case "UPDATE_STEPS": {
@@ -57,31 +54,30 @@ export default function reducer(state={
         return {
           ...state,
           openStepsDialog: null,
-          stepRows: ['one row'],
-          stepText: '',
-          stepsText:[],
+          stepsText:[""],
         }
       }
-
-      case "HANDLE_STEP_INPUT": {
-        return {
-          ...state,
-          stepText: action.payload
-        }
-      }
-
 
       case "HANDLE_STEPS_INPUT": {
+        let newArray = state.stepsText.slice(0);
+        newArray[action.payload.index] = action.payload.text;
+        newArray = newArray.filter(function(v) {
+          return v !== "";
+        });
+
+        if(newArray[newArray.length - 1] !== "") {
+          newArray.push("");
+        }
         return {
           ...state,
-          stepsText: [...state.stepsText, state.stepText]
+         stepsText: newArray
         }
       }
 
       case "SELECT_MILESTONE": {
         return {
           ...state,
-          selectedMilestone: action.payload
+          selectedMilestoneIndex: action.payload
         }
       }
 

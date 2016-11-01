@@ -10,12 +10,10 @@ export function fetchSteps() {
   };
 }
 
-export function addSteps(steps) {
+export function addStep(step) {
   return {
-    type: 'ADD_STEPS',
-    payload: {
-      steps
-    }
+    type: 'ADD_STEP',
+    payload: step  
   }
 }
 
@@ -45,30 +43,20 @@ export function closeAddStepsDialog() {
   };
 }
 
-export function handleStepInput(text) {
-  return {
-    type: 'HANDLE_STEP_INPUT',
-    payload: text
-  };
-}
-
-export function handleStepsInput(text) {
+export function handleStepsInput(text, index, selectedMilestoneIndex) {
   return {
     type: 'HANDLE_STEPS_INPUT',
-    payload: text
-  };
+    payload: {
+      text,
+      index,
+      selectedMilestoneIndex
+    }
+  }
 }
 
 export function selectMilestone(index) {
   return {
     type: 'SELECT_MILESTONE',
     payload: index
-  };
-}
-
-export function addStepRow() {
-  return {
-    type: 'ADD_STEP_ROW',
-    payload: 'another row'
   };
 }

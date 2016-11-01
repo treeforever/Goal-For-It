@@ -58,7 +58,9 @@ export function addMilestoneInState() {
 export function handleMilestonesInput(text, index) {
   return {
     type: 'HANDLE_MILESTONES_INPUT',
-    payload: {text: text,
-              index: index}
+    payload: {
+      text,
+      index,
+    }
   };
 }

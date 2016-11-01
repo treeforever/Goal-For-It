@@ -23,7 +23,7 @@ class MuiText extends Component {
             floatingLabelText={this.props.floatingLabelText}
             value={this.props.text}
             onChange={this.handleChange}
-            onBlur={this.handleSubmit}
+            onBlur={this.handleBlur}
           />
         </MuiThemeProvider>
       </div>

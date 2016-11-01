@@ -9,13 +9,12 @@ const styles = {
   customWidth: {
     width: 150,
   },
-  value: 0
 };
 
 class NewStep extends Component {
+
   handleSelectMilestone = (event, index, value) => {
-    console.log('e',event, 'index', index, 'value', value)
-    this.setState({value})
+    this.props.selectMilestone(index)
   }
 
   render(){
@@ -40,15 +39,15 @@ class NewStep extends Component {
       modal={true}
       open={!!this.props.openStepsDialog}
       >
-        {this.props.stepRows.map((num, i)=>{
+        {this.props.stepsText.map((num, i)=>{
           return (
                   <div key={i}>
                       <MuiThemeProvider muiTheme={muiTheme}>
                         <SelectField
                           key={i}
                           floatingLabelText="Milestone"
-                          value={0}
-                          onChange={() => { this.handleSelectMilestone() }}
+                          value={this.props.selectedMilestoneIndex}
+                          onChange={this.handleSelectMilestone}
                           autoWidth={true}
                         >
                           {this.props.newMilestones.map((m, j) => {
@@ -64,9 +63,8 @@ class NewStep extends Component {
                         floatingLabelText="step"
                         key={i}
                         text={this.props.stepsText[i]}
-                        handleChange={this.props.handleStepInput}
-                        handleSubmit={this.props.handleStepsInput}
-                        addRow={this.props.addStepRow}
+                        handleSubmit={this.props.addStep}
+                        handleChange={function(text) { this.props.handleStepsInput(text, i, this.props.selectedMilestoneIndex) }.bind(this)}
                         />
                       </div>
                   )

@@ -10,7 +10,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 
 import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput, addMilestoneInState} from "../actions/milestoneActions"
-import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone, addStepRow} from "../actions/stepActions"
+import { addStep, openAddStepsDialog, closeAddStepsDialog, handleStepsInput, selectMilestone } from "../actions/stepActions"
 import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchMoney } from "../actions/moneyActions"
 import { addNotif } from "../actions/groupActions"
 import { signOut } from '../actions/userActions';
@@ -37,6 +37,7 @@ class Nav extends Component {
   }
 
   nextButtonActionsOnMilestones = () => {
+    this.props.addMilestoneInState()
     this.props.addMilestones(this.props.milestonesText, this.props.newGoal.id)
     this.props.addNotif({type: "notification", content: `user 1 has added milestones: ${this.props.newMilestones}`})
     this.props.closeAddMilestonesDialog()
@@ -45,7 +46,6 @@ class Nav extends Component {
 
   nextButtonActionsOnSteps = () => {
     //change stepsText
-    this.props.addSteps(this.props.stepsText)
     this.props.addNotif({type: "notification", content: `user 1 has added new steps: ${this.props.stepsText}`})
     this.props.closeAddStepsDialog()
   }
@@ -87,7 +87,7 @@ class Nav extends Component {
 
     return (
       <div>
-        <nav>
+        <header>
           <MuiThemeProvider>
             <AppBar
               title={this.props.title}
@@ -99,8 +99,7 @@ class Nav extends Component {
               className="App-Bar"
             />
           </MuiThemeProvider>
-
-        </nav>
+        </header>
 
         <MuiThemeProvider muiTheme={muiTheme}>
           <Dialog
@@ -134,12 +133,11 @@ class Nav extends Component {
           nextButtonActionsOnSteps={this.nextButtonActionsOnSteps}
           stepsText={this.props.stepsText}
           stepsText={this.props.stepsText}
-          stepRows={this.props.stepRows}
           newMilestones={this.props.newMilestones}
           selectMilestone={this.props.selectMilestone}
-          handleStepInput={this.props.handleStepInput}
+          selectedMilestoneIndex={this.props.steps.selectedMilestoneIndex}
           handleStepsInput={this.props.handleStepsInput}
-          addStepRow={this.props.addStepRow}
+          addStep={this.props.addStep}
           />
 
           <MuiThemeProvider muiTheme={muiTheme}>
@@ -245,6 +243,7 @@ const mapStateToProps = (state) => ({
   stepsText: state.steps.stepsText,
   stepRows: state.steps.stepRows,
   newSteps: state.steps.newSteps,
+  steps: state.steps,
   group: state.group.group,
   notifs: state.group.notifs,
   potDialog: state.money.potDialog,
@@ -262,7 +261,7 @@ const mapDispatchToProps = (dispatch) => {
     addGoal,
     addMilestones,
     addMilestoneInState,
-    addSteps,
+    addStep,
     openAddGoalDialog,
     openAddMilestonesDialog,
     openAddStepsDialog,
@@ -271,9 +270,7 @@ const mapDispatchToProps = (dispatch) => {
     closeAddStepsDialog,
     handleGoalInput,
     handleMilestonesInput,
-    handleStepInput,
     handleStepsInput,
-    addStepRow,
     selectMilestone,
     openPotDialog,
     closePotDialog,
