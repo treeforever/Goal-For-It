@@ -25,9 +25,6 @@ class Group_page extends Component {
   componentWillMount() {
     this.props.fetchGroup();
     this.props.fetchNotifs();
-    this.props.fetchUser(1)
-    this.props.fetchMoney();
-
   }
 
    handleSave = text => {

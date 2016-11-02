@@ -23,22 +23,22 @@ class NewMilestone extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <Dialog
-          title="Add New milestones"
+          title="Add New milestones to make it more measurable"
           actions={milestonesActions}
           modal={true}
           open={!!this.props.openMilestonesDialog}
         >
+        <img src="../../images/milestone.jpg" alt="milestone" height="50" width="50"/>
         {this.props.milestonesText.map((num, i)=>{
           return (
-                  <MuiText
-                    key={i}
-                    hintText="milestone"
-                    floatingLabelText="milestone"
-                    text={this.props.milestonesText[i]}
-                    handleSubmit={function() {}}
-                    handleChange={function(text) { this.props.handleMilestonesInput(text, i) }.bind(this)}
-                    />
-
+                    <MuiText
+                      key={i}
+                      hintText="milestone"
+                      floatingLabelText="milestone"
+                      text={this.props.milestonesText[i]}
+                      handleSubmit={function() {}}
+                      handleChange={function(text) { this.props.handleMilestonesInput(text, i) }.bind(this)}
+                      />
                   )
 
         })}

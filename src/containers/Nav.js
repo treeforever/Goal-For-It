@@ -8,7 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import { addGoal, fetchGoals, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
+import { addGoal, fetchGoals, checkedGoal, showLatestGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput, addMilestoneInState} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepsInput, selectMilestone } from "../actions/stepActions"
 import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchMoney } from "../actions/moneyActions"
@@ -54,6 +54,8 @@ class Nav extends Component {
     this.props.addSteps(this.props.stepsText, this.props.steps.selectedMilestones, this.props.newMilestones, this.props.newMilestonesIds)
     this.props.addNotif({type: "notification", content: `user 1 has added new steps: ${this.props.stepsText}`})
     this.props.closeAddStepsDialog()
+    this.props.showLatestGoal()
+    this.props.fetchGoals(this.props.user.currentUser.userId)
   }
 
   submitMoney = (moneyInput, groupMoney) => {
@@ -116,7 +118,7 @@ class Nav extends Component {
 
         <MuiThemeProvider muiTheme={muiTheme}>
           <Dialog
-            title="Add New Goal"
+            title="Add New Goal: what goal can wake you up every morning?"
             actions={goalActions}
             modal={true}
             open={!!this.props.openGoalDialog}
@@ -295,6 +297,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchMoney,
     signOut,
     changeViewerToCurrentUser,
+    showLatestGoal
   }, dispatch)
 }
 

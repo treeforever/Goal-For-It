@@ -59,6 +59,13 @@ export default function reducer(state = defaultState, action) {
         }
       }
 
+      case "SHOW_LATEST_GOAL": {
+        return {
+          ...state,
+          goalIndex: state.goals.length - 1 
+        }
+      }
+
 
       case "ADD_GOAL_FULFILLED": {
         return {

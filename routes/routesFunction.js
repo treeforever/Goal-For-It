@@ -4,7 +4,7 @@ function constructGoalKeys(data) {
 
   let goalName = firstMilestone[0].goal
   let goal_id = firstMilestone[0].goal_id
-  let creator_id = firstMilestone[0].creator_id
+  let creator_id = Number(firstMilestone[0].creator_id)
   let goal_checked = firstMilestone[0].goal_checked
   let username = firstMilestone[0].username
 

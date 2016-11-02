@@ -66,6 +66,8 @@ export default function reducer(state={
           ...state,
           openStepsDialog: null,
           stepsText:[""],
+          selectedMilestone: null,
+          selectedMilestones: [],
         }
       }
 

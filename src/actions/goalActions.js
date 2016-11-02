@@ -115,3 +115,9 @@ export function showNextGoal() {
     type: "SHOW_NEXT_GOAL",
   };
 }
+
+export function showLatestGoal() {
+  return {
+    type: "SHOW_LATEST_GOAL",
+  };
+}

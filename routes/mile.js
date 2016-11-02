@@ -25,7 +25,9 @@ module.exports = (knex) => {
         }
       })
       .catch(function(err) {
-        res.status(500).send('database error: ' + JSON.stringify(err));
+        if(i === newMilestones.length - 1) {
+          res.status(500).send('database error: ' + JSON.stringify(err));
+        }
       });
     })
 

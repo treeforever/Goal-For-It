@@ -34,9 +34,10 @@ class NewStep extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
       <Dialog
-      title="Add New steps"
+      title="Add New steps to break down your milestones into smaller strides"
       actions={stepsActions}
       modal={true}
+      autoDetectWindowHeight={false}
       open={!!this.props.openStepsDialog}
       >
         {this.props.stepsText.map((num, i)=>{
@@ -48,7 +49,7 @@ class NewStep extends Component {
                           floatingLabelText="Milestone"
                           value={this.props.selectedMilestones[i]}
                           onChange={this.handleSelectMilestone}
-                          autoWidth={true}
+                          fullWidth={true}
                         >
                           {this.props.newMilestones.map((m, j) => {
                             return (

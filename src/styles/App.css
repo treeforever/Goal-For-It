@@ -277,7 +277,7 @@ span#group-money {
 /* <---- nav */
 
 /* goal page layout------> */
-main.container {
+/*main.container {
   display: flex;
   flex-direction: row;
 }
@@ -292,4 +292,4 @@ article.goal {
 div.left-column {
   order: 1;
   flex-grow: 3;
-}
+}*/
