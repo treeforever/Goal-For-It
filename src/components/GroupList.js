@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+// import { bindActionCreators } from 'redux'
+// import { connect } from 'react-redux'
 import { Link } from "react-router";
 import Chip from 'material-ui/Chip';
 import Avatar from 'material-ui/Avatar';
@@ -26,11 +26,11 @@ class GroupList extends Component {
       this.props.fetchUser(1)
 
     }else if(member.id === 2){
-      this.props.fetchGoals(2)
+      this.props.fetchFriendGoals(2)
       this.props.fetchUser(2)
 
     }else if(member.id === 3){
-      this.props.fetchGoals(3)
+      this.props.fetchFriendGoals(3)
       this.props.fetchUser(3)
 
     }

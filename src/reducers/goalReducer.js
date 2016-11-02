@@ -55,9 +55,10 @@ export default function reducer(state = defaultState, action) {
       case "SHOW_PREVIOUS_GOAL": {
         return {
           ...state,
-          goalIndex: Math.abs((state.goalIndex - 1) % state.goals.length)
+          goalIndex: Math.abs(length - (state.goalIndex + 1) % state.goals.length)
         }
       }
+
 
       case "ADD_GOAL_FULFILLED": {
         return {
