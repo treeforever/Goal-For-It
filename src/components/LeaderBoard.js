@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import {List, ListItem} from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
-import MobileTearSheet from '../../../MobileTearSheet';
 
 class LeaderBoard extends Component {
 
   render(){
     return (
-      <List className="leaderboard-List">
+      <List className="leaderboard-list">
       {
         this.props.users.map((user, index)=>(
           <div key={index}>

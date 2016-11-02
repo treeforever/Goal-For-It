@@ -49,8 +49,8 @@ class Group_page extends Component {
 
     return (
       <div className="group">
-        <Nav id="nav" title="GOAL-FOR-IT"/>
-        <h2>{this.props.group[0].name}</h2>
+        <Nav id="nav"/>
+        <h2 id='group-name'>{this.props.group[0].name}</h2>
         <main className="container">
           <MuiThemeProvider>
               <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchGoal={this.props.fetchGoal}/>

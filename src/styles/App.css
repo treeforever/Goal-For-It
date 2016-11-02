@@ -117,6 +117,11 @@ span.add-step-button {
   /*z-index: -1;*/
 }
 
+.App-Bar>h1 {
+  line-height: 110px !important;
+  padding-left: 40px;
+}
+
 
 /*group-page css*/
 
@@ -138,6 +143,8 @@ span.add-step-button {
   width: 50%;
   display: inline-block;
   margin-right: 10%;
+  position: absolute;
+  left: 5%;
 }
 
 .page-header {
@@ -155,6 +162,10 @@ span.add-step-button {
   width: 131px;
 }
 
+#group-name {
+  margin-top: 55px;
+  font-size: 35px;
+}
 /*checkbox*/
 .checkbox {
   margin-top: 50%;
@@ -271,4 +282,9 @@ span#group-money {
   margin-left: -7%;
   font-size: 17px;
   color: black;
+}
+
+.leaderBoard {
+  position: fixed;
+  right: 4%;
 }
