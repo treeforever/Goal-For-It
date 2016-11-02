@@ -5,7 +5,6 @@ import { addNotif } from '../actions/groupActions'
 import { moneyMilestone } from '../actions/moneyActions'
 import Step from './StepIndex'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
 import Checkbox from 'material-ui/Checkbox';
 
 
@@ -26,9 +25,9 @@ class Milestone extends Component {
         const content = (milestone.checked ? `${user} unchecked their milestone: ${milestone.title}` : `${user} completed their milestone: ${milestone.title}`)
         return (
           <div key={index}>
-                <img src="../../images/milestone.jpg" alt="milestone" height="50" width="50"/>
               <h2>
-              {milestone.title}
+                <img src="../../images/milestone.jpg" alt="milestone" height="50" width="50"/>
+                {milestone.title}
               </h2>
               <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/Cha-Ching.mp3" ></audio>
               <MuiThemeProvider style={styles.block}>
