@@ -24,8 +24,8 @@ class Milestone extends Component {
       {milestones.map((milestone, index) => {
         const content = (milestone.checked ? `${user} unchecked their milestone: ${milestone.title}` : `${user} completed their milestone: ${milestone.title}`)
         return (
-          <div key={index}>
-              <h2>
+          <div key={index} className="milestone-box">
+              <h2 className="milestone-title">
                 <img src="../../images/milestone.jpg" alt="milestone" height="50" width="50"/>
                 {milestone.title}
               </h2>

@@ -1,3 +1,13 @@
+/* login page */
+#background-video {
+min-width: 100%;
+min-height: 100%;
+position: fixed;
+left: 0;
+top: 0;
+z-index: -1;
+}
+
 .App {
   text-align: center;
 }
@@ -259,3 +269,38 @@ div.left-column {
   order: 1;
   flex-grow: 3;
 }*/
+
+
+/* milestone-index   */
+
+article.goal {
+  /*display: flex;
+  align-items: flex-start;*/
+}
+
+div.milestone-box {
+
+}
+
+h2.milestone-title {
+  float: left;
+}
+
+h3.step-title {
+  /*display: flex;
+  flex-direction: row;
+  justify-content: flex-start;*/
+  float: left;
+}
+
+img.step-image {
+  /*flex-direction: row;*/
+  float: left;
+}
+
+
+span.step-title {
+  /*float: left;*/
+  /*display: flex;
+  flex-direction: column;*/
+}
