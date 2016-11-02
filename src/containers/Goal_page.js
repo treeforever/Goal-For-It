@@ -60,7 +60,7 @@ class Goal_page extends Component {
     }else{
       this.props.fetchGoals(this.props.user.currentUser.userId);
     }
-    // this.props.fetchUser(this.props.user.currentUser.userId);
+    this.props.fetchUser(this.props.user.currentUser.userId);
   }
 
 

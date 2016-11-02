@@ -8,12 +8,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import { addGoal, fetchGoal, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
+import { addGoal, fetchGoals, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput, addMilestoneInState} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepsInput, selectMilestone } from "../actions/stepActions"
 import { openPotDialog, closePotDialog, handleMoneyInput, addGroupMoney, fetchMoney } from "../actions/moneyActions"
 import { addNotif } from "../actions/groupActions"
-import { signOut } from '../actions/userActions';
+import { signOut, changeViewerToCurrentUser } from '../actions/userActions';
 
 import NewMilestone from "../components/NewMilestone"
 import NewStep from "../components/NewStep"
@@ -61,6 +61,11 @@ class Nav extends Component {
     this.props.closePotDialog()
   }
 
+  fetchCurretUserGoal = () => {
+    this.props.fetchGoals(this.props.user.currentUser.userId)
+    this.props.changeViewerToCurrentUser()
+  }
+
 
   render(){
     const goalActions = [
@@ -97,9 +102,10 @@ class Nav extends Component {
           <MuiThemeProvider>
             <AppBar
               title='GOAL-FOR-IT'
-              iconElementLeft={true ? <MoneyStatus currentUser={this.props.user.currentUser.username} money={this.props.money} /> : <span>Start a Challenge</span>}
+              iconElementLeft={<MoneyStatus currentUser={this.props.user.currentUser.username} money={this.props.money} />}
               iconElementRight={<DropdownMenu
-                                  currentUser={`Hello ${this.props.user.currentUser.username}!`}
+                                  fetchGoal={this.fetchCurretUserGoal}
+                                  currentUser={`${this.props.user.currentUser.username}`}
                                   openAddGoalDialog={this.props.openAddGoalDialog}
                                   openPotDialog={this.props.openPotDialog}
                                   signOut={this.props.signOut} />}
@@ -202,7 +208,7 @@ class DropdownMenu extends Component {
   render(){
     return (
       <div className="nav-right">
-        <span className="username"><Link to="/" id="my-goals">{this.props.currentUser}</Link></span>
+        <span className="username" onClick={this.props.fetchGoal}><Link to="/" id="my-goals">{this.props.currentUser}</Link></span>
         <div id="notification-bell">
           <MuiThemeProvider>
             <Badge
@@ -267,6 +273,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     addNotif,
     addGoal,
+    fetchGoals,
     addMilestones,
     addMilestoneInState,
     addSteps,
@@ -286,6 +293,7 @@ const mapDispatchToProps = (dispatch) => {
     addGroupMoney,
     fetchMoney,
     signOut,
+    changeViewerToCurrentUser,
   }, dispatch)
 }
 

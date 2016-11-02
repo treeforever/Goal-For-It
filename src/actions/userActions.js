@@ -26,3 +26,9 @@ export function populateUserInfo() {
 export function signOut() {
   window.location = '/signout';
 }
+
+export function changeViewerToCurrentUser() {
+  return {
+    type: "CHANGE_VIEWER_TO_CURRENT_USER",
+  }
+}

@@ -27,16 +27,16 @@ export default function reducer(state={
       }
 
       case "FETCH_USER_FULFILLED": {
-        console.log(action.payload.data)
         return {
           ...state,
           user: action.payload.data,
         }
       }
-      case "SET_USER_NAME": {
+
+      case "CHANGE_VIEWER_TO_CURRENT_USER": {
         return {
           ...state,
-          user: {...state.user, name: action.payload},
+          view_id: state.currentUser.userId,
         }
       }
     }
