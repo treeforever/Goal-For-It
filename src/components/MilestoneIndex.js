@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { checkedMile } from '../actions/goalActions'
 import { addNotif } from '../actions/groupActions'
@@ -18,35 +18,72 @@ const styles = {
   },
 };
 
-
-const Milestone = ({ milestones, user, currentUser, dispatch, money }) => (
-  <div>
-    {milestones.map((milestone, index) => {
-      const content = (milestone.checked ? `${user} unchecked their milestone: ${milestone.title}` : `${user} completed their milestone: ${milestone.title}`)
-      return (
-        <div key={index}>
-            <h2>{milestone.title}</h2>
-            <MuiThemeProvider style={styles.block}>
-              <Checkbox
-              style={styles.checkbox}
-              onCheck={
-                () => {
-                  dispatch(checkedMile(milestone, index))
-                  dispatch(addNotif({type: "notificaiton", content: content}))
-                  dispatch(moneyMilestone(currentUser.userId, milestone.checked, money.groupMoney, money.userMoney))
+class Milestone extends Component {
+  render() {
+    var { milestones, user, currentUser, dispatch, money } = this.props;
+    return (<div>
+      {milestones.map((milestone, index) => {
+        const content = (milestone.checked ? `${user} unchecked their milestone: ${milestone.title}` : `${user} completed their milestone: ${milestone.title}`)
+        return (
+          <div key={index}>
+              <h2>{milestone.title}</h2>
+              <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/Cha-Ching.mp3" ></audio>
+              <MuiThemeProvider style={styles.block}>
+                <Checkbox
+                style={styles.checkbox}
+                onCheck={
+                  (() => {
+                    dispatch(checkedMile(milestone, index))
+                    dispatch(addNotif({type: "notificaiton", content: content}))
+                    dispatch(moneyMilestone(currentUser.userId, milestone.checked, money.groupMoney, money.userMoney))
+                    this.audio.pause()
+                    this.audio.currentTime = 0
+                    this.audio.play()
+                  }).bind(this)
                   }
-                }
-              checked={milestone.checked}
-              disabled={(user === currentUser.username ? false : true)}
-              />
-            </MuiThemeProvider>
-          <Step milestone={milestone} currentUser={currentUser} user={user} money={money}/>
-        </div>
-      )
-    })}
+                checked={milestone.checked}
+                disabled={(user === currentUser.username ? false : true)}
+                />
+              </MuiThemeProvider>
+            <Step milestone={milestone} currentUser={currentUser} user={user} money={money}/>
+          </div>
+        )
+      })}
 
-  </div>
-);
+    </div>);
+  }
+}
+
+// const Milestone = ({ milestones, user, currentUser, dispatch, money }) => (
+//   <div>
+//     {milestones.map((milestone, index) => {
+//       const content = (milestone.checked ? `${user} unchecked their milestone: ${milestone.title}` : `${user} completed their milestone: ${milestone.title}`)
+//       return (
+//         <div key={index}>
+//             <h2>{milestone.title}</h2>
+//             <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/coins.mp3" ></audio>
+//             <MuiThemeProvider style={styles.block}>
+//               <Checkbox
+//               style={styles.checkbox}
+//               onCheck={
+//                 (() => {
+//                   dispatch(checkedMile(milestone, index))
+//                   dispatch(addNotif({type: "notificaiton", content: content}))
+//                   dispatch(moneyMilestone(currentUser.userId, milestone.checked, money.groupMoney, money.userMoney))
+//                   this.audio.play()
+//                 }).bind(this)
+//                 }
+//               checked={milestone.checked}
+//               disabled={(user === currentUser.username ? false : true)}
+//               />
+//             </MuiThemeProvider>
+//           <Step milestone={milestone} currentUser={currentUser} user={user} money={money}/>
+//         </div>
+//       )
+//     })}
+//
+//   </div>
+// );
 
 
 export default connect()(Milestone)

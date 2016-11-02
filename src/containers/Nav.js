@@ -23,6 +23,11 @@ import MuiText from '../components/MuiText'
 
 // injectTapEventPlugin();
 
+const customContentStyle = {
+  width: '100%',
+  maxWidth: 'none',
+};
+
 class Nav extends Component {
 
   componentWillMount = () => {
@@ -149,6 +154,7 @@ class Nav extends Component {
               actions={potActions}
               modal={true}
               open={!!this.props.potDialog}
+              contentStyle={customContentStyle}
             >
             <form action="/your-charge-code" method="POST" id="payment-form">
               <span className="payment-errors"></span>

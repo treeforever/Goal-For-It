@@ -20,7 +20,7 @@ export function fetchGoals(userId) {
 }
 
 export function fetchFriendsGoals(friendId) {
-  const url = `http://localhost:8080/api/goals/users/${userId}`;
+  const url = `http://localhost:8080/api/goals/users/${friendId}`;
   const request = axios.get(url);
   return {
     type: "FETCH_GOALS",
