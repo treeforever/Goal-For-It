@@ -21,7 +21,7 @@ class MuiText extends Component {
           <TextField
             hintText={this.props.hintText}
             floatingLabelText={this.props.floatingLabelText}
-            fullWidth={true}
+            fullWidth={this.props.fullWidth}
             value={this.props.text}
             onChange={this.handleChange}
             onBlur={this.handleBlur}

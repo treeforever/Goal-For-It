@@ -35,6 +35,7 @@ class NewMilestone extends Component {
                       key={i}
                       hintText="milestone"
                       floatingLabelText="milestone"
+                      fullWidth={true}
                       text={this.props.milestonesText[i]}
                       handleSubmit={function() {}}
                       handleChange={function(text) { this.props.handleMilestonesInput(text, i) }.bind(this)}

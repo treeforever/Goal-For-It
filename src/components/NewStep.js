@@ -62,6 +62,7 @@ class NewStep extends Component {
                       <MuiText
                         hintText="step"
                         floatingLabelText="step"
+                        fullWidth={true}
                         key={i}
                         text={this.props.stepsText[i]}
                         handleSubmit={this.props.addSteps}

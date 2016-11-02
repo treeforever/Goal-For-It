@@ -24,8 +24,7 @@ import MuiText from '../components/MuiText'
 // injectTapEventPlugin();
 
 const customContentStyle = {
-  width: '100%',
-  maxWidth: 'none',
+  width: '35%',
 };
 
 class Nav extends Component {
@@ -110,7 +109,9 @@ class Nav extends Component {
                                   currentUser={`${this.props.user.currentUser.username}`}
                                   openAddGoalDialog={this.props.openAddGoalDialog}
                                   openPotDialog={this.props.openPotDialog}
-                                  signOut={this.props.signOut} />}
+                                  signOut={this.props.signOut}
+                                  newNotifs={this.props.newNotifs}
+                               />}
               className="App-Bar"
             />
           </MuiThemeProvider>
@@ -126,6 +127,7 @@ class Nav extends Component {
           <MuiText
             hintText="goal"
             floatingLabelText="goal"
+            fullWidth={true}
             text={this.props.goalText}
             handleChange={this.props.handleGoalInput}
             handleSubmit={this.props.handleGoalInput}
@@ -164,11 +166,13 @@ class Nav extends Component {
               open={!!this.props.potDialog}
               contentStyle={customContentStyle}
             >
+            <img src="../../images/coins.jpg" alt="milestone" height="50" width="60"/>
             <form action="/your-charge-code" method="POST" id="payment-form">
               <span className="payment-errors"></span>
                 <MuiText
                   hintText=""
                   floatingLabelText="I would like to pitch in $"
+                  fullWidth={false}
                   text={this.props.newMoneyInput}
                   handleChange={this.props.handleMoneyInput}
                   handleSubmit={this.props.handleMoneyInput}
@@ -214,7 +218,7 @@ class DropdownMenu extends Component {
         <div id="notification-bell">
           <MuiThemeProvider>
             <Badge
-              badgeContent={1}
+              badgeContent={this.props.newNotifs}
               secondary={true}
               badgeStyle={{top: 12, right: 12}}
             >
@@ -261,6 +265,8 @@ const mapStateToProps = (state) => ({
   stepsText: state.steps.stepsText,
   newSteps: state.steps.newSteps,
   steps: state.steps,
+  newNotifs: state.group.newNotifs,
+  groupp: state.group,
   group: state.group.group,
   notifs: state.group.notifs,
   potDialog: state.money.potDialog,
