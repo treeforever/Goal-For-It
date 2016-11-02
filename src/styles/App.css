@@ -23,59 +23,6 @@
   to { transform: rotate(360deg); }
 }
 
-
-
-/* Position and sizing of burger button */
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  left: 36px;
-  top: 36px;
-}
-
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: #373a47;
-}
-
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
-
-/* Color/shape of close button cross */
-.bm-cross {
-  background: #bdc3c7;
-}
-
-/* General sidebar styles */
-.bm-menu {
-  background: #fbf3db;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
-  position: absolute;
-  /*z-index: 5;*/
-}
-
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-  fill: #fbf3db;
-}
-
-/* Wrapper for item list */
-.bm-item-list {
-  color: #b8b7ad;
-  padding: 0.8em;
-}
-
-/* Styling of overlay */
-.bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-
 .form {
   position:absolute;
   bottom: 5%;
@@ -117,6 +64,16 @@ span.add-step-button {
   /*z-index: -1;*/
 }
 
+.App-Bar>h1 {
+  line-height: 110px !important;
+  padding-left: 40px;
+}
+
+.creator-info {
+  line-height: 10;
+
+}
+
 
 /*group-page css*/
 
@@ -138,6 +95,8 @@ span.add-step-button {
   width: 50%;
   display: inline-block;
   margin-right: 10%;
+  position: absolute;
+  left: 5%;
 }
 
 .page-header {
@@ -155,6 +114,10 @@ span.add-step-button {
   width: 131px;
 }
 
+#group-name {
+  margin-top: 55px;
+  font-size: 35px;
+}
 /*checkbox*/
 .checkbox {
   margin-top: 50%;
@@ -243,10 +206,6 @@ span.username {
 
 }
 
-h1.goal-title {
-  margin-top: 10%;
-}
-
 span.money-total {
   display: block;
   z-index: 3;
@@ -292,4 +251,8 @@ article.goal {
 div.left-column {
   order: 1;
   flex-grow: 3;
+}
+
+.leaderBoard {
+  right: 4%;
 }

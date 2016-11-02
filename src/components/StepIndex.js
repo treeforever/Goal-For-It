@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { checkedStep } from '../actions/goalActions'
@@ -18,15 +18,16 @@ const styles = {
   },
 };
 
-
-
-const Step = ({ milestone, user, currentUser, dispatch, money }) => {
-  return (
-    <div>
+class Step extends Component {
+  render() {
+    var { milestone, user, currentUser, dispatch, money } = this.props;
+    return(
+      <div>
       {milestone.steps.map((step, index) => {
         const content = (step.checked ? `${user} unchecked their step: ${step.step}` : `${user} completed their step: ${step.step}`)
         return (
           <h3 key={index}>{step.step}
+          <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/Cha-Ching.mp3" ></audio>
           <MuiThemeProvider style={styles.block}>
               <Checkbox
               style={styles.checkbox}
@@ -35,6 +36,11 @@ const Step = ({ milestone, user, currentUser, dispatch, money }) => {
                   dispatch(checkedStep(step, index))
                   dispatch(addNotif({type: "notificaiton", content: content}))
                   dispatch(moneyStep(currentUser.userId, step.checked, money.groupMoney, money.userMoney))
+                  if(!step.checked){
+                      this.audio.pause()
+                      this.audio.currentTime = 0
+                      this.audio.play()
+                    }
                   }
                 }
               checked={step.checked}
@@ -48,6 +54,43 @@ const Step = ({ milestone, user, currentUser, dispatch, money }) => {
       }
     </div>
   );
+  }
 }
+
+// const Step = ({ milestone, user, currentUser, dispatch, money }) => {
+//   return (
+//     <div>
+//       {milestone.steps.map((step, index) => {
+//         const content = (step.checked ? `${user} unchecked their step: ${step.step}` : `${user} completed their step: ${step.step}`)
+//         return (
+//           <h3 key={index}>{step.step}
+//           <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/Cha-Ching.mp3" ></audio>
+//           <MuiThemeProvider style={styles.block}>
+//               <Checkbox
+//               style={styles.checkbox}
+//               onCheck={
+//                 () => {
+//                   dispatch(checkedStep(step, index))
+//                   dispatch(addNotif({type: "notificaiton", content: content}))
+//                   dispatch(moneyStep(currentUser.userId, step.checked, money.groupMoney, money.userMoney))
+//                   if(!step.checked){
+//                       this.audio.pause()
+//                       this.audio.currentTime = 0
+//                       this.audio.play()
+//                     }
+//                   }
+//                 }
+//               checked={step.checked}
+//               disabled={(user === currentUser.username ? false : true)}
+//               />
+//             </MuiThemeProvider>
+
+//         </h3>
+//         )
+//       })
+//       }
+//     </div>
+//   );
+// }
 
 export default connect()(Step)
