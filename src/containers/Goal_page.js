@@ -71,16 +71,17 @@ class Goal_page extends Component {
        <Nav />
        <main className="container">
          <span className="creator-info">{`${this.props.goal.username}${'\''}s Goals`}</span>
-         <br></br>
+         <h1 className="goal-title">
            <MuiThemeProvider muiTheme={muiTheme}>
              <HardwareKeyboardArrowLeft onClick={this.arrowLeftOnClick} />
            </MuiThemeProvider>
 
-             <h1>{g.goal}
+             {g.goal}
 
            <MuiThemeProvider muiTheme={muiTheme}>
              <HardwareKeyboardArrowRight onClick={this.arrowRightOnClick}/>
            </MuiThemeProvider>
+
 
             <MuiThemeProvider style={styles.block}>
               <Checkbox
