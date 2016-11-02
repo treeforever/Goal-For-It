@@ -34,6 +34,11 @@ const styles = {
 class Goal_page extends Component {
   handleChange = (event) => {
     this.props.checkedGoal(this.props.goal)
+     if(!this.props.goal.goal_checked){
+      this.audio.pause()
+      this.audio.currentTime = 0
+      this.audio.play()
+    }
 
     const content = (this.props.goal.goal_checked ? `${this.props.user.user.username} unchecked their goal: ${this.props.goal.goal}` : `${this.props.user.user.username} completed their goal: ${this.props.goal.goal}`)
 
@@ -77,7 +82,7 @@ class Goal_page extends Component {
            </MuiThemeProvider>
 
              {g.goal}
-
+            <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/Cha-Ching.mp3" ></audio>
            <MuiThemeProvider muiTheme={muiTheme}>
              <HardwareKeyboardArrowRight onClick={this.arrowRightOnClick}/>
            </MuiThemeProvider>

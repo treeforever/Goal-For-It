@@ -102,7 +102,9 @@ class Nav extends Component {
                                   currentUser={`Hello ${this.props.user.currentUser.username}!`}
                                   openAddGoalDialog={this.props.openAddGoalDialog}
                                   openPotDialog={this.props.openPotDialog}
-                                  signOut={this.props.signOut} />}
+                                  signOut={this.props.signOut}
+                                  newNotifs={this.props.newNotifs}
+                               />}
               className="App-Bar"
             />
           </MuiThemeProvider>
@@ -206,7 +208,7 @@ class DropdownMenu extends Component {
         <div id="notification-bell">
           <MuiThemeProvider>
             <Badge
-              badgeContent={1}
+              badgeContent={this.props.newNotifs}
               secondary={true}
               badgeStyle={{top: 12, right: 12}}
             >
@@ -252,6 +254,8 @@ const mapStateToProps = (state) => ({
   stepsText: state.steps.stepsText,
   newSteps: state.steps.newSteps,
   steps: state.steps,
+  newNotifs: state.group.newNotifs,
+  groupp: state.group,
   group: state.group.group,
   notifs: state.group.notifs,
   potDialog: state.money.potDialog,

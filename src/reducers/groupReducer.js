@@ -2,6 +2,7 @@ export default function reducer(state={
     group: [{name: ''}],
     notifs: [],
     tag: [],
+    newNotifs: 0,
     error: null,
   }, action) {
 
@@ -33,7 +34,8 @@ export default function reducer(state={
       case "ADD_NOTIF": {
         return {
           ...state,
-          notifs: [action.payload, ...state.notifs]
+          notifs: [action.payload, ...state.notifs],
+          newNotifs: state.newNotifs += 1
         }
         break;
       }
