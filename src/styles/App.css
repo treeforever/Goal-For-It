@@ -91,8 +91,6 @@
 
 input.inputBox {
   width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
 }
 
 #formControlsSelect {
@@ -135,10 +133,11 @@ span.add-step-button {
 }
 
 #notificationList {
-  border: 2px solid;
-  border-radius: 15px;
-
-
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 50%;
+  display: inline-block;
+  margin-right: 10%;
 }
 
 .page-header {
@@ -204,18 +203,25 @@ a#my-goals:hover{
 
 
 .App-Bar {
-  margin-top: -3%;
+  margin-top: -2%;
   padding-top: 10px;
+}
+
+.App-Bar h1 {
+  line-height: 110px;
 }
 
 .material-icons.md-dark {
   color: rgba(0, 0, 0, 0.54);
 }
 
-main.container {
-  margin-top: 15%;
+.leaderBoard {
+  width: 40%;
+  float: right;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
 }
 
 span.username {
-  
+
 }

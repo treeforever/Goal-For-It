@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { fetchGoal } from "../actions/goalActions"
 import { Link } from "react-router";
 import Chip from 'material-ui/Chip';
+import Avatar from 'material-ui/Avatar';
+import {List, ListItem} from 'material-ui/List';
 
 const styles = {
   chip: {
@@ -36,25 +38,24 @@ class GroupList extends Component {
   }
 
   render(){
-    console.log(this.props.group)
     return(
-      <ul style={styles.wrapper} >
-        {this.props.group.map( (member) => {
+      <List style={styles.wrapper} >
+        {this.props.group.map( (member, index) => {
           return (
-              <Chip
+          <ListItem key={index}>
+            <Chip
                 style={styles.chip}
                 onTouchTap={function() { this.sendUsername(member) }.bind(this) }
               >
-            <Link to="/">
+              <Avatar src="images/Trump.png" />
+              <Link to="/">
                 {member.username}
-            </Link>
-              </Chip>)
-
-
+              </Link>
+            </Chip>
+          </ListItem>
+          )
          } )}
-
-
-      </ul>
+      </List>
     )
   }
 }

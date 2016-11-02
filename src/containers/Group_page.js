@@ -6,15 +6,17 @@ import { fetchUser } from "../actions/userActions"
 import { fetchGoal } from "../actions/goalActions"
 import { fetchMoney} from "../actions/moneyActions"
 
-import { List } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 // import MobileTearSheet from '../components/MobileTearSheet';
 
 import NotificationList from '../components/NotificationList'
 import GroupList from '../components/GroupList'
+import LeaderBoard from '../components/LeaderBoard'
 import InputBox from '../components/InputBox'
 import Nav from './Nav'
-
+import {List, ListItem} from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
+import Divider from 'material-ui/Divider';
 
 
 class Group_page extends Component {
@@ -43,11 +45,12 @@ class Group_page extends Component {
   }
 
   render() {
+    console.log('GROUP PAG USERS', this.props.group)
 
     return (
       <div className="group">
-        <Nav title={this.props.group[0].name }/>
-
+        <Nav id="nav" title="GOAL-FOR-IT"/>
+        <h2>{this.props.group[0].name}</h2>
         <main className="container">
           <MuiThemeProvider>
               <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchGoal={this.props.fetchGoal}/>
@@ -64,6 +67,11 @@ class Group_page extends Component {
               <List style={{color: 'white'}}>
                 <NotificationList className="list-group" notifs={this.props.notifs} sender={this.props.user.currentUser}/>
               </List>
+            </MuiThemeProvider>
+          </div>
+          <div className="leaderBoard">
+            <MuiThemeProvider>
+                <LeaderBoard users={this.props.group}/>
             </MuiThemeProvider>
           </div>
         </main>

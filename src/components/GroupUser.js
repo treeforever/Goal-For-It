@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
+import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
 
 const styles = {
@@ -22,6 +23,7 @@ class GroupUser extends Component {
         onTouchTap={this.sendUsername}
         value={this.props.key}
       >
+      <Avatar src="images/Trump.png" />
       <Link to="/">{this.props.grouplist}</Link>
       </Chip>
       <Chip
@@ -29,6 +31,8 @@ class GroupUser extends Component {
         onTouchTap={this.sendUsername}
         value={this.props.key}
       >
+      <Avatar src="images/Hilary.png" />
+
       <Link to="/">{this.props.grouplist}</Link>
       </Chip>
       <Chip
@@ -36,6 +40,7 @@ class GroupUser extends Component {
         onTouchTap={this.sendUsername}
         value={this.props.key}
       >
+      <Avatar src="images/Trudeau.png" />
       <Link to="/">{this.props.grouplist}</Link>
       </Chip>
     )

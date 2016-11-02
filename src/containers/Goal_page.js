@@ -51,7 +51,7 @@ class Goal_page extends Component {
     }else{
       this.props.fetchGoal(1);
     }
-    this.props.fetchUser(this.props.user.currentUser.userId);
+    // this.props.fetchUser(this.props.user.currentUser.userId);
 
   }
 
@@ -59,7 +59,7 @@ class Goal_page extends Component {
     let g = this.props.goal;
     return (
       <div>
-       <Nav title={'GOAL FOR IT'}/>
+       <Nav />
        <main className="container">
          <span className="creator-info">{`${this.props.goal.username}${'\''}s Goals`}</span>
          <br></br>
@@ -78,11 +78,11 @@ class Goal_page extends Component {
               style={styles.checkbox}
               onCheck={this.handleChange}
               checked={g.goal_checked}
-              disabled={(this.props.user.user.username === this.props.user.currentUser.username ? false : true)}
+              disabled={(this.props.goal.username === this.props.user.currentUser.username ? false : true)}
               />
             </MuiThemeProvider>
           </h1>
-          <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.user.user.username} currentUser={this.props.user.currentUser} money={this.props.money}/>
+          <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.goal.username} currentUser={this.props.user.currentUser} money={this.props.money}/>
         </main>
       </div>
     );

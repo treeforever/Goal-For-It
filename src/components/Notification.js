@@ -9,7 +9,7 @@ import Divider from 'material-ui/Divider';
 class Notification extends Component {
 
   render() {
-    if(this.props.notification.type === "notification"){
+    if(this.props.notification.type === "notificaiton"){
       return (
         <div>
           <ListItem
@@ -20,6 +20,7 @@ class Notification extends Component {
             }
             secondaryTextLines={2}
             leftAvatar={<Avatar src="images/bot.png" />}
+
             />
             <Divider inset={true} />
         </div>
