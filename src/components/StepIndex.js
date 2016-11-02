@@ -30,6 +30,7 @@ class Step extends Component {
           <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/Cha-Ching.mp3" ></audio>
           <MuiThemeProvider style={styles.block}>
               <Checkbox
+              className='checkbox'
               style={styles.checkbox}
               onCheck={
                 () => {

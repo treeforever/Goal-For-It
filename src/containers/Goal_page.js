@@ -92,10 +92,9 @@ class Goal_page extends Component {
            <MuiThemeProvider muiTheme={muiTheme}>
              <HardwareKeyboardArrowRight onClick={this.arrowRightOnClick}/>
            </MuiThemeProvider>
-
-
             <MuiThemeProvider style={styles.block}>
               <Checkbox
+              className='checkbox'
               style={styles.checkbox}
               onCheck={this.handleChange}
               checked={g.goal_checked}

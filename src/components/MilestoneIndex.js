@@ -26,10 +26,14 @@ class Milestone extends Component {
         const content = (milestone.checked ? `${user} unchecked their milestone: ${milestone.title}` : `${user} completed their milestone: ${milestone.title}`)
         return (
           <div key={index}>
-              <h2>{milestone.title}</h2>
+                <img src="../../images/milestone.jpg" alt="milestone" height="50" width="50"/>
+              <h2>
+              {milestone.title}
+              </h2>
               <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/Cha-Ching.mp3" ></audio>
               <MuiThemeProvider style={styles.block}>
                 <Checkbox
+                className='checkbox'
                 style={styles.checkbox}
                 onCheck={
                   (() => {

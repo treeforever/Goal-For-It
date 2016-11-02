@@ -118,10 +118,14 @@ span.add-step-button {
   margin-top: 55px;
   font-size: 35px;
 }
+
+.leaderBoard {
+  right: 4%;
+}
 /*checkbox*/
-.checkbox {
-  margin-top: 50%;
-  margin-left: 50%;
+.checkbox div {
+  display: flex;
+  flex-direction: row-reverse !important;
 }
 
 /* nav -------> */
@@ -236,7 +240,7 @@ span#group-money {
 /* <---- nav */
 
 /* goal page layout------> */
-main.container {
+/*main.container {
   display: flex;
   flex-direction: row;
 }
@@ -253,6 +257,4 @@ div.left-column {
   flex-grow: 3;
 }
 
-.leaderBoard {
-  right: 4%;
-}
+*/
