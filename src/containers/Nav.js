@@ -231,7 +231,8 @@ class DropdownMenu extends Component {
               >
               <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
               <MenuItem primaryText="Add Incentives" onClick={ () => this.props.openPotDialog() }/>
-              <MenuItem
+              <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
+            <MenuItem
                 onClick={() => this.props.signOut()}
                 primaryText="Sign Out" />
             </IconMenu>
@@ -300,4 +301,3 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)
 
 // <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
-// <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>

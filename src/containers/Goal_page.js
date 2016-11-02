@@ -70,29 +70,35 @@ class Goal_page extends Component {
       <div>
        <Nav />
        <main className="container">
-         <span className="creator-info">{`${this.props.goal.username}${'\''}s Goals`}</span>
-         <h1 className="goal-title">
-           <MuiThemeProvider muiTheme={muiTheme}>
-             <HardwareKeyboardArrowLeft onClick={this.arrowLeftOnClick} />
-           </MuiThemeProvider>
+         <div className="left-column">
+           
+         </div>
 
-             {g.goal}
+         <article className="goal">
+           <span className="creator-info">{`${this.props.goal.username}${'\''}s Goals`}</span>
+           <h1 className="goal-title">
+             <MuiThemeProvider muiTheme={muiTheme}>
+               <HardwareKeyboardArrowLeft onClick={this.arrowLeftOnClick} />
+             </MuiThemeProvider>
 
-           <MuiThemeProvider muiTheme={muiTheme}>
-             <HardwareKeyboardArrowRight onClick={this.arrowRightOnClick}/>
-           </MuiThemeProvider>
+               {g.goal}
+
+             <MuiThemeProvider muiTheme={muiTheme}>
+               <HardwareKeyboardArrowRight onClick={this.arrowRightOnClick}/>
+             </MuiThemeProvider>
 
 
-            <MuiThemeProvider style={styles.block}>
-              <Checkbox
-              style={styles.checkbox}
-              onCheck={this.handleChange}
-              checked={g.goal_checked}
-              disabled={(this.props.goal.username === this.props.user.currentUser.username ? false : true)}
-              />
-            </MuiThemeProvider>
-          </h1>
-          <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.goal.username} currentUser={this.props.user.currentUser} money={this.props.money}/>
+              <MuiThemeProvider style={styles.block}>
+                <Checkbox
+                style={styles.checkbox}
+                onCheck={this.handleChange}
+                checked={g.goal_checked}
+                disabled={(this.props.goal.username === this.props.user.currentUser.username ? false : true)}
+                />
+              </MuiThemeProvider>
+            </h1>
+            <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.goal.username} currentUser={this.props.user.currentUser} money={this.props.money}/>
+          </article>
         </main>
       </div>
     );

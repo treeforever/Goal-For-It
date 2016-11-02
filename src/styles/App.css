@@ -161,6 +161,7 @@ span.add-step-button {
   margin-left: 50%;
 }
 
+/* nav -------> */
 #dropdown-menu-group {
   display: inline-block;
 }
@@ -271,4 +272,24 @@ span#group-money {
   margin-left: -7%;
   font-size: 17px;
   color: black;
+}
+
+/* <---- nav */
+
+/* goal page layout------> */
+main.container {
+  display: flex;
+  flex-direction: row;
+}
+
+article.goal {
+  float: right;
+  order: 2;
+  flex-grow: 3;
+  margin-left: 7%;
+}
+
+div.left-column {
+  order: 1;
+  flex-grow: 3;
 }
