@@ -21,16 +21,16 @@ class GroupList extends Component {
 
   sendUsername = (member) => {
     if(member.id === 1){
-      this.props.fetchGoal(1)
-      this.props.fetchUser(1)
+      this.props.fetchGoals(1)
+      // this.props.fetchUser(1)
 
     }else if(member.id === 2){
-      this.props.fetchGoal(2)
-      this.props.fetchUser(2)
+      this.props.fetchGoals(2)
+      // this.props.fetchUser(2)
 
     }else if(member.id === 3){
-      this.props.fetchGoal(3)
-      this.props.fetchUser(3)
+      this.props.fetchGoals(3)
+      // this.props.fetchUser(3)
 
     }
   }
@@ -68,5 +68,3 @@ class GroupList extends Component {
 // }
 
 export default GroupList
-
-

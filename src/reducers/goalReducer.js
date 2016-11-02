@@ -28,6 +28,14 @@ export default function reducer(state = defaultState, action) {
         }
       }
 
+      case "FETCH_GOALS_FULFILLED": {
+        return {
+          ...state,
+          goals: action.payload.data,
+          goal: action.payload.data[state.goalIndex]
+        }
+      }
+
       case "SHOW_NEXT_GOAL": {
         return {
           ...state,

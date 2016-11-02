@@ -55,12 +55,12 @@ class Goal_page extends Component {
   }
 
   componentWillMount = () => {
-    this.props.fetchUser(this.props.user.currentUser.userId);
     if(this.props.goal.goal){
       return
     }else{
       this.props.fetchGoals(this.props.user.currentUser.userId);
     }
+    // this.props.fetchUser(this.props.user.currentUser.userId);
   }
 
 
