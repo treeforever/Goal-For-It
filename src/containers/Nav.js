@@ -191,11 +191,12 @@ class Nav extends Component {
   }
 }
 
+
 class DropdownMenu extends Component {
   render(){
     return (
       <div className="nav-right">
-        <span className="username">{this.props.currentUser}</span>
+        <span className="username"><Link to="/" id="my-goals">{this.props.currentUser}</Link></span>
         <div id="notification-bell">
           <MuiThemeProvider>
             <Badge
@@ -203,7 +204,7 @@ class DropdownMenu extends Component {
               secondary={true}
               badgeStyle={{top: 12, right: 12}}
             >
-              <Link to="group"><IconButton tooltip="Notifications">
+              <Link to="group"><IconButton tooltip="Group Huddle">
                 <NotificationsIcon />
               </IconButton></Link>
             </Badge>
@@ -217,9 +218,7 @@ class DropdownMenu extends Component {
               targetOrigin={{horizontal: 'right', vertical: 'top'}}
               >
               <MenuItem primaryText="New Goal" onClick={ () => this.props.openAddGoalDialog() }/>
-              <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
-              <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>
-              <MenuItem primaryText="Start Challenge" onClick={ () => this.props.openPotDialog() }/>
+              <MenuItem primaryText="Add Incentives" onClick={ () => this.props.openPotDialog() }/>
               <MenuItem
                 onClick={() => this.props.signOut()}
                 primaryText="Sign Out" />
@@ -285,3 +284,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+
+// <MenuItem><Link to="/" id="my-goals">My Goals</Link></MenuItem>
+// <MenuItem><Link to="group" id="group-huddle">Group Huddle</Link></MenuItem>

@@ -1,5 +1,7 @@
 const defaultState = {
     goal: { milestones: [] },
+    goals: [],
+    goalIndex: 0,
     error: null
   };
 
@@ -21,9 +23,33 @@ export default function reducer(state = defaultState, action) {
       case "FETCH_GOALS_FULFILLED": {
         return {
           ...state,
-          goal: action.payload.data[0]
+          goals: action.payload.data,
+          goal: action.payload.data[state.goalIndex]
         }
       }
+
+      case "FETCH_GOALS_FULFILLED": {
+        return {
+          ...state,
+          goals: action.payload.data,
+          goal: action.payload.data[state.goalIndex]
+        }
+      }
+
+      case "SHOW_NEXT_GOAL": {
+        return {
+          ...state,
+          goalIndex: Math.abs((state.goalIndex + 1) % state.goals.length)
+        }
+      }
+
+      case "SHOW_PREVIOUS_GOAL": {
+        return {
+          ...state,
+          goalIndex: Math.abs((state.goalIndex - 1) % state.goals.length)
+        }
+      }
+
       case "ADD_GOAL_FULFILLED": {
         return {
           ...state,

@@ -19,6 +19,15 @@ export function fetchGoals(userId) {
   };
 }
 
+export function fetchFriendsGoals(friendId) {
+  const url = `http://localhost:8080/api/goals/users/${userId}`;
+  const request = axios.get(url);
+  return {
+    type: "FETCH_GOALS",
+    payload: request
+  };
+}
+
 export function addGoal(goal, creator_id) {
   const url = "http://localhost:8080/api/goals"
   let data = {goal, creator_id}
@@ -93,4 +102,16 @@ export function checkedStep(step, index) {
     type: 'COMPLETE_STEP',
     payload: {step, index}
   }
+}
+
+export function showPreviousGoal() {
+  return {
+    type: "SHOW_PREVIOUS_GOAL",
+  };
+}
+
+export function showNextGoal() {
+  return {
+    type: "SHOW_NEXT_GOAL",
+  };
 }
