@@ -26,7 +26,9 @@ class Step extends Component {
       {milestone.steps.map((step, index) => {
         const content = (step.checked ? `${user} unchecked their step: ${step.step}` : `${user} completed their step: ${step.step}`)
         return (
-          <h3 key={index}>{step.step}
+          <h3 key={index}>
+            <img src="../../images/footprints.png" alt="milestone" height="50" width="50"/>
+            {step.step}
           <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/Cha-Ching.mp3" ></audio>
           <MuiThemeProvider style={styles.block}>
               <Checkbox
