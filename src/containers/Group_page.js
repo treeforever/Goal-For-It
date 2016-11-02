@@ -70,6 +70,7 @@ class Group_page extends Component {
             </MuiThemeProvider>
           </div>
           <div className="leaderBoard">
+            <h2>Leader Board</h2>
             <MuiThemeProvider>
                 <LeaderBoard users={this.props.group}/>
             </MuiThemeProvider>
