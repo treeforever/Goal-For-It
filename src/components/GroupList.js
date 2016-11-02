@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { fetchGoal } from "../actions/goalActions"
 import { Link } from "react-router";
 import Chip from 'material-ui/Chip';
 import Avatar from 'material-ui/Avatar';
@@ -23,16 +22,16 @@ class GroupList extends Component {
 
   sendUsername = (member) => {
     if(member.id === 1){
-      this.props.fetchGoals(1)
-      // this.props.fetchUser(1)
+      this.props.fetchFriendGoals(1)
+      this.props.fetchUser(1)
 
     }else if(member.id === 2){
       this.props.fetchGoals(2)
-      // this.props.fetchUser(2)
+      this.props.fetchUser(2)
 
     }else if(member.id === 3){
       this.props.fetchGoals(3)
-      // this.props.fetchUser(3)
+      this.props.fetchUser(3)
 
     }
   }

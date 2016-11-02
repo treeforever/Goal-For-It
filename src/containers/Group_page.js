@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchGroup, fetchNotifs, addNotif, fetchTagUser } from "../actions/groupActions"
 import { fetchUser } from "../actions/userActions"
-import { fetchGoal } from "../actions/goalActions"
+import { fetchGoal, fetchFriendGoals } from "../actions/goalActions"
 import { fetchMoney} from "../actions/moneyActions"
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -53,7 +53,7 @@ class Group_page extends Component {
         <h2>{this.props.group[0].name}</h2>
         <main className="container">
           <MuiThemeProvider>
-              <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchGoal={this.props.fetchGoal}/>
+              <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchFriendGoals={this.props.fetchFriendGoals} fetchGoal={this.props.fetchGoal}/>
           </MuiThemeProvider>
           <InputBox newTodo
                 onSave={this.handleSave}
@@ -98,6 +98,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchUser,
     fetchTagUser,
     fetchGoal,
+    fetchFriendGoals,
     fetchMoney,
   }, dispatch)
 }

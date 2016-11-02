@@ -1,4 +1,4 @@
-const defaultState = {
+  const defaultState = {
     goal: { milestones: [] },
     goals: [],
     goalIndex: 0,
@@ -35,6 +35,15 @@ export default function reducer(state = defaultState, action) {
           goal: action.payload.data[state.goalIndex]
         }
       }
+
+      case "FETCH_FRIEND_GOALS_FULFILLED": {
+        return {
+          ...state,
+          goals: action.payload.data,
+          goal: action.payload.data[state.goalIndex],
+        }
+      }
+
 
       case "SHOW_NEXT_GOAL": {
         return {

@@ -11,11 +11,21 @@ export default function reducer(state={
         return {
           ...state,
           currentUser: action.payload,
+          view_id: action.payload.userId,
         }
       }
+
+      case "FETCH_FRIEND_GOALS_FULFILLED": {
+        return {
+          ...state,
+          view_id: action.payload.data[0].creator_id
+        }
+      }
+
       case "FETCH_USER_REJECTED": {
         return {...state, fetching: false, error: action.payload}
       }
+
       case "FETCH_USER_FULFILLED": {
         console.log(action.payload.data)
         return {

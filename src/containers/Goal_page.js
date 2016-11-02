@@ -8,7 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from '../components/MuiTheme'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import { fetchGoal, fetchGoals, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput, showPreviousGoal } from "../actions/goalActions"
+import { fetchGoal, fetchGoals, fetchFriendGoals, checkedGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput, showPreviousGoal, showNextGoal } from "../actions/goalActions"
 import { fetchUser } from "../actions/userActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestoneInput, handleMilestonesInput, addMilestoneRow} from "../actions/milestoneActions"
 import { addSteps, openAddStepsDialog, closeAddStepsDialog, handleStepInput, handleStepsInput, selectMilestone } from "../actions/stepActions"
@@ -46,12 +46,12 @@ class Goal_page extends Component {
 
   arrowLeftOnClick = () => {
     this.props.showPreviousGoal()
-    this.props.fetchGoals(this.props.user.currentUser.userId)
+    this.props.fetchFriendGoals(this.props.user.view_id)
   }
 
   arrowRightOnClick = () => {
-    this.props.showPreviousGoal()
-    this.props.fetchGoals(this.props.user.currentUser.userId)
+    this.props.showNextGoal()
+    this.props.fetchFriendGoals(this.props.user.view_id)
   }
 
   componentWillMount = () => {
@@ -125,6 +125,7 @@ const mapDispatchToProps = (dispatch) => {
     {
       fetchGoal,
       fetchGoals,
+      fetchFriendGoals,
       fetchUser,
       checkedGoal,
       addNotif,
@@ -145,6 +146,7 @@ const mapDispatchToProps = (dispatch) => {
       selectMilestone,
       moneyGoal,
       showPreviousGoal,
+      showNextGoal,
     }, dispatch);
 }
 

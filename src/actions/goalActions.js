@@ -19,11 +19,11 @@ export function fetchGoals(userId) {
   };
 }
 
-export function fetchFriendsGoals(friendId) {
+export function fetchFriendGoals(friendId) {
   const url = `http://localhost:8080/api/goals/users/${friendId}`;
   const request = axios.get(url);
   return {
-    type: "FETCH_GOALS",
+    type: "FETCH_FRIEND_GOALS",
     payload: request
   };
 }
