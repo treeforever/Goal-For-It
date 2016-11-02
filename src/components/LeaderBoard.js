@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {List, ListItem} from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
-import MobileTearSheet from '../../../MobileTearSheet';
+// import MobileTearSheet from '../../../MobileTearSheet';
 
 class LeaderBoard extends Component {
 
@@ -31,5 +31,3 @@ class LeaderBoard extends Component {
 }
 
 export default LeaderBoard;
-
-

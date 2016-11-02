@@ -35,7 +35,7 @@ class Nav extends Component {
   }
 
   nextButtonActionsOnGoal = () => {
-    this.props.addGoal(this.props.goalText)
+    this.props.addGoal(this.props.goalText, this.props.user.currentUser.userId)
     this.props.addNotif({type: "notification", content: `user 1 has added a new goal: ${this.props.goalText}`})
     this.props.closeAddGoalDialog()
     this.props.openAddMilestonesDialog()
