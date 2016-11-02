@@ -36,9 +36,11 @@ class Milestone extends Component {
                     dispatch(checkedMile(milestone, index))
                     dispatch(addNotif({type: "notificaiton", content: content}))
                     dispatch(moneyMilestone(currentUser.userId, milestone.checked, money.groupMoney, money.userMoney))
-                    this.audio.pause()
-                    this.audio.currentTime = 0
-                    this.audio.play()
+                    if(!milestone.checked){
+                      this.audio.pause()
+                      this.audio.currentTime = 0
+                      this.audio.play()
+                    }
                   }).bind(this)
                   }
                 checked={milestone.checked}
