@@ -214,6 +214,8 @@ div#moneyStatus {
 
 div#money-total {
   order: 2;
+  margin: 0;
+  text-align: center;
 }
 
 div#money-pot {
