@@ -84,7 +84,7 @@ class Goal_page extends Component {
          </div>
 
          <article className="goal">
-           <h2 className="creator-info">{`${this.props.goal.username}${'\''}s Goal`}</h2>
+           <h2 className="creator-info">{`${this.props.goal.username}${'\''}s Goal:`}</h2>
             <img className="trophy" src="../../images/trophy2.jpg" alt="milestone" height="100" width="100"/>
             <h1 className="goal-title">
               <MuiThemeProvider muiTheme={muiTheme}>

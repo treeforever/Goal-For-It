@@ -28,6 +28,13 @@ export function fetchFriendGoals(friendId) {
   };
 }
 
+
+export function resetGoalIndex() {  
+  return {
+    type: "RESET_GOAL_INDEX",
+  };
+}
+
 export function addGoal(goal, creator_id) {
   const url = "http://localhost:8080/api/goals"
   let data = {goal, creator_id}

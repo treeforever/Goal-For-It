@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchGroup, fetchNotifs, addNotif, fetchTagUser } from "../actions/groupActions"
 import { fetchUser } from "../actions/userActions"
-import { fetchGoal, fetchFriendGoals } from "../actions/goalActions"
-import { fetchMoney} from "../actions/moneyActions"
+import { fetchGoal, fetchFriendGoals, resetGoalIndex } from "../actions/goalActions"
+import { fetchMoney } from "../actions/moneyActions"
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 // import MobileTearSheet from '../components/MobileTearSheet';
@@ -50,10 +50,10 @@ class Group_page extends Component {
         <h2 id='group-name'>{this.props.group[0].name}</h2>
         <main className="container">
           <MuiThemeProvider>
-              <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchFriendGoals={this.props.fetchFriendGoals} fetchGoal={this.props.fetchGoal}/>
+              <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchFriendGoals={this.props.fetchFriendGoals} resetGoalIndex={this.props.resetGoalIndex} fetchGoal={this.props.fetchGoal}/>
           </MuiThemeProvider>
-          <img id="potato-image" src="images/potato.png" alt="potato" height="50" width="50"/>
-          
+          <img id="dwight-image" src="images/Dwight.jpeg" alt="Dwight" height="50" width="50"/>
+
           <InputBox newTodo
                 onSave={this.handleSave}
                 onTag={this.handleTag}
@@ -98,6 +98,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchTagUser,
     fetchGoal,
     fetchFriendGoals,
+    resetGoalIndex,
     fetchMoney,
   }, dispatch)
 }

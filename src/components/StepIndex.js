@@ -26,7 +26,7 @@ class Step extends Component {
       {milestone.steps.map((step, index) => {
         const content = (step.checked ? `${user} unchecked their step: ${step.step}` : `${user} completed their step: ${step.step}`)
         return (
-          <div className="step-box">
+          <div key={index} className="step-box">
             <h3 key={index} className="step-title">
               <span className="step-title"><span className="step-index">{index + 1}.</span> {step.step}</span>
             </h3>
@@ -100,4 +100,3 @@ class Step extends Component {
 // }
 
 export default connect()(Step)
-// <img className="step-image" src="../../images/potato.png" alt="milestone" height="50" width="50"/>

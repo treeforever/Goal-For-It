@@ -23,7 +23,7 @@ class GroupUser extends Component {
         onTouchTap={this.sendUsername}
         value={this.props.key}
       >
-      <Avatar src="images/Trump.png" />
+      <Avatar src="images/Dwight.jpeg" />
       <Link to="/">{this.props.grouplist}</Link>
       </Chip>
       <Chip
@@ -31,7 +31,7 @@ class GroupUser extends Component {
         onTouchTap={this.sendUsername}
         value={this.props.key}
       >
-      <Avatar src="images/Hilary.png" />
+      <Avatar src="images/Michael.jpg" />
 
       <Link to="/">{this.props.grouplist}</Link>
       </Chip>
@@ -40,7 +40,7 @@ class GroupUser extends Component {
         onTouchTap={this.sendUsername}
         value={this.props.key}
       >
-      <Avatar src="images/Trudeau.png" />
+      <Avatar src="images/Kelly.png" />
       <Link to="/">{this.props.grouplist}</Link>
       </Chip>
     )

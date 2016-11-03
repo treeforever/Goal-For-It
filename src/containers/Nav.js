@@ -53,6 +53,8 @@ class Nav extends Component {
     this.props.closeAddStepsDialog()
     this.props.showLatestGoal()
     this.props.fetchGoals(this.props.user.currentUser.userId)
+    // this.props.fetchUser(this.props.user.currentUser.userId)
+
   }
 
   submitMoney = (moneyInput, groupMoney) => {

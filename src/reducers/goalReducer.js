@@ -44,6 +44,13 @@ export default function reducer(state = defaultState, action) {
         }
       }
 
+      case "RESET_GOAL_INDEX": {
+        return {
+          ...state,
+          goalIndex: 0,
+        }
+      }
+
 
       case "SHOW_NEXT_GOAL": {
         return {
@@ -53,15 +60,12 @@ export default function reducer(state = defaultState, action) {
       }
 
       case "SHOW_PREVIOUS_GOAL": {
-        console.log('goal index', state.goalIndex)
         if (state.goalIndex){
-          console.log(1)
           return {
             ...state,
             goalIndex: state.goals.length - Math.abs(( state.goals.length - state.goalIndex + 1) % state.goals.length)
           }
         } else {
-          console.log(2)
           return {
             ...state,
             goalIndex: state.goals.length - 1

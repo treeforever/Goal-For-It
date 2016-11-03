@@ -4,9 +4,9 @@ import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
 
 const avatars = [
- 'images/potato.png',
- 'images/hilary.png',
- 'images/trump.png',
+ 'images/Dwight.jpeg',
+ 'images/Michael.jpg',
+ 'images/Kelly.png',
  '',
 ];
 

@@ -21,9 +21,9 @@ const styles = {
 
 
 const avatars = [
- 'images/potato.png',
- 'images/hilary.png',
- 'images/trump.png',
+ 'images/Dwight.jpeg',
+ 'images/Michael.jpg',
+ 'images/Kelly.png',
  '',
 ];
 
@@ -32,16 +32,15 @@ class GroupList extends Component {
   sendUsername = (member) => {
     if(member.id === 1){
       this.props.fetchFriendGoals(1)
-
+      this.props.resetGoalIndex()
 
     }else if(member.id === 2){
       this.props.fetchFriendGoals(2)
-
+      this.props.resetGoalIndex()
 
     }else if(member.id === 3){
       this.props.fetchFriendGoals(3)
-
-
+      this.props.resetGoalIndex()
     }
   }
 
