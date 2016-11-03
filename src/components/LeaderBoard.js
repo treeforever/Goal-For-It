@@ -10,6 +10,12 @@ const avatars = [
  '',
 ];
 
+const medals = [
+  'images/gold.png',
+  'images/silver.png',
+  'images/bronze.png'
+]
+
 
 class LeaderBoard extends Component {
 
@@ -27,7 +33,7 @@ class LeaderBoard extends Component {
             }
             secondaryTextLines={2}
             leftAvatar={<Avatar src={avatars[index]} />}
-            rightIcon={<span style={{right: "25px"}}>${user.user_money}</span>}
+            rightIcon={<span style={{right: "25px"}}>${user.user_money}<img className="medal" src={medals[index]} height="50" width="25"/></span>}
             />
           </div>
         ))

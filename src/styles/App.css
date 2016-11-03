@@ -53,7 +53,7 @@ body {
 }
 
 input.inputBox {
-  width: 50%;
+  width: 51%;
 }
 
 #formControlsSelect {
@@ -94,12 +94,12 @@ div.App-Bar {
 }
 
 .creator-info {
-  line-height: 3;
-  text-align: center;
   font-family: 'Eczar', serif;
   font-style: italic;
-  margin-top: -13%;
-  margin-left: -92%;
+  margin-top: -10%;
+  margin-bottom: 10%;
+  margin-left: -11%;
+  font-size: 30px;
 }
 
 .milestone-image {
@@ -232,6 +232,8 @@ div#moneyStatus {
 
 div#money-total {
   order: 2;
+  margin: 0;
+  text-align: center;
 }
 
 div#money-pot {
@@ -257,8 +259,9 @@ div#money-pot {
 }
 
 img#potato-image {
-  margin-left:-5.5%;
+  margin-left: -6.5%;
   margin-bottom: -7%;
+  border-radius: 100%;
 }
 
 span.username {
@@ -301,6 +304,8 @@ article.goal {
   margin-top: 10%;
   border-radius: 1%;
   margin-bottom: 12%;
+  margin-left: auto;
+  margin-right: auto;
   background-color: white;
   padding: 10%;
 
@@ -312,6 +317,12 @@ article.goal {
   border: solid 1px #ddd;
   box-shadow: 6px 2px 2px #888888;
 }
+
+.goal-header {
+  text-align: center;
+}
+
+
 
 div.milestone-box {
 
@@ -366,4 +377,9 @@ span.step-title {
   margin-left: 10%;
   overflow-wrap: break-word;
   margin-right: 17%;
+}
+
+.medal {
+  margin-left: -269%;
+  margin-top: -124%;
 }
