@@ -6,7 +6,7 @@ import { addNotif } from '../actions/groupActions'
 import { moneyStep } from '../actions/moneyActions'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
+import Divider from 'material-ui/Divider';
 import Checkbox from 'material-ui/Checkbox';
 
 const styles = {
@@ -28,14 +28,13 @@ class Step extends Component {
         return (
           <div className="step-box">
             <h3 key={index} className="step-title">
-              <img className="step-image" src="../../images/potato.png" alt="milestone" height="50" width="50"/>
-              <span className="step-title">{step.step}</span>
+              <span className="step-title"><span className="step-index">{index + 1}.</span> {step.step}</span>
             </h3>
           <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/Cha-Ching.mp3" ></audio>
           <MuiThemeProvider style={styles.block}>
-              <Checkbox
+            <Checkbox
               className='checkbox'
-              style={styles.checkbox}
+              style={{...styles.checkbox, top: `-47px`}}
               onCheck={
                 () => {
                   dispatch(checkedStep(step, index))
@@ -50,14 +49,15 @@ class Step extends Component {
                 }
               checked={step.checked}
               disabled={(user === currentUser.username ? false : true)}
-              />
-            </MuiThemeProvider>
+            />
+          </MuiThemeProvider>
 
 
         </div>
         )
       })
       }
+
     </div>
   );
   }
@@ -100,3 +100,4 @@ class Step extends Component {
 // }
 
 export default connect()(Step)
+// <img className="step-image" src="../../images/potato.png" alt="milestone" height="50" width="50"/>
