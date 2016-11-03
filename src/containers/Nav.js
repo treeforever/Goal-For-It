@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from "react-router"
-import { Badge, FlatButton, Dialog, AppBar, IconMenu, MenuItem, IconButton } from 'material-ui'
+import { Badge, FlatButton, Dialog, AppBar, IconMenu, MenuItem, IconButton, SvgIcon } from 'material-ui'
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
-// import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import { addGoal, fetchGoals, checkedGoal, showLatestGoal, openAddGoalDialog, closeAddGoalDialog, handleGoalInput } from "../actions/goalActions"
 import { addMilestones, openAddMilestonesDialog, closeAddMilestonesDialog, handleMilestonesInput, addMilestoneInState} from "../actions/milestoneActions"
@@ -21,7 +20,6 @@ import MoneyStatus from '../components/MoneyStatus'
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
 
-// injectTapEventPlugin();
 
 const customContentStyle = {
   width: '35%',
@@ -102,6 +100,7 @@ class Nav extends Component {
         <header>
           <MuiThemeProvider>
             <AppBar
+              className='App-title'
               title='GOAL FOR IT!'
               iconElementLeft={<MoneyStatus currentUser={this.props.user.currentUser.username} money={this.props.money} />}
               iconElementRight={<DropdownMenu
@@ -214,7 +213,13 @@ class DropdownMenu extends Component {
   render(){
     return (
       <div className="nav-right">
-        <span className="username" onClick={this.props.fetchGoal}><Link to="/" id="my-goals">{this.props.currentUser}</Link></span>
+        <Link to="/" id="my-goals">
+        <SvgIcon className="home-page">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        </SvgIcon>
+        <span className="username" onClick={this.props.fetchGoal}>{this.props.currentUser}</span>
+        </Link>
+
         <div id="notification-bell">
           <MuiThemeProvider>
             <Badge

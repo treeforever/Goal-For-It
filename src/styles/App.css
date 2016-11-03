@@ -88,9 +88,7 @@ div.App-Bar {
   font-size: 60px !important;
   font-family: 'Lemon', cursive !important;
   text-align: center;
-  padding-top: 9px;
-
-
+  padding-top: 13px;
 }
 
 .creator-info {
@@ -221,7 +219,7 @@ a#my-goals:hover{
 .App-Bar {
   display: flex;
   flex-direction: row;
-  margin-top: -2%;
+  margin-top: -1%;
   padding-top: 10px;
 }
 
@@ -264,8 +262,13 @@ img#potato-image {
   border-radius: 100%;
 }
 
+.home-page {
+  margin-bottom: -3px;
+}
+
 span.username {
   font-size: 22px;
+  margin-right: 5px;
 }
 
 span.money-total {
@@ -301,7 +304,7 @@ article.goal {
   /*display: flex;
   align-items: flex-start;*/
   border: 1px solid #e2dcdc;
-  margin-top: 10%;
+  margin-top: 14%;
   border-radius: 1%;
   margin-bottom: 12%;
   margin-left: auto;
