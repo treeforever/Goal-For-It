@@ -97,11 +97,11 @@ class Goal_page extends Component {
             </MuiThemeProvider>
             <MuiThemeProvider style={styles.block}>
               <Checkbox
-              className='checkbox'
-              style={styles.checkbox}
-              onCheck={this.handleChange}
-              checked={g.goal_checked}
-              disabled={(this.props.goal.username === this.props.user.currentUser.username ? false : true)}
+                className='checkbox'
+                style={styles.checkbox}
+                onCheck={this.handleChange}
+                checked={g.goal_checked}
+                disabled={(this.props.goal.username === this.props.user.currentUser.username ? false : true)}
               />
             </MuiThemeProvider>
           </h1>

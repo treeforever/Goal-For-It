@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import Chip from 'material-ui/Chip';
 import Avatar from 'material-ui/Avatar';
 import {List, ListItem} from 'material-ui/List';
+import {grey50} from 'material-ui/styles/colors';
 
 const styles = {
   chip: {
@@ -17,6 +18,14 @@ const styles = {
     'justify-content': "center"
   },
 };
+
+
+var avatars = [
+ 'images/Trump.png',
+ 'images/hilary.png',
+ 'images/trudeau.png',
+ '',
+];
 
 class GroupList extends Component {
 
@@ -45,8 +54,9 @@ class GroupList extends Component {
             <Chip
                 style={styles.chip}
                 onTouchTap={function() { this.sendUsername(member) }.bind(this) }
+                backgroundColor={grey50}
               >
-              <Avatar src="images/Trump.png" />
+              <Avatar src={ avatars[index] } />
               <Link to="/">
                 {member.username}
               </Link>
@@ -58,6 +68,7 @@ class GroupList extends Component {
     )
   }
 }
+
 
 // const mapDispatchToProps = (dispatch) => {
 //   //whenver addGoal is called, the result should be passed
