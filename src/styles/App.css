@@ -1,5 +1,20 @@
+/* login page */
+#background-video {
+min-width: 100%;
+min-height: 100%;
+position: fixed;
+left: 0;
+top: 0;
+z-index: -1;
+}
+
+body {
+  background-image: url(https://cdn.webdesigntunes.com/wp-content/uploads/2013/06/09150707/white-wood.jpg);
+
+}
+
 .App {
-  text-align: center;
+
 }
 
 .App-logo {
@@ -260,3 +275,64 @@ div.left-column {
   order: 1;
   flex-grow: 3;
 }*/
+
+
+/* milestone-index   */
+
+article.goal {
+  /*display: flex;
+  align-items: flex-start;*/
+  border: 1px solid #e2dcdc;
+  box-shadow: 6px 2px 2px #888888;
+  margin-top: 10%;
+  border-radius: 1%;
+  margin-bottom: 12%;
+  background-color: white;
+  padding: 10%;
+  /*background-image: url(https://cdn.webdesigntunes.com/wp-content/uploads/2013/06/09150707/white-wood.jpg);*/
+}
+
+div.milestone-box {
+
+}
+
+h2.milestone-title {
+  /*float: left;*/
+}
+
+.checkbox {
+  float: left;
+  width: inherit !important;
+}
+
+/*parent */
+div.step-box {
+  display: flex;
+  flex-direction: column;
+}
+
+/* children */
+h3.step-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  float: left;
+  margin-left: 10%;
+  margin-top: -3%;
+  width: 100%;
+}
+
+ /*grandchildren */
+img.step-image {
+  flex-direction: row;
+  float: left;
+}
+
+
+span.step-title {
+  float: left;
+  margin-left: 4%;
+  overflow-wrap: break-word;
+  margin-right: 17%;
+}
