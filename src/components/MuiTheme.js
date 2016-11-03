@@ -6,6 +6,7 @@ export const muiTheme = getMuiTheme({
     primary1Color: green500,
     primary2Color: green700,
     primary3Color: green100,
+    fontFamily: 'Josefin Sans',
   },
 }, {
   avatar: {

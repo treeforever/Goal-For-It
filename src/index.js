@@ -17,8 +17,8 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={App}>
-        <IndexRoute component={Goal_page}></IndexRoute>
-        <Route path="group" component={Group_page}></Route>
+        <IndexRoute component={Goal_page} />
+        <Route path="group" component={Group_page} />
       </Route>
     </Router>
   </Provider>,
