@@ -3,6 +3,13 @@ import {List, ListItem} from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
 
+const avatars = [
+ 'images/potato.png',
+ 'images/hilary.png',
+ 'images/trump.png',
+ '',
+];
+
 
 class LeaderBoard extends Component {
 
@@ -19,7 +26,7 @@ class LeaderBoard extends Component {
               </p>
             }
             secondaryTextLines={2}
-            leftAvatar={<Avatar src="images/bot.png" />}
+            leftAvatar={<Avatar src={avatars[index]} />}
             rightIcon={<span style={{right: "25px"}}>${user.user_money}</span>}
             />
           </div>

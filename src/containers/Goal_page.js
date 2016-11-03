@@ -84,8 +84,8 @@ class Goal_page extends Component {
          </div>
 
          <article className="goal">
-           <h2 className="creator-info">{`${this.props.goal.username}${'\''}s Goals`}</h2>
-            <img src="../../images/trophy.jpg" alt="milestone" height="50" width="50"/>
+           <h2 className="creator-info">{`${this.props.goal.username} says:`}</h2>
+            <img className="trophy" src="../../images/trophy2.jpg" alt="milestone" height="100" width="100"/>
             <h1 className="goal-title">
               <MuiThemeProvider muiTheme={muiTheme}>
                 <HardwareKeyboardArrowLeft onClick={this.arrowLeftOnClick} />
@@ -97,11 +97,11 @@ class Goal_page extends Component {
             </MuiThemeProvider>
             <MuiThemeProvider style={styles.block}>
               <Checkbox
-                className='checkbox'
-                style={styles.checkbox}
-                onCheck={this.handleChange}
-                checked={g.goal_checked}
-                disabled={(this.props.goal.username === this.props.user.currentUser.username ? false : true)}
+              className='checkbox'
+              style={styles.checkbox}
+              onCheck={this.handleChange}
+              checked={g.goal_checked}
+              disabled={(this.props.goal.username === this.props.user.currentUser.username ? false : true)}
               />
             </MuiThemeProvider>
           </h1>

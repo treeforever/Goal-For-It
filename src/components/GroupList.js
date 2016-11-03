@@ -20,10 +20,10 @@ const styles = {
 };
 
 
-var avatars = [
- 'images/Trump.png',
+const avatars = [
+ 'images/potato.png',
  'images/hilary.png',
- 'images/trudeau.png',
+ 'images/trump.png',
  '',
 ];
 

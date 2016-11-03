@@ -10,7 +10,6 @@ z-index: -1;
 
 body {
   background-image: url(https://cdn.webdesigntunes.com/wp-content/uploads/2013/06/09150707/white-wood.jpg);
-
 }
 
 .App {
@@ -76,26 +75,36 @@ span.add-step-button {
   margin-left: -8%;
 }
 
-.App-Bar {
+div.App-Bar {
   position: absolute;
   /*z-index: -1;*/
+  padding-bottom: 27px;
 }
 
 .App-Bar>h1 {
   line-height: 120px !important;
   padding-left: 40px !important;
-  height: 90px !important;
-  font-size: 50px !important;
+  height: 102px !important;
+  font-size: 60px !important;
   font-family: 'Lemon', cursive !important;
   text-align: center;
+  padding-top: 9px;
 
 
 }
 
 .creator-info {
   line-height: 3;
+  text-align: center;
+  font-family: 'Eczar', serif;
+  font-style: italic;
+  margin-top: -13%;
+  margin-left: -92%;
 }
 
+.milestone-image {
+  margin-right: 2%;
+}
 
 /*group-page css*/
 
@@ -176,7 +185,15 @@ header {
 }
 
 .nav-right {
+  margin-top: 6%;
+}
 
+h1.goal-title {
+  text-align: center;
+  font-family: 'Shrikhand', cursive;
+  font-size: 47px;
+  margin-bottom: 10%;
+  margin-top: -9%;
 }
 
 #dropdown-menu-goal {
@@ -245,7 +262,7 @@ img#potato-image {
 }
 
 span.username {
-
+  font-size: 22px;
 }
 
 span.money-total {
@@ -276,40 +293,24 @@ span#group-money {
 }
 
 
-/* <---- nav */
-
-/* goal page layout------> */
-/*main.container {
-  display: flex;
-  flex-direction: row;
-}
-
-article.goal {
-  float: right;
-  order: 2;
-  flex-grow: 3;
-  margin-left: 7%;
-}
-
-div.left-column {
-  order: 1;
-  flex-grow: 3;
-}*/
-
-
-/* milestone-index   */
 
 article.goal {
   /*display: flex;
   align-items: flex-start;*/
   border: 1px solid #e2dcdc;
-  box-shadow: 6px 2px 2px #888888;
   margin-top: 10%;
   border-radius: 1%;
   margin-bottom: 12%;
   background-color: white;
   padding: 10%;
-  /*background-image: url(https://cdn.webdesigntunes.com/wp-content/uploads/2013/06/09150707/white-wood.jpg);*/
+
+  /*background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;*/
+  width: 85%;
+  height: auto;
+  font: normal 14px verdana;
+  line-height: 30px;
+  border: solid 1px #ddd;
+  box-shadow: 6px 2px 2px #888888;
 }
 
 div.milestone-box {
@@ -318,6 +319,8 @@ div.milestone-box {
 
 h2.milestone-title {
   /*float: left;*/
+  font-family: 'Itim', cursive;
+  font-size: 37px;
 }
 
 .checkbox {
@@ -341,6 +344,8 @@ h3.step-title {
   margin-left: 10%;
   margin-top: -3%;
   width: 100%;
+  font-family: 'Itim', cursive;
+  /*font-family: italic;*/
 }
 
  /*grandchildren */
@@ -349,10 +354,16 @@ img.step-image {
   float: left;
 }
 
+img.trophy {
+  position: relative;
+  top: -10px;
+  left: -38px;
+}
+
 
 span.step-title {
   float: left;
-  margin-left: 4%;
+  margin-left: 10%;
   overflow-wrap: break-word;
   margin-right: 17%;
 }

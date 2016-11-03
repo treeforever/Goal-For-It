@@ -46,7 +46,7 @@ class Milestone extends Component {
                     disabled={(user === currentUser.username ? false : true)}
                   />
                 </MuiThemeProvider>
-                <img src="../../images/milestone.jpg" alt="milestone" height="50" width="50"/>
+                <img className="milestone-image" src="../../images/milestone.jpg" alt="milestone" height="50" width="50"/>
                 {milestone.title}
               </h2>
               <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/Cha-Ching.mp3" ></audio>
