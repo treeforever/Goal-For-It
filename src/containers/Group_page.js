@@ -52,6 +52,8 @@ class Group_page extends Component {
           <MuiThemeProvider>
               <GroupList group={this.props.group} click={this.handleTouchTap} fetchUser={this.props.fetchUser} fetchFriendGoals={this.props.fetchFriendGoals} fetchGoal={this.props.fetchGoal}/>
           </MuiThemeProvider>
+          <img id="potato-image" src="images/potato.png" alt="potato" height="50" width="50"/>
+          
           <InputBox newTodo
                 onSave={this.handleSave}
                 onTag={this.handleTag}
