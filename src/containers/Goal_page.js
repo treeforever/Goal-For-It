@@ -85,26 +85,28 @@ class Goal_page extends Component {
 
          <article className="goal">
            <h2 className="creator-info">{`${this.props.goal.username}${'\''}s Goals`}</h2>
-            <img src="../../images/trophy.jpg" alt="milestone" height="50" width="50"/>
-            <h1 className="goal-title">
-              <MuiThemeProvider muiTheme={muiTheme}>
-                <HardwareKeyboardArrowLeft onClick={this.arrowLeftOnClick} />
-              </MuiThemeProvider>
-                {g.goal}
-              <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/Cha-Ching.mp3" ></audio>
-            <MuiThemeProvider muiTheme={muiTheme}>
-              <HardwareKeyboardArrowRight onClick={this.arrowRightOnClick}/>
-            </MuiThemeProvider>
-            <MuiThemeProvider style={styles.block}>
-              <Checkbox
-                className='checkbox'
-                style={styles.checkbox}
-                onCheck={this.handleChange}
-                checked={g.goal_checked}
-                disabled={(this.props.goal.username === this.props.user.currentUser.username ? false : true)}
-              />
-            </MuiThemeProvider>
-          </h1>
+              <div className='goal-header'>
+                <img src="../../images/trophy.jpg" alt="milestone" height="50" width="50"/>
+                <h1 className="goal-title">
+                  <MuiThemeProvider muiTheme={muiTheme}>
+                    <HardwareKeyboardArrowLeft onClick={this.arrowLeftOnClick} />
+                  </MuiThemeProvider>
+                    {g.goal}
+                  <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/Cha-Ching.mp3" ></audio>
+                  <MuiThemeProvider muiTheme={muiTheme}>
+                    <HardwareKeyboardArrowRight onClick={this.arrowRightOnClick}/>
+                  </MuiThemeProvider>
+                  <MuiThemeProvider style={styles.block}>
+                  <Checkbox
+                    className='checkbox'
+                    style={styles.checkbox}
+                    onCheck={this.handleChange}
+                    checked={g.goal_checked}
+                    disabled={(this.props.goal.username === this.props.user.currentUser.username ? false : true)}
+                  />
+                </MuiThemeProvider>
+              </h1>
+            </div>
             <Milestone onChange={this.handleChange} milestones={g.milestones} user={this.props.goal.username} currentUser={this.props.user.currentUser} money={this.props.money}/>
           </article>
         </main>

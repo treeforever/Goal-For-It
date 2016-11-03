@@ -8,6 +8,8 @@ top: 0;
 z-index: -1;
 }
 
+.
+
 body {
   background-image: url(https://cdn.webdesigntunes.com/wp-content/uploads/2013/06/09150707/white-wood.jpg);
 
@@ -54,7 +56,7 @@ body {
 }
 
 input.inputBox {
-  width: 50%;
+  width: 51%;
 }
 
 #formControlsSelect {
@@ -94,6 +96,9 @@ span.add-step-button {
 
 .creator-info {
   line-height: 3;
+  text-decoration: underline;
+  text-align: center;
+  font-size: 49px;
 }
 
 
@@ -242,7 +247,7 @@ div#money-pot {
 }
 
 img#potato-image {
-  margin-left:-5.5%;
+  margin-left: -6.5%;
   margin-bottom: -7%;
   border-radius: 100%;
 }
@@ -311,9 +316,14 @@ article.goal {
   border-radius: 1%;
   margin-bottom: 12%;
   background-color: white;
-  padding: 10%;
   /*background-image: url(https://cdn.webdesigntunes.com/wp-content/uploads/2013/06/09150707/white-wood.jpg);*/
 }
+
+.goal-header {
+  text-align: center;
+}
+
+
 
 div.milestone-box {
 

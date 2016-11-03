@@ -47,7 +47,8 @@ export function fetchMoney(userId) {
   }
 }
 
-export function moneyGoal({userId, completed, groupMoneyValue, userMoneyValue}) {
+export function moneyGoal(userId, completed, groupMoneyValue, userMoneyValue) {
+  console.log('MONEY REDUCER', completed)
   const url = `http://localhost:8080/api/users/${userId}`
   if(!completed){
     let money = {groupMoney: groupMoneyValue - 10, userMoney: userMoneyValue + 10}

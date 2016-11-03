@@ -1,5 +1,4 @@
 body {
-  padding-top: 90px;
   background-image: url(http://s1.picswalls.com/wallpapers/2015/11/21/beautiful-motivation-wallpaper_10342177_288.jpg);
   background-size: 100% auto;
   background-repeat: no-repeat;
@@ -99,4 +98,14 @@ body {
   color: #fff;
   background-color: #1CA347;
   border-color: #1CA347;
+}
+
+.login-header {
+  background-color: #00BCD4;
+  text-align: center;
+  margin-bottom: 5%;
+  font-family: 'Lemon', cursive;
+  font-size: 50px;
+  color: white;
+  padding-bottom: 10px;
 }
