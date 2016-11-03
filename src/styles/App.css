@@ -244,6 +244,7 @@ div#money-pot {
 img#potato-image {
   margin-left:-5.5%;
   margin-bottom: -7%;
+  border-radius: 100%;
 }
 
 span.username {
