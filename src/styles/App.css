@@ -111,6 +111,7 @@ span.add-step-button {
   margin-right: 10%;
   position: absolute;
   left: 5%;
+  background-color: white;
 }
 
 .page-header {
@@ -211,8 +212,6 @@ div#money-pot {
 
 
 
-
-
 .material-icons.md-dark {
   color: rgba(0, 0, 0, 0.54);
 }
@@ -222,6 +221,12 @@ div#money-pot {
   float: right;
   border: 1px solid lightgrey;
   border-radius: 5px;
+  background-color: white;
+}
+
+img#potato-image {
+  margin-left:-5.5%;
+  margin-bottom: -7%;
 }
 
 span.username {
