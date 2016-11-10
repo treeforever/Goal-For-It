@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from "react-router"
-import { Badge, FlatButton, Dialog, AppBar, IconMenu, MenuItem, IconButton, SvgIcon } from 'material-ui'
+import { Badge, RaisedButton, FlatButton, Dialog, AppBar, IconMenu, MenuItem, IconButton, SvgIcon } from 'material-ui'
+import { Step, Stepper, StepLabel} from 'material-ui/Stepper';
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
@@ -134,6 +135,19 @@ class Nav extends Component {
             handleSubmit={this.props.handleGoalInput}
             addRow={()=> { }}
             />
+          <div style={{width: '70%', maxWidth: 700, margin: 'auto'}}>
+             <Stepper activeStep={0}>
+               <Step>
+                 <StepLabel>Create a goal</StepLabel>
+               </Step>
+               <Step>
+                 <StepLabel>Create milestones</StepLabel>
+               </Step>
+               <Step>
+                 <StepLabel>Create steps</StepLabel>
+               </Step>
+             </Stepper>
+           </div>
           </Dialog>
         </MuiThemeProvider>
 

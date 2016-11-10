@@ -20,9 +20,12 @@ module.exports = (knex) => {
           res.json(result)
         }
       })
-      .catch(function(err) {
-        res.status(500).send('database error: ' + JSON.stringify(err));
-      });
+      // .catch(function(err) {
+        // if(i === newSteps.length - 1) {
+        //   // res.status(500).send('database error: ' + JSON.stringify(err));
+        // }
+
+      // });
     })
   })
 

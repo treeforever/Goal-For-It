@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { FlatButton, Dialog } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { Step, Stepper, StepLabel} from 'material-ui/Stepper';
+
 
 import muiTheme from '../components/MuiTheme'
 import MuiText from '../components/MuiText'
@@ -43,6 +45,19 @@ class NewMilestone extends Component {
                   )
 
         })}
+        <div style={{width: '70%', maxWidth: 700, margin: 'auto'}}>
+           <Stepper activeStep={1}>
+             <Step>
+               <StepLabel>Create a goal</StepLabel>
+             </Step>
+             <Step>
+               <StepLabel>Create milestones</StepLabel>
+             </Step>
+             <Step>
+               <StepLabel>Create steps</StepLabel>
+             </Step>
+           </Stepper>
+         </div>
         </Dialog>
       </MuiThemeProvider>
     )
