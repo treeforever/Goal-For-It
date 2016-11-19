@@ -7,7 +7,7 @@ class MoneyTotal extends Component {
     return (
       <div id="money-total">
         <audio ref={(elem) => this.audio = elem} id="audio" src="../../sound/coins.mp3" ></audio>
-         <img src="../../images/piggy-bank.png" alt="piggy-bank" height="100" width="100" />
+         <img src="../../images/piggy-bank.png" id="piggy-bank" alt="piggy-bank" height="100" width="100" />
          <span className="money-total" onClick={() => {this.audio.play() }}>${this.props.moneyTotal}</span>
       </div>
     )

@@ -187,6 +187,8 @@ header {
   margin-top: 6%;
 }
 
+
+
 h1.goal-title {
   text-align: center;
   font-family: 'Shrikhand', cursive;
@@ -270,6 +272,24 @@ img#dwight-image {
 span.username {
   font-size: 22px;
   margin-right: 5px;
+}
+
+div#money-total {
+  transform: rotate(0deg);
+}
+
+div#money-total:hover {
+  animation: vibrate 150ms infinite alternate;
+}
+
+
+@keyframes vibrate{
+ from {
+    transform: rotate(-10deg);
+  }
+  to {
+     transform: rotate(10deg);
+  }
 }
 
 span.money-total {
